@@ -17,7 +17,7 @@ const aboutLinks = [
   { to: "/about", label: "Sanhita360" },
   { to: "/about/founder", label: "Founder" },
   { to: "/recognition", label: "Recognition" },
-  { to: "/#indian-freedom-fighter", label: "Indian Independence" },
+  { to: "/indian-independence", label: "Indian Independence" },
 ];
 
 const Header = () => {

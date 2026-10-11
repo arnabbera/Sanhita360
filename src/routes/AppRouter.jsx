@@ -283,6 +283,11 @@ export default function AppRouter() {
       ====================================================== */}
 
       <Route
+        path="/indian-independence"
+        element={<PostsPage independenceOnly />}
+      />
+
+      <Route
         path="/posts"
         element={
           <PostsPage />
