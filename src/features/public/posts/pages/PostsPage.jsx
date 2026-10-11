@@ -15,6 +15,8 @@ import {
   Link,
 } from "react-router-dom";
 
+import { isFreedomFighterPost } from "../../../../utils/postCategories";
+
 import Header from "../../../home/components/Header";
 import Footer from "../../../home/components/Footer";
 
@@ -89,7 +91,12 @@ const getPostImage = (
 // PAGE
 // =========================================================
 
-export default function PostsPage() {
+export default function PostsPage({ independenceOnly = false }) {
+  const pageTitle = independenceOnly ? "Indian Independence" : "Legal Posts & Articles";
+  const pageDescription = independenceOnly
+    ? "Explore the people, courage and stories of India’s independence movement through Sanhita360’s freedom-fighter articles."
+    : "Explore legal awareness posts, constitutional topics, practical law explainers and important legal updates from Sanhita360.";
+  const canonical = independenceOnly ? "/indian-independence" : "/posts";
   const [
     posts,
     setPosts,
@@ -153,6 +160,8 @@ export default function PostsPage() {
     };
   }, []);
 
+  const visiblePosts = independenceOnly ? posts.filter(isFreedomFighterPost) : posts;
+
   const structuredData =
     useMemo(
       () => ({
@@ -160,27 +169,25 @@ export default function PostsPage() {
           "https://schema.org",
         "@type":
           "CollectionPage",
-        name:
-          "Sanhita360 Legal Posts",
-        description:
-          "Read public legal awareness posts, constitutional updates, law explainers and legal education articles from Sanhita360.",
+        name: pageTitle,
+        description: pageDescription,
         url:
-          `${SEO_CONFIG.siteUrl}/posts`,
+          `${SEO_CONFIG.siteUrl}${canonical}`,
         isPartOf: {
           "@id":
             `${SEO_CONFIG.siteUrl}/#website`,
         },
       }),
-      [],
+      [pageTitle, pageDescription, canonical],
     );
 
   return (
     <>
       <SEO
-        title="Legal Posts & Articles | Sanhita360"
-        description="Read Sanhita360 legal posts, law explainers, constitutional awareness articles and public legal education updates."
-        canonical="/posts"
-        keywords={[
+        title={pageTitle}
+        description={pageDescription}
+        canonical={canonical}
+        keywords={independenceOnly ? ["Indian independence", "Indian freedom fighters", "independence movement"] : [
           "legal posts",
           "law articles India",
           "legal awareness",
@@ -200,18 +207,15 @@ export default function PostsPage() {
           <div className="ns-posts-container">
             <span className="ns-posts-eyebrow">
               <FaNewspaper />
-              Public Legal Content
+              {independenceOnly ? "India’s Freedom Movement" : "Public Legal Content"}
             </span>
 
             <h1>
-              Legal Posts & Articles
+              {pageTitle}
             </h1>
 
             <p>
-              Explore legal awareness posts,
-              constitutional topics, practical
-              law explainers and important legal
-              updates from Sanhita360.
+              {pageDescription}
             </p>
           </div>
         </section>
@@ -241,7 +245,7 @@ export default function PostsPage() {
 
             {!loading &&
               !error &&
-              posts.length === 0 && (
+              visiblePosts.length === 0 && (
                 <div className="ns-posts-status">
                   <FaNewspaper />
                   <h2>
@@ -256,9 +260,9 @@ export default function PostsPage() {
 
             {!loading &&
               !error &&
-              posts.length > 0 && (
+              visiblePosts.length > 0 && (
                 <div className="ns-posts-grid">
-                  {posts.map(
+                  {visiblePosts.map(
                     (post) => {
                       const image =
                         getPostImage(
