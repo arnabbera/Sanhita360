@@ -17,6 +17,7 @@ const aboutLinks = [
   { to: "/about", label: "Sanhita360" },
   { to: "/about/founder", label: "Founder" },
   { to: "/recognition", label: "Recognition" },
+  { to: "/#indian-freedom-fighter", label: "Indian Independence" },
 ];
 
 const Header = () => {
@@ -28,9 +29,6 @@ const Header = () => {
     useState(false);
 
   const [learningOpen, setLearningOpen] =
-    useState(false);
-
-  const [historyOpen, setHistoryOpen] =
     useState(false);
 
   const navStyle = ({ isActive }) => ({
@@ -66,7 +64,6 @@ const Header = () => {
     setAboutOpen(false);
     setServicesOpen(false);
     setLearningOpen(false);
-    setHistoryOpen(false);
   };
 
   return (
@@ -223,37 +220,6 @@ const Header = () => {
               )}
             </div>
 
-            {/* INDIAN HISTORY */}
-
-            <div
-              className="ns-header-dropdown"
-              onMouseEnter={() => setHistoryOpen(true)}
-              onMouseLeave={() => setHistoryOpen(false)}
-            >
-              <button
-                type="button"
-                className="ns-dropdown-trigger"
-                aria-expanded={historyOpen}
-                aria-haspopup="true"
-                onClick={() => setHistoryOpen((current) => !current)}
-              >
-                Indian History
-                <FaChevronDown size={11} />
-              </button>
-
-              {historyOpen && (
-                <div style={dropdownStyle}>
-                  <Link
-                    to="/#indian-freedom-fighter"
-                    style={dropdownLink}
-                    onClick={closeMenu}
-                  >
-                    Indian Freedom Fighter
-                  </Link>
-                </div>
-              )}
-            </div>
-
             <NavLink
               to="/#legal-consultation"
               style={navStyle}
@@ -402,25 +368,6 @@ const Header = () => {
 
                   <Link to="/#legal-article" onClick={closeMenu}>
                     Legal Article
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div className="ns-mobile-group">
-              <button
-                type="button"
-                aria-expanded={historyOpen}
-                onClick={() => setHistoryOpen((current) => !current)}
-              >
-                <span>Indian History</span>
-                <FaChevronDown className={historyOpen ? "is-open" : ""} />
-              </button>
-
-              {historyOpen && (
-                <div className="ns-mobile-submenu">
-                  <Link to="/#indian-freedom-fighter" onClick={closeMenu}>
-                    Indian Freedom Fighter
                   </Link>
                 </div>
               )}
@@ -603,7 +550,6 @@ const Header = () => {
 
           /*
            * Tablet/mobile navigation breakpoint.
-           * The extra Indian History item needs room on tablets.
            */
 
           @media (max-width: 1120px) {
