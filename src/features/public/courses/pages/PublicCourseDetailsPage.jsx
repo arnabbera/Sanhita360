@@ -1,4 +1,5 @@
-import CriminalLawEnrollment, { CriminalLawBrandCard, freeSignupPath, criminalCourseId } from "../components/CriminalLawEnrollment";
+import { useAuth } from "../../../../hooks/useAuth";
+import CriminalLawEnrollment, { CriminalLawBrandCard, freeSignupPath, freeLessonPath, criminalCourseId } from "../components/CriminalLawEnrollment";
 import {
   useEffect,
   useMemo,
@@ -85,6 +86,7 @@ export default function PublicCourseDetailsPage() {
     courseSlug,
   } = useParams();
   const pricing = useCoursePricing();
+  const { firebaseUser, loading: authLoading } = useAuth();
 
   const [
     course,
@@ -654,14 +656,15 @@ export default function PublicCourseDetailsPage() {
                   {enrollmentLabel}
                   <FaArrowRight aria-hidden="true" />
                 </Link>
-                {isCriminalLawCourse && <Link className="primary-course-cta" to={freeSignupPath} onClick={() => { void trackFunnelEvent("signup_click", criminalCourseId); }}>Start learning free</Link>}
+                {isCriminalLawCourse && <Link className="primary-course-cta" to={firebaseUser ? freeLessonPath : freeSignupPath} onClick={() => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); }}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson" : "Start learning free"}</Link>}
                 <a className="secondary-course-cta" href="#course-overview">
                   Explore course
                 </a>
-                <Link className="secondary-course-cta" to={`/login?next=${encodeURIComponent(`/student/courses/${course.slug}`)}`}>
-                  Login to student account
+                <Link className="secondary-course-cta" to={firebaseUser ? `/student/courses/${course.slug}` : `/login?next=${encodeURIComponent(`/student/courses/${course.slug}`)}`}>
+                  {authLoading ? "Checking account…" : firebaseUser ? "Back to student portal" : "Login to student account"}
                 </Link>
               </div>
+              {firebaseUser && <p className="course-enrollment-note" role="status">You are signed in. Your student session is active.</p>}
               <p className="course-enrollment-note">One-time course fee · No sign-in required before payment. {pricing ? `Current price: ${formatINR(pricing.amount)}. ` : ""}Final price is confirmed in checkout.</p>
             </div>
 

@@ -22,6 +22,8 @@ export function CriminalLawBrandCard() {
 }
 
 export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificationAvailable }) {
+  const { firebaseUser, loading: authLoading } = useAuth();
+  const trialPath = firebaseUser ? freeLessonPath : freeSignupPath;
   const [copied, setCopied] = useState(false);
   const shareUrl = `https://www.sanhita360.com${coursePath}?utm_source=whatsapp&utm_campaign=criminal-law-free-lesson`;
   const shareText = `Try Criminal Law I: IPC to BNS on Sanhita360. Create a free account for the complete introductory lesson and a five-question practice test. No payment needed for the free lesson. ${shareUrl}`;
@@ -32,7 +34,7 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
           <h2 id="criminal-start-heading">Start Criminal Law I free</h2>
           <p>Create a free account for the complete Chapter I introduction: IPC Sections 1–5, BNS comparisons, revision notes and a five-question practice test with explanations.</p>
           <p><strong>No payment or phone number needed.</strong> The free lesson does not enroll you in the paid course.</p>
-          <Link className="criminal-button" to={freeSignupPath} onClick={signupClick}>Start learning free →</Link>
+          <Link className="criminal-button" to={trialPath} onClick={firebaseUser ? undefined : signupClick}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson →" : "Start learning free →"}</Link>
           <a className="criminal-text-link" href="#criminal-sample">Read a short sample first</a>
         </div>
         <div className="criminal-inclusions"><h3>What the full course offers</h3><dl>
@@ -50,7 +52,7 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
         <h2>Does criminal law apply only to Indian citizens?</h2>
         <p>{study.practice[2].answer}</p>
         <p>See how the full lesson connects statutory wording, the corresponding BNS provision and a problem-based answer.</p>
-        <Link to={freeSignupPath} onClick={signupClick}>Get the complete free lesson and practice test →</Link>
+        <Link to={trialPath} onClick={firebaseUser ? undefined : signupClick}>Get the complete free lesson and practice test →</Link>
       </article>
       <div className="criminal-founder"><img src="/arnab-founder.jpg" alt="Arnab Bera, founder of Sanhita360" loading="lazy" />
         <div><span className="content-label">The person behind Sanhita360</span><h2>Meet Arnab Bera</h2>
@@ -71,7 +73,7 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
         <p>Free signup opens Chapter I and its practice test. Paid enrollment opens the full course through your student account. Use the same verified email for payment and sign-in. <Link to="/claim-purchase">Recover an existing purchase</Link>.</p>
       </details>
     </div>
-    <div className="criminal-mobile-bar"><Link to={freeSignupPath} onClick={signupClick}>Start free</Link><Link to={checkoutPath} onClick={onEnroll}>{priceLabel}</Link></div>
+    <div className="criminal-mobile-bar"><Link to={trialPath} onClick={firebaseUser ? undefined : signupClick}>{firebaseUser ? "Free lesson" : "Start free"}</Link><Link to={checkoutPath} onClick={onEnroll}>{priceLabel}</Link></div>
     <style>{criminalStyles}</style>
   </section>;
 }
@@ -92,7 +94,7 @@ export function CriminalLawFreeLesson() {
   if (loading) return <p role="status">Loading your free lesson…</p>;
   if (!firebaseUser) return <Navigate to={freeSignupPath} replace />;
   const score = quiz.reduce((total, item, index) => total + Number(answers[index] === item.answer), 0);
-  return <main className="criminal-lesson"><Link to={coursePath}>← Back to Criminal Law I</Link>
+  return <main className="criminal-lesson"><Link to={`/student/courses/${criminalCourseId}`}>← Back to Criminal Law I</Link>
     <span className="content-label">Your free complete introductory lesson</span><h1>Chapter I — Introduction: IPC to BNS</h1>
     <p>Read the lesson, then try the five-question practice test. No paid enrollment is required. This practice score does not count towards certification.</p>
     <h2>Learning objectives</h2><ul>{study.objectives.map((text) => <li key={text}>{text}</li>)}</ul>
@@ -111,7 +113,7 @@ export function CriminalLawFreeLesson() {
       </fieldset>)}
       {submitted ? <div role="status"><h3>Your score: {score} / {quiz.length}</h3><button type="button" onClick={() => { setAnswers({}); setSubmitted(false); }}>Try again</button></div> : <button type="submit">Check my answers</button>}
     </form>
-    <section className="criminal-sample"><h2>Continue with the full 26-chapter course</h2><p>Explore the full curriculum, current price and assessment requirements before enrolling.</p><Link to={coursePath}>View full course and current price →</Link></section>
+    <section className="criminal-sample"><h2>Continue with the full 26-chapter course</h2><p>Explore the full curriculum, current price and assessment requirements before enrolling.</p><Link to={`/student/courses/${criminalCourseId}`}>View full course and current price →</Link></section>
     <style>{criminalStyles}</style>
   </main>;
 }
