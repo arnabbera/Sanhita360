@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getCourseBySlug } from "../../../../services/courseService";
 import { payForGuestCourse } from "../../../../services/razorpayPaymentService";
-import { trackFunnelEvent } from "../../../../services/funnelAnalyticsService";
 import useCoursePricing, { formatINR } from "../../../../hooks/useCoursePricing";
 
 export default function GuestCheckoutPage() {
@@ -28,7 +27,6 @@ export default function GuestCheckoutPage() {
     if (!course || paying) return;
     setPaying(true);
     setError("");
-    void trackFunnelEvent("enrollment_click", course.id);
     try {
       await payForGuestCourse({ courseId: course.id, courseTitle: course.title,
         name: name.trim(), email: email.trim().toLowerCase() });

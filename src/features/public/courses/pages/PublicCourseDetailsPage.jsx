@@ -36,7 +36,7 @@ import {
   getCourseBySlug,
 } from "../../../../services/courseService";
 import { trackFunnelEvent } from "../../../../services/funnelAnalyticsService";
-import useCoursePricing from "../../../../hooks/useCoursePricing";
+import useCoursePricing, { formatINR } from "../../../../hooks/useCoursePricing";
 
 // =========================================================
 // HELPERS
@@ -436,6 +436,10 @@ export default function PublicCourseDetailsPage() {
     course.certification ||
     {};
 
+  const enrollmentLabel = pricing ? `Enroll for ${formatINR(pricing.amount)}` : "Enroll — check current price";
+  const checkoutUrl = `/checkout/${course.slug}`;
+  const trackEnrollment = () => { void trackFunnelEvent("enrollment_click", course.id); };
+
   const desktopImage =
     getDesktopImage(
       course,
@@ -645,14 +649,18 @@ export default function PublicCourseDetailsPage() {
               </div>
 
               <div className="course-hero-actions">
-                <Link className="primary-course-cta" to="/login?source=law-courses">
-                  Login to student account
+                <Link className="primary-course-cta" to={checkoutUrl} onClick={trackEnrollment}>
+                  {enrollmentLabel}
                   <FaArrowRight aria-hidden="true" />
                 </Link>
                 <a className="secondary-course-cta" href="#course-overview">
                   Explore course
                 </a>
+                <Link className="secondary-course-cta" to={`/login?next=${encodeURIComponent(`/student/courses/${course.slug}`)}`}>
+                  Login to student account
+                </Link>
               </div>
+              <p className="course-enrollment-note">One-time course fee · No sign-in required before payment. {pricing ? `Current price: ${formatINR(pricing.amount)}. ` : ""}Final price is confirmed in checkout.</p>
             </div>
 
             <div
@@ -978,13 +986,15 @@ export default function PublicCourseDetailsPage() {
 
                 <Link
                   className="sidebar-login-button"
-                  to="/login?source=law-courses"
+                  to={checkoutUrl}
+                  onClick={trackEnrollment}
                 >
-                  Login to student account
+                  {enrollmentLabel}
                   <FaArrowRight />
                 </Link>
               </div>
 
+              <p>Pay securely, then sign in with the same verified email to access your course. <Link to="/claim-purchase">Recover a purchase</Link>.</p>
               <div className="protected-content-card">
                 <FaLock />
 
@@ -1144,11 +1154,11 @@ export default function PublicCourseDetailsPage() {
 
                 <article>
                   <h3>
-                    3. Certification Included
+                    3. {certification.available === false ? "Course Access" : "Certification Included"}
                   </h3>
 
                   <p>
-                    The <strong>individual course fee</strong> covers course access, access to downloadable course PDFs, practice mock tests, and a digital Certificate of Completion.
+                    The <strong>individual course fee</strong> covers course access, access to downloadable course PDFs, practice mock tests{certification.available === false ? ". A completion certificate is not available for this course." : ", and a digital Certificate of Completion after meeting the course requirements."}
                   </p>
 
                   <p className="course-important-notice">
