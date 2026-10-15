@@ -61,7 +61,10 @@ export default function Header() {
         }
       }}>
       <button type="button" className="ns-dropdown-trigger" aria-expanded={expanded} aria-controls={panelId}
-        onClick={() => setOpenGroup((current) => current === item.id ? null : item.id)}>
+        onClick={(event) => {
+          const toggle = mobile || event.detail === 0;
+          setOpenGroup((current) => toggle && current === item.id ? null : item.id);
+        }}>
         {item.label}<FaChevronDown size={11} className={expanded ? "is-open" : ""} aria-hidden="true" />
       </button>
       {expanded && <div id={panelId} className={mobile ? "ns-mobile-submenu" : "ns-desktop-submenu"}>
