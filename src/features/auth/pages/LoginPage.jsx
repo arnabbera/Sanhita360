@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [searchParams] = useSearchParams();
   const { signIn, signInWithEmail, requestEmailSignInLink } = useAuth();
   const isSignUp = location.pathname === "/signup";
-  const isCourseLogin = !isSignUp && (searchParams.get("source") === "law-courses" || searchParams.get("next")?.startsWith("/student/courses/") || ["/student/free-preview/law-of-torts-mv-and-cp-laws", "/student/free-preview/code-of-civil-procedure-and-limitation", "/student/free-preview/public-international-law", "/student/free-preview/general-principles-of-contract-and-specific-relief", "/student/free-preview/environmental-law"].includes(searchParams.get("next")));
+  const isCourseLogin = !isSignUp && (searchParams.get("source") === "law-courses" || searchParams.get("next")?.startsWith("/student/courses/") || ["/student/free-preview/law-of-torts-mv-and-cp-laws", "/student/free-preview/code-of-civil-procedure-and-limitation", "/student/free-preview/public-international-law", "/student/free-preview/general-principles-of-contract-and-specific-relief", "/student/free-preview/environmental-law", "/student/free-preview/indian-constitutional-law-i"].includes(searchParams.get("next")));
   const simplifiedEntry = isSignUp || isCourseLogin;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +32,7 @@ export default function LoginPage() {
   const completingEmailLink = emailLinkOnCurrentPage();
   const next = searchParams.get("next");
   const isCriminalTrial = next === freeLessonPath || searchParams.get("source") === "criminal-law-free";
-  const safeNext = (["/student/free-preview/law-of-torts-mv-and-cp-laws", "/student/free-preview/code-of-civil-procedure-and-limitation", "/student/free-preview/public-international-law", "/student/free-preview/general-principles-of-contract-and-specific-relief", "/student/free-preview/environmental-law"].includes(next) || next === freeLessonPath || next === "/claim-purchase" || next?.startsWith("/student/courses/")) &&
+  const safeNext = (["/student/free-preview/law-of-torts-mv-and-cp-laws", "/student/free-preview/code-of-civil-procedure-and-limitation", "/student/free-preview/public-international-law", "/student/free-preview/general-principles-of-contract-and-specific-relief", "/student/free-preview/environmental-law", "/student/free-preview/indian-constitutional-law-i"].includes(next) || next === freeLessonPath || next === "/claim-purchase" || next?.startsWith("/student/courses/")) &&
     !next.startsWith("//") && !next.includes("\\") &&
     !next.includes("?") && !next.includes("#") ? next : "/student";
   const destination = isCriminalTrial ? freeLessonPath : isCourseLogin ? safeNext : window.localStorage.getItem("sanhita360-guest-latest")
