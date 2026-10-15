@@ -1,5 +1,5 @@
 import { useAuth } from "../../../../hooks/useAuth";
-import CriminalLawEnrollment, { CriminalLawBrandCard } from "../components/CriminalLawEnrollment";
+import CriminalLawEnrollment, { CriminalLawBrandCard, freeEntryPath, freeLessonPath, criminalCourseId } from "../components/CriminalLawEnrollment";
 import {
   useEffect,
   useMemo,
@@ -990,9 +990,14 @@ export default function PublicCourseDetailsPage() {
                   </strong>
                 </div>
 
-                {!isCriminalLawCourse && <Link className="sidebar-login-button" to={checkoutUrl} onClick={trackEnrollment}>
-                  {enrollmentLabel}<FaArrowRight />
-                </Link>}
+                <Link
+                  className="sidebar-login-button"
+                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : checkoutUrl}
+                  onClick={isCriminalLawCourse ? () => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); } : trackEnrollment}
+                >
+                  {isCriminalLawCourse ? "Start learning free" : enrollmentLabel}
+                  <FaArrowRight />
+                </Link>
               </div>
 
               {!isCriminalLawCourse && <p>Pay securely, then sign in with the same verified email to access your course. <Link to="/claim-purchase">Recover a purchase</Link>.</p>}
