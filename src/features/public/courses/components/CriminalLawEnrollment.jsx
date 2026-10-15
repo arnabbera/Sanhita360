@@ -21,7 +21,7 @@ export function CriminalLawBrandCard() {
   </div>;
 }
 
-export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificationAvailable }) {
+export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificationAvailable, showActions = true }) {
   const { firebaseUser, loading: authLoading } = useAuth();
   const trialPath = firebaseUser ? freeLessonPath : freeEntryPath;
   const [copied, setCopied] = useState(false);
@@ -34,8 +34,8 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
           <h2 id="criminal-start-heading">Start Criminal Law I free</h2>
           <p>Create a free account for the complete Chapter I introduction: IPC Sections 1–5, BNS comparisons, revision notes and a five-question practice test with explanations.</p>
           <p><strong>No payment or phone number needed.</strong> The free lesson does not enroll you in the paid course.</p>
-          <Link className="criminal-button" to={trialPath} onClick={firebaseUser ? undefined : signupClick}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson →" : "Start learning free →"}</Link>
-          <a className="criminal-text-link" href="#criminal-sample">Read a short sample first</a>
+          {showActions && <Link className="criminal-button" to={trialPath} onClick={firebaseUser ? undefined : signupClick}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson →" : "Start learning free →"}</Link>}
+          {showActions && <a className="criminal-text-link" href="#criminal-sample">Read a short sample first</a>}
         </div>
         <div className="criminal-inclusions"><h3>What the full course offers</h3><dl>
           <div><dt>Learning format</dt><dd>Self-paced, chapter-wise written study materials in English</dd></div>
@@ -44,7 +44,7 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
           <div><dt>Certificate</dt><dd>{certificationAvailable ? "Digital completion certificate after meeting assessment requirements; not an accredited qualification" : "Not available for this course"}</dd></div>
           <div><dt>Access</dt><dd>Sign in with your purchase email after payment to access the course in your student portal</dd></div>
         </dl><p>Check chapter resources for available PDFs. Self-paced checkout does not include live classes. <Link to="/live-online-classes">See live-class options</Link>.</p>
-          <Link className="criminal-button" to={checkoutPath} onClick={onEnroll}>{priceLabel} →</Link>
+          {showActions && <Link className="criminal-button" to={checkoutPath} onClick={onEnroll}>{priceLabel} →</Link>}
           <p>Need help with access, resources or course suitability? <a href="mailto:beraarnab@gmail.com?subject=Criminal%20Law%20I%20course%20enquiry">Email course support</a>. <Link to="/terms">Read course terms</Link>.</p>
         </div>
       </div>
@@ -52,7 +52,7 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
         <h2>Does criminal law apply only to Indian citizens?</h2>
         <p>{study.practice[2].answer}</p>
         <p>See how the full lesson connects statutory wording, the corresponding BNS provision and a problem-based answer.</p>
-        <Link to={trialPath} onClick={firebaseUser ? undefined : signupClick}>Get the complete free lesson and practice test →</Link>
+        {showActions && <Link to={trialPath} onClick={firebaseUser ? undefined : signupClick}>Get the complete free lesson and practice test →</Link>}
       </article>
       <div className="criminal-founder"><img src="/arnab-founder.jpg" alt="Arnab Bera, founder of Sanhita360" loading="lazy" />
         <div><span className="content-label">The person behind Sanhita360</span><h2>Meet Arnab Bera</h2>
@@ -63,17 +63,17 @@ export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificat
       {certificationAvailable && <details className="criminal-sample"><summary>Preview an illustrative completion certificate</summary>
         <div className="criminal-certificate"><img src="/sanhita360-logo.png" alt="Sanhita360" /><p>ILLUSTRATIVE SAMPLE · NOT AN ISSUED CERTIFICATE</p><h3>Certificate of Completion</h3><p>[Learner’s name]</p><strong>Criminal Law I · IPC to BNS</strong><p>Issued only after meeting the applicable course and assessment requirements.</p><small>Private learning certificate; not an accredited degree, diploma or professional licence. Final issued layout may differ.</small></div>
       </details>}
-      <article className="criminal-sample"><h2>Know someone studying criminal law?</h2><p>Share the free introductory lesson with a fellow student.</p>
+      {showActions && <article className="criminal-sample"><h2>Know someone studying criminal law?</h2><p>Share the free introductory lesson with a fellow student.</p>
         <a className="criminal-button" href={`https://wa.me/?text=${encodeURIComponent(shareText)}`} target="_blank" rel="noreferrer">Share on WhatsApp</a>{" "}
         <button className="criminal-share-copy" type="button" onClick={async () => { try { await navigator.clipboard.writeText(shareText); setCopied(true); } catch { setCopied(false); } }}>Copy course invitation</button>
         {copied && <p role="status">Invitation copied.</p>}
-      </article>
+      </article>}
       <details className="criminal-sample"><summary>Who is this course for, and what happens after signup?</summary>
         <p>Designed for LL.B students revising substantive criminal law and learners comparing IPC with BNS. It is a private learning resource, not a degree or a promise of exam results.</p>
         <p>Free signup opens Chapter I and its practice test. Paid enrollment opens the full course through your student account. Use the same verified email for payment and sign-in. <Link to="/claim-purchase">Recover an existing purchase</Link>.</p>
       </details>
     </div>
-    <div className="criminal-mobile-bar"><Link to={trialPath} onClick={firebaseUser ? undefined : signupClick}>{firebaseUser ? "Free lesson" : "Start free"}</Link><Link to={checkoutPath} onClick={onEnroll}>{priceLabel}</Link></div>
+    {showActions && <div className="criminal-mobile-bar"><Link to={trialPath} onClick={firebaseUser ? undefined : signupClick}>{firebaseUser ? "Free lesson" : "Start free"}</Link><Link to={checkoutPath} onClick={onEnroll}>{priceLabel}</Link></div>}
     <style>{criminalStyles}</style>
   </section>;
 }

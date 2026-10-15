@@ -1,5 +1,5 @@
 import { useAuth } from "../../../../hooks/useAuth";
-import CriminalLawEnrollment, { CriminalLawBrandCard, freeEntryPath, freeLessonPath, criminalCourseId } from "../components/CriminalLawEnrollment";
+import CriminalLawEnrollment, { CriminalLawBrandCard } from "../components/CriminalLawEnrollment";
 import {
   useEffect,
   useMemo,
@@ -652,17 +652,16 @@ export default function PublicCourseDetailsPage() {
               </div>
 
               <div className="course-hero-actions">
-                <Link className="primary-course-cta" to={checkoutUrl} onClick={trackEnrollment}>
+                {!isCriminalLawCourse && <Link className="primary-course-cta" to={checkoutUrl} onClick={trackEnrollment}>
                   {enrollmentLabel}
                   <FaArrowRight aria-hidden="true" />
-                </Link>
-                {isCriminalLawCourse && <Link className="primary-course-cta" to={firebaseUser ? freeLessonPath : freeEntryPath} onClick={() => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); }}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson" : "Start learning free"}</Link>}
+                </Link>}
                 <a className="secondary-course-cta" href="#course-overview">
                   Explore course
                 </a>
-                <Link className="secondary-course-cta" to={firebaseUser ? `/student/courses/${course.slug}` : `/login?next=${encodeURIComponent(`/student/courses/${course.slug}`)}`}>
+                {!isCriminalLawCourse && <Link className="secondary-course-cta" to={firebaseUser ? `/student/courses/${course.slug}` : `/login?next=${encodeURIComponent(`/student/courses/${course.slug}`)}`}>
                   {authLoading ? "Checking account…" : firebaseUser ? "Back to student portal" : "Login to student account"}
-                </Link>
+                </Link>}
               </div>
               {firebaseUser && <p className="course-enrollment-note" role="status">You are signed in. Your student session is active.</p>}
               <p className="course-enrollment-note">One-time course fee · No sign-in required before payment. {pricing ? `Current price: ${formatINR(pricing.amount)}. ` : ""}Final price is confirmed in checkout.</p>
@@ -702,7 +701,7 @@ export default function PublicCourseDetailsPage() {
           </div>
         </section>
 
-        {isCriminalLawCourse && <CriminalLawEnrollment priceLabel={enrollmentLabel} onEnroll={trackEnrollment} certificationAvailable={certification.available !== false} />}
+        {isCriminalLawCourse && <CriminalLawEnrollment showActions={false} priceLabel={enrollmentLabel} onEnroll={trackEnrollment} certificationAvailable={certification.available !== false} />}
 
         {/* OVERVIEW */}
 
@@ -991,17 +990,12 @@ export default function PublicCourseDetailsPage() {
                   </strong>
                 </div>
 
-                <Link
-                  className="sidebar-login-button"
-                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : checkoutUrl}
-                  onClick={isCriminalLawCourse ? () => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); } : trackEnrollment}
-                >
-                  {isCriminalLawCourse ? "Start learning free" : enrollmentLabel}
-                  <FaArrowRight />
-                </Link>
+                {!isCriminalLawCourse && <Link className="sidebar-login-button" to={checkoutUrl} onClick={trackEnrollment}>
+                  {enrollmentLabel}<FaArrowRight />
+                </Link>}
               </div>
 
-              <p>Pay securely, then sign in with the same verified email to access your course. <Link to="/claim-purchase">Recover a purchase</Link>.</p>
+              {!isCriminalLawCourse && <p>Pay securely, then sign in with the same verified email to access your course. <Link to="/claim-purchase">Recover a purchase</Link>.</p>}
               <div className="protected-content-card">
                 <FaLock />
 
@@ -1051,16 +1045,16 @@ export default function PublicCourseDetailsPage() {
               portal.
             </p>
 
-            <Link to="/law-courses">
+            {!isCriminalLawCourse && <Link to="/law-courses">
               Explore more Law Courses
               <FaArrowRight />
-            </Link>
+            </Link>}
           </div>
         </section>
 
         {/* SHARE COURSE */}
 
-        <section className="course-share-section">
+        {!isCriminalLawCourse && <section className="course-share-section">
           <div className="course-page-container course-share-card">
             <div>
               <span className="content-label">
@@ -1123,7 +1117,7 @@ export default function PublicCourseDetailsPage() {
               </button>
             </div>
           </div>
-        </section>
+        </section>}
 
         {/* TERMS AND DISCLAIMER */}
 
