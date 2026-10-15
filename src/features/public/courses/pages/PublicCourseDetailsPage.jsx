@@ -1089,11 +1089,11 @@ export default function PublicCourseDetailsPage() {
           </div>
         </section>
 
-        {isCriminalLawCourse && <section className="course-share-section" aria-labelledby="course-share-heading">
+        <section className="course-share-section" aria-labelledby="course-share-heading">
           <div className="course-page-container course-share-card">
             <div>
               <h2 id="course-share-heading">Share this page</h2>
-              <p>Share Criminal Law I: IPC to BNS with students, friends and colleagues.</p>
+              <p>Share {course.title} with students, friends and colleagues.</p>
               {shareStatus && <p role="status">{shareStatus}</p>}
             </div>
             <div className="course-share-actions">
@@ -1103,7 +1103,7 @@ export default function PublicCourseDetailsPage() {
               <button type="button" className="course-share-button copy-link" onClick={copyShareLink}><FaLink /> Copy Link</button>
             </div>
           </div>
-        </section>}
+        </section>
 
         <style>
           {`
