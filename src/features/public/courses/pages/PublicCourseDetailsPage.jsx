@@ -1,5 +1,5 @@
 import { useAuth } from "../../../../hooks/useAuth";
-import CriminalLawEnrollment, { CriminalLawBrandCard, freeEntryPath, freeLessonPath, criminalCourseId } from "../components/CriminalLawEnrollment";
+import CriminalLawEnrollment, { CriminalLawBrandCard, freeEntryPath, freeLessonPath } from "../components/CriminalLawEnrollment";
 import {
   useEffect,
   useMemo,
@@ -13,14 +13,10 @@ import {
   FaCertificate,
   FaCheck,
   FaClock,
-  FaFacebookF,
-  FaLink,
   FaFileLines,
   FaGraduationCap,
   FaLock,
   FaScaleBalanced,
-  FaWhatsapp,
-  FaXTwitter,
 } from "react-icons/fa6";
 
 import {
@@ -106,11 +102,6 @@ export default function PublicCourseDetailsPage() {
   const [
     showCourseDetails,
     setShowCourseDetails,
-  ] = useState(false);
-
-  const [
-    linkCopied,
-    setLinkCopied,
   ] = useState(false);
 
   // =======================================================
@@ -440,7 +431,7 @@ export default function PublicCourseDetailsPage() {
     {};
 
   const enrollmentLabel = pricing ? `Enroll for ${formatINR(pricing.amount)}` : "Enroll — check current price";
-  const checkoutUrl = `/checkout/${course.slug}`;
+  const studentCoursePath = `/student/courses/${course.slug}`;
   const trackEnrollment = () => { void trackFunnelEvent("enrollment_click", course.id); };
 
   const desktopImage =
@@ -510,36 +501,6 @@ export default function PublicCourseDetailsPage() {
 
   const isTortsCourse =
     (course.slug || course.id) === "law-of-torts-mv-and-cp-laws";
-
-  const courseCanonicalUrl =
-    `${SEO_CONFIG.siteUrl}/courses/${course.slug}`;
-
-  const courseShareUrl =
-    `${courseCanonicalUrl}?share=course-card-v2`;
-
-  const courseShareText =
-    `Explore ${course.title} on Sanhita360`;
-
-  const copyCourseLink =
-    async () => {
-      try {
-        await navigator.clipboard.writeText(
-          courseShareUrl,
-        );
-
-        setLinkCopied(true);
-
-        window.setTimeout(
-          () => setLinkCopied(false),
-          2000,
-        );
-      } catch (copyError) {
-        console.error(
-          "Unable to copy course link:",
-          copyError,
-        );
-      }
-    };
 
   // =======================================================
   // RENDER
@@ -652,16 +613,9 @@ export default function PublicCourseDetailsPage() {
               </div>
 
               <div className="course-hero-actions">
-                {!isCriminalLawCourse && <Link className="primary-course-cta" to={checkoutUrl} onClick={trackEnrollment}>
-                  {enrollmentLabel}
-                  <FaArrowRight aria-hidden="true" />
-                </Link>}
                 <a className="secondary-course-cta" href="#course-overview">
                   Explore course
                 </a>
-                {!isCriminalLawCourse && <Link className="secondary-course-cta" to={firebaseUser ? `/student/courses/${course.slug}` : `/login?next=${encodeURIComponent(`/student/courses/${course.slug}`)}`}>
-                  {authLoading ? "Checking account…" : firebaseUser ? "Back to student portal" : "Login to student account"}
-                </Link>}
               </div>
               {firebaseUser && <p className="course-enrollment-note" role="status">You are signed in. Your student session is active.</p>}
               <p className="course-enrollment-note">One-time course fee · No sign-in required before payment. {pricing ? `Current price: ${formatINR(pricing.amount)}. ` : ""}Final price is confirmed in checkout.</p>
@@ -992,15 +946,18 @@ export default function PublicCourseDetailsPage() {
 
                 <Link
                   className="sidebar-login-button"
-                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : checkoutUrl}
-                  onClick={isCriminalLawCourse ? () => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); } : trackEnrollment}
+                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : firebaseUser ? studentCoursePath : `/login?next=${encodeURIComponent(studentCoursePath)}`}
+                  aria-disabled={authLoading || undefined}
+                  onClick={(event) => {
+                    if (authLoading) { event.preventDefault(); return; }
+                    if (!firebaseUser) void trackFunnelEvent("signup_click", course.id);
+                  }}
                 >
-                  {isCriminalLawCourse ? "Start learning free" : enrollmentLabel}
+                  Start learning free
                   <FaArrowRight />
                 </Link>
               </div>
 
-              {!isCriminalLawCourse && <p>Pay securely, then sign in with the same verified email to access your course. <Link to="/claim-purchase">Recover a purchase</Link>.</p>}
               <div className="protected-content-card">
                 <FaLock />
 
@@ -1050,79 +1007,8 @@ export default function PublicCourseDetailsPage() {
               portal.
             </p>
 
-            {!isCriminalLawCourse && <Link to="/law-courses">
-              Explore more Law Courses
-              <FaArrowRight />
-            </Link>}
           </div>
         </section>
-
-        {/* SHARE COURSE */}
-
-        {!isCriminalLawCourse && <section className="course-share-section">
-          <div className="course-page-container course-share-card">
-            <div>
-              <span className="content-label">
-                Share This Course
-              </span>
-
-              <h2>
-                Forward {course.title}
-              </h2>
-
-              <p>
-                Share this course summary with students, friends and colleagues.
-              </p>
-            </div>
-
-            <div className="course-share-actions">
-              <a
-                className="course-share-button facebook"
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(courseShareUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Share ${course.title} on Facebook`}
-              >
-                <FaFacebookF />
-                Facebook
-              </a>
-
-              <a
-                className="course-share-button twitter"
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(courseShareText)}&url=${encodeURIComponent(courseShareUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Share ${course.title} on X`}
-              >
-                <FaXTwitter />
-                X / Twitter
-              </a>
-
-              <a
-                className="course-share-button whatsapp"
-                href={`https://wa.me/?text=${encodeURIComponent(`${courseShareText} ${courseShareUrl}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Share ${course.title} on WhatsApp`}
-              >
-                <FaWhatsapp />
-                WhatsApp
-              </a>
-
-              <button
-                type="button"
-                className="course-share-button copy-link"
-                onClick={copyCourseLink}
-                aria-label={`Copy link for ${course.title}`}
-              >
-                <FaLink />
-                {linkCopied
-                  ? "Link Copied"
-                  : "Copy Link"}
-              </button>
-            </div>
-          </div>
-        </section>}
 
         {/* TERMS AND DISCLAIMER */}
 

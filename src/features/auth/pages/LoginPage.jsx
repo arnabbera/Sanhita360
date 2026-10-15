@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [searchParams] = useSearchParams();
   const { signIn, signInWithEmail, requestEmailSignInLink } = useAuth();
   const isSignUp = location.pathname === "/signup";
-  const isCourseLogin = !isSignUp && searchParams.get("source") === "law-courses";
+  const isCourseLogin = !isSignUp && (searchParams.get("source") === "law-courses" || searchParams.get("next")?.startsWith("/student/courses/"));
   const simplifiedEntry = isSignUp || isCourseLogin;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +35,7 @@ export default function LoginPage() {
   const safeNext = (next === freeLessonPath || next === "/claim-purchase" || next?.startsWith("/student/courses/")) &&
     !next.startsWith("//") && !next.includes("\\") &&
     !next.includes("?") && !next.includes("#") ? next : "/student";
-  const destination = isCriminalTrial ? freeLessonPath : isCourseLogin ? "/student" : window.localStorage.getItem("sanhita360-guest-latest")
+  const destination = isCriminalTrial ? freeLessonPath : isCourseLogin ? safeNext : window.localStorage.getItem("sanhita360-guest-latest")
     ? "/claim-purchase" : safeNext;
 
   useEffect(() => {
