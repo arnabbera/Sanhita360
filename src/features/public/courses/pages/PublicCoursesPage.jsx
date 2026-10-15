@@ -1,4 +1,3 @@
-import { trackFunnelEvent } from "../../../../services/funnelAnalyticsService";
 import {
   useEffect,
   useState,
@@ -577,10 +576,6 @@ export default function PublicCoursesPage() {
 
                             <p>{pricing ? `${formatINR(pricing.amount)} per course${pricing.remaining > 0 ? " introductory offer for the first 100 checkout reservations" : ""}` : "₹99 for the first 100 checkout reservations, then ₹299"} · Chapters, study materials and mock tests included.{certificationIncluded ? " Completion certificate available after meeting course requirements." : " No completion certificate for this course."}</p>
 
-                            <Link className="course-link" to={`/checkout/${course.slug}`} onClick={() => { void trackFunnelEvent("enrollment_click", course.id); }}>
-                              {pricing ? `Enroll for ${formatINR(pricing.amount)}` : "Enroll — check current price"}
-                              <FaArrowRight />
-                            </Link>
                             <Link
                               className="course-link"
                               to={getCourseUrl(
