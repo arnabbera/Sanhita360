@@ -46,10 +46,13 @@ const StudentLayout = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isTortsPage = /^\/student\/(?:learn|courses|free-preview)\/law-of-torts-mv-and-cp-laws(?:\/|$)/.test(pathname);
+  const isCpcPage = /^\/student\/(?:learn|courses|free-preview)\/code-of-civil-procedure-and-limitation(?:\/|$)/.test(pathname);
   const courseMenuItems = menuItems.map((item, index) =>
     index === 0 && isTortsPage
       ? { ...item, label: "Free Torts Lesson", path: "/student/free-preview/law-of-torts-mv-and-cp-laws" }
-      : item,
+      : index === 0 && isCpcPage
+        ? { ...item, label: "Free CPC Lesson", path: "/student/free-preview/code-of-civil-procedure-and-limitation" }
+        : item,
   );
   const {
     firebaseUser,

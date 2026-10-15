@@ -517,7 +517,7 @@ export default function CourseDetails() {
     "code-of-civil-procedure-and-limitation";
 
   const hasLiveClasses =
-    !isCriminalLawCourse && course?.slug !== "law-of-torts-mv-and-cp-laws" && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
+    !isCriminalLawCourse && !["law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation"].includes(course?.slug) && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
 
   const liveClassAccess =
     isAdmin ||
@@ -733,7 +733,7 @@ export default function CourseDetails() {
   // =========================================================
 
   const isChapterUnlocked = (chapter, index) =>
-    Boolean(hasCourseAccess || (isTortsCourse && index === 0));
+    Boolean(hasCourseAccess || ((isTortsCourse || isCivilProcedureCourse) && index === 0));
 
   // =========================================================
   // OPEN CHAPTER
@@ -1281,7 +1281,7 @@ export default function CourseDetails() {
               </div>
             </div>
 
-            {!isCriminalLawCourse && !isTortsCourse && !certificationActive &&
+            {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !certificationActive &&
               !certificationPendingPayment && (
                 <div className="ns-certification-action">
                   <Button
@@ -1307,7 +1307,7 @@ export default function CourseDetails() {
                   Your course enrollment request has been created. Complete the {courseFeeLabel} payment to unlock this course.
                 </span>
 
-                {!isCriminalLawCourse && !isTortsCourse && <Button
+                {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && <Button
                   loading={
                     certificationEnrolling
                   }
@@ -1404,7 +1404,7 @@ export default function CourseDetails() {
       <div className="ns-course-chapters-section">
         <Card
           title="Course Chapters"
-          subtitle={isTortsCourse ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
+          subtitle={(isTortsCourse || isCivilProcedureCourse) ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
         >
           {chapters.length ===
           0 ? (
@@ -1553,7 +1553,7 @@ export default function CourseDetails() {
                             {chapterProgress
                               ?.completed
                               ? "Review"
-                              : isTortsCourse && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
+                              : (isTortsCourse || isCivilProcedureCourse) && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
                           </>
                         ) : (
                           <>
@@ -1571,7 +1571,7 @@ export default function CourseDetails() {
         </Card>
       </div>
 
-      {(isCriminalLawCourse || isTortsCourse) && (
+      {(isCriminalLawCourse || isTortsCourse || isCivilProcedureCourse) && (
         <section className="ns-live-class-section" aria-labelledby="course-full-access-heading">
           <div className="ns-live-class-card">
             <div className="ns-live-class-heading">

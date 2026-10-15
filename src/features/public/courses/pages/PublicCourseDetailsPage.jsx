@@ -507,7 +507,7 @@ export default function PublicCourseDetailsPage() {
   const isTortsCourse =
     (course.slug || course.id) === "law-of-torts-mv-and-cp-laws";
 
-  const tortsFreePath = "/student/free-preview/law-of-torts-mv-and-cp-laws";
+  const courseFreePath = `/student/free-preview/${course.slug}`;
   const shareUrl = `${SEO_CONFIG.siteUrl}/courses/${course.slug}`;
   const copyShareLink = async () => {
     try {
@@ -962,7 +962,7 @@ export default function PublicCourseDetailsPage() {
 
                 <Link
                   className="sidebar-login-button"
-                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : isTortsCourse ? (firebaseUser ? tortsFreePath : `/login?next=${encodeURIComponent(tortsFreePath)}`) : firebaseUser ? studentCoursePath : `/login?next=${encodeURIComponent(studentCoursePath)}`}
+                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : (isTortsCourse || isCivilProcedureCourse) ? (firebaseUser ? courseFreePath : `/login?next=${encodeURIComponent(courseFreePath)}`) : firebaseUser ? studentCoursePath : `/login?next=${encodeURIComponent(studentCoursePath)}`}
                   aria-disabled={authLoading || undefined}
                   onClick={(event) => {
                     if (authLoading) { event.preventDefault(); return; }
@@ -972,7 +972,7 @@ export default function PublicCourseDetailsPage() {
                   Start learning free
                   <FaArrowRight />
                 </Link>
-                {isTortsCourse && <p>Read Chapter 1 free after signing in. No payment needed for the first chapter.</p>}
+                {(isTortsCourse || isCivilProcedureCourse) && <p>Read Chapter 1 free after signing in. No payment needed for the first chapter.</p>}
               </div>
 
               <div className="protected-content-card">
@@ -1086,7 +1086,7 @@ export default function PublicCourseDetailsPage() {
                   Read Full Disclaimer
                   <FaArrowRight />
                 </Link>
-                {isTortsCourse && <p>Read Chapter 1 free after signing in. No payment needed for the first chapter.</p>}
+
               </div>
             </details>
           </div>

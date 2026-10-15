@@ -6,8 +6,7 @@ import { getChapterLearningPath } from "../../../../utils/chapterUrl";
 import { useAuth } from "../../../../hooks/useAuth";
 import { trackFunnelEvent } from "../../../../services/funnelAnalyticsService";
 
-const courseSlug = "law-of-torts-mv-and-cp-laws";
-export default function TortsFreeChapter() {
+export default function TortsFreeChapter({ courseSlug = "law-of-torts-mv-and-cp-laws" }) {
   const { firebaseUser, loading } = useAuth();
   const [path, setPath] = useState("");
   const [error, setError] = useState("");
@@ -31,7 +30,7 @@ export default function TortsFreeChapter() {
       }
     })();
     return () => { active = false; };
-  }, [firebaseUser]);
+  }, [firebaseUser, courseSlug]);
   if (loading) return <p role="status">Checking your account…</p>;
   if (!firebaseUser) return <Navigate to={`/login?next=${encodeURIComponent(`/student/free-preview/${courseSlug}`)}`} replace />;
   if (path) return <Navigate to={path} replace />;
