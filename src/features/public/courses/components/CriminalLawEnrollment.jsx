@@ -7,7 +7,7 @@ import provisions from "../../../../data/courses/criminalLawI/introductionProvis
 
 export const criminalCourseId = "criminal-law-i-transitioning-from-ipc-to-bns";
 export const freeLessonPath = `/student/free-preview/${criminalCourseId}`;
-export const freeSignupPath = `/signup?source=criminal-law-free&next=${encodeURIComponent(freeLessonPath)}`;
+export const freeEntryPath = `/login?next=${encodeURIComponent(freeLessonPath)}`;
 const coursePath = `/courses/${criminalCourseId}`;
 const checkoutPath = `/checkout/${criminalCourseId}`;
 const signupClick = () => { void trackFunnelEvent("signup_click", criminalCourseId); };
@@ -23,7 +23,7 @@ export function CriminalLawBrandCard() {
 
 export default function CriminalLawEnrollment({ priceLabel, onEnroll, certificationAvailable }) {
   const { firebaseUser, loading: authLoading } = useAuth();
-  const trialPath = firebaseUser ? freeLessonPath : freeSignupPath;
+  const trialPath = firebaseUser ? freeLessonPath : freeEntryPath;
   const [copied, setCopied] = useState(false);
   const shareUrl = `https://www.sanhita360.com${coursePath}?utm_source=whatsapp&utm_campaign=criminal-law-free-lesson`;
   const shareText = `Try Criminal Law I: IPC to BNS on Sanhita360. Create a free account for the complete introductory lesson and a five-question practice test. No payment needed for the free lesson. ${shareUrl}`;
@@ -92,7 +92,7 @@ export function CriminalLawFreeLesson() {
   const [submitted, setSubmitted] = useState(false);
   useEffect(() => { if (firebaseUser) void trackFunnelEvent("free_lesson_open", criminalCourseId); }, [firebaseUser]);
   if (loading) return <p role="status">Loading your free lesson…</p>;
-  if (!firebaseUser) return <Navigate to={freeSignupPath} replace />;
+  if (!firebaseUser) return <Navigate to={freeEntryPath} replace />;
   const score = quiz.reduce((total, item, index) => total + Number(answers[index] === item.answer), 0);
   return <main className="criminal-lesson"><Link to={`/student/courses/${criminalCourseId}`}>← Back to Criminal Law I</Link>
     <span className="content-label">Your free complete introductory lesson</span><h1>Chapter I — Introduction: IPC to BNS</h1>

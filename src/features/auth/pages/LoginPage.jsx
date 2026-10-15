@@ -1,5 +1,5 @@
 import { trackFunnelEvent } from "../../../services/funnelAnalyticsService";
-import { criminalCourseId, freeLessonPath, freeSignupPath } from "../../public/courses/components/CriminalLawEnrollment";
+import { criminalCourseId, freeLessonPath, freeEntryPath } from "../../public/courses/components/CriminalLawEnrollment";
 import { useEffect, useRef, useState } from "react";
 import {
   FaGoogle,
@@ -220,14 +220,14 @@ export default function LoginPage() {
             </button>
             {linkSent && <p role="status">Check your inbox for a secure sign-up link. Open it, then confirm your details to finish.</p>}
             {completingEmailLink && <p>Confirm the full name and email address used to request this link.</p>}
-            {completingEmailLink && <Link to={isCriminalTrial ? freeSignupPath : "/signup?source=law-courses"}>Request a new link</Link>}
+            {completingEmailLink && <Link to={isCriminalTrial ? freeEntryPath : "/signup?source=law-courses"}>Request a new link</Link>}
           </form>
         )}
 
         {isSignUp && !isCriminalTrial && <div className="student-signup-divider">OR</div>}
         {googleButton}
 
-        {!isSignUp && !isCriminalTrial && <div className="student-login-email">
+        {!isSignUp && <div className="student-login-email">
           <button type="button" className="student-login-email-toggle" onClick={() => setEmailOpen((open) => !open)}>
             Continue with email instead
           </button>

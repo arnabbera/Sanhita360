@@ -1,5 +1,5 @@
 import { useAuth } from "../../../../hooks/useAuth";
-import CriminalLawEnrollment, { CriminalLawBrandCard, freeSignupPath, freeLessonPath, criminalCourseId } from "../components/CriminalLawEnrollment";
+import CriminalLawEnrollment, { CriminalLawBrandCard, freeEntryPath, freeLessonPath, criminalCourseId } from "../components/CriminalLawEnrollment";
 import {
   useEffect,
   useMemo,
@@ -656,7 +656,7 @@ export default function PublicCourseDetailsPage() {
                   {enrollmentLabel}
                   <FaArrowRight aria-hidden="true" />
                 </Link>
-                {isCriminalLawCourse && <Link className="primary-course-cta" to={firebaseUser ? freeLessonPath : freeSignupPath} onClick={() => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); }}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson" : "Start learning free"}</Link>}
+                {isCriminalLawCourse && <Link className="primary-course-cta" to={firebaseUser ? freeLessonPath : freeEntryPath} onClick={() => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); }}>{authLoading ? "Checking account…" : firebaseUser ? "Continue free lesson" : "Start learning free"}</Link>}
                 <a className="secondary-course-cta" href="#course-overview">
                   Explore course
                 </a>
