@@ -133,6 +133,7 @@ const criminalStyles = `
 .criminal-share-copy{padding:12px 18px;min-height:46px;background:white;border:1px solid #1d4ed8;color:#1d4ed8;border-radius:9px;font:inherit;cursor:pointer}
 .criminal-certificate{padding:32px;margin-top:20px;border:5px double #b79a57;background:#fffcf4;text-align:center}.criminal-certificate img{width:150px;height:auto}.criminal-certificate h3{font-family:Georgia,serif;font-size:30px;color:#12243c}.criminal-certificate small{display:block;margin-top:20px;line-height:1.7}
 .criminal-mobile-bar{display:none}
+.course-hero-media:has(.criminal-brand-card){aspect-ratio:auto;min-height:360px}
 .criminal-brand-card{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:30px;height:100%;background:linear-gradient(145deg,#0b1833,#204a88);color:white}
 .course-hero-media .criminal-brand-card img{width:165px;height:auto;object-fit:contain;background:white;padding:8px;border-radius:8px}
 .criminal-brand-card>span{font-size:11px;letter-spacing:.13em;color:#bfdbfe}.criminal-brand-card>strong{font-size:clamp(26px,3vw,40px);line-height:1.1}.criminal-brand-card p{margin:0;line-height:1.6;color:#dbeafe;font-size:13px}.criminal-brand-card>div{font-size:13px;color:#fde68a}
