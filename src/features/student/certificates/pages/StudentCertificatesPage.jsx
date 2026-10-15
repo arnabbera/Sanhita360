@@ -9,7 +9,11 @@ import {
   FaLock,
   FaTrophy,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../hooks/useAuth";
+import { getStudentEnrollments, hasPaidCourseAccess } from "../../../../services/studentEnrollmentService";
+import { isAdministrator } from "../../../../utils/adminCourseAccess";
 
 const certificationSteps = [
   {
@@ -70,6 +74,31 @@ const subscriptionBenefits = [
 ];
 
 export default function StudentCertificatesPage() {
+  const navigate = useNavigate();
+  const { firebaseUser, profile, role, loading: authLoading } = useAuth();
+  const [checkingCourses, setCheckingCourses] = useState(false);
+  const [courseError, setCourseError] = useState("");
+
+  const browseMyCourses = async () => {
+    if (checkingCourses || authLoading) return;
+    const studentId = firebaseUser?.uid || profile?.uid;
+    if (!studentId) {
+      navigate("/login?next=%2Fstudent%2Fcourses");
+      return;
+    }
+    setCheckingCourses(true);
+    setCourseError("");
+    try {
+      const enrollments = isAdministrator({ role, profile }) ? [] : await getStudentEnrollments(studentId);
+      const enrolled = isAdministrator({ role, profile }) || enrollments.some(hasPaidCourseAccess);
+      navigate(enrolled ? "/student/enrolled-courses" : "/student/available-courses");
+    } catch {
+      setCourseError("Unable to check your enrollments. Please try again.");
+    } finally {
+      setCheckingCourses(false);
+    }
+  };
+
   return (
     <div className="ns-certificates-page">
       <section className="ns-certificates-hero">
@@ -87,10 +116,11 @@ export default function StudentCertificatesPage() {
             to the certification track for the individual course.
           </p>
 
-          <Link className="ns-certificates-primary-action" to="/student/courses">
-            Browse My Courses
+          <button type="button" className="ns-certificates-primary-action" onClick={browseMyCourses} disabled={checkingCourses || authLoading}>
+            {checkingCourses ? "Checking your courses…" : "Browse My Courses"}
             <FaArrowRight />
-          </Link>
+          </button>
+          {courseError && <p role="alert">{courseError}</p>}
         </div>
 
         <div className="ns-certificates-hero-card">
@@ -229,6 +259,8 @@ export default function StudentCertificatesPage() {
         }
 
         .ns-certificates-primary-action {
+          border: 0;
+          cursor: pointer;
           display: inline-flex;
           align-items: center;
           gap: 11px;
@@ -243,6 +275,9 @@ export default function StudentCertificatesPage() {
           text-decoration: none;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
+        .ns-certificates-primary-action:disabled { opacity: .7; cursor: wait; }
+        .ns-certificates-primary-action:focus-visible { outline: 3px solid #fbbf24; outline-offset: 4px; }
 
         .ns-certificates-primary-action:hover {
           transform: translateY(-2px);
