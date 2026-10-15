@@ -1281,7 +1281,7 @@ export default function CourseDetails() {
               </div>
             </div>
 
-            {!certificationActive &&
+            {!isCriminalLawCourse && !certificationActive &&
               !certificationPendingPayment && (
                 <div className="ns-certification-action">
                   <Button
@@ -1307,7 +1307,7 @@ export default function CourseDetails() {
                   Your course enrollment request has been created. Complete the {courseFeeLabel} payment to unlock this course.
                 </span>
 
-                <Button
+                {!isCriminalLawCourse && <Button
                   loading={
                     certificationEnrolling
                   }
@@ -1317,7 +1317,7 @@ export default function CourseDetails() {
                   style={{ marginTop: "12px" }}
                 >
                   Continue Payment {courseFeeLabel}
-                </Button>
+                </Button>}
               </div>
             )}
 
