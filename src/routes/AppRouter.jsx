@@ -342,6 +342,7 @@ export default function AppRouter() {
           element={<Navigate to="/student/available-courses" replace />}
         />
 
+        <Route path="free-preview/public-international-law" element={<TortsFreeChapter courseSlug="public-international-law" />} />
         <Route path="free-preview/code-of-civil-procedure-and-limitation" element={<TortsFreeChapter courseSlug="code-of-civil-procedure-and-limitation" />} />
         <Route path="free-preview/law-of-torts-mv-and-cp-laws" element={<TortsFreeChapter />} />
         <Route path="free-preview/criminal-law-i-transitioning-from-ipc-to-bns" element={<CriminalLawFreeLesson />} />

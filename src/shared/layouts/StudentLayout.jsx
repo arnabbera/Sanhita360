@@ -47,12 +47,15 @@ const StudentLayout = () => {
   const { pathname } = useLocation();
   const isTortsPage = /^\/student\/(?:learn|courses|free-preview)\/law-of-torts-mv-and-cp-laws(?:\/|$)/.test(pathname);
   const isCpcPage = /^\/student\/(?:learn|courses|free-preview)\/code-of-civil-procedure-and-limitation(?:\/|$)/.test(pathname);
+  const isInternationalLawPage = /^\/student\/(?:learn|courses|free-preview)\/public-international-law(?:\/|$)/.test(pathname);
   const courseMenuItems = menuItems.map((item, index) =>
     index === 0 && isTortsPage
       ? { ...item, label: "Free Torts Lesson", path: "/student/free-preview/law-of-torts-mv-and-cp-laws" }
       : index === 0 && isCpcPage
         ? { ...item, label: "Free CPC Lesson", path: "/student/free-preview/code-of-civil-procedure-and-limitation" }
-        : item,
+        : index === 0 && isInternationalLawPage
+          ? { ...item, label: "Free International Law Lesson", path: "/student/free-preview/public-international-law" }
+          : item,
   );
   const {
     firebaseUser,

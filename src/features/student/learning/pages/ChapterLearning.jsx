@@ -715,7 +715,7 @@ export default function ChapterLearning() {
   // Every authenticated student may read the PDF.
   // =========================================================
 
-  const isFreeFirstChapter = Boolean(firebaseUser) && ["law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation"].includes(course?.slug) &&
+  const isFreeFirstChapter = Boolean(firebaseUser) && ["law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation", "public-international-law"].includes(course?.slug) &&
     Boolean(chapter?.id && chapters[0]?.id === chapter.id);
 
   const canReadPdf = Boolean(
