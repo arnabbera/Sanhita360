@@ -1,3 +1,4 @@
+import TortsFreeChapter from "../features/student/learning/pages/TortsFreeChapter";
 import { CriminalLawFreeLesson } from "../features/public/courses/components/CriminalLawEnrollment";
 import { useEffect } from "react";
 
@@ -341,6 +342,7 @@ export default function AppRouter() {
           element={<Navigate to="/student/available-courses" replace />}
         />
 
+        <Route path="free-preview/law-of-torts-mv-and-cp-laws" element={<TortsFreeChapter />} />
         <Route path="free-preview/criminal-law-i-transitioning-from-ipc-to-bns" element={<CriminalLawFreeLesson />} />
 
         <Route

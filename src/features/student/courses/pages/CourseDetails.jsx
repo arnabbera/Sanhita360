@@ -732,8 +732,8 @@ export default function CourseDetails() {
   // CHAPTER UNLOCKING
   // =========================================================
 
-  const isChapterUnlocked = () =>
-    Boolean(hasCourseAccess);
+  const isChapterUnlocked = (chapter, index) =>
+    Boolean(hasCourseAccess || (isTortsCourse && index === 0));
 
   // =========================================================
   // OPEN CHAPTER
@@ -1404,7 +1404,7 @@ export default function CourseDetails() {
       <div className="ns-course-chapters-section">
         <Card
           title="Course Chapters"
-          subtitle="Complete chapters in sequence to progress through the course."
+          subtitle={isTortsCourse ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
         >
           {chapters.length ===
           0 ? (
@@ -1553,7 +1553,7 @@ export default function CourseDetails() {
                             {chapterProgress
                               ?.completed
                               ? "Review"
-                              : "Open"}
+                              : isTortsCourse && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
                           </>
                         ) : (
                           <>

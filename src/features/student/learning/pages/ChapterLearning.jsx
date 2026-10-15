@@ -715,8 +715,11 @@ export default function ChapterLearning() {
   // Every authenticated student may read the PDF.
   // =========================================================
 
+  const isFreeTortsChapter = Boolean(firebaseUser) && course?.slug === "law-of-torts-mv-and-cp-laws" &&
+    Boolean(chapter?.id && chapters[0]?.id === chapter.id);
+
   const canReadPdf = Boolean(
-    isAdmin ||
+    isAdmin || isFreeTortsChapter ||
       (enrolled && certificationActive && certificationPaid),
   );
 
@@ -1200,7 +1203,7 @@ export default function ChapterLearning() {
             <FaLock />
 
             <span>
-              You may read this chapter. Enroll in the certification programme to unlock downloads, tests and progress tracking.
+              {isFreeTortsChapter ? "Chapter 1 is free to read. Enroll in the full course for the remaining chapters, eligible downloads, tests and progress tracking." : "You may read this chapter. Enroll in the certification programme to unlock downloads, tests and progress tracking."}
             </span>
           </div>
         )}
