@@ -517,7 +517,7 @@ export default function CourseDetails() {
     "code-of-civil-procedure-and-limitation";
 
   const hasLiveClasses =
-    !isCriminalLawCourse && !["law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation", "public-international-law", "general-principles-of-contract-and-specific-relief", "environmental-law", "indian-constitutional-law-i"].includes(course?.slug) && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
+    !isCriminalLawCourse && !["law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation", "public-international-law", "general-principles-of-contract-and-specific-relief", "environmental-law", "indian-constitutional-law-i", "human-rights-law-and-practice"].includes(course?.slug) && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
 
   const liveClassAccess =
     isAdmin ||
@@ -597,6 +597,7 @@ export default function CourseDetails() {
     course?.slug ===
     "public-international-law";
 
+  const isHumanRightsCourse = course?.slug === "human-rights-law-and-practice";
   const isEnvironmentalCourse = course?.slug === "environmental-law";
   const isContractCourse = course?.slug === "general-principles-of-contract-and-specific-relief";
 
@@ -736,7 +737,7 @@ export default function CourseDetails() {
   // =========================================================
 
   const isChapterUnlocked = (chapter, index) =>
-    Boolean(hasCourseAccess || ((isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse) && index === 0));
+    Boolean(hasCourseAccess || ((isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && index === 0));
 
   // =========================================================
   // OPEN CHAPTER
@@ -1284,7 +1285,7 @@ export default function CourseDetails() {
               </div>
             </div>
 
-            {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !certificationActive &&
+            {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !isHumanRightsCourse && !certificationActive &&
               !certificationPendingPayment && (
                 <div className="ns-certification-action">
                   <Button
@@ -1310,7 +1311,7 @@ export default function CourseDetails() {
                   Your course enrollment request has been created. Complete the {courseFeeLabel} payment to unlock this course.
                 </span>
 
-                {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && <Button
+                {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !isHumanRightsCourse && <Button
                   loading={
                     certificationEnrolling
                   }
@@ -1407,7 +1408,7 @@ export default function CourseDetails() {
       <div className="ns-course-chapters-section">
         <Card
           title="Course Chapters"
-          subtitle={(isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse) ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
+          subtitle={(isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
         >
           {chapters.length ===
           0 ? (
@@ -1556,7 +1557,7 @@ export default function CourseDetails() {
                             {chapterProgress
                               ?.completed
                               ? "Review"
-                              : (isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse) && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
+                              : (isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
                           </>
                         ) : (
                           <>
@@ -1574,7 +1575,7 @@ export default function CourseDetails() {
         </Card>
       </div>
 
-      {(isCriminalLawCourse || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse) && (
+      {(isCriminalLawCourse || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && (
         <section className="ns-live-class-section" aria-labelledby="course-full-access-heading">
           <div className="ns-live-class-card">
             <div className="ns-live-class-heading">
