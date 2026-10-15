@@ -17,6 +17,10 @@ import {
   FaGraduationCap,
   FaLock,
   FaScaleBalanced,
+  FaFacebookF,
+  FaXTwitter,
+  FaWhatsapp,
+  FaLink,
 } from "react-icons/fa6";
 
 import {
@@ -82,6 +86,7 @@ export default function PublicCourseDetailsPage() {
     courseSlug,
   } = useParams();
   const pricing = useCoursePricing();
+  const [shareStatus, setShareStatus] = useState("");
   const { firebaseUser, loading: authLoading } = useAuth();
 
   const [
@@ -501,6 +506,16 @@ export default function PublicCourseDetailsPage() {
 
   const isTortsCourse =
     (course.slug || course.id) === "law-of-torts-mv-and-cp-laws";
+
+  const shareUrl = `${SEO_CONFIG.siteUrl}/courses/${course.slug}`;
+  const copyShareLink = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setShareStatus("Course link copied.");
+    } catch {
+      setShareStatus("Unable to copy automatically. Copy the page address from your browser.");
+    }
+  };
 
   // =======================================================
   // RENDER
@@ -1073,6 +1088,22 @@ export default function PublicCourseDetailsPage() {
             </details>
           </div>
         </section>
+
+        {isCriminalLawCourse && <section className="course-share-section" aria-labelledby="course-share-heading">
+          <div className="course-page-container course-share-card">
+            <div>
+              <h2 id="course-share-heading">Share this page</h2>
+              <p>Share Criminal Law I: IPC to BNS with students, friends and colleagues.</p>
+              {shareStatus && <p role="status">{shareStatus}</p>}
+            </div>
+            <div className="course-share-actions">
+              <a className="course-share-button facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on Facebook"><FaFacebookF /> Facebook</a>
+              <a className="course-share-button twitter" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(course.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on X"><FaXTwitter /> X / Twitter</a>
+              <a className="course-share-button whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${course.title} ${shareUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on WhatsApp"><FaWhatsapp /> WhatsApp</a>
+              <button type="button" className="course-share-button copy-link" onClick={copyShareLink}><FaLink /> Copy Link</button>
+            </div>
+          </div>
+        </section>}
 
         <style>
           {`
