@@ -142,7 +142,7 @@ export default function LoginPage() {
   };
 
   const handleGoogleLogin = async () => {
-    if (isSignUp && !termsAccepted) {
+    if (isSignUp && !isCriminalTrial && !termsAccepted) {
       setError("Please agree to the Terms and Conditions and Privacy Policy to continue.");
       return;
     }
@@ -183,19 +183,17 @@ export default function LoginPage() {
         </div>
 
         <div className="student-login-heading">
-          <p className="student-login-eyebrow">
-            Sanhita360
-          </p>
+          {!isCriminalTrial && <p className="student-login-eyebrow">Sanhita360</p>}
 
           <h1>{isCriminalTrial ? "Start Criminal Law I free" : isSignUp ? "Sign Up" : isCourseLogin ? "Log In" : "Student Login"}</h1>
 
-          <p>
+          {!isCriminalTrial && <p>
             {isCriminalTrial ? "Get the complete introductory lesson and a five-question practice test with explanations. No payment or phone number needed." : isSignUp
               ? "Create your account to access courses, tests and learning materials. No phone number is needed."
               : isCourseLogin
                 ? "Access your courses, tests and more under your account."
                 : "Sign in with Google or your email address to access courses, learning materials, mock tests and certificates."}
-          </p>
+          </p>}
         </div>
 
         {error && (
@@ -204,7 +202,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        {isSignUp && (
+        {isSignUp && !isCriminalTrial && (
           <form className="student-signup-form" onSubmit={handleEmail}>
             <label htmlFor="student-signup-name">Full name</label>
             <input id="student-signup-name" type="text" autoComplete="name" minLength={2} maxLength={120} required
@@ -226,10 +224,10 @@ export default function LoginPage() {
           </form>
         )}
 
-        {isSignUp && <div className="student-signup-divider">OR</div>}
+        {isSignUp && !isCriminalTrial && <div className="student-signup-divider">OR</div>}
         {googleButton}
 
-        {!isSignUp && <div className="student-login-email">
+        {!isSignUp && !isCriminalTrial && <div className="student-login-email">
           <button type="button" className="student-login-email-toggle" onClick={() => setEmailOpen((open) => !open)}>
             Continue with email instead
           </button>
@@ -248,9 +246,9 @@ export default function LoginPage() {
           )}
         </div>}
 
-        {isSignUp && <p className="student-login-return">Already have an account? <Link to={isCriminalTrial ? `/login?next=${encodeURIComponent(freeLessonPath)}` : "/login"}>Log in</Link></p>}
+        {isSignUp && !isCriminalTrial && <p className="student-login-return">Already have an account? <Link to={isCriminalTrial ? `/login?next=${encodeURIComponent(freeLessonPath)}` : "/login"}>Log in</Link></p>}
 
-        {!simplifiedEntry && <>
+        {!simplifiedEntry && !isCriminalTrial && <>
         <p className="student-login-role-note">
           Students and administrators use the same secure sign-in. You will
           automatically be directed to the correct dashboard.
