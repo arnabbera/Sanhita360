@@ -517,7 +517,7 @@ export default function CourseDetails() {
     "code-of-civil-procedure-and-limitation";
 
   const hasLiveClasses =
-    LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
+    !isCriminalLawCourse && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
 
   const liveClassAccess =
     isAdmin ||
@@ -1570,6 +1570,38 @@ export default function CourseDetails() {
           )}
         </Card>
       </div>
+
+      {isCriminalLawCourse && (
+        <section className="ns-live-class-section" aria-labelledby="criminal-full-access-heading">
+          <div className="ns-live-class-card">
+            <div className="ns-live-class-heading">
+              <div className="ns-live-class-icon"><FaBookOpen /></div>
+              <div>
+                <h2 id="criminal-full-access-heading">Get access to all 26 chapters</h2>
+                <p>Enroll in Criminal Law I: IPC to BNS to unlock the complete course and its assessment track.</p>
+              </div>
+              <strong>{certificationPaymentCompleted ? "Access Active" : courseFeeLabel}</strong>
+            </div>
+            <div className="ns-live-class-benefits">
+              <span><FaCheckCircle /> Access all 26 chapters listed above</span>
+              <span><FaFilePdf /> Download available chapter PDFs</span>
+              <span><FaCheckCircle /> Practise with all 3 mock tests</span>
+              <span><FaGraduationCap /> Become eligible for the final certification examination after completing the required mock tests</span>
+            </div>
+            <p>Earn a digital Certificate of Completion after passing the final examination and meeting the course requirements. This is a private learning certificate, not an accredited qualification.</p>
+            {certificationPaymentCompleted ? (
+              <div className="ns-live-class-active"><FaCheckCircle /> Your complete course access is active. Continue learning through the chapters above.</div>
+            ) : (
+              <>
+                <p>One-time course fee. The current price is confirmed before payment.</p>
+                <Button loading={certificationEnrolling} onClick={handleCertificationPayment}>
+                  Enroll and Pay {courseFeeLabel}
+                </Button>
+              </>
+            )}
+          </div>
+        </section>
+      )}
 
       {hasLiveClasses && (
         <section className="ns-live-class-section">
