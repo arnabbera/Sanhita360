@@ -13,6 +13,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const menuItems = [
+  { label: "Free Criminal Law Lesson", path: "/student/free-preview/criminal-law-i-transitioning-from-ipc-to-bns", icon: FaBook },
   {
     label: "Dashboard",
     path: "/student",

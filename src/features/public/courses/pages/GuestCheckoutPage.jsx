@@ -1,3 +1,4 @@
+import { trackFunnelEvent } from "../../../../services/funnelAnalyticsService";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getCourseBySlug } from "../../../../services/courseService";
@@ -17,21 +18,28 @@ export default function GuestCheckoutPage() {
   useEffect(() => {
     let active = true;
     getCourseBySlug(courseSlug).then((result) => {
-      if (active) setCourse(result?.status === "published" ? result : null);
+      if (active) {
+        setCourse(result?.status === "published" ? result : null);
+        if (result?.status !== "published") setError("This course is not available for enrollment.");
+      }
     }).catch(() => { if (active) setError("Unable to load this course."); });
     return () => { active = false; };
   }, [courseSlug]);
+
+  useEffect(() => { if (course?.id) void trackFunnelEvent("checkout_view", course.id); }, [course?.id]);
 
   const pay = async (event) => {
     event.preventDefault();
     if (!course || paying) return;
     setPaying(true);
     setError("");
+    void trackFunnelEvent("payment_attempt", course.id);
     try {
       await payForGuestCourse({ courseId: course.id, courseTitle: course.title,
         name: name.trim(), email: email.trim().toLowerCase() });
       navigate("/claim-purchase");
     } catch (paymentError) {
+      void trackFunnelEvent(paymentError.code === "CHECKOUT_CLOSED" ? "checkout_closed" : "payment_error", course.id);
       setError(paymentError.message || "Checkout could not be completed.");
     } finally { setPaying(false); }
   };

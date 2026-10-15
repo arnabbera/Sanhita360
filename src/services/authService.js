@@ -1,5 +1,6 @@
 import {
   GoogleAuthProvider,
+  getAdditionalUserInfo,
   browserLocalPersistence,
   isSignInWithEmailLink,
   onAuthStateChanged,
@@ -200,6 +201,7 @@ export const loginWithGoogle = async () => {
       loginResult.user,
 
     profile,
+    isNewUser: getAdditionalUserInfo(loginResult)?.isNewUser === true,
   };
 };
 
@@ -221,7 +223,8 @@ export const requestEmailSignInLink = async (email, next = "/student", { signUp 
 
 export const loginWithEmailLink = async (email, { fullName = "" } = {}) => {
   await setPersistence(auth, browserLocalPersistence);
-  const { user } = await signInWithEmailLink(auth, normalizeEmail(email), window.location.href);
+  const result = await signInWithEmailLink(auth, normalizeEmail(email), window.location.href);
+  const { user } = result;
   const name = fullName.trim().replace(/\s+/g, " ").slice(0, 120);
   if (name && !user.displayName) {
     try {
@@ -231,7 +234,7 @@ export const loginWithEmailLink = async (email, { fullName = "" } = {}) => {
     }
   }
   window.localStorage.removeItem(emailLinkPendingKey);
-  return { firebaseUser: user, profile: await createAuthenticatedUserProfile(user) };
+  return { firebaseUser: user, profile: await createAuthenticatedUserProfile(user), isNewUser: getAdditionalUserInfo(result)?.isNewUser === true };
 };
 
 export const logoutUser = async () => {

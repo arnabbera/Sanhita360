@@ -151,15 +151,20 @@ export const payForGuestCourse = async ({ courseId, courseTitle, name, email }) 
   await loadRazorpayCheckout();
   return new Promise((resolve, reject) => {
     let settled = false;
-    const failCheckout = (message) => {
-      if (!settled) { settled = true; reject(new Error(message)); }
+    const failCheckout = (message, code) => {
+      if (!settled) {
+        settled = true;
+        const error = new Error(message);
+        if (code) error.code = code;
+        reject(error);
+      }
     };
     const checkout = new window.Razorpay({
       key: order.keyId, amount: order.amount, currency: order.currency,
       order_id: order.orderId, name: "Sanhita360",
       description: `${courseTitle} course enrollment`,
       prefill: { name, email }, theme: { color: "#2563eb" },
-      modal: { ondismiss: () => failCheckout("Checkout closed. You can retry with the same purchase code.") },
+      modal: { ondismiss: () => failCheckout("Checkout closed. You can retry with the same purchase code.", "CHECKOUT_CLOSED") },
       handler: async (payment) => {
         try {
           const verified = await fetch("/api/guest/verify-payment", {

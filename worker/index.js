@@ -893,6 +893,23 @@ const FUNNEL_METRICS = {
   enrollment_click: "enrollmentClicks",
   checkout_open: "checkoutOpens",
   payment: "payments",
+  signup_click: "signupClicks",
+  signup_view: "signupViews",
+  signup_attempt: "signupAttempts",
+  email_link_sent: "emailLinksSent",
+  signup_error: "signupErrors",
+  signup_complete: "signupsCompleted",
+  auth_success: "authSuccesses",
+  free_lesson_open: "freeLessonOpens",
+  free_quiz_complete: "freeQuizCompletions",
+  checkout_view: "checkoutViews",
+  payment_attempt: "paymentAttempts",
+  payment_error: "paymentErrors",
+  checkout_closed: "checkoutClosed",
+  source_search: "sourceSearchVisits",
+  source_social: "sourceSocialVisits",
+  source_referral: "sourceReferralVisits",
+  source_direct: "sourceDirectVisits",
 };
 const funnelRoot = `projects/${FIREBASE_PROJECT_ID}/databases/(default)/documents`;
 const validCourseId = (value) => typeof value === "string" && /^[a-zA-Z0-9_-]{1,160}$/.test(value);
@@ -949,8 +966,13 @@ const handleFunnelEvent = async (request, env, url) => {
   const body = await readBody(request);
   if (request.headers.get("origin") !== url.origin) fail("Invalid event origin.", 403);
   const { courseId, event } = body;
-  if (!validCourseId(courseId) || !["course_visit", "enrollment_click", "checkout_open"].includes(event)) {
+  if (!validCourseId(courseId) || (typeof event !== "string" || !Object.hasOwn(FUNNEL_METRICS, event) || event === "payment" || event.startsWith("source_"))) {
     fail("Invalid funnel event.");
+  }
+  if (["signup_complete", "auth_success", "free_lesson_open", "free_quiz_complete"].includes(event)) {
+    const studentId = await requireStudent(request);
+    await recordFunnelEvent(env, { courseId, event, dedupeKey: studentId });
+    return { ok: true };
   }
   if (event === "checkout_open") {
     const orderId = String(body.orderId || "").trim();
@@ -977,6 +999,9 @@ const handleFunnelEvent = async (request, env, url) => {
   const visitorId = existing || [...crypto.getRandomValues(new Uint8Array(32))]
     .map((byte) => byte.toString(16).padStart(2, "0")).join("");
   await recordFunnelEvent(env, { courseId, event, dedupeKey: visitorId });
+  if (event === "course_visit" && ["search", "social", "referral", "direct"].includes(body.source)) {
+    await recordFunnelEvent(env, { courseId, event: `source_${body.source}`, dedupeKey: visitorId });
+  }
   return json({ ok: true }, {
     headers: {
       ...(!existing ? { "set-cookie": `${FUNNEL_COOKIE}=${visitorId}; Path=/; Max-Age=2592000; Secure; HttpOnly; SameSite=Lax` } : {}),
@@ -1004,7 +1029,7 @@ const getFunnelReport = async (request, env) => {
   if (!response.ok) fail("Unable to load funnel analytics.", 503);
   const rows = await response.json();
   const number = (field) => Number(field?.integerValue || 0);
-  const metrics = ["visits", "enrollmentClicks", "checkoutOpens", "payments", "revenuePaise"];
+  const metrics = [...new Set(Object.values(FUNNEL_METRICS)), "revenuePaise"];
   const days = rows.filter((row) => row.document).map(({ document }) => {
     const fields = document.fields || {};
     const courses = Object.fromEntries(Object.entries(fields.courses?.mapValue?.fields || {}).map(

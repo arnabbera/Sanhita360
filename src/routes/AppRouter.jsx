@@ -1,3 +1,4 @@
+import { CriminalLawFreeLesson } from "../features/public/courses/components/CriminalLawEnrollment";
 import { useEffect } from "react";
 
 import {
@@ -339,6 +340,8 @@ export default function AppRouter() {
           path="courses"
           element={<Navigate to="/student/available-courses" replace />}
         />
+
+        <Route path="free-preview/criminal-law-i-transitioning-from-ipc-to-bns" element={<CriminalLawFreeLesson />} />
 
         <Route
           path="available-courses"

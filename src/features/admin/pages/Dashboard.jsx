@@ -6,7 +6,18 @@ import LoadingSpinner from "../../../shared/components/LoadingSpinner";
 import { getDashboardStatistics, refreshPublicHomepageStatistics } from "../../../services/dashboardService";
 import { getFunnelReport } from "../../../services/funnelAnalyticsService";
 
-const funnelMetrics = ["visits", "enrollmentClicks", "checkoutOpens", "payments", "revenuePaise"];
+const journeyMetrics = [
+  ["signupClicks", "Free signup clicks"], ["signupViews", "Signup page visits"],
+  ["signupAttempts", "Signup/sign-in attempts"], ["emailLinksSent", "Email links sent"],
+  ["signupErrors", "Authentication errors"], ["signupsCompleted", "New accounts created"],
+  ["authSuccesses", "Successful sign-ins"], ["freeLessonOpens", "Free lesson opened"],
+  ["freeQuizCompletions", "Free test completed"], ["checkoutViews", "Checkout form viewed"],
+  ["paymentAttempts", "Payment button clicked"], ["paymentErrors", "Payment interruptions/errors"],
+  ["checkoutClosed", "Payment window closed"], ["sourceSearchVisits", "Search arrivals"],
+  ["sourceSocialVisits", "Social arrivals"], ["sourceReferralVisits", "Referral arrivals"],
+  ["sourceDirectVisits", "Direct / unclassified arrivals"],
+];
+const funnelMetrics = ["visits", "enrollmentClicks", "checkoutOpens", "payments", "revenuePaise", ...journeyMetrics.map(([key]) => key)];
 const sumFunnel = (days) => Object.fromEntries(funnelMetrics.map(
   (key) => [key, days.reduce((total, day) => total + Number(day[key] || 0), 0)],
 ));
@@ -24,6 +35,7 @@ export default function Dashboard() {
   const [funnel, setFunnel] = useState(null);
   const [funnelError, setFunnelError] = useState("");
   const [funnelLoading, setFunnelLoading] = useState(true);
+  const [excludeBrowser, setExcludeBrowser] = useState(() => window.localStorage.getItem("sanhita360-exclude-analytics") === "1");
 
   const loadFunnel = useCallback(async () => {
     setFunnelLoading(true);
@@ -115,7 +127,13 @@ export default function Dashboard() {
           <div>
             <span>Course enrollment</span>
             <h2 id="funnel-heading">Enrollment Funnel</h2>
-            <p>Daily unique course visitors and enrollment clicks, checkout openings, and verified payments. Counts begin when this tracking is deployed.</p>
+            <p>Daily unique course visitors and enrollment clicks, checkout openings, and verified payments. Counts begin when each tracking stage is deployed. Browser-based events are deduplicated per course per UTC day; totals are not unique people across a month. Payment openings are deduplicated by order.</p>
+            <label><input type="checkbox" checked={excludeBrowser} onChange={(event) => {
+              const excluded = event.target.checked;
+              setExcludeBrowser(excluded);
+              window.localStorage.setItem("sanhita360-exclude-analytics", excluded ? "1" : "0");
+            }} /> Exclude activity from this browser during testing</label>
+            <p>Signed-in administrator activity is excluded automatically. Anonymous tests count unless excluded here. New accounts count Firebase first-time sign-ins attributed to the Criminal Law free entry point; they are client-reported, not an audit of all registrations.</p>
           </div>
           <button type="button" onClick={loadFunnel} disabled={funnelLoading}>Refresh</button>
         </div>
@@ -136,6 +154,11 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
+          <h3>Criminal Law I · signup and checkout journey · last 30 days</h3>
+          <p>These additional stages start with this release; historical zeros do not prove there were no attempts. Sources are coarse first-session arrival categories, without storing referral URLs or email addresses.</p>
+          <div className="ns-funnel-table-wrap"><table className="ns-funnel-table"><thead><tr><th>Stage</th><th>Daily counts summed</th></tr></thead><tbody>
+            {journeyMetrics.map(([key, label]) => <tr key={key}><td>{label}</td><td>{funnelSummary.courses.find(([id]) => id === "criminal-law-i-transitioning-from-ipc-to-bns")?.[1]?.[key] || 0}</td></tr>)}
+          </tbody></table></div>
           <h3>Courses · last 30 days</h3>
           {funnelSummary.courses.length === 0 ? <p>No course activity has been recorded yet.</p> : (
             <div className="ns-funnel-table-wrap"><table className="ns-funnel-table">
@@ -149,6 +172,7 @@ export default function Dashboard() {
         </>}
       </section>
 
+      <p>Database record counts below do not include all bundled course lessons or static articles. “Certifications” counts issued certificates, not courses that offer certification.</p>
       <section className="ns-admin-stat-grid" aria-label="Legal Learning statistics">
         {visibleStats.map((item) => {
           const Icon = item.icon;

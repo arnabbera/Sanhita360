@@ -1,3 +1,5 @@
+import { trackFunnelEvent } from "../../../services/funnelAnalyticsService";
+import { criminalCourseId, freeLessonPath, freeSignupPath } from "../../public/courses/components/CriminalLawEnrollment";
 import { useEffect, useRef, useState } from "react";
 import {
   FaGoogle,
@@ -29,13 +31,24 @@ export default function LoginPage() {
   const completionStarted = useRef(false);
   const completingEmailLink = emailLinkOnCurrentPage();
   const next = searchParams.get("next");
-  const safeNext = (next === "/claim-purchase" || next?.startsWith("/student/courses/")) &&
+  const isCriminalTrial = next === freeLessonPath || searchParams.get("source") === "criminal-law-free";
+  const safeNext = (next === freeLessonPath || next === "/claim-purchase" || next?.startsWith("/student/courses/")) &&
     !next.startsWith("//") && !next.includes("\\") &&
     !next.includes("?") && !next.includes("#") ? next : "/student";
-  const destination = isCourseLogin ? "/student" : window.localStorage.getItem("sanhita360-guest-latest")
+  const destination = isCriminalTrial ? freeLessonPath : isCourseLogin ? "/student" : window.localStorage.getItem("sanhita360-guest-latest")
     ? "/claim-purchase" : safeNext;
 
-  const continueAfterLogin = async ({ firebaseUser, profile }) => {
+  useEffect(() => {
+    if (isCriminalTrial) void trackFunnelEvent("signup_view", criminalCourseId);
+  }, [isCriminalTrial]);
+
+  const continueAfterLogin = async ({ firebaseUser, profile, isNewUser }) => {
+    if (isCriminalTrial) {
+      void trackFunnelEvent("auth_success", criminalCourseId);
+      if (isNewUser) void trackFunnelEvent("signup_complete", criminalCourseId);
+      navigate(freeLessonPath, { replace: true });
+      return;
+    }
     if (profile?.role === "admin") {
       navigate("/admin", { replace: true });
       return;
@@ -86,6 +99,7 @@ export default function LoginPage() {
       if (isSignUp) window.localStorage.removeItem(signupNamePendingKey);
       await continueAfterLogin(result);
     } catch (loginError) {
+      if (isCriminalTrial) void trackFunnelEvent("signup_error", criminalCourseId);
       setError(describeEmailError(loginError));
       completionStarted.current = false;
     } finally { setIsLoading(false); }
@@ -111,6 +125,7 @@ export default function LoginPage() {
     }
     setIsLoading(true);
     setError("");
+    if (isCriminalTrial) void trackFunnelEvent("signup_attempt", criminalCourseId);
     try {
       await requestEmailSignInLink(email, destination, {
         signUp: isSignUp,
@@ -118,7 +133,11 @@ export default function LoginPage() {
       });
       if (isSignUp) window.localStorage.setItem(signupNamePendingKey, fullName.trim());
       setLinkSent(true);
-    } catch (emailError) { setError(describeEmailError(emailError)); }
+      if (isCriminalTrial) void trackFunnelEvent("email_link_sent", criminalCourseId);
+    } catch (emailError) {
+      if (isCriminalTrial) void trackFunnelEvent("signup_error", criminalCourseId);
+      setError(describeEmailError(emailError));
+    }
     finally { setIsLoading(false); }
   };
 
@@ -131,9 +150,11 @@ export default function LoginPage() {
       setIsLoading(true);
       setError("");
 
+      if (isCriminalTrial) void trackFunnelEvent("signup_attempt", criminalCourseId);
       await continueAfterLogin(await signIn());
     } catch (loginError) {
       console.error(loginError);
+      if (isCriminalTrial) void trackFunnelEvent("signup_error", criminalCourseId);
 
       if (loginError.code === "auth/popup-closed-by-user") {
         setError("Google login was cancelled.");
@@ -166,10 +187,10 @@ export default function LoginPage() {
             Sanhita360
           </p>
 
-          <h1>{isSignUp ? "Sign Up" : isCourseLogin ? "Log In" : "Student Login"}</h1>
+          <h1>{isCriminalTrial ? "Start Criminal Law I free" : isSignUp ? "Sign Up" : isCourseLogin ? "Log In" : "Student Login"}</h1>
 
           <p>
-            {isSignUp
+            {isCriminalTrial ? "Get the complete introductory lesson and a five-question practice test with explanations. No payment or phone number needed." : isSignUp
               ? "Create your account to access courses, tests and learning materials. No phone number is needed."
               : isCourseLogin
                 ? "Access your courses, tests and more under your account."
@@ -201,7 +222,7 @@ export default function LoginPage() {
             </button>
             {linkSent && <p role="status">Check your inbox for a secure sign-up link. Open it, then confirm your details to finish.</p>}
             {completingEmailLink && <p>Confirm the full name and email address used to request this link.</p>}
-            {completingEmailLink && <Link to="/signup?source=law-courses">Request a new link</Link>}
+            {completingEmailLink && <Link to={isCriminalTrial ? freeSignupPath : "/signup?source=law-courses"}>Request a new link</Link>}
           </form>
         )}
 
@@ -227,7 +248,7 @@ export default function LoginPage() {
           )}
         </div>}
 
-        {isSignUp && <p className="student-login-return">Already have an account? <Link to="/login">Log in</Link></p>}
+        {isSignUp && <p className="student-login-return">Already have an account? <Link to={isCriminalTrial ? `/login?next=${encodeURIComponent(freeLessonPath)}` : "/login"}>Log in</Link></p>}
 
         {!simplifiedEntry && <>
         <p className="student-login-role-note">

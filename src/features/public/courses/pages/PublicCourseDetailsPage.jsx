@@ -1,3 +1,4 @@
+import CriminalLawEnrollment, { CriminalLawBrandCard, freeSignupPath, criminalCourseId } from "../components/CriminalLawEnrollment";
 import {
   useEffect,
   useMemo,
@@ -653,6 +654,7 @@ export default function PublicCourseDetailsPage() {
                   {enrollmentLabel}
                   <FaArrowRight aria-hidden="true" />
                 </Link>
+                {isCriminalLawCourse && <Link className="primary-course-cta" to={freeSignupPath} onClick={() => { void trackFunnelEvent("signup_click", criminalCourseId); }}>Start learning free</Link>}
                 <a className="secondary-course-cta" href="#course-overview">
                   Explore course
                 </a>
@@ -681,7 +683,7 @@ export default function PublicCourseDetailsPage() {
                   : ""
               }`}
             >
-              {landscapeImage ? (
+              {isCriminalLawCourse ? <CriminalLawBrandCard /> : landscapeImage ? (
                 <img
                   src={
                     landscapeImage
@@ -696,6 +698,8 @@ export default function PublicCourseDetailsPage() {
             </div>
           </div>
         </section>
+
+        {isCriminalLawCourse && <CriminalLawEnrollment priceLabel={enrollmentLabel} onEnroll={trackEnrollment} certificationAvailable={certification.available !== false} />}
 
         {/* OVERVIEW */}
 
