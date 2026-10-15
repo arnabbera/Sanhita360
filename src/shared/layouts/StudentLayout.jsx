@@ -8,7 +8,7 @@ import {
   FaTimes,
   FaUser,
 } from "react-icons/fa";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../hooks/useAuth";
 
@@ -44,6 +44,13 @@ const menuItems = [
 
 const StudentLayout = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const isTortsPage = /^\/student\/(?:learn|courses|free-preview)\/law-of-torts-mv-and-cp-laws(?:\/|$)/.test(pathname);
+  const courseMenuItems = menuItems.map((item, index) =>
+    index === 0 && isTortsPage
+      ? { ...item, label: "Free Torts Lesson", path: "/student/free-preview/law-of-torts-mv-and-cp-laws" }
+      : item,
+  );
   const {
     firebaseUser,
     profile,
@@ -145,7 +152,7 @@ const StudentLayout = () => {
         </div>
 
         <nav className="ns-student-navigation">
-          {menuItems.map((item) => {
+          {courseMenuItems.map((item) => {
             const Icon = item.icon;
 
             return (
