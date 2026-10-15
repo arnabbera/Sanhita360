@@ -517,7 +517,7 @@ export default function CourseDetails() {
     "code-of-civil-procedure-and-limitation";
 
   const hasLiveClasses =
-    !isCriminalLawCourse && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
+    !isCriminalLawCourse && course?.slug !== "law-of-torts-mv-and-cp-laws" && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
 
   const liveClassAccess =
     isAdmin ||
@@ -1281,7 +1281,7 @@ export default function CourseDetails() {
               </div>
             </div>
 
-            {!isCriminalLawCourse && !certificationActive &&
+            {!isCriminalLawCourse && !isTortsCourse && !certificationActive &&
               !certificationPendingPayment && (
                 <div className="ns-certification-action">
                   <Button
@@ -1307,7 +1307,7 @@ export default function CourseDetails() {
                   Your course enrollment request has been created. Complete the {courseFeeLabel} payment to unlock this course.
                 </span>
 
-                {!isCriminalLawCourse && <Button
+                {!isCriminalLawCourse && !isTortsCourse && <Button
                   loading={
                     certificationEnrolling
                   }
@@ -1571,19 +1571,19 @@ export default function CourseDetails() {
         </Card>
       </div>
 
-      {isCriminalLawCourse && (
-        <section className="ns-live-class-section" aria-labelledby="criminal-full-access-heading">
+      {(isCriminalLawCourse || isTortsCourse) && (
+        <section className="ns-live-class-section" aria-labelledby="course-full-access-heading">
           <div className="ns-live-class-card">
             <div className="ns-live-class-heading">
               <div className="ns-live-class-icon"><FaBookOpen /></div>
               <div>
-                <h2 id="criminal-full-access-heading">Get access to all 26 chapters</h2>
-                <p>Enroll in Criminal Law I: IPC to BNS to unlock the complete course and its assessment track.</p>
+                <h2 id="course-full-access-heading">Get access to all {chapters.length} chapters</h2>
+                <p>Enroll in {isCriminalLawCourse ? "Criminal Law I: IPC to BNS" : course.title} to unlock the complete course and its assessment track.</p>
               </div>
               <strong>{certificationPaymentCompleted ? "Access Active" : courseFeeLabel}</strong>
             </div>
             <div className="ns-live-class-benefits">
-              <span><FaCheckCircle /> Access all 26 chapters listed above</span>
+              <span><FaCheckCircle /> Access all {chapters.length} chapters listed above</span>
               <span><FaFilePdf /> Download available chapter PDFs</span>
               <span><FaCheckCircle /> Practise with all 3 mock tests</span>
               <span><FaGraduationCap /> Become eligible for the final certification examination after completing the required mock tests</span>
