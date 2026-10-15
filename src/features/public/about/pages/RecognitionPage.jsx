@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { FaFacebookF, FaWhatsapp, FaLink } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -12,9 +14,20 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
+const shareUrl = "https://www.sanhita360.com/recognition";
+const shareTitle = "Ericsson Heroes: Redefining Humanity | Sanhita360";
 const documentUrl = "/documents/ericsson-heroes-redefining-humanity-2013.pdf";
 
 export default function RecognitionPage() {
+  const [shareStatus, setShareStatus] = useState("");
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setShareStatus("Page link copied.");
+    } catch {
+      setShareStatus("Unable to copy automatically. Copy the page address from your browser.");
+    }
+  };
   const viewerRef = useRef(null);
   const [viewerWidth, setViewerWidth] = useState(760);
   const [pageCount, setPageCount] = useState(0);
@@ -92,10 +105,32 @@ export default function RecognitionPage() {
             </Document>
           </div>
         </section>
+        <section className="ns-recognition-share" aria-labelledby="recognition-share-heading">
+          <div><h2 id="recognition-share-heading">Share this page</h2>
+            <p>Share the Ericsson Heroes recognition story with friends and colleagues.</p>
+            {shareStatus && <p role="status">{shareStatus}</p>}
+          </div>
+          <div className="ns-recognition-share-actions">
+            <a className="facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this page on Facebook"><FaFacebookF /> Facebook</a>
+            <a className="twitter" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this page on X"><FaXTwitter /> X / Twitter</a>
+            <a className="whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this page on WhatsApp"><FaWhatsapp /> WhatsApp</a>
+            <button type="button" onClick={copyLink}><FaLink /> Copy Link</button>
+          </div>
+        </section>
       </main>
       <Footer />
 
       <style>{`
+        .ns-recognition-share { max-width: 1050px; margin: 0 auto; padding: 30px 24px 48px; }
+        .ns-recognition-share h2 { margin: 0 0 12px; font-size: 28px; }
+        .ns-recognition-share p { line-height: 1.6; color: #53647d; }
+        .ns-recognition-share-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+        .ns-recognition-share-actions a,.ns-recognition-share-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 10px 18px; border: 0; border-radius: 9px; color: white; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; background: #475569; }
+        .ns-recognition-share-actions .facebook { background: #1877f2; }
+        .ns-recognition-share-actions .twitter { background: #111827; }
+        .ns-recognition-share-actions .whatsapp { background: #15803d; }
+        .ns-recognition-share-actions :focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
+        @media(max-width: 600px) { .ns-recognition-share-actions { flex-direction: column; } }
         .ns-recognition-page {
           min-height: 70vh;
           background: #f5f7fb;
