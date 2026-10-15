@@ -509,6 +509,7 @@ export default function PublicCourseDetailsPage() {
 
   const isPublicInternationalLawCourse = course.slug === "public-international-law";
   const isContractCourse = course.slug === "general-principles-of-contract-and-specific-relief";
+  const isEnvironmentalCourse = course.slug === "environmental-law";
   const courseFreePath = `/student/free-preview/${course.slug}`;
   const shareUrl = `${SEO_CONFIG.siteUrl}/courses/${course.slug}`;
   const copyShareLink = async () => {
@@ -964,7 +965,7 @@ export default function PublicCourseDetailsPage() {
 
                 <Link
                   className="sidebar-login-button"
-                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : (isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse) ? (firebaseUser ? courseFreePath : `/login?next=${encodeURIComponent(courseFreePath)}`) : firebaseUser ? studentCoursePath : `/login?next=${encodeURIComponent(studentCoursePath)}`}
+                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : (isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse) ? (firebaseUser ? courseFreePath : `/login?next=${encodeURIComponent(courseFreePath)}`) : firebaseUser ? studentCoursePath : `/login?next=${encodeURIComponent(studentCoursePath)}`}
                   aria-disabled={authLoading || undefined}
                   onClick={(event) => {
                     if (authLoading) { event.preventDefault(); return; }
@@ -974,7 +975,7 @@ export default function PublicCourseDetailsPage() {
                   Start learning free
                   <FaArrowRight />
                 </Link>
-                {(isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse) && <p>Read Chapter 1 free after signing in. No payment needed for the first chapter.</p>}
+                {(isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse) && <p>Read Chapter 1 free after signing in. No payment needed for the first chapter.</p>}
               </div>
 
               <div className="protected-content-card">

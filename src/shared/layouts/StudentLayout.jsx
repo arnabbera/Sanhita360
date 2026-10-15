@@ -49,6 +49,7 @@ const StudentLayout = () => {
   const isCpcPage = /^\/student\/(?:learn|courses|free-preview)\/code-of-civil-procedure-and-limitation(?:\/|$)/.test(pathname);
   const isInternationalLawPage = /^\/student\/(?:learn|courses|free-preview)\/public-international-law(?:\/|$)/.test(pathname);
   const isContractPage = /^\/student\/(?:learn|courses|free-preview)\/general-principles-of-contract-and-specific-relief(?:\/|$)/.test(pathname);
+  const isEnvironmentalPage = /^\/student\/(?:learn|courses|free-preview)\/environmental-law(?:\/|$)/.test(pathname);
   const courseMenuItems = menuItems.map((item, index) =>
     index === 0 && isTortsPage
       ? { ...item, label: "Free Torts Lesson", path: "/student/free-preview/law-of-torts-mv-and-cp-laws" }
@@ -58,7 +59,9 @@ const StudentLayout = () => {
           ? { ...item, label: "Free International Law Lesson", path: "/student/free-preview/public-international-law" }
           : index === 0 && isContractPage
             ? { ...item, label: "Free Contract Law Lesson", path: "/student/free-preview/general-principles-of-contract-and-specific-relief" }
-            : item,
+            : index === 0 && isEnvironmentalPage
+              ? { ...item, label: "Free Environmental Law Lesson", path: "/student/free-preview/environmental-law" }
+              : item,
   );
   const {
     firebaseUser,
