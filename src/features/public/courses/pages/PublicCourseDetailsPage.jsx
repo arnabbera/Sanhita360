@@ -993,10 +993,10 @@ export default function PublicCourseDetailsPage() {
 
                 <Link
                   className="sidebar-login-button"
-                  to={checkoutUrl}
-                  onClick={trackEnrollment}
+                  to={isCriminalLawCourse ? (firebaseUser ? freeLessonPath : freeEntryPath) : checkoutUrl}
+                  onClick={isCriminalLawCourse ? () => { if (!firebaseUser) void trackFunnelEvent("signup_click", criminalCourseId); } : trackEnrollment}
                 >
-                  {enrollmentLabel}
+                  {isCriminalLawCourse ? "Start learning free" : enrollmentLabel}
                   <FaArrowRight />
                 </Link>
               </div>
