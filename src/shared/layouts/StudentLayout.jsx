@@ -51,9 +51,12 @@ const StudentLayout = () => {
   const isContractPage = /^\/student\/(?:learn|courses|free-preview)\/general-principles-of-contract-and-specific-relief(?:\/|$)/.test(pathname);
   const isEnvironmentalPage = /^\/student\/(?:learn|courses|free-preview)\/environmental-law(?:\/|$)/.test(pathname);
   const isConstitutionalPage = /^\/student\/(?:learn|courses|free-preview)\/indian-constitutional-law-i(?:\/|$)/.test(pathname);
+  const isMediaLawPage = /^\/student\/(?:learn|courses|free-preview)\/media-law(?:\/|$)/.test(pathname);
   const isHumanRightsPage = /^\/student\/(?:learn|courses|free-preview)\/human-rights-law-and-practice(?:\/|$)/.test(pathname);
   const courseMenuItems = menuItems.map((item, index) =>
-    index === 0 && isTortsPage
+    index === 0 && isMediaLawPage
+      ? { ...item, label: "Free Media Law Lesson", path: "/student/free-preview/media-law" }
+      : index === 0 && isTortsPage
       ? { ...item, label: "Free Torts Lesson", path: "/student/free-preview/law-of-torts-mv-and-cp-laws" }
       : index === 0 && isCpcPage
         ? { ...item, label: "Free CPC Lesson", path: "/student/free-preview/code-of-civil-procedure-and-limitation" }

@@ -628,7 +628,7 @@ export default function PostDetailsPage() {
 
   // A new share URL makes X fetch the updated card after it cached the
   // original URL before this post's thumbnail was available.
-  const socialShareUrl = `${shareUrl}?share=post-card-20261001`;
+  const socialShareUrl = `${shareUrl}?share=${post.slug === "think-before-you-type-defamation-digital-age" ? "defamation-card-v2" : "post-card-20261001"}`;
 
   const shareTitle =
     post.title ||

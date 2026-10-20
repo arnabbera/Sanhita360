@@ -28,6 +28,11 @@ const FIREBASE_JWKS_URL = "https://www.googleapis.com/service_accounts/v1/jwk/se
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 
 const LEGAL_UPDATE_SOCIAL_META = {
+  "/posts/think-before-you-type-defamation-digital-age": {
+    title: DIGITAL_DEFAMATION_POST.seo.title,
+    description: DIGITAL_DEFAMATION_POST.seo.description,
+    image: "/images/legal-articles/digital-defamation.jpg?v=20261020",
+  },
   "/legal-remedies/west-bengal-tenant-eviction-section-6": {
     title: "West Bengal Tenant Eviction: Section 6 Grounds and Protections | Sanhita360",
     description: "Can a landlord evict you at will? Understand statutory grounds, court procedure, rent protections and essential-service safeguards under the West Bengal Premises Tenancy Act, 1997.",
