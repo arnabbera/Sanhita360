@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 
 const updates = [
+  { id: 8, category: "Property & Tenancy", title: "Can a Landlord Evict You at Will? West Bengal Tenancy Rights", date: "20 Oct 2026", description: "Section 6 eviction grounds, court procedure, rent-deposit protections and remedies against unlawful utility cut-offs.", link: "/legal-remedies/west-bengal-tenant-eviction-section-6", image: "/images/legal-updates/west-bengal-tenant-eviction.jpg" },
   {
     id: 7,
     category: "Criminal Procedure & Remedies",

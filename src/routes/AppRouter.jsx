@@ -1,3 +1,4 @@
+import WestBengalTenantEvictionPage from "../features/public/legal/pages/WestBengalTenantEvictionPage";
 import Section175BnssPage from "../features/public/legal/pages/Section175BnssPage";
 import TortsFreeChapter from "../features/student/learning/pages/TortsFreeChapter";
 import { CriminalLawFreeLesson } from "../features/public/courses/components/CriminalLawEnrollment";
@@ -214,6 +215,7 @@ export default function AppRouter() {
         element={<PoliceRefuseFIRPage />}
       />
 
+      <Route path="/legal-remedies/west-bengal-tenant-eviction-section-6" element={<WestBengalTenantEvictionPage />} />
       <Route path="/legal-remedies/section-156-3-crpc-section-175-3-bnss" element={<Section175BnssPage />} />
 
       {/* =====================================================
