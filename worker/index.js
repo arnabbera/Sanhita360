@@ -27,6 +27,16 @@ const FIREBASE_JWKS_URL = "https://www.googleapis.com/service_accounts/v1/jwk/se
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 
 const LEGAL_UPDATE_SOCIAL_META = {
+  "/legal-remedies/west-bengal-tenant-eviction-section-6": {
+    title: "West Bengal Tenant Eviction: Section 6 Grounds and Protections | Sanhita360",
+    description: "Can a landlord evict you at will? Understand statutory grounds, court procedure, rent protections and essential-service safeguards under the West Bengal Premises Tenancy Act, 1997.",
+    image: "/images/legal-updates/west-bengal-tenant-eviction.jpg",
+  },
+  "/legal-remedies/section-156-3-crpc-section-175-3-bnss": {
+    title: "Section 156(3) CrPC to Section 175(3) BNSS: Police Investigation Remedy | Sanhita360",
+    description: "Police refusing to register an FIR? Learn about a Magistrate's investigation powers, the prior SP complaint, affidavit and safeguards under Section 175(3) BNSS.",
+    image: "/images/legal-updates/section-175-bnss-v2.jpg",
+  },
   "/legal-remedies/remedies-when-police-refuse-to-register-fir": {
     title: "When Police Refuse to Register an FIR: Legal Remedies | Sanhita360",
     description: "Practical remedies under BNSS sections 173(4), 175(3) and 223, plus exceptional High Court relief and records to preserve.",
