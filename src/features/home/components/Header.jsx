@@ -8,7 +8,7 @@ const menuItems = [
   { to: "/", label: "Home" },
   { to: "/law-courses", label: "Legal Studies" },
   { id: "resources", label: "Free Resources", links: [
-    { to: "/law-notes", label: "Law Notes" },
+    { to: "/#legal-article", label: "Legal Article" },
     { to: "/#legal-remedies", label: "Legal Remedies" },
     { to: "/#latest-videos", label: "Learning Videos" },
   ] },

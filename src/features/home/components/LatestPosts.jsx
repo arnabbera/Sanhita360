@@ -12,6 +12,7 @@ import {
 
 import {
   Link,
+  useLocation,
 } from "react-router-dom";
 
 import {
@@ -213,6 +214,15 @@ const LatestPosts = () => {
       active = false;
     };
   }, []);
+
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (loading || hash !== "#legal-article") return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById("legal-article")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [loading, hash, posts.length]);
 
   const contentGroups = [
     {
