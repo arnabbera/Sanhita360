@@ -1275,6 +1275,19 @@ function PostDetailStyles() {
           overflow-wrap: anywhere;
         }
 
+        .ns-post-detail-body h2,
+        .ns-post-detail-body h3 {
+          color: #102448;
+          font-weight: 750;
+          line-height: 1.35;
+          margin: 30px 0 16px;
+        }
+
+        .ns-post-detail-body h2 { font-size: clamp(23px, 3vw, 29px); }
+        .ns-post-detail-body h3 { font-size: clamp(19px, 2.5vw, 23px); }
+        .ns-post-detail-body ul { list-style: disc; padding-left: 24px; margin: 0 0 24px; }
+        .ns-post-detail-body li { margin: 10px 0; }
+
         .ns-post-detail-body p {
           margin: 0 0 20px;
           white-space: pre-wrap;
