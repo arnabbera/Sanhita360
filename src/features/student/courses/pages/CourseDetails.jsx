@@ -517,7 +517,7 @@ export default function CourseDetails() {
     "code-of-civil-procedure-and-limitation";
 
   const hasLiveClasses =
-    !isCriminalLawCourse && !["law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation", "public-international-law", "general-principles-of-contract-and-specific-relief", "environmental-law", "indian-constitutional-law-i", "human-rights-law-and-practice"].includes(course?.slug) && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
+    !isCriminalLawCourse && !["family-law-i", "law-of-torts-mv-and-cp-laws", "code-of-civil-procedure-and-limitation", "public-international-law", "general-principles-of-contract-and-specific-relief", "environmental-law", "indian-constitutional-law-i", "human-rights-law-and-practice"].includes(course?.slug) && LIVE_CLASS_COURSE_SLUGS.has(course?.slug);
 
   const liveClassAccess =
     isAdmin ||
@@ -1285,7 +1285,7 @@ export default function CourseDetails() {
               </div>
             </div>
 
-            {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !isHumanRightsCourse && !certificationActive &&
+            {!isFamilyLawCourse && !isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !isHumanRightsCourse && !certificationActive &&
               !certificationPendingPayment && (
                 <div className="ns-certification-action">
                   <Button
@@ -1311,7 +1311,7 @@ export default function CourseDetails() {
                   Your course enrollment request has been created. Complete the {courseFeeLabel} payment to unlock this course.
                 </span>
 
-                {!isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !isHumanRightsCourse && <Button
+                {!isFamilyLawCourse && !isCriminalLawCourse && !isTortsCourse && !isCivilProcedureCourse && !isPublicInternationalLawCourse && !isContractCourse && !isEnvironmentalCourse && !isConstitutionalLawCourse && !isHumanRightsCourse && <Button
                   loading={
                     certificationEnrolling
                   }
@@ -1575,7 +1575,7 @@ export default function CourseDetails() {
         </Card>
       </div>
 
-      {(isCriminalLawCourse || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && (
+      {(isFamilyLawCourse || isCriminalLawCourse || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && (
         <section className="ns-live-class-section" aria-labelledby="course-full-access-heading">
           <div className="ns-live-class-card">
             <div className="ns-live-class-heading">
