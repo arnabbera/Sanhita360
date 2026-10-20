@@ -737,7 +737,7 @@ export default function CourseDetails() {
   // =========================================================
 
   const isChapterUnlocked = (chapter, index) =>
-    Boolean(hasCourseAccess || ((course?.slug === "media-law" || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && index === 0));
+    Boolean(hasCourseAccess || ((isFamilyLawCourse || course?.slug === "media-law" || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && index === 0));
 
   // =========================================================
   // OPEN CHAPTER
@@ -1408,7 +1408,7 @@ export default function CourseDetails() {
       <div className="ns-course-chapters-section">
         <Card
           title="Course Chapters"
-          subtitle={(course?.slug === "media-law" || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
+          subtitle={(isFamilyLawCourse || course?.slug === "media-law" || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) ? "Chapter 1 is free to read. Enroll to unlock the remaining chapters." : "Complete chapters in sequence to progress through the course."}
         >
           {chapters.length ===
           0 ? (
@@ -1557,7 +1557,7 @@ export default function CourseDetails() {
                             {chapterProgress
                               ?.completed
                               ? "Review"
-                              : (course?.slug === "media-law" || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
+                              : (isFamilyLawCourse || course?.slug === "media-law" || isTortsCourse || isCivilProcedureCourse || isPublicInternationalLawCourse || isContractCourse || isEnvironmentalCourse || isConstitutionalLawCourse || isHumanRightsCourse) && index === 0 && !hasCourseAccess ? "Read free chapter" : "Open"}
                           </>
                         ) : (
                           <>
