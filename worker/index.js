@@ -1,3 +1,4 @@
+import { DIGITAL_DEFAMATION_POST } from "../src/features/public/posts/data/digitalDefamationPost.js";
 import { BENOY_BADAL_DINESH_POST } from "../src/features/public/posts/data/benoyBadalDineshPost.js";
 import { BINA_DAS_POST } from "../src/features/public/posts/data/binaDasPost.js";
 import { BAGHA_JATIN_POST } from "../src/features/public/posts/data/baghaJatinPost.js";
@@ -75,7 +76,7 @@ const LEGAL_UPDATE_SOCIAL_META = {
 };
 
 const BUNDLED_POST_SOCIAL_META = Object.fromEntries(
-  [ULLASKAR_DUTTA_POST, BAGHA_JATIN_POST, BINA_DAS_POST, BENOY_BADAL_DINESH_POST, MASTERDA_SURYA_SEN_POST, PRAFULLA_CHAKI_POST].map((post) => [
+  [DIGITAL_DEFAMATION_POST, ULLASKAR_DUTTA_POST, BAGHA_JATIN_POST, BINA_DAS_POST, BENOY_BADAL_DINESH_POST, MASTERDA_SURYA_SEN_POST, PRAFULLA_CHAKI_POST].map((post) => [
     post.slug,
     {
       title: post.seo.title,

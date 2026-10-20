@@ -1,3 +1,4 @@
+import { DIGITAL_DEFAMATION_POST } from "../features/public/posts/data/digitalDefamationPost";
 import {
   createPostModel,
 } from "../models/PostModel";
@@ -37,6 +38,7 @@ const normalizeSlug = (
     );
 
 const bundledPosts = [
+  DIGITAL_DEFAMATION_POST,
   ULLASKAR_DUTTA_POST,
   BAGHA_JATIN_POST,
   BINA_DAS_POST,

@@ -180,6 +180,12 @@ const renderContent = (
   return text.split(/\n{2,}/).map((block, index) => {
     const lines = block.split("\n");
 
+    const heading = block.match(/^(#{2,3})\s+([^\n]+)$/);
+    if (heading) {
+      const Heading = heading[1].length === 2 ? "h2" : "h3";
+      return <Heading key={`${index}-${heading[2]}`}>{renderInlineContent(heading[2])}</Heading>;
+    }
+
     if (lines.every((line) => line.trim().startsWith("> "))) {
       return (
         <blockquote key={`${index}-${block.slice(0, 24)}`}>
