@@ -3,6 +3,15 @@ import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 
 const updates = [
   {
+    id: 7,
+    category: "Criminal Procedure & Remedies",
+    title: "Section 156(3) CrPC to Section 175(3) BNSS: Police Investigation Remedy",
+    date: "20 Oct 2026",
+    description: "Police refusing to register an FIR? Learn when to approach the Magistrate, the SP complaint and affidavit requirements, and what this remedy provides.",
+    link: "/legal-remedies/section-156-3-crpc-section-175-3-bnss",
+    image: "/images/legal-updates/section-175-bnss.svg",
+  },
+  {
     id: 6,
     category: "Criminal Procedure & Remedies",
     title: "Legal Remedies When Police Refuse to Register an FIR",

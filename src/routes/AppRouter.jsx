@@ -1,3 +1,4 @@
+import Section175BnssPage from "../features/public/legal/pages/Section175BnssPage";
 import TortsFreeChapter from "../features/student/learning/pages/TortsFreeChapter";
 import { CriminalLawFreeLesson } from "../features/public/courses/components/CriminalLawEnrollment";
 import { useEffect } from "react";
@@ -212,6 +213,8 @@ export default function AppRouter() {
         path="/legal-remedies/remedies-when-police-refuse-to-register-fir"
         element={<PoliceRefuseFIRPage />}
       />
+
+      <Route path="/legal-remedies/section-156-3-crpc-section-175-3-bnss" element={<Section175BnssPage />} />
 
       {/* =====================================================
           PUBLIC SEO COURSE PAGES
