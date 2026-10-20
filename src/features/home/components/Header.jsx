@@ -6,7 +6,7 @@ import { LEGAL_SERVICES } from "../../public/services/data/legalServices";
 
 const menuItems = [
   { to: "/", label: "Home" },
-  { to: "/law-courses", label: "Law Courses" },
+  { to: "/law-courses", label: "Legal Studies" },
   { id: "resources", label: "Free Resources", links: [
     { to: "/law-notes", label: "Law Notes" },
     { to: "/#legal-remedies", label: "Legal Remedies" },

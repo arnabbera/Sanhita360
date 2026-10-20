@@ -29,7 +29,7 @@ const Footer = () => {
 
         <section><h3>Quick Links</h3><ul className="ns-footer-links">
           <li><Link to="/">Home</Link></li><li><Link to="/about">About Us</Link></li>
-          <li><Link to="/">Legal Services</Link></li><li><Link to="/law-courses">Law Courses</Link></li>
+          <li><Link to="/">Legal Services</Link></li><li><Link to="/law-courses">Legal Studies</Link></li>
           <li><Link to="/#latest-videos">Learning Videos</Link></li><li><Link to="/#legal-consultation">Contact</Link></li>
         </ul></section>
 
