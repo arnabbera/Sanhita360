@@ -7,7 +7,7 @@ import LegalUpdateShare from "../components/LegalUpdateShare";
 const path = "/legal-remedies/section-156-3-crpc-section-175-3-bnss";
 export default function Section175BnssPage() {
   return <>
-    <SEO title="Section 156(3) CrPC to Section 175(3) BNSS: Police Investigation Remedy" description="Police refusing to register an FIR? Understand the Magistrate's investigation power, prior SP complaint, affidavit and safeguards under Section 175(3) BNSS." canonical={path} image="/images/legal-updates/section-175-bnss.svg" />
+    <SEO title="Section 156(3) CrPC to Section 175(3) BNSS: Police Investigation Remedy" description="Police refusing to register an FIR? Understand the Magistrate's investigation power, prior SP complaint, affidavit and safeguards under Section 175(3) BNSS." canonical={path} image="/images/legal-updates/section-175-bnss-v2.jpg" />
     <Header />
     <main className="ns-investigation-post">
       <header className="ns-investigation-hero"><div>
@@ -17,7 +17,7 @@ export default function Section175BnssPage() {
         <p>Section 156(3) CrPC corresponds to Section 175(3) BNSS: a route to seek a Magistrate’s direction for police investigation, with additional safeguards.</p>
       </div></header>
       <article>
-        <img className="ns-investigation-banner" src="/images/legal-updates/section-175-bnss.svg" alt="Section 156(3) CrPC to Section 175(3) BNSS: police complaint, Superintendent of Police, Judicial Magistrate" />
+        <img className="ns-investigation-banner" src="/images/legal-updates/section-175-bnss-v2.jpg" alt="Section 156(3) CrPC to Section 175(3) BNSS: police complaint, Superintendent of Police, Judicial Magistrate" />
         <p>When a complaint discloses a cognizable offence but the police fail to act, the complainant can approach the jurisdictional Judicial Magistrate for an investigation order.</p>
         <p>This remedy, familiar as <strong>Section 156(3) of the Code of Criminal Procedure, 1973</strong>, now corresponds to <strong>Section 175(3) of the Bharatiya Nagarik Suraksha Sanhita, 2023</strong>, with additional procedural safeguards.</p>
         <h2>What remedy does this section provide?</h2>
@@ -47,7 +47,7 @@ export default function Section175BnssPage() {
         </ul>
         <p><em>Published for legal awareness by Sanhita360. The procedure applicable to an individual case should be checked before filing.</em></p>
         <Link to="/legal-remedies/remedies-when-police-refuse-to-register-fir">Read more: Legal remedies when police refuse to register an FIR →</Link>
-        <LegalUpdateShare canonicalPath={path} shareVersion="section-175-bnss-v1" message="Police refusing to register an FIR? Understand the remedy under Section 175(3) BNSS, corresponding to Section 156(3) CrPC." />
+        <LegalUpdateShare canonicalPath={path} shareVersion="section-175-bnss-v2" message="Police refusing to register an FIR? Understand the remedy under Section 175(3) BNSS, corresponding to Section 156(3) CrPC." />
       </article>
     </main><Footer />
     <style>{`

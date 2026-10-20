@@ -9,7 +9,7 @@ const updates = [
     date: "20 Oct 2026",
     description: "Police refusing to register an FIR? Learn when to approach the Magistrate, the SP complaint and affidavit requirements, and what this remedy provides.",
     link: "/legal-remedies/section-156-3-crpc-section-175-3-bnss",
-    image: "/images/legal-updates/section-175-bnss.svg",
+    image: "/images/legal-updates/section-175-bnss-v2.jpg",
   },
   {
     id: 6,
