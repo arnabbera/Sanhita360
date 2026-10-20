@@ -47,7 +47,7 @@ export default function Section175BnssPage() {
         </ul>
         <p><em>Published for legal awareness by Sanhita360. The procedure applicable to an individual case should be checked before filing.</em></p>
         <Link to="/legal-remedies/remedies-when-police-refuse-to-register-fir">Read more: Legal remedies when police refuse to register an FIR →</Link>
-        <LegalUpdateShare canonicalPath={path} shareVersion="section-175-bnss-v2" message="Police refusing to register an FIR? Understand the remedy under Section 175(3) BNSS, corresponding to Section 156(3) CrPC." />
+        <LegalUpdateShare canonicalPath={path} shareVersion="section-175-bnss-v3" message="Police refusing to register an FIR? Understand the remedy under Section 175(3) BNSS, corresponding to Section 156(3) CrPC." />
       </article>
     </main><Footer />
     <style>{`

@@ -63,7 +63,7 @@ export default function WestBengalTenantEvictionPage() {
           <li><a href="https://wbja.wb.gov.in/calcutta-high-court-judgments-on-tenancy-issues" target="_blank" rel="noopener noreferrer">West Bengal Judicial Academy: tenancy judgments and Section 7 compliance</a></li>
         </ul>
         <p><em>Legal awareness by Sanhita360. This guide summarises the ordinary Section 6 framework, not every special procedure. Check the applicable amendments, tenancy documents and current decisions for an individual dispute.</em></p>
-        <LegalUpdateShare canonicalPath={path} shareVersion="wb-tenancy-v1" message="Know the lawful eviction grounds and tenant protections under Section 6 of the West Bengal Premises Tenancy Act, 1997." />
+        <LegalUpdateShare canonicalPath={path} shareVersion="wb-tenancy-v2" message="Know the lawful eviction grounds and tenant protections under Section 6 of the West Bengal Premises Tenancy Act, 1997." />
       </article>
     </main><Footer />
     <style>{`
