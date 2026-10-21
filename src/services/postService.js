@@ -1,3 +1,4 @@
+import { KANAILAL_DUTTA_POST } from "../features/public/posts/data/kanailalDuttaPost";
 import { DIGITAL_DEFAMATION_POST } from "../features/public/posts/data/digitalDefamationPost";
 import {
   createPostModel,
@@ -38,6 +39,7 @@ const normalizeSlug = (
     );
 
 const bundledPosts = [
+  KANAILAL_DUTTA_POST,
   DIGITAL_DEFAMATION_POST,
   ULLASKAR_DUTTA_POST,
   BAGHA_JATIN_POST,
