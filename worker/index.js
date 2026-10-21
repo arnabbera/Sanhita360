@@ -1,3 +1,4 @@
+import { ALIPORE_BOMB_CASE_POST } from "../src/features/public/posts/data/aliporeBombCasePost.js";
 import { KANAILAL_DUTTA_POST } from "../src/features/public/posts/data/kanailalDuttaPost.js";
 import { DIGITAL_DEFAMATION_POST } from "../src/features/public/posts/data/digitalDefamationPost.js";
 import { BENOY_BADAL_DINESH_POST } from "../src/features/public/posts/data/benoyBadalDineshPost.js";
@@ -29,6 +30,11 @@ const FIREBASE_JWKS_URL = "https://www.googleapis.com/service_accounts/v1/jwk/se
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 
 const LEGAL_UPDATE_SOCIAL_META = {
+  "/posts/alipore-bomb-case-behind-every-name-was-a-life": {
+    title: ALIPORE_BOMB_CASE_POST.seo.title,
+    description: ALIPORE_BOMB_CASE_POST.seo.description,
+    image: ALIPORE_BOMB_CASE_POST.seo.ogImageUrl,
+  },
   "/posts/kanailal-dutta-alipore-jail-freedom-struggle": {
     title: KANAILAL_DUTTA_POST.seo.title,
     description: KANAILAL_DUTTA_POST.seo.description,
@@ -87,7 +93,7 @@ const LEGAL_UPDATE_SOCIAL_META = {
 };
 
 const BUNDLED_POST_SOCIAL_META = Object.fromEntries(
-  [KANAILAL_DUTTA_POST, DIGITAL_DEFAMATION_POST, ULLASKAR_DUTTA_POST, BAGHA_JATIN_POST, BINA_DAS_POST, BENOY_BADAL_DINESH_POST, MASTERDA_SURYA_SEN_POST, PRAFULLA_CHAKI_POST].map((post) => [
+  [ALIPORE_BOMB_CASE_POST, KANAILAL_DUTTA_POST, DIGITAL_DEFAMATION_POST, ULLASKAR_DUTTA_POST, BAGHA_JATIN_POST, BINA_DAS_POST, BENOY_BADAL_DINESH_POST, MASTERDA_SURYA_SEN_POST, PRAFULLA_CHAKI_POST].map((post) => [
     post.slug,
     {
       title: post.seo.title,
