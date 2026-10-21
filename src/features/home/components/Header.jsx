@@ -19,6 +19,7 @@ const menuItems = [
   { id: "about", label: "About", links: [
     { to: "/about", label: "Sanhita360" },
     { to: "/about/founder", label: "Founder" },
+    { to: "/indian-independence", label: "Indian Independence" },
   ] },
 ];
 
