@@ -13,8 +13,8 @@ export const KANAILAL_DUTTA_POST = {
   createdAt: "2026-10-21T13:00:00.000Z",
   updatedAt: "2026-10-21T13:00:00.000Z",
   media: {
-    desktop: { url: "/images/freedom-fighters/kanailal-dutta-sanhita360.jpg", alt: "Sanhita360 memorial illustration for Kanailal Dutta, 1888–1908, with an old prison gateway and flowers" },
-    mobile: { url: "/images/freedom-fighters/kanailal-dutta-sanhita360.jpg", alt: "Kanailal Dutta: Courage, Conviction and Sacrifice — Sanhita360" },
+    desktop: { url: "/images/freedom-fighters/kanailal-dutta-portrait-v2.jpg", alt: "Kanailal Dutta archival portrait in a Sanhita360 memorial thumbnail with an illustrated Alipore Jail backdrop" },
+    mobile: { url: "/images/freedom-fighters/kanailal-dutta-portrait-v2.jpg", alt: "Kanailal Dutta: Courage, Conviction and Sacrifice — Sanhita360" },
   },
   content: `Kanailal Dutta was only twenty when he was executed at Alipore Jail on **10 November 1908**. More than a century later, his name remains part of Bengal’s memory of the struggle for independence: a young revolutionary remembered for his composure before death and his refusal to seek an appeal.
 
@@ -93,14 +93,14 @@ Historical remembrance also asks us to hold courage and consequence together. Hi
 - [MY Bharat — commemorative account hosted for a college NSS event](https://mybharat.gov.in/vo/pages/event_detail?event_name=Tree-planting-to-commemorate-the-birthday-of-revolutionary-Kanailal-Dutta-a-brave-son-of-Hooghly-district&key=472126300472): early life, the anti-partition movement and the events of 1908.
 - [Kanailal Dutta — biographical overview and bibliography](https://en.wikipedia.org/wiki/Kanailal_Dutta): additional historical references and reported recollections.
 
-**Image note:** The Sanhita360 thumbnail is a commemorative illustration inspired by a colonial-era prison gateway. It is not an archival photograph or a portrait of Kanailal Dutta.`,
+**Image credit:** The thumbnail incorporates the archival [portrait of Kanailal Dutta](https://commons.wikimedia.org/wiki/File:Kanailal_Dutta.jpg), unknown photographer, reproduced in Noorul Hoda’s *The Alipore Bomb Case*, page 109, via Wikimedia Commons (marked public domain in India). The portrait is presented in a framed sepia treatment; the jail backdrop is an editorial illustration, not an archival photograph.`,
   seo: {
     title: "Kanailal Dutta: Life, Alipore Jail and Sacrifice | Sanhita360",
     description: "Remember Kanailal Dutta: Chandannagar revolutionary, the Alipore Bomb Case, his role alongside Satyendranath Bose and execution on 10 November 1908.",
     focusKeyword: "Kanailal Dutta",
     secondaryKeywords: ["Alipore Bomb Case", "Satyendranath Bose", "Jugantar", "Indian independence"],
     canonicalUrl: "/posts/kanailal-dutta-alipore-jail-freedom-struggle",
-    ogImageUrl: "/images/freedom-fighters/kanailal-dutta-sanhita360.jpg",
+    ogImageUrl: "/images/freedom-fighters/kanailal-dutta-portrait-v2.jpg",
     robots: { index: true, follow: true },
     sitemap: { include: true, priority: 0.8, changeFrequency: "monthly" },
   },
