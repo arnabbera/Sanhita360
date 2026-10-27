@@ -8,6 +8,6 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*", "/courses/*", "/sitemap.xml", "/posts/*", "/live-online-classes*", "/llb-courses*", "/legal-updates/*", "/legal-remedies/*", "/share/*"]
+    "run_worker_first": ["/api/*", "/services/*", "/courses/*", "/sitemap.xml", "/posts/*", "/live-online-classes*", "/llb-courses*", "/legal-updates/*", "/legal-remedies/*", "/share/*"]
   }
 }

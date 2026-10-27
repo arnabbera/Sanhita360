@@ -1640,6 +1640,16 @@ export default {
       );
     }
 
+    if (url.pathname.replace(/\/$/, "") === "/services/property-registration" && assetResponse.headers.get("content-type")?.includes("text/html")) {
+      return rewriteCourseSocialMetadata(assetResponse, {
+        title: "Property Search, Sale Agreement & Registration Support in Kolkata | Sanhita360",
+        description: "We help buyers verify property documents, prepare the Agreement for Sale, complete property registration and coordinate mutation in Kolkata and across serviceable areas of West Bengal.",
+        image: `${url.origin}/property-document-support-sanhita360.jpg`,
+        imageWidth: 1672,
+        imageHeight: 941,
+      }, `${url.origin}/services/property-registration`, `${url.origin}/services/property-registration`);
+    }
+
     if (
       /^\/(?:law-courses|share\/certificate-courses-card-v3)\/?$/.test(url.pathname) &&
       assetResponse.headers.get("content-type")?.includes("text/html")
