@@ -13,8 +13,10 @@ const menuItems = [
     { to: "/#latest-videos", label: "Learning Videos" },
   ] },
   { id: "services", label: "Legal Services", links: [
-    ...LEGAL_SERVICES.map((service) => ({ to: `/services/${service.slug}`, label: service.title })),
-    { to: "/#legal-consultation", label: "Contact & Consultation" },
+    { id: "litigation", label: "Litigation", links: [
+      ...LEGAL_SERVICES.map((service) => ({ to: `/services/${service.slug}`, label: service.title })),
+      { to: "/#legal-consultation", label: "Contact & Consultation" },
+    ] },
   ] },
   { id: "about", label: "About", links: [
     { to: "/about", label: "Sanhita360" },
@@ -68,7 +70,14 @@ export default function Header() {
         {item.label}<FaChevronDown size={11} className={expanded ? "is-open" : ""} aria-hidden="true" />
       </button>
       {expanded && <div id={panelId} className={mobile ? "ns-mobile-submenu" : "ns-desktop-submenu"}>
-        {item.links.map(({ to, label }) => <Link key={to} to={to} onClick={closeMenu}>{label}</Link>)}
+        {item.links.map((link) => link.links ? (
+          <details key={link.id} className="ns-nested-group">
+            <summary>{link.label}<FaChevronDown size={11} aria-hidden="true" /></summary>
+            <div className="ns-nested-submenu">
+              {link.links.map(({ to, label }) => <Link key={to} to={to} onClick={closeMenu}>{label}</Link>)}
+            </div>
+          </details>
+        ) : <Link key={link.to} to={link.to} onClick={closeMenu}>{link.label}</Link>)}
       </div>}
     </div>;
   };
@@ -111,6 +120,14 @@ export default function Header() {
       .ns-header-dropdown:last-child .ns-desktop-submenu{left:auto;right:0}
       .ns-desktop-submenu>a{display:block;padding:12px 18px;color:#1e293b;text-decoration:none;border-bottom:1px solid #f1f5f9;font-size:14px;line-height:1.5}
       .ns-desktop-submenu>a:hover,.ns-desktop-submenu>a:focus-visible{background:#eff6ff;color:#1d4ed8}
+      .ns-nested-group>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;min-height:44px;color:#1e293b;font-size:14px;font-weight:650;cursor:pointer;list-style:none}
+      .ns-nested-group>summary::-webkit-details-marker{display:none}
+      .ns-nested-group>summary:hover,.ns-nested-group>summary:focus-visible{background:#eff6ff;color:#1d4ed8}
+      .ns-nested-group>summary:focus-visible{outline:3px solid #2563eb;outline-offset:-3px}
+      .ns-nested-group>summary svg{transition:transform .2s}.ns-nested-group[open]>summary svg{transform:rotate(180deg)}
+      .ns-nested-submenu{display:flex;flex-direction:column;background:#f8fafc}
+      .ns-nested-submenu>a{display:block;padding:12px 18px 12px 30px;min-height:44px;color:#475569;text-decoration:none;border-top:1px solid #e2e8f0;font-size:14px;line-height:1.5}
+      .ns-nested-submenu>a:hover,.ns-nested-submenu>a:focus-visible{background:#eff6ff;color:#1d4ed8}
       .ns-header-account-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
       .ns-header-login{display:flex;align-items:center;justify-content:center;min-height:44px;padding:11px 18px;background:#2563eb;color:white;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700;white-space:nowrap}
       .ns-header-login:hover{background:#1d4ed8}.ns-header-login[aria-disabled=true]{opacity:.65;cursor:wait}
