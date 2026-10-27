@@ -41,7 +41,7 @@ export default function FounderPage() {
               <Link className="ns-founder-button" to="/recognition">View Recognition</Link>
             </article>
             <aside>
-              <img src="/arnab-founder.jpg" alt="Arnab Bera, founder of Sanhita360" />
+              <img src="/arnab-founder-sanhita360-v2.jpg" alt="Arnab Bera, founder of Sanhita360" />
               <div className="ns-founder-contact">
                 <h2>Connect on LinkedIn</h2>
                 <p>View Arnab Bera’s professional profile on LinkedIn.</p>
