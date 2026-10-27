@@ -13,6 +13,7 @@ const menuItems = [
     { to: "/#latest-videos", label: "Learning Videos" },
   ] },
   { id: "services", label: "Legal Services", links: [
+    { to: "/services/property-registration", label: "Property Registration" },
     { id: "litigation", label: "Litigation", links: [
       ...LEGAL_SERVICES.map((service) => ({ to: `/services/${service.slug}`, label: service.title })),
       { to: "/#legal-consultation", label: "Contact & Consultation" },

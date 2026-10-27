@@ -56,6 +56,7 @@ import GuestCheckoutPage from "../features/public/courses/pages/GuestCheckoutPag
 import ClaimPurchasePage from "../features/public/courses/pages/ClaimPurchasePage";
 import LiveOnlineClassesPage from "../features/public/courses/pages/LiveOnlineClassesPage";
 
+import PropertyRegistrationPage from "../features/public/services/pages/PropertyRegistrationPage";
 import LegalServiceDetailsPage from "../features/public/services/pages/LegalServiceDetailsPage";
 
 import DisclaimerPage from "../features/public/legal/pages/DisclaimerPage";
@@ -260,6 +261,7 @@ export default function AppRouter() {
           PUBLIC LEGAL SERVICES
       ====================================================== */}
 
+      <Route path="/services/property-registration" element={<PropertyRegistrationPage />} />
       <Route
         path="/services/:serviceSlug"
         element={
