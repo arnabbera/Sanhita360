@@ -1659,8 +1659,8 @@ export default {
       return rewriteCourseSocialMetadata(
         assetResponse,
         {
-          title: "Certificate Courses in Legal Studies | Sanhita360",
-          description: `Explore chapter-wise certificate courses in legal studies with study materials, mock tests and certification pathways at Sanhita360.${priceDescription}`,
+          title: "Online Law Courses & Study Materials | Sanhita360",
+          description: `Explore chapter-wise online law courses with free introductory lessons, study materials and mock tests. Earn a private Certificate of Completion after meeting course requirements.${priceDescription}`,
           image: `${url.origin}/certificate-courses-hero.jpg`,
           imageWidth: 1200,
           imageHeight: 675,

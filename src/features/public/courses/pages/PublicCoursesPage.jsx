@@ -46,7 +46,7 @@ const CERTIFICATE_COURSES_URL =
   "https://www.sanhita360.com/share/certificate-courses-card-v3";
 
 const SHARE_MESSAGE =
-  "Explore Certificate Courses in Legal Studies from Sanhita360.";
+  "Explore online law courses, free introductory lessons, study materials and mock tests from Sanhita360.";
 
 // =========================================================
 // HELPERS
@@ -297,8 +297,8 @@ export default function PublicCoursesPage() {
   return (
     <>
       <SEO
-        title="Certificate Courses in Legal Studies | Sanhita360"
-        description="Explore chapter-wise certificate courses in legal studies with study materials, mock tests and certification pathways at Sanhita360."
+        title="Online Law Courses & Study Materials"
+        description="Explore chapter-wise online law courses with free introductory lessons, study materials and mock tests. Earn a private Certificate of Completion after meeting course requirements."
         canonical="/law-courses"
         image="/certificate-courses-hero.jpg"
         keywords={[
@@ -329,16 +329,13 @@ export default function PublicCoursesPage() {
               </span>
 
               <h1>
-                Certificate Courses in Legal
-                Studies
+                Online Law Courses
               </h1>
 
               <p>
-                Build your legal knowledge with
-                structured chapter-wise courses,
-                study materials, important legal
-                concepts, mock-test preparation
-                and certification pathways.
+                Explore chapter-wise law courses with free introductory lessons,
+                study materials and mock tests. Earn a private Certificate
+                of Completion after meeting the course requirements.
               </p>
 
               <div className="hero-benefits">
@@ -367,7 +364,7 @@ export default function PublicCoursesPage() {
             </div>
 
             <div className="courses-hero-visual">
-              <img className="courses-hero-image" src="/certificate-courses-hero.jpg" alt="Certificate Courses in Legal Studies at Sanhita360" />
+              <img className="courses-hero-image" src="/certificate-courses-hero.jpg" alt="Online law courses and study materials at Sanhita360" />
             </div>
           </div>
         </section>
