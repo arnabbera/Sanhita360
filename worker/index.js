@@ -30,6 +30,11 @@ const FIREBASE_JWKS_URL = "https://www.googleapis.com/service_accounts/v1/jwk/se
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 
 const LEGAL_UPDATE_SOCIAL_META = {
+  "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home": {
+    title: "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home | Sanhita360",
+    description: "Check title deeds, hidden mortgages, CERSAI, possession and building approvals before committing your savings to a property purchase.",
+    image: "/property-document-support-sanhita360.jpg",
+  },
   "/posts/alipore-bomb-case-behind-every-name-was-a-life": {
     title: ALIPORE_BOMB_CASE_POST.seo.title,
     description: ALIPORE_BOMB_CASE_POST.seo.description,
