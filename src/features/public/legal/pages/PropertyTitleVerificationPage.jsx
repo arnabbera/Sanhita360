@@ -7,10 +7,10 @@ const path = "/legal-remedies/verify-property-title-avoid-fraud-before-buying-ho
 const title = "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home";
 export default function PropertyTitleVerificationPage() {
   return <>
-    <SEO title={title} description="A practical property-buying checklist: title chain, certified deeds, hidden mortgages, CERSAI, possession, approvals and safeguards before payment." canonical={path} image="/property-document-support-sanhita360.jpg" />
+    <SEO title={title} description="A practical property-buying checklist: title chain, certified deeds, hidden mortgages, CERSAI, possession, approvals and safeguards before payment." canonical={path} image="/images/legal-updates/property-title-verification-v2.jpg" />
     <Header /><main className="ns-investigation-post">
       <header className="ns-investigation-hero"><div><Link to="/#legal-remedies">← Legal Remedies</Link><p>PROPERTY &amp; BUYER PROTECTION · 27 OCTOBER 2026</p><h1>{title}</h1><p>Protect your hard-earned savings with independent checks before you commit to a property purchase.</p></div></header>
-      <article><img className="ns-investigation-banner" src="/property-document-support-sanhita360.jpg" alt="Sanhita360 property document support and buyer due diligence" />
+      <article><img className="ns-investigation-banner" src="/images/legal-updates/property-title-verification-v2.jpg" alt="Buying your dream home? Verify the title first — Sanhita360 property fraud prevention guide" />
 
         <p>Purchasing a home should be the reward for years of hard work. Hidden mortgages, forged deeds, missing heirs or disputed ownership can instead leave a buyer facing a long legal battle. Before paying a substantial advance, obtain an independent, written title review from a property-law advocate.</p>
         <aside><strong>No single document guarantees clear title.</strong> A registered deed, bank loan approval, mutation entry or clean search result is only one part of due diligence. The checks must match the property, its ownership history and the applicable local law.</aside>
@@ -52,7 +52,7 @@ export default function PropertyTitleVerificationPage() {
           <li><a href="https://www.api.sci.gov.in/supremecourt/2020/1481/1481_2020_6_1501_57308_Judgement_19-Nov-2024.pdf">Supreme Court, 2024 INSC 875 — revenue entries do not themselves confer title</a></li>
         </ul>
         <p><em>Legal awareness by Sanhita360. This is a general due-diligence guide, not a title certificate or advice on a specific transaction. Search scope, applicable requirements and remedies depend on the documents, location and facts.</em></p>
-        <LegalUpdateShare canonicalPath={path} shareVersion="property-title-v1" message="Before buying your dream home, check the title, hidden mortgages and transaction risks. Read Sanhita360’s property due-diligence guide." />
+        <LegalUpdateShare canonicalPath={path} shareVersion="property-title-v2" message="Before buying your dream home, check the title, hidden mortgages and transaction risks. Read Sanhita360’s property due-diligence guide." />
       </article></main><Footer />
     <style>{`
       .ns-investigation-post{background:#f8fafc;color:#172640}.ns-investigation-post *{box-sizing:border-box}

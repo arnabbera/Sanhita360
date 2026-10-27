@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
 
 const updates = [
-  { id: 9, category: "Property & Buyer Protection", title: "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home", date: "27 Oct 2026", description: "Check title deeds, hidden mortgages, possession and approvals before committing your savings.", link: "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home", image: "/property-document-support-sanhita360.jpg" },
+  { id: 9, category: "Property & Buyer Protection", title: "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home", date: "27 Oct 2026", description: "Check title deeds, hidden mortgages, possession and approvals before committing your savings.", link: "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home", image: "/images/legal-updates/property-title-verification-v2.jpg" },
   { id: 8, category: "Property & Tenancy", title: "Can a Landlord Evict You at Will? West Bengal Tenancy Rights", date: "20 Oct 2026", description: "Section 6 eviction grounds, court procedure, rent-deposit protections and remedies against unlawful utility cut-offs.", link: "/legal-remedies/west-bengal-tenant-eviction-section-6", image: "/images/legal-updates/west-bengal-tenant-eviction.jpg" },
   {
     id: 7,
