@@ -1,3 +1,4 @@
+import { QA_ARTICLES } from "../src/features/public/qa/qaArticles.js";
 import { ALIPORE_BOMB_CASE_POST } from "../src/features/public/posts/data/aliporeBombCasePost.js";
 import { KANAILAL_DUTTA_POST } from "../src/features/public/posts/data/kanailalDuttaPost.js";
 import { DIGITAL_DEFAMATION_POST } from "../src/features/public/posts/data/digitalDefamationPost.js";
@@ -1621,6 +1622,19 @@ export default {
       }
     }
     const assetResponse = await env.ASSETS.fetch(request);
+    const qaSlug = /^\/qa\/([a-z0-9-]+)\/?$/.exec(url.pathname)?.[1];
+    const qaArticle = qaSlug && QA_ARTICLES.find((article) => article.slug === qaSlug);
+    if (qaArticle && assetResponse.headers.get("content-type")?.includes("text/html")) {
+      const canonicalUrl = `${url.origin}/qa/${qaArticle.slug}`;
+      return rewriteCourseSocialMetadata(assetResponse, {
+        title: `${qaArticle.title} | Sanhita360`,
+        description: qaArticle.answer,
+        image: `${url.origin}${qaArticle.image}`,
+        imageWidth: 1200,
+        imageHeight: 675,
+      }, canonicalUrl, url.searchParams.has("share") ? `${canonicalUrl}?share=qa-card-v2` : canonicalUrl);
+    }
+
 
     if (
       /^\/(?:live-online-classes|share\/live-online-classes-card-v3)\/?$/.test(url.pathname) &&

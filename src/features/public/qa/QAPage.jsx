@@ -29,7 +29,7 @@ export default function QAPage() {
 
 function QAShare({ article }) {
   const [copyStatus, setCopyStatus] = useState("");
-  const url = `https://www.sanhita360.com/qa/${article.slug}`;
+  const url = `https://www.sanhita360.com/qa/${article.slug}?share=qa-card-v2`;
   const message = `${article.title} — Sanhita360`;
   const copyLink = async () => {
     try { await navigator.clipboard.writeText(url); setCopyStatus("Link copied"); }

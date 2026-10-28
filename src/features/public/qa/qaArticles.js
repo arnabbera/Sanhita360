@@ -36,7 +36,7 @@ export const QA_ARTICLES = [
       "to": "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home"
     },
     "category": "Property Documents",
-    "image": "/images/qa/check-property-documents-before-buying-flat-kolkata.svg"
+    "image": "/images/qa/check-property-documents-before-buying-flat-kolkata.jpg"
   },
   {
     "slug": "does-mutation-prove-ownership",
@@ -75,7 +75,7 @@ export const QA_ARTICLES = [
       "to": "/services/property-registration"
     },
     "category": "Property Ownership",
-    "image": "/images/qa/does-mutation-prove-ownership.svg"
+    "image": "/images/qa/does-mutation-prove-ownership.jpg"
   },
   {
     "slug": "ipc-vs-bns-comparison-law-students",
@@ -118,7 +118,7 @@ export const QA_ARTICLES = [
       "to": "/courses/criminal-law-i-transitioning-from-ipc-to-bns"
     },
     "category": "Criminal Law",
-    "image": "/images/qa/ipc-vs-bns-comparison-law-students.svg"
+    "image": "/images/qa/ipc-vs-bns-comparison-law-students.jpg"
   },
   {
     "slug": "cpc-limitation-periods-explained",
@@ -153,7 +153,7 @@ export const QA_ARTICLES = [
       "to": "/courses/code-of-civil-procedure-and-limitation"
     },
     "category": "Civil Procedure",
-    "image": "/images/qa/cpc-limitation-periods-explained.svg"
+    "image": "/images/qa/cpc-limitation-periods-explained.jpg"
   },
   {
     "slug": "online-seller-refuses-refund",
@@ -196,7 +196,7 @@ export const QA_ARTICLES = [
       "to": "/qa/evidence-before-consumer-complaint"
     },
     "category": "Consumer Rights",
-    "image": "/images/qa/online-seller-refuses-refund.svg"
+    "image": "/images/qa/online-seller-refuses-refund.jpg"
   },
   {
     "slug": "consumer-complaint-without-lawyer",
@@ -239,7 +239,7 @@ export const QA_ARTICLES = [
       "to": "/qa/evidence-before-consumer-complaint"
     },
     "category": "Consumer Rights",
-    "image": "/images/qa/consumer-complaint-without-lawyer.svg"
+    "image": "/images/qa/consumer-complaint-without-lawyer.jpg"
   },
   {
     "slug": "evidence-before-consumer-complaint",
