@@ -278,7 +278,7 @@ export const QA_ARTICLES = [
       "to": "/qa/consumer-complaint-without-lawyer"
     },
     "category": "Consumer Rights",
-    "image": "/images/qa/evidence-before-consumer-complaint.svg"
+    "image": "/images/qa/consumer-evidence-v2.jpg"
   },
   {
     "slug": "homebuyer-complaint-delayed-possession",
