@@ -1,3 +1,4 @@
+import QAPage from "../features/public/qa/QAPage";
 import PropertyTitleVerificationPage from "../features/public/legal/pages/PropertyTitleVerificationPage";
 import WestBengalTenantEvictionPage from "../features/public/legal/pages/WestBengalTenantEvictionPage";
 import Section175BnssPage from "../features/public/legal/pages/Section175BnssPage";
@@ -164,6 +165,8 @@ export default function AppRouter() {
         element={<AboutPage />}
       />
 
+      <Route path="/qa" element={<QAPage />} />
+      <Route path="/qa/:slug" element={<QAPage />} />
       <Route path="/about/founder" element={<FounderPage />} />
 
       <Route path="/recognition" element={<RecognitionPage />} />

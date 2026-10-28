@@ -1,0 +1,55 @@
+export const QA_ARTICLES = [
+  {
+    slug: "check-property-documents-before-buying-flat-kolkata",
+    title: "How to check property documents before buying a flat in Kolkata",
+    answer: "Have an independent property-law advocate examine the ownership chain, seller’s authority, mortgages, possession and building approvals before you pay a substantial advance. No single deed, search result or bank sanction guarantees clear title.",
+    sections: [
+      { heading: "Which documents should I collect?", text: "Ask for the current deed and earlier chain deeds, property schedule, land and municipal records, tax receipts, sanctioned plan and applicable completion or occupancy approvals. For a developer sale, examine the landowner–developer agreement, authority to convey, allocation of the flat and undivided land share, and applicable WBRERA disclosures." },
+      { heading: "How do I cross-check the seller’s papers?", text: "Compare originals with registration-office records and certified copies. The West Bengal registration system provides party-name, property-detail and legacy searches. Match deed numbers, parties, plot and khatian details, boundaries and area. Establish an adequate root of title; a commonly requested 30-year search is not a universal guarantee." },
+      { heading: "How can I find hidden mortgages?", text: "Investigate missing originals, registration records, CERSAI security-interest records, possession notices and relevant court or recovery proceedings. With the owner’s authorisation, verify any lender’s dues and release requirements through its official channels. Clean searches can miss unrecorded or incorrectly identified interests. Arrange mortgage discharge and completion with professional assistance." },
+      { heading: "What should I check at the property?", text: "Inspect occupation, access, boundaries and deviations from the plan. Investigate tenants, co-owner or heir claims, prior agreements and pending disputes. Mutation and tax receipts are supporting records, not conclusive proof of title. Obtain a written title opinion and resolve red flags before releasing substantial funds." },
+    ],
+    sources: [{ label: "West Bengal Registration: search and inspection guidance", url: "https://wbregistration.gov.in/" }, { label: "West Bengal Housing Department: WBRERA buyer information", url: "https://housing.wb.gov.in/wbrera-scheme" }],
+    related: { label: "Read the full property-title verification guide", to: "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home" },
+  },
+  {
+    slug: "does-mutation-prove-ownership",
+    title: "Does mutation prove ownership?",
+    answer: "No. Mutation updates revenue or municipal records, principally for fiscal administration. It does not itself create or transfer ownership, and a mutation entry cannot cure a defective title.",
+    sections: [
+      { heading: "Why is mutation still useful?", text: "It helps maintain the relevant authority’s records after a transfer or succession and supports tax administration. Depending on the proceeding and other evidence, revenue entries can be relevant to possession. That is different from establishing legal ownership." },
+      { heading: "What establishes ownership?", text: "Examine the legally valid source of title and its chain: for example, a conveyance executed by an entitled transferor, inheritance, a valid gift or a binding court decree. A registered document must still be assessed for the transferor’s rights, authenticity and legal effect. Paying tax or obtaining a loan does not replace this inquiry." },
+      { heading: "What if the seller’s name is missing from mutation records?", text: "Ask for an explanation and the supporting transfer or succession documents. A mismatch is a reason to investigate, not an automatic conclusion that the seller has no title. Conversely, a matching name is not enough to approve the purchase." },
+      { heading: "Can a mutation order resolve a title dispute?", text: "Mutation proceedings are generally summary. Serious ownership disputes require adjudication by the competent forum. Obtain advice promptly on the applicable objection, appeal or civil remedy; deadlines and the appropriate route depend on the authority and facts." },
+    ],
+    sources: [{ label: "Supreme Court, 2024 INSC 875: revenue entries and title", url: "https://www.api.sci.gov.in/supremecourt/2020/1481/1481_2020_6_1501_57308_Judgement_19-Nov-2024.pdf" }, { label: "Supreme Court judgment, 19 December 2025: mutation is fiscal", url: "https://api.sci.gov.in/supremecourt/2024/41857/41857_2024_14_1502_67116_Judgement_19-Dec-2025.pdf" }],
+    related: { label: "Explore property registration and mutation support", to: "/services/property-registration" },
+  },
+  {
+    slug: "ipc-vs-bns-comparison-law-students",
+    title: "IPC vs BNS comparison for law students",
+    answer: "The Bharatiya Nyaya Sanhita, 2023 (BNS) replaced the Indian Penal Code, 1860 (IPC) as India’s general substantive criminal statute, with commencement from 1 July 2024 subject to the notified exception. It is more than a change in section numbers: definitions, offence structure and punishments must be compared.",
+    sections: [
+      { heading: "Which law applies to an older incident?", text: "Do not select the law only from the FIR or trial date. Examine when the alleged conduct occurred, the repeal-and-savings provisions and Article 20(1) of the Constitution. Earlier liabilities and proceedings can remain governed by the IPC. Continuing or multiple acts need careful analysis." },
+      { heading: "How should I compare sections?", text: "Use the official NCRB correspondence table, then read both provisions in full. Useful study starting points include IPC 302 and BNS 103(1) for punishment for murder; IPC 378/379 and BNS 303 for theft; IPC 420 and BNS 318(4) for cheating inducing delivery of property; and IPC 499/500 and BNS 356 for defamation. These are correspondences, not assurances of identical wording or legal effect." },
+      { heading: "What changes deserve attention?", text: "Study community service as a listed punishment, reorganised offences, and provisions addressing organised crime, petty organised crime and terrorist acts. Compare ingredients, exceptions and sentencing separately. Do not assume every IPC offence has a one-to-one BNS equivalent or that an older judgment automatically resolves changed wording." },
+      { heading: "Is BNS the same as BNSS?", text: "No. BNS principally addresses offences and punishments; BNSS replaces the CrPC procedural framework, while BSA replaces the Evidence Act framework. Keep separate comparison notes. The original commencement notification excluded BNS section 106(2); check subsequent notifications before advising on its current commencement status." },
+      { heading: "A practical revision method", text: "For each topic record the IPC provision, BNS provision, ingredients, mental element, exceptions, punishment and relevant cases. Mark whether the text is retained, changed, merged, new or omitted. Always verify the current bare Act and commencement position." },
+    ],
+    sources: [{ label: "NCRB official IPC–BNS correspondence table", url: "https://www.ncrb.mha.gov.in/uploads/SankalanPortal/SectionTableBNS.html" }, { label: "BPRD: BNS text and commencement note", url: "https://bprd.nic.in/uploads/pdf/BNS_English_30-04-2024.pdf" }],
+    related: { label: "Explore Criminal Law I: IPC to BNS", to: "/courses/criminal-law-i-transitioning-from-ipc-to-bns" },
+  },
+  {
+    slug: "cpc-limitation-periods-explained",
+    title: "CPC limitation periods explained",
+    answer: "Civil limitation is governed mainly by the Limitation Act, 1963 and applicable special laws, alongside the CPC. There is no single deadline for every civil case.",
+    sections: [
+      { heading: "Common examples", text: "Specific performance: Article 54 generally allows three years from the fixed performance date or, if none, notice of refusal. Declaration: Article 58, three years from when the right to sue first accrues. Cancellation: Article 59, three years from knowledge of the relevant facts. Title-based possession: Article 65, twelve years from when the defendant’s possession becomes adverse." },
+      { heading: "What about appeals?", text: "Article 116 generally provides 90 days for a CPC appeal to a High Court and 30 days to another court. Article 117 provides 30 days for an appeal from a High Court decree or order to the same court. Check special enactments and applicable rules." },
+      { heading: "Can delay be excused?", text: "Section 5 concerns specified appeals and applications, excludes Order XXI applications, and does not generally extend suits. Other statutory exclusions or extensions depend on their conditions." },
+      { heading: "How should I calculate a deadline?", text: "Identify the exact remedy, applicable provision and trigger date. Assess court holidays, copy-time exclusions and any special-law rules with an advocate. Do not assume a legal notice restarts limitation. These examples are not a filing-date calculator." },
+    ],
+    sources: [{ label: "India Code: Limitation Act, 1963, sections and Schedule", url: "https://www.indiacode.nic.in/bitstream/123456789/1565/5/A1963-36.pdf" }],
+    related: { label: "Explore CPC and Limitation", to: "/courses/code-of-civil-procedure-and-limitation" },
+  },
+];

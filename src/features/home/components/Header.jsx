@@ -1,3 +1,4 @@
+import { QA_ARTICLES } from "../../public/qa/qaArticles";
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
@@ -8,6 +9,7 @@ const menuItems = [
   { to: "/", label: "Home" },
   { to: "/law-courses", label: "Legal Studies" },
   { id: "resources", label: "Free Resources", links: [
+    { id: "qa", label: "Q&A", links: QA_ARTICLES.map((article) => ({ to: `/qa/${article.slug}`, label: article.title })) },
     { to: "/#legal-article", label: "Legal Article" },
     { to: "/#legal-remedies", label: "Legal Remedies" },
     { to: "/#latest-videos", label: "Learning Videos" },
