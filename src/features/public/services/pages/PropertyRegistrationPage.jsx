@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaCheckCircle, FaFileAlt } from "react-icons/fa";
 import Header from "../../../home/components/Header";
@@ -15,6 +16,12 @@ const steps = [
 ];
 
 export default function PropertyRegistrationPage() {
+  const [copyStatus, setCopyStatus] = useState("");
+  const shareUrl = "https://www.sanhita360.com/services/property-registration";
+  const copyLink = async () => {
+    try { await navigator.clipboard.writeText(shareUrl); setCopyStatus("Link copied"); }
+    catch { setCopyStatus("Please copy the link below"); }
+  };
   const contact = `https://wa.me/919830015487?text=${encodeURIComponent("Hello Sanhita360, I need support with property searching, an Agreement for Sale, registration or mutation. The property is located in: ")}`;
   return <>
     <SEO title="Property Search, Sale Agreement & Registration Support in Kolkata" description={description} canonical="/services/property-registration" image="/property-document-support-sanhita360.jpg" />
@@ -38,6 +45,25 @@ export default function PropertyRegistrationPage() {
         <div className="ns-service-cta"><h2>Planning a Property Purchase?</h2><p>Tell us where the property is located and whether you need searching, agreement, registration or mutation support.</p><a href={contact} target="_blank" rel="noopener noreferrer">Discuss Your Property Requirements <FaArrowRight /></a></div>
         <div className="ns-service-note"><strong>Before You Proceed</strong><p>Checks depend on the records and searches available. Registration does not by itself guarantee clear title, and mutation is not proof of ownership. Government charges and professional fees depend on the transaction; no approval or completion timeline is guaranteed.</p></div>
       </aside></div></section>
+      <section className="ns-service-wrap ns-property-share" aria-labelledby="property-share-heading">
+        <h2 id="property-share-heading">Share this page</h2>
+        <p>Help someone planning a property purchase find document and registration support.</p>
+        <div className="ns-property-share-actions">
+          <a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl)} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">Facebook</a>
+          <a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(title + " — Sanhita360") + "&url=" + encodeURIComponent(shareUrl)} target="_blank" rel="noopener noreferrer" aria-label="Share on X">X</a>
+          <button type="button" onClick={copyLink}>Copy Link</button>
+        </div>
+        <p role="status" aria-live="polite">{copyStatus}</p>
+        {copyStatus === "Please copy the link below" && <input aria-label="Page link to copy" readOnly value={shareUrl} onFocus={(event) => event.target.select()} style={{width:"100%"}} />}
+      </section>
+      <style>{`
+        .ns-property-share{padding:28px;margin-bottom:40px;border:1px solid #e2e8f0;border-radius:16px;background:#fff}
+        .ns-property-share h2{margin:0 0 10px;color:#0f172a}.ns-property-share p{color:#64748b;line-height:1.6}
+        .ns-property-share-actions{display:flex;flex-wrap:wrap;gap:12px}
+        .ns-property-share-actions a,.ns-property-share-actions button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:11px 18px;border:0;border-radius:9px;background:#2563eb;color:#fff;text-decoration:none;font:inherit;font-weight:700;cursor:pointer}
+        .ns-property-share-actions a:nth-child(2){background:#17202b}.ns-property-share-actions button{background:#334155}
+        .ns-property-share-actions a:focus-visible,.ns-property-share-actions button:focus-visible{outline:3px solid #d9a243;outline-offset:3px}
+      `}</style>
     </main><Footer /><Styles />
   </>;
 }
