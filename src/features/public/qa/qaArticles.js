@@ -321,6 +321,6 @@ export const QA_ARTICLES = [
       "to": "/qa/check-property-documents-before-buying-flat-kolkata"
     },
     "category": "Homebuyer Rights",
-    "image": "/images/qa/homebuyer-complaint-delayed-possession.svg"
+    "image": "/images/qa/homebuyer-delayed-possession-v2.jpg"
   }
 ];
