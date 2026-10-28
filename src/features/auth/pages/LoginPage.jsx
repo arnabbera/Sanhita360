@@ -169,7 +169,7 @@ export default function LoginPage() {
   };
 
   const googleButton = (
-    <button type="button" onClick={handleGoogleLogin} disabled={isLoading} className="student-login-google" aria-describedby={isCourseLogin ? "student-login-free-access" : undefined}>
+    <button type="button" onClick={handleGoogleLogin} disabled={isLoading} className="student-login-google">
       <FaGoogle />
       {isLoading ? "Signing in..." : "Continue with Google"}
     </button>
@@ -186,6 +186,8 @@ export default function LoginPage() {
           {!isCriminalTrial && <p className="student-login-eyebrow">Sanhita360</p>}
 
           <h1>{isCriminalTrial ? "Start Criminal Law I free" : isSignUp ? "Sign Up" : isCourseLogin ? "Log In" : "Student Login"}</h1>
+
+        {isCourseLogin && <p id="student-login-free-access" className="student-login-free-access">Get free limited access</p>}
 
           {!isCriminalTrial && <p>
             {isCriminalTrial ? "Get the complete introductory lesson and a five-question practice test with explanations. No payment or phone number needed." : isSignUp
@@ -226,7 +228,6 @@ export default function LoginPage() {
 
         {isSignUp && !isCriminalTrial && <div className="student-signup-divider">OR</div>}
         {googleButton}
-        {isCourseLogin && <p id="student-login-free-access" className="student-login-free-access">Get free limited access</p>}
 
         {!isSignUp && <div className="student-login-email">
           <button type="button" className="student-login-email-toggle" onClick={() => setEmailOpen((open) => !open)}>
