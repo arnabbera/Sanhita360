@@ -169,7 +169,7 @@ export default function LoginPage() {
   };
 
   const googleButton = (
-    <button type="button" onClick={handleGoogleLogin} disabled={isLoading} className="student-login-google">
+    <button type="button" onClick={handleGoogleLogin} disabled={isLoading} className="student-login-google" aria-describedby={isCourseLogin ? "student-login-free-access" : undefined}>
       <FaGoogle />
       {isLoading ? "Signing in..." : "Continue with Google"}
     </button>
@@ -226,6 +226,7 @@ export default function LoginPage() {
 
         {isSignUp && !isCriminalTrial && <div className="student-signup-divider">OR</div>}
         {googleButton}
+        {isCourseLogin && <p id="student-login-free-access" className="student-login-free-access">Get free limited access</p>}
 
         {!isSignUp && <div className="student-login-email">
           <button type="button" className="student-login-email-toggle" onClick={() => setEmailOpen((open) => !open)}>
@@ -392,6 +393,8 @@ export default function LoginPage() {
           font-family: Arial, sans-serif;
           font-size: 14px;
         }
+
+        .student-login-free-access { margin: 8px 0 0; text-align: center; font-size: 13px; line-height: 1.5; color: #64748b; }
 
         .student-login-google {
           width: 100%;
