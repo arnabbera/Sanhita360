@@ -52,4 +52,164 @@ export const QA_ARTICLES = [
     sources: [{ label: "India Code: Limitation Act, 1963, sections and Schedule", url: "https://www.indiacode.nic.in/bitstream/123456789/1565/5/A1963-36.pdf" }],
     related: { label: "Explore CPC and Limitation", to: "/courses/code-of-civil-procedure-and-limitation" },
   },
+  {
+  "slug": "online-seller-refuses-refund",
+  "title": "What can I do if an online seller refuses a refund?",
+  "answer": "First complain in writing to the seller and the platform, preserve your evidence and ask for the specific remedy you are entitled to. If unresolved, consider the National Consumer Helpline and a complaint before the appropriate Consumer Commission. A refund is not automatic in every cancellation or change-of-mind case.",
+  "sections": [
+    {
+      "heading": "Explain why a refund is due",
+      "text": "Distinguish a defective, wrong, counterfeit, misdescribed or undelivered product from a purchase you simply no longer want. Save the listing and the return policy applicable when you ordered. A seller’s policy does not by itself defeat statutory consumer rights, but the facts and applicable rules determine the remedy."
+    },
+    {
+      "heading": "Escalate through the seller and platform",
+      "text": "Send the order number, payment proof, photographs and a short chronology through the official complaint channel. State whether you seek a refund, replacement or repair. Keep the ticket number and written response. Use the designated grievance officer if ordinary support does not resolve the issue."
+    },
+    {
+      "heading": "What if the complaint remains unresolved?",
+      "text": "Lodge a grievance with the National Consumer Helpline, retaining its acknowledgement. This is a pre-litigation route, not a Consumer Commission judgment. Where appropriate, file a formal consumer complaint through the current e-Jagriti system or the competent Commission. Check jurisdiction, limitation and filing requirements rather than waiting indefinitely for support replies."
+    },
+    {
+      "heading": "Protect your payment and account",
+      "text": "Contact your bank or payment provider promptly about any available dispute process; deadlines and eligibility vary. Do not pay a supposed refund fee or disclose an OTP, PIN or password. Where there is suspected fraud, consider appropriate fraud reporting as well. No escalation guarantees a refund."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Department of Consumer Affairs: consumer legislation and e-commerce rules",
+      "url": "https://consumeraffairs.gov.in/pages/consumer-protection-acts"
+    },
+    {
+      "label": "National Consumer Helpline",
+      "url": "https://consumerhelpline.gov.in/"
+    },
+    {
+      "label": "CCPA: individual grievances and e-Jagriti filing",
+      "url": "https://ccpa.doca.gov.in/"
+    }
+  ],
+  "related": {
+    "label": "What evidence should I keep?",
+    "to": "/qa/evidence-before-consumer-complaint"
+  }
+},
+  {
+  "slug": "consumer-complaint-without-lawyer",
+  "title": "Can I file a consumer complaint without a lawyer?",
+  "answer": "Yes. A consumer can file and present their own complaint before a Consumer Commission. Hiring an advocate is not compulsory, although professional advice can help with complex facts, jurisdiction, limitation or substantial claims.",
+  "sections": [
+    {
+      "heading": "What should the complaint contain?",
+      "text": "Identify the complainant and the correct opposite parties, give a dated account of the transaction and problem, explain the alleged defect, deficiency or unfair practice, and specify the relief sought. Attach supporting records and the required verification or affidavit, following the current filing checklist."
+    },
+    {
+      "heading": "Where do I file?",
+      "text": "Use the competent District, State or National Consumer Commission. The correct forum depends on statutory jurisdiction rules, including the consideration paid, territory and the nature of the complaint. Do not assume that the compensation demanded alone decides the forum. The official e-Jagriti system supports online consumer-case filing; offline requirements should be checked with the relevant registry."
+    },
+    {
+      "heading": "What is my responsibility if I appear myself?",
+      "text": "Track registration and scrutiny objections, comply with service directions, attend hearings and submit evidence and replies on time. Keep an indexed set of documents. A complaint lodged with a company or the National Consumer Helpline is not the same as a case filed before a Commission."
+    },
+    {
+      "heading": "Check the deadline before filing",
+      "text": "Section 69 ordinarily requires filing within two years from the cause of action. Delayed filing needs sufficient cause and a reasoned condonation order; it is not automatic. The starting date can be disputed. Obtain advice promptly rather than assuming ongoing correspondence extends time."
+    }
+  ],
+  "sources": [
+    {
+      "label": "National Consumer Helpline: Consumer Protection Act questions",
+      "url": "https://consumerhelpline.gov.in/public/knowledgebasedetails/Consumer%20Protection%20Act%202019"
+    },
+    {
+      "label": "Department of Consumer Affairs: consumer legislation",
+      "url": "https://consumeraffairs.gov.in/pages/consumer-protection-acts"
+    },
+    {
+      "label": "CCPA: e-Jagriti consumer-case filing information",
+      "url": "https://ccpa.doca.gov.in/"
+    }
+  ],
+  "related": {
+    "label": "Prepare your consumer complaint evidence",
+    "to": "/qa/evidence-before-consumer-complaint"
+  }
+},
+  {
+  "slug": "evidence-before-consumer-complaint",
+  "title": "What evidence should I keep before filing a consumer complaint?",
+  "answer": "Keep records proving what was promised, what you paid, what went wrong, how you complained and the loss or remedy claimed. Preserve originals and organise readable copies in date order.",
+  "sections": [
+    {
+      "heading": "Purchase and promises",
+      "text": "Retain the invoice, order confirmation, receipt, transaction reference, agreement, warranty and the seller’s legal name and contact details. Save the product listing, advertisement and return policy as they appeared at purchase, with the page address and date where possible."
+    },
+    {
+      "heading": "The defect or deficient service",
+      "text": "Keep dated photographs or videos, delivery records, packaging, serial numbers, installation reports, repair records and relevant technical or service reports. An unboxing video may help where available, but it is not a universal prerequisite for making a complaint. Do not discard the disputed item without advice."
+    },
+    {
+      "heading": "Complaint trail and losses",
+      "text": "Save emails, chats, complaint tickets, notices, delivery acknowledgements and responses from the seller, platform or service provider. Keep evidence of reasonable expenses and other losses claimed, and explain how they relate to the problem. For housing, keep allotment documents, the sale agreement, payment receipts and promised possession dates."
+    },
+    {
+      "heading": "Prepare a reliable filing set",
+      "text": "Create a short chronology and a numbered index linking each allegation to its document. Keep electronic originals, metadata and backups; do not alter evidence. Submit translations, affidavits or electronic-record certification where required by the applicable procedure or directions. Keep originals available and redact irrelevant sensitive information from copies shared publicly."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Department of Consumer Affairs: official Consumer Protection Act FAQs",
+      "url": "https://consumeraffairs.nic.in/sites/default/files/file-uploads/latestnews/FAQ.pdf"
+    },
+    {
+      "label": "Consumer Commission grievance-redressal guidance",
+      "url": "https://grahak.maharashtra.gov.in/en/grievance-redressal-2/"
+    }
+  ],
+  "related": {
+    "label": "Can I file without a lawyer?",
+    "to": "/qa/consumer-complaint-without-lawyer"
+  }
+},
+  {
+  "slug": "homebuyer-complaint-delayed-possession",
+  "title": "Can a homebuyer complain about delayed possession?",
+  "answer": "Yes, where the facts establish an actionable delay or deficiency. A qualifying homebuyer may seek relief through the appropriate Consumer Commission or under RERA, subject to the applicable law, agreement, project status and available remedies.",
+  "sections": [
+    {
+      "heading": "Start with the promised possession date",
+      "text": "Review the allotment, registered Agreement for Sale, payment schedule, contractual grace period, project disclosures and any lawful extension or order. Compile what was promised, payments made, the actual construction status and the developer’s explanations. A revised date announced by the developer does not by itself settle your rights."
+    },
+    {
+      "heading": "What relief can RERA provide?",
+      "text": "Under Section 18, where its conditions are met, an allottee withdrawing because of the promoter’s failure to deliver may seek repayment with prescribed interest and compensation through the appropriate process. An allottee continuing with the project may seek prescribed monthly delay interest until possession. Applicability, calculation and the competent authority or adjudicating officer require case-specific assessment."
+    },
+    {
+      "heading": "Can I use a Consumer Commission?",
+      "text": "A consumer complaint may be available for deficiency or unfair practices, including appropriate refund, interest or compensation claims. Consumer status, jurisdiction, limitation, the relief sought and existing proceedings must be examined. RERA does not automatically exclude consumer remedies, but parallel claims must be coordinated and the same loss cannot be recovered twice."
+    },
+    {
+      "heading": "What should a West Bengal buyer do?",
+      "text": "Check the project’s WBRERA disclosures and orders, preserve receipts and correspondence, and make a clear written demand. Seek advice on the suitable forum before accepting a settlement, signing a waiver or filing multiple proceedings. Do not assume every delay attracts a fixed interest rate or a guaranteed refund."
+    }
+  ],
+  "sources": [
+    {
+      "label": "West Bengal Housing Department: WBRERA buyer disclosures and complaints",
+      "url": "https://housing.wb.gov.in/wbrera-scheme"
+    },
+    {
+      "label": "Ministry of Housing and Urban Affairs: RERA FAQs",
+      "url": "https://mohua.gov.in/upload/uploadfiles/files/FAQs-on-RERA%281%29.pdf"
+    },
+    {
+      "label": "Kerala RERA: promoter obligations and delay-interest guidance",
+      "url": "https://rera.kerala.gov.in/guidelines-to-promoters"
+    }
+  ],
+  "related": {
+    "label": "Review property documents before buying",
+    "to": "/qa/check-property-documents-before-buying-flat-kolkata"
+  }
+},
 ];
