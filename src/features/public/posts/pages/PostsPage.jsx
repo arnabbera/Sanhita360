@@ -92,7 +92,7 @@ const getPostImage = (
 // =========================================================
 
 export default function PostsPage({ independenceOnly = false }) {
-  const pageTitle = independenceOnly ? "Indian Independence" : "Legal Posts & Articles";
+  const pageTitle = independenceOnly ? "Indian Independence: Stories of Freedom Fighters" : "Legal Posts & Articles";
   const pageDescription = independenceOnly
     ? "Explore the people, courage and stories of India’s independence movement through Sanhita360’s freedom-fighter articles."
     : "Explore legal awareness posts, constitutional topics, practical law explainers and important legal updates from Sanhita360.";
