@@ -12,6 +12,7 @@ const menuItems = [
     { to: "/#legal-article", label: "Legal Article" },
     { to: "/#legal-remedies", label: "Legal Remedies" },
     { to: "/#latest-videos", label: "Learning Videos" },
+    { to: "/indian-independence", label: "Indian Independence" },
   ] },
   { id: "services", label: "Legal Services", links: [
     { to: "/services/property-registration", label: "Property Registration" },
@@ -23,7 +24,6 @@ const menuItems = [
   { id: "about", label: "About", links: [
     { to: "/about", label: "Sanhita360" },
     { to: "/about/founder", label: "Founder" },
-    { to: "/indian-independence", label: "Indian Independence" },
   ] },
 ];
 
