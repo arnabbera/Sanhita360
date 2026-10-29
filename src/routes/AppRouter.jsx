@@ -1,3 +1,4 @@
+import LitigationPage from "../features/public/services/pages/LitigationPage";
 import QAPage from "../features/public/qa/QAPage";
 import PropertyTitleVerificationPage from "../features/public/legal/pages/PropertyTitleVerificationPage";
 import WestBengalTenantEvictionPage from "../features/public/legal/pages/WestBengalTenantEvictionPage";
@@ -266,6 +267,7 @@ export default function AppRouter() {
           PUBLIC LEGAL SERVICES
       ====================================================== */}
 
+      <Route path="/services/litigation" element={<LitigationPage />} />
       <Route path="/services/property-registration" element={<PropertyRegistrationPage />} />
       <Route
         path="/services/:serviceSlug"

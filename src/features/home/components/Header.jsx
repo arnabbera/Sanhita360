@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import { useAuth } from "../../../hooks/useAuth";
-import { LEGAL_SERVICES } from "../../public/services/data/legalServices";
 
 const menuItems = [
   { to: "/", label: "Home" },
@@ -16,10 +15,7 @@ const menuItems = [
   ] },
   { id: "services", label: "Legal Services", links: [
     { to: "/services/property-registration", label: "Property Registration" },
-    { id: "litigation", label: "Litigation", links: [
-      ...LEGAL_SERVICES.map((service) => ({ to: `/services/${service.slug}`, label: service.title })),
-      { to: "/#legal-consultation", label: "Contact & Consultation" },
-    ] },
+    { to: "/services/litigation", label: "Litigation" },
   ] },
   { id: "about", label: "About", links: [
     { to: "/about", label: "Sanhita360" },
