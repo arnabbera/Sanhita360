@@ -75,7 +75,7 @@ export const QA_ARTICLES = [
       "to": "/services/property-registration"
     },
     "category": "Property Ownership",
-    "image": "/images/qa/does-mutation-prove-ownership.jpg"
+    "image": "/images/qa/mutation-property-v2.jpg"
   },
   {
     "slug": "ipc-vs-bns-comparison-law-students",
