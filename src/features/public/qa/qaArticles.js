@@ -239,7 +239,7 @@ export const QA_ARTICLES = [
       "to": "/qa/evidence-before-consumer-complaint"
     },
     "category": "Consumer Rights",
-    "image": "/images/qa/consumer-complaint-without-lawyer.jpg"
+    "image": "/images/qa/consumer-without-lawyer-v2.jpg"
   },
   {
     "slug": "evidence-before-consumer-complaint",
