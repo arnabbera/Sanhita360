@@ -118,7 +118,7 @@ export const QA_ARTICLES = [
       "to": "/courses/criminal-law-i-transitioning-from-ipc-to-bns"
     },
     "category": "Criminal Law",
-    "image": "/images/qa/ipc-vs-bns-comparison-law-students.jpg"
+    "image": "/images/qa/ipc-vs-bns-v2.jpg"
   },
   {
     "slug": "cpc-limitation-periods-explained",
