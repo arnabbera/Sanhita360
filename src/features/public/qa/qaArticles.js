@@ -153,7 +153,7 @@ export const QA_ARTICLES = [
       "to": "/courses/code-of-civil-procedure-and-limitation"
     },
     "category": "Civil Procedure",
-    "image": "/images/qa/cpc-limitation-periods-explained.jpg"
+    "image": "/images/qa/cpc-timelines-v2.jpg"
   },
   {
     "slug": "online-seller-refuses-refund",
