@@ -1,5 +1,60 @@
 export const QA_ARTICLES = [
   {
+    "slug": "your-data-your-rules-dpdp-act",
+    "title": "Your Data, Your Rules: Why Every Citizen Needs to Know About the DPDP Act",
+    "answer": "Are you letting apps track your life, or are you ready to take back control? India’s Digital Personal Data Protection Act sets rules for how organisations use your digital personal data. You can limit app permissions today, but the Act’s main rights and complaint route are scheduled to start on 13 May 2027.",
+    "sections": [
+      {
+        "heading": "Can I use the DPDP Act today?",
+        "text": "As of 4 November 2026, the Data Protection Board of India has been legally established. Under the notified timetable, the main individual rights, company duties and ordinary complaint route start on 13 May 2027. Consent Manager registration is scheduled separately for 13 November 2026. The Board’s establishment does not mean ordinary DPDP complaints can already be filed."
+      },
+      {
+        "heading": "What are the main features?",
+        "text": "The Act covers digital personal data, including information collected offline and later digitised. An organisation deciding why and how to use it is a Data Fiduciary; the person the data is about is a Data Principal. When relying on consent, an organisation must clearly explain what data it needs and why, obtain a clear affirmative choice and make consent comparably easy to withdraw. The Act also permits specified legitimate uses without consent and provides exemptions. It requires reasonable security safeguards and prescribed breach notifications. For children, it generally requires verifiable parental consent and restricts tracking, behavioural monitoring and targeted advertising, subject to exceptions."
+      },
+      {
+        "heading": "What can I ask a company to do?",
+        "text": "Once the rights take effect, you can ask for a summary of your personal data and how it is used, and for information on sharing, subject to statutory limits. Where applicable, you can request correction, completion, updating or erasure. Data may still be retained if needed for the specified purpose or required by law. You can withdraw consent for future consent-based processing and nominate someone to exercise your rights if you die or become incapable. Turning off a phone permission limits future access; it does not erase data already held."
+      },
+      {
+        "heading": "Where do I complain? Can I file without a lawyer?",
+        "text": "Yes. Once the ordinary complaint route opens, the Act allows you to file as the affected individual and does not require a lawyer. First use the organisation’s grievance process, or the Consent Manager’s if your complaint concerns its obligations. Exhaust that opportunity before approaching the Data Protection Board of India through its official filing channel when available. Under Rule 14, the published response period must be reasonable and cannot exceed 90 days. Save your request, screenshots, dates, acknowledgement and replies. An eligible appeal against a Board order goes to TDSAT, normally within 60 days of receiving the order."
+      },
+      {
+        "heading": "What relief can I get?",
+        "text": "Through the organisation’s grievance process, you may obtain correction, erasure where retention is unnecessary, or an end to consent-based use where required. The Board can investigate qualifying complaints and penalise significant breaches. It can direct urgent mitigation on receiving a breach notification under the Act. Penalties go to the Consolidated Fund of India. The Act does not provide a Board award of personal compensation; a separate remedy may be available under other applicable law depending on the loss, facts and jurisdiction."
+      },
+      {
+        "heading": "What can I do right now?",
+        "text": "Review app permissions for location, contacts, camera and microphone. A navigation app may need your location while you use it; ask whether it needs access all the time. Disable optional tracking where possible and write to the company’s privacy or grievance team asking what it collects, why, whom it shares it with and what it can delete. For suspected financial cyber fraud, contact your bank or payment provider immediately, call 1930 and report it at cybercrime.gov.in. Do not wait for the DPDP complaint route to open."
+      }
+    ],
+    "sources": [
+      {
+        "label": "India Code: Digital Personal Data Protection Act, 2023",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/22037/2/a2023-22.pdf"
+      },
+      {
+        "label": "MeitY: Rules and official enforcement timeline (G.S.R. 843(E))",
+        "url": "https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa"
+      },
+      {
+        "label": "MeitY: Digital Personal Data Protection Rules, 2025",
+        "url": "https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf"
+      },
+      {
+        "label": "National Cyber Crime Reporting Portal",
+        "url": "https://cybercrime.gov.in/"
+      }
+    ],
+    "related": {
+      "label": "Explore cyber law services",
+      "to": "/services/cyber-law"
+    },
+    "category": "Data Privacy",
+    "image": "/images/qa/your-data-your-rules-dpdp-act.jpg"
+  },
+  {
     "slug": "check-property-documents-before-buying-flat-kolkata",
     "title": "How to check property documents before buying a flat in Kolkata",
     "answer": "Have an independent property-law advocate examine the ownership chain, seller’s authority, mortgages, possession and building approvals before you pay a substantial advance. No single deed, search result or bank sanction guarantees clear title.",
