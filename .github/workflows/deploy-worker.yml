@@ -34,6 +34,23 @@ jobs:
       VITE_FIREBASE_MEASUREMENT_ID: ${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
 
     steps:
+      - name: Check Cloudflare deployment credentials
+        shell: bash
+        run: |
+          missing=0
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::GitHub Actions secret CLOUDFLARE_API_TOKEN is missing."
+            missing=1
+          fi
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::GitHub Actions secret CLOUDFLARE_ACCOUNT_ID is missing."
+            missing=1
+          fi
+          if [ "$missing" -ne 0 ]; then
+            echo "Add both secrets in the repository Settings > Secrets and variables > Actions, then rerun this workflow."
+            exit 1
+          fi
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
