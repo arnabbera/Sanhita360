@@ -377,7 +377,7 @@ export const QA_ARTICLES = [
     },
     "category": "Homebuyer Rights",
     "image": "/images/qa/homebuyer-delayed-possession-v2.jpg"
-  }
+  },
   {
     "slug": "private-defence-causing-death-bns-section-38",
     "title": "When Can the Right of Private Defence Extend to Causing Death? Section 38 BNS Explained",
