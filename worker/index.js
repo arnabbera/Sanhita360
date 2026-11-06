@@ -1762,6 +1762,13 @@ export default {
             description: "Study Criminal Law I for LL.B with 26 chapters comparing IPC 1860 and BNS 2023, plus section-wise notes, offence elements, illustrations and exam-focused revision.",
           };
         }
+        if (slug === "constitutional-law") {
+          metadata = {
+            ...metadata,
+            title: "Indian Constitutional Law Notes & Cases | LL.B Course | Sanhita360",
+            description: "Prepare for LL.B Constitutional Law with clear notes on fundamental rights, Article 14, Article 19, Article 21, DPSP, writs, federalism and landmark constitutional cases.",
+          };
+        }
         if (slug === "law-of-torts") {
           metadata = {
             ...metadata,
