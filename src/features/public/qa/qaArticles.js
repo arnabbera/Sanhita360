@@ -459,6 +459,6 @@ export const QA_ARTICLES = [
       "to": "/qa/ipc-vs-bns-comparison-law-students"
     },
     "category": "Criminal Law · BNS",
-    "image": "/images/qa/ipc-vs-bns-comparison-law-students.jpg"
+    "image": "/images/qa/private-defence-section-37-bns.png"
   },
 ];
