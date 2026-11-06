@@ -77,7 +77,7 @@ const courses = [
     title: "Constitutional Law",
     slug: "constitutional-law",
     description:
-      "Learn constitutional principles, fundamental rights, directive principles, constitutional remedies and landmark judgments.",
+      "Study the Indian Constitution through structured LL.B learning on fundamental rights, directive principles, constitutional remedies, Union and State government, federalism, constitutional bodies and landmark Supreme Court judgments.",
     duration: "Self-paced",
     courseType: "subject-course",
     accessType: "free-learning",
@@ -87,15 +87,18 @@ const courses = [
     status: "published",
     order: 3,
     seo: {
-      title: "Constitutional Law Course and Notes | Sanhita360",
+      title: "Indian Constitutional Law Notes & Cases | LL.B Course",
       description:
-        "Study Constitutional Law with notes, videos, quizzes, important cases and certification.",
-      focusKeyword: "constitutional law notes",
+        "Prepare for LL.B Constitutional Law with clear notes on fundamental rights, Article 14, Article 19, Article 21, DPSP, writs, federalism and landmark constitutional cases.",
+      focusKeyword: "Indian constitutional law notes for LLB",
       secondaryKeywords: [
-        "Indian Constitution course",
-        "Article 21 notes",
-        "fundamental rights notes",
-        "constitutional law quiz",
+        "Indian Constitution notes for LL.B",
+        "fundamental rights Articles 12 to 35",
+        "Article 14 19 and 21 notes",
+        "Directive Principles of State Policy notes",
+        "constitutional writs and remedies",
+        "landmark Supreme Court constitutional cases",
+        "Indian federalism and separation of powers",
       ],
       schemaType: "Course",
       robots: {
