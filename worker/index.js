@@ -1622,6 +1622,21 @@ export default {
       }
     }
     const assetResponse = await env.ASSETS.fetch(request);
+    if (
+      /^\/?$/.test(url.pathname) &&
+      assetResponse.headers.get("content-type")?.includes("text/html")
+    ) {
+      return rewriteCourseSocialMetadata(
+        assetResponse,
+        {
+          title: "LL.B Courses, Law Notes & Study Materials in India | Sanhita360",
+          description: "Learn law with Sanhita360. Explore online LL.B courses, chapter-wise law notes, case references, study materials and mock tests for law students in India.",
+        },
+        "https://www.sanhita360.com/",
+        "https://www.sanhita360.com/",
+      );
+    }
+
     const qaSlug = /^\/qa\/([a-z0-9-]+)\/?$/.exec(url.pathname)?.[1];
     const qaArticle = qaSlug && QA_ARTICLES.find((article) => article.slug === qaSlug);
     if (qaArticle && assetResponse.headers.get("content-type")?.includes("text/html")) {
