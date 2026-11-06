@@ -40,14 +40,15 @@ export const criminalLawICourse = createCourseModel({
   updatedBy: "system",
   seo: {
     title:
-      "Criminal Law I: IPC to BNS Course | Sanhita360",
+      "IPC to BNS Notes & Criminal Law Course",
     description: criminalLawIOverview.seoDescription,
-    focusKeyword: "criminal law IPC to BNS course",
+    focusKeyword: "IPC to BNS notes",
     secondaryKeywords: [
-      "Bharatiya Nyaya Sanhita course",
-      "IPC criminal law notes",
-      "criminal law I LLB",
-      "IPC to BNS transition",
+      "criminal law notes for LLB",
+      "Bharatiya Nyaya Sanhita study material",
+      "IPC vs BNS comparison",
+      "BNS 2023 notes",
+      "Criminal Law I course",
     ],
     canonicalUrl:
       "/courses/criminal-law-i-transitioning-from-ipc-to-bns",
