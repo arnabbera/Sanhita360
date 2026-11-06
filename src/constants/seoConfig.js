@@ -77,16 +77,17 @@ export const SEO_CONFIG = Object.freeze({
 
 export const HOME_SEO = Object.freeze({
   title:
-    "LL.B Courses, Law Notes, Study Materials & Mock Tests",
+    "LL.B Courses, Law Notes & Study Materials in India",
 
   description:
-    "Study law with Sanhita360. Access chapter-wise LL.B courses, law notes, legal study materials, important legal topics, mock tests, case law resources and certification preparation.",
+    "Learn law with Sanhita360. Explore online LL.B courses, chapter-wise law notes, case references, study materials and mock tests for law students in India.",
 
   canonical:
     "/",
 
   keywords: [
-    "LLB course",
+    "LLB courses India",
+    "online LLB courses",
     "LLB study material",
     "law notes",
     "law study materials",
