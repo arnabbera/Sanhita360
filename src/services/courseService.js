@@ -1,5 +1,6 @@
 import { createCourseModel } from "../models/CourseModel";
 import courseRepository from "../repositories/CourseRepository";
+import { seededCourses } from "../database/seedCourses";
 import { generalPrinciplesOfContractCourse } from "../data/courses/generalPrinciplesOfContract";
 import { criminalLawICourse, criminalLawIChapters } from "../data/courses/criminalLawI";
 import { criminalLawIOverview } from "../data/courses/criminalLawI/overview";
