@@ -206,6 +206,8 @@ const courses = [
   },
 ];
 
+export const seededCourses = courses;
+
 export async function seedCourses() {
   const results = {
     created: 0,
