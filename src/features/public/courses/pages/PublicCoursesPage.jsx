@@ -297,8 +297,8 @@ export default function PublicCoursesPage() {
   return (
     <>
       <SEO
-        title="Online Law Courses & Study Materials"
-        description="Explore chapter-wise online law courses with free introductory lessons, study materials and mock tests. Earn a private Certificate of Completion after meeting course requirements."
+        title="Online Law Courses & LL.B Study Materials"
+        description="Explore online law courses for LL.B students in India, with chapter-wise lessons, law notes, case references and mock tests. Start with free introductory lessons."
         canonical="/law-courses"
         image="/certificate-courses-hero.jpg"
         keywords={[
