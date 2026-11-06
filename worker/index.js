@@ -1762,6 +1762,13 @@ export default {
             description: "Study Criminal Law I for LL.B with 26 chapters comparing IPC 1860 and BNS 2023, plus section-wise notes, offence elements, illustrations and exam-focused revision.",
           };
         }
+        if (slug === "law-of-torts") {
+          metadata = {
+            ...metadata,
+            title: "Law of Torts Notes & Cases | LL.B Course | Sanhita360",
+            description: "Study Law of Torts for LL.B with notes on negligence, nuisance, defamation, strict and absolute liability, damages, consumer law and motor accident claims.",
+          };
+        }
         const price = pricingResult.status === "fulfilled" ? pricingResult.value.amount : null;
         if (metadata) {
           return rewriteCourseSocialMetadata(
