@@ -8,7 +8,7 @@ export const criminalLawIOverview = {
     "Throughout the course, read the Indian Penal Code, 1860 alongside the Bharatiya Nyaya Sanhita, 2023. Chapter notes distinguish corresponding provisions, consolidation and reorganisation, changes in scope, and provisions without a direct BNS counterpart. Historical or repealed IPC provisions and state amendments are identified separately so that a comparison does not become an assumption that every IPC section has an equivalent BNS number.",
   ].join("\n\n"),
   seoDescription:
-    "Study Criminal Law I in 26 chapters: IPC foundations, major offences and attempts, with BNS comparisons, chapter notes, illustrations and revision materials.",
+    "Study Criminal Law I for LL.B with 26 chapters comparing IPC 1860 and BNS 2023, plus section-wise notes, offence elements, illustrations and exam-focused revision.",
   learningOutcomes: [
     "Explain the territorial and extra-territorial reach of criminal law and apply the Code’s general explanations.",
     "Analyse the act, mental element, liability, punishment and any applicable general or offence-specific exception in a problem.",
