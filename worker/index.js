@@ -1754,7 +1754,14 @@ export default {
         const [metadataResult, pricingResult] = await Promise.allSettled([
           loadCourseSocialMeta(env, slug), coursePricing(env),
         ]);
-        const metadata = metadataResult.status === "fulfilled" ? metadataResult.value : null;
+        let metadata = metadataResult.status === "fulfilled" ? metadataResult.value : null;
+        if (slug === "criminal-law-i-transitioning-from-ipc-to-bns") {
+          metadata = {
+            ...metadata,
+            title: "IPC to BNS Notes & Criminal Law Course | Sanhita360",
+            description: "Study Criminal Law I for LL.B with 26 chapters comparing IPC 1860 and BNS 2023, plus section-wise notes, offence elements, illustrations and exam-focused revision.",
+          };
+        }
         const price = pricingResult.status === "fulfilled" ? pricingResult.value.amount : null;
         if (metadata) {
           return rewriteCourseSocialMetadata(
