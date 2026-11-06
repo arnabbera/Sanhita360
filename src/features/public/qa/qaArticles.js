@@ -378,4 +378,87 @@ export const QA_ARTICLES = [
     "category": "Homebuyer Rights",
     "image": "/images/qa/homebuyer-delayed-possession-v2.jpg"
   }
+  {
+    "slug": "private-defence-causing-death-bns-section-38",
+    "title": "When Can the Right of Private Defence Extend to Causing Death? Section 38 BNS Explained",
+    "answer": "Section 38 of the Bharatiya Nyaya Sanhita, 2023 permits the right of private defence of the body to extend to causing the assailant’s death in seven narrowly defined situations. The right is subject to Section 37: it is defensive, must respond to a reasonable apprehension of danger, and cannot involve more harm than necessary. It is not a licence for revenge or retaliation.",
+    "sections": [
+      {
+        "heading": "What is the right of private defence?",
+        "text": "The right of private defence is a protective right recognised by criminal law. It allows a person to defend their own body or another person’s body, and property, against certain unlawful acts. Section 34 BNS provides that nothing is an offence when done in the exercise of the right of private defence. Section 35 identifies the right to defend the body and property; Sections 36 to 44 explain related rules and limits. The right is preventive, not punitive: it exists to avert danger, not to punish an attacker after the danger has passed."
+      },
+      {
+        "heading": "What restrictions apply under Section 37 BNS?",
+        "text": "Section 38 expressly operates subject to Section 37. Broadly, there is no right of private defence against an act of a public servant acting in good faith under colour of office, or an act done under such a public servant’s direction, where the act does not reasonably cause apprehension of death or grievous hurt. There is also no right where there is time to seek protection from public authorities. Most importantly, Section 37(2) says that private defence must never inflict more harm than is necessary for the purpose of defence. The statutory explanations also make the defender’s knowledge or reasonable belief about the public servant or official direction relevant. Therefore, it is inaccurate to say that every act by a public servant is automatically beyond private defence."
+      },
+      {
+        "heading": "Seven situations under Section 38 in which the right may extend to causing death",
+        "text": "Section 38 applies where the assault or act falls within one of the following descriptions. The circumstances must create the apprehension specified by the section; the mere naming of an offence is not enough."
+      },
+      {
+        "heading": "1. Assault creating reasonable apprehension of death — Section 38(a)",
+        "text": "If the assault is such that a person may reasonably apprehend that death will otherwise result, the right may extend to causing the assailant’s death. Example: an attacker aims and fires a loaded firearm at a person at close range. Whether the apprehension was reasonable depends on the weapon, manner of attack, distance, surrounding circumstances and immediacy of the threat."
+      },
+      {
+        "heading": "2. Assault creating reasonable apprehension of grievous hurt — Section 38(b)",
+        "text": "The right may also extend to causing death where the assault reasonably creates an apprehension that grievous hurt will otherwise be caused. Example: an attacker repeatedly strikes a person with a heavy sharp weapon in a manner likely to cause a serious injury. The court examines the actual circumstances; every scuffle, minor injury or use of a weapon does not automatically justify causing death."
+      },
+      {
+        "heading": "3. Assault with the intention of committing rape — Section 38(c)",
+        "text": "Where an assault is made with the intention of committing rape, the right of private defence of the body may extend to causing the assailant’s death. The provision is concerned with the intention accompanying the assault and the circumstances in which the defender is confronted. A person protecting the victim may also act in defence of that person, subject to the statutory requirements."
+      },
+      {
+        "heading": "4. Assault with the intention of gratifying unnatural lust — Section 38(d)",
+        "text": "Section 38(d) retains the statutory expression “gratifying unnatural lust”. Where an assault is made with that intention, the right may extend to causing death. The provision must be read in its statutory context and applied to the facts proved; it is not a general permission to use lethal force in response to every sexual insult or unwelcome approach."
+      },
+      {
+        "heading": "5. Assault with the intention of kidnapping or abducting — Section 38(e)",
+        "text": "An assault made with the intention of kidnapping or abducting a person is another listed situation. The right may extend to causing death where the facts bring the assault within this clause and the general limits of private defence are satisfied. A mere suspicion, argument or non-violent disagreement about a person’s movement is not by itself enough."
+      },
+      {
+        "heading": "6. Assault intended to wrongfully confine a person where public help cannot reasonably be obtained — Section 38(f)",
+        "text": "This clause applies to an assault intended to wrongfully confine a person, in circumstances that may reasonably cause the person to apprehend that they will be unable to have recourse to public authorities for release. The inability to obtain help is an essential part of the clause. Example: a person is forcibly confined in an isolated place and reasonably believes that they cannot contact or reach the authorities."
+      },
+      {
+        "heading": "7. Throwing or administering acid, or attempting to do so — Section 38(g)",
+        "text": "The right may extend to causing death where acid is thrown or administered, or an attempt is made to throw or administer acid, and the act may reasonably create an apprehension that grievous hurt will otherwise result. The clause covers an attempt as well as a completed act, but the required reasonable apprehension of grievous hurt must still be present."
+      },
+      {
+        "heading": "Does Section 38 mean that the defender must cause death?",
+        "text": "No. Section 38 says the right extends to the voluntary causing of death or of any other harm to the assailant. It permits lethal force in the listed circumstances; it does not require it. The response must remain within the limits of Section 37 and must be assessed in the context of the threat as it reasonably appeared at that time. If the situation does not fall within Section 38, Section 39 provides that the right of private defence of the body does not extend to voluntarily causing death, though it may extend to causing other harm subject to Section 37."
+      },
+      {
+        "heading": "When does the right begin and end?",
+        "text": "Section 40 BNS provides that the right of private defence of the body begins as soon as a reasonable apprehension of danger to the body arises from an attempt or threat to commit an offence, even if the offence has not yet been committed. It continues only for as long as that apprehension of danger continues. Once the threat has ended, the right does not justify chasing, attacking or punishing the person who had been the aggressor."
+      },
+      {
+        "heading": "Judicial principle: Darshan Singh v. State of Punjab",
+        "text": "In Darshan Singh v. State of Punjab, (2010) 2 SCC 333 (Criminal Appeal No. 1057 of 2002, decided on 15 January 2010), the Supreme Court explained the principles governing private defence under Sections 96 to 106 of the Indian Penal Code, including former Section 100. The Court recognised that a person facing an imminent danger is not expected to calculate the exact amount of defensive force with mathematical precision. The court must assess the weapon used, the manner and nature of the assault and the surrounding circumstances. At the same time, the force used must not be wholly disproportionate or substantially greater than necessary. The decision interpreted the IPC provision that preceded Section 38 BNS; it is an important interpretive authority, not a judgment delivered under the BNS itself."
+      },
+      {
+        "heading": "Conclusion",
+        "text": "Section 38 BNS recognises seven exceptional situations in which the right of private defence of the body may extend to causing the assailant’s death: apprehension of death, apprehension of grievous hurt, assault intended to commit rape, assault intended to gratify unnatural lust, assault intended to kidnap or abduct, certain assaults intended to wrongfully confine a person, and acid attacks or attempts that may cause grievous hurt. The right remains subject to Section 37 and ends when the reasonable apprehension of danger ends. The law balances the individual’s need for immediate protection with safeguards against excessive force."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Bureau of Police Research and Development: Bharatiya Nyaya Sanhita, 2023 (official text, Sections 34–40)",
+        "url": "https://bprd.nic.in/uploads/pdf/Final_BNS.pdf"
+      },
+      {
+        "label": "National Crime Records Bureau: Bharatiya Nyaya Sanhita, Chapter III – General Exceptions",
+        "url": "https://www.ncrb.mha.gov.in/uploads/SankalanPortal/ChaptersBNS.html"
+      },
+      {
+        "label": "Supreme Court of India: Darshan Singh v. State of Punjab, 2010 INSC 45",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/supremecourtreport/2010_v_1_piii.pdf"
+      }
+    ],
+    "related": {
+      "label": "Understand the transition from IPC to BNS",
+      "to": "/qa/ipc-vs-bns-comparison-law-students"
+    },
+    "category": "Criminal Law · BNS",
+    "image": "/images/qa/ipc-vs-bns-comparison-law-students.jpg"
+  },
 ];
