@@ -19,7 +19,7 @@ const bundledCourses = [
   humanRightsLawAndPracticeCourse,
   mediaLawCourse,
   bnssCourse,
-  ...seededCourses.filter((course) => course.slug === "law-of-torts"),
+  ...seededCourses.filter((course) => ["law-of-torts", "constitutional-law"].includes(course.slug)),
 ];
 
 // Published LL.B. course counts may outgrow older Firestore course records.
@@ -46,27 +46,23 @@ const withPublishedChapterTotal = (course) => {
 
   const courseKey = course.slug || course.id;
   const publishedTotal = publishedChapterTotals[courseKey];
-  const courseSeoOverride = courseKey === "law-of-torts"
-    ? {
-        seo: {
-          ...course.seo,
-          title: "Law of Torts Notes & Cases | LL.B Course",
-          description: "Study Law of Torts for LL.B with notes on negligence, nuisance, defamation, strict and absolute liability, damages, consumer law and motor accident claims.",
-          focusKeyword: "law of torts notes for LLB",
-          secondaryKeywords: [
-            "law of torts cases",
-            "Indian law of torts study material",
-            "negligence and nuisance notes",
-            "strict and absolute liability",
-            "vicarious liability in tort",
-            "law of torts questions and answers",
-            "consumer protection and motor accident claims",
-            "LLB law of torts course",
-          ],
-          canonicalUrl: "/courses/law-of-torts",
-          robots: { index: true, follow: true },
-        },
-      }
+  const courseSeoOverrides = {
+    "law-of-torts": {
+      title: "Law of Torts Notes & Cases | LL.B Course",
+      description: "Study Law of Torts for LL.B with notes on negligence, nuisance, defamation, strict and absolute liability, damages, consumer law and motor accident claims.",
+      focusKeyword: "law of torts notes for LLB",
+      secondaryKeywords: ["law of torts cases", "Indian law of torts study material", "negligence and nuisance notes", "strict and absolute liability", "vicarious liability in tort", "law of torts questions and answers", "consumer protection and motor accident claims", "LLB law of torts course"],
+    },
+    "constitutional-law": {
+      title: "Indian Constitutional Law Notes & Cases | LL.B Course",
+      description: "Prepare for LL.B Constitutional Law with clear notes on fundamental rights, Article 14, Article 19, Article 21, DPSP, writs, federalism and landmark constitutional cases.",
+      focusKeyword: "Indian constitutional law notes for LLB",
+      secondaryKeywords: ["Indian Constitution notes for LL.B", "fundamental rights Articles 12 to 35", "Article 14 19 and 21 notes", "Directive Principles of State Policy notes", "constitutional writs and remedies", "landmark Supreme Court constitutional cases", "Indian federalism and separation of powers"],
+    },
+  };
+  const selectedCourseSeo = courseSeoOverrides[courseKey];
+  const courseSeoOverride = selectedCourseSeo
+    ? { seo: { ...course.seo, ...selectedCourseSeo, canonicalUrl: `/courses/${courseKey}`, robots: { index: true, follow: true } } }
     : {};
 
   if (!publishedTotal) return { ...course, ...courseSeoOverride };
