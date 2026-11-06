@@ -1688,8 +1688,8 @@ export default {
       return rewriteCourseSocialMetadata(
         assetResponse,
         {
-          title: "Online Law Courses & Study Materials | Sanhita360",
-          description: `Explore chapter-wise online law courses with free introductory lessons, study materials and mock tests. Earn a private Certificate of Completion after meeting course requirements.${priceDescription}`,
+          title: "Online Law Courses & LL.B Study Materials | Sanhita360",
+          description: `Explore online law courses for LL.B students in India, with chapter-wise lessons, law notes, case references and mock tests. Start with free introductory lessons.${priceDescription}`,
           image: `${url.origin}/certificate-courses-hero.jpg`,
           imageWidth: 1200,
           imageHeight: 675,
