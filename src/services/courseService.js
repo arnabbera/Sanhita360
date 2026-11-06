@@ -19,6 +19,7 @@ const bundledCourses = [
   humanRightsLawAndPracticeCourse,
   mediaLawCourse,
   bnssCourse,
+  ...seededCourses.filter((course) => course.slug === "law-of-torts"),
 ];
 
 // Published LL.B. course counts may outgrow older Firestore course records.
