@@ -127,8 +127,48 @@ const courseSlugAliases = {
 export const getPublishedCourses = async (options = {}) => {
   const storedCourses = await courseRepository.getPublishedCourses(options);
   const pageSize = Math.max(1, Number(options.pageSize || 20));
+  let courses = mergeCourses(storedCourses);
 
-  return mergeCourses(storedCourses)
+  // Apply the same thumbnail pairing to catalogue cards as to course detail pages.
+  const thumbnailPairs = [
+    ["law-of-torts", "law-of-torts-mv-and-cp-laws"],
+    ["constitutional-law", "indian-constitutional-law-i"],
+  ];
+
+  const thumbnailSources = await Promise.all(
+    thumbnailPairs.map(async ([targetSlug, sourceSlug]) => {
+      const sourceCourse = await courseRepository.getBySlug(sourceSlug);
+      const image =
+        sourceCourse?.thumbnailUrl ||
+        sourceCourse?.desktopImageUrl ||
+        sourceCourse?.imageUrl ||
+        sourceCourse?.media?.thumbnailUrl ||
+        sourceCourse?.media?.desktopImageUrl ||
+        sourceCourse?.media?.imageUrl ||
+        "";
+      return [targetSlug, sourceCourse, image];
+    }),
+  );
+
+  for (const [targetSlug, sourceCourse, image] of thumbnailSources) {
+    if (!sourceCourse || !image) continue;
+    courses = courses.map((course) => {
+      if (course.slug !== targetSlug) return course;
+      return {
+        ...course,
+        thumbnailUrl: sourceCourse.thumbnailUrl || image,
+        desktopImageUrl: sourceCourse.desktopImageUrl || image,
+        imageUrl: sourceCourse.imageUrl || image,
+        media: { ...(course.media || {}), ...(sourceCourse.media || {}) },
+        seo: {
+          ...(course.seo || {}),
+          ogImageUrl: sourceCourse.seo?.ogImageUrl || image,
+        },
+      };
+    });
+  }
+
+  return courses
     .filter((course) => course.status === "published" && course.deleted !== true)
     .filter((course) =>
       options.featured === null || options.featured === undefined
