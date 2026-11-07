@@ -170,10 +170,15 @@ export const getCourseBySlug = async (slug) => {
   let course =
     storedCourse || bundledCourses.find((item) => item.slug === resolvedSlug) || null;
 
-  // Keep the standalone Law of Torts course visually consistent with the
-  // published Law of Torts, MV and CP Laws course by reusing its thumbnail.
-  if (course && resolvedSlug === "law-of-torts") {
-    const referenceCourse = await courseRepository.getBySlug("law-of-torts-mv-and-cp-laws");
+  // Reuse the established thumbnails on related standalone course pages.
+  const thumbnailSourceByCourse = {
+    "law-of-torts": "law-of-torts-mv-and-cp-laws",
+    "constitutional-law": "indian-constitutional-law-i",
+  };
+  const thumbnailSourceSlug = thumbnailSourceByCourse[resolvedSlug];
+
+  if (course && thumbnailSourceSlug) {
+    const referenceCourse = await courseRepository.getBySlug(thumbnailSourceSlug);
     if (referenceCourse) {
       const referenceImage =
         referenceCourse.thumbnailUrl ||
