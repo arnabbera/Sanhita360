@@ -167,10 +167,39 @@ export const getCourseBySlug = async (slug) => {
   const normalizedSlug = normalizeSlug(slug);
   const resolvedSlug = courseSlugAliases[normalizedSlug] || normalizedSlug;
   const storedCourse = await courseRepository.getBySlug(resolvedSlug);
+  let course =
+    storedCourse || bundledCourses.find((item) => item.slug === resolvedSlug) || null;
 
-  return withPublishedChapterTotal(
-    storedCourse || bundledCourses.find((course) => course.slug === resolvedSlug) || null,
-  );
+  // Keep the standalone Law of Torts course visually consistent with the
+  // published Law of Torts, MV and CP Laws course by reusing its thumbnail.
+  if (course && resolvedSlug === "law-of-torts") {
+    const referenceCourse = await courseRepository.getBySlug("law-of-torts-mv-and-cp-laws");
+    if (referenceCourse) {
+      const referenceImage =
+        referenceCourse.thumbnailUrl ||
+        referenceCourse.desktopImageUrl ||
+        referenceCourse.imageUrl ||
+        referenceCourse.media?.thumbnailUrl ||
+        referenceCourse.media?.desktopImageUrl ||
+        referenceCourse.media?.imageUrl ||
+        "";
+      if (referenceImage) {
+        course = {
+          ...course,
+          thumbnailUrl: referenceCourse.thumbnailUrl || referenceImage,
+          desktopImageUrl: referenceCourse.desktopImageUrl || referenceImage,
+          imageUrl: referenceCourse.imageUrl || referenceImage,
+          media: { ...(course.media || {}), ...(referenceCourse.media || {}) },
+          seo: {
+            ...(course.seo || {}),
+            ogImageUrl: referenceCourse.seo?.ogImageUrl || referenceImage,
+          },
+        };
+      }
+    }
+  }
+
+  return withPublishedChapterTotal(course);
 };
 
 export const getAllCourses = async () =>
