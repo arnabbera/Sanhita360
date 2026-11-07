@@ -25,6 +25,7 @@ import {
 
 import {
   Link,
+  Navigate,
   useParams,
 } from "react-router-dom";
 
@@ -383,6 +384,10 @@ export default function PublicCourseDetailsPage() {
         </style>
       </main>
     );
+  }
+
+  if (courseSlug === "law-of-torts") {
+    return <Navigate to="/courses/law-of-torts-mv-and-cp-laws" replace />;
   }
 
   // =======================================================
