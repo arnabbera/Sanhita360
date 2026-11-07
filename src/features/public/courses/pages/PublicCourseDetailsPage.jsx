@@ -586,6 +586,22 @@ export default function PublicCourseDetailsPage() {
           </nav>
         </div>
 
+        <section className="course-share-section" aria-labelledby="course-share-heading">
+          <div className="course-page-container course-share-card">
+            <div>
+              <h2 id="course-share-heading">Share this page</h2>
+              <p>Share {course.title} with students, friends and colleagues.</p>
+              {shareStatus && <p role="status">{shareStatus}</p>}
+            </div>
+            <div className="course-share-actions">
+              <a className="course-share-button facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on Facebook"><FaFacebookF /> Facebook</a>
+              <a className="course-share-button twitter" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(course.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on X"><FaXTwitter /> X / Twitter</a>
+              <a className="course-share-button whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${course.title} ${shareUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on WhatsApp"><FaWhatsapp /> WhatsApp</a>
+              <button type="button" className="course-share-button copy-link" onClick={copyShareLink}><FaLink /> Copy Link</button>
+            </div>
+          </div>
+        </section>
+
         {/* HERO */}
 
         <section className="public-course-hero">
@@ -1104,21 +1120,7 @@ export default function PublicCourseDetailsPage() {
           </div>
         </section>
 
-        <section className="course-share-section" aria-labelledby="course-share-heading">
-          <div className="course-page-container course-share-card">
-            <div>
-              <h2 id="course-share-heading">Share this page</h2>
-              <p>Share {course.title} with students, friends and colleagues.</p>
-              {shareStatus && <p role="status">{shareStatus}</p>}
-            </div>
-            <div className="course-share-actions">
-              <a className="course-share-button facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on Facebook"><FaFacebookF /> Facebook</a>
-              <a className="course-share-button twitter" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(course.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on X"><FaXTwitter /> X / Twitter</a>
-              <a className="course-share-button whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${course.title} ${shareUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on WhatsApp"><FaWhatsapp /> WhatsApp</a>
-              <button type="button" className="course-share-button copy-link" onClick={copyShareLink}><FaLink /> Copy Link</button>
-            </div>
-          </div>
-        </section>
+
 
         <style>
           {`
@@ -1598,16 +1600,16 @@ export default function PublicCourseDetailsPage() {
             }
 
             .course-share-section {
-              padding: 55px 0;
-              background: #eff6ff;
+              padding: 24px 0 12px;
+              background: #ffffff;
             }
 
             .course-share-card {
               display: flex;
               align-items: center;
               justify-content: space-between;
-              gap: 30px;
-              padding: 28px;
+              gap: 24px;
+              padding: 20px 24px;
               border: 1px solid #bfdbfe;
               border-radius: 18px;
               background: #ffffff;
@@ -1630,7 +1632,8 @@ export default function PublicCourseDetailsPage() {
             .course-share-actions {
               display: flex;
               flex-wrap: wrap;
-              justify-content: flex-end;
+              justify-content: center;
+              align-items: center;
               gap: 10px;
             }
 
@@ -1830,7 +1833,7 @@ export default function PublicCourseDetailsPage() {
               }
 
               .course-share-section {
-                padding: 40px 0;
+                padding: 18px 0 8px;
               }
 
               .course-share-card {
