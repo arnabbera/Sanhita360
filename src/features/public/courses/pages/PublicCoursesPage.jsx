@@ -367,7 +367,7 @@ export default function PublicCoursesPage() {
               </div>
               <div className="courses-hero-actions">
                 <a href="#available-courses" className="courses-primary-cta">Explore Courses <FaArrowRight /></a>
-                <Link to="/law-notes" className="courses-secondary-cta">Browse Free Law Notes</Link>
+                <Link to="/legal-remedies" className="courses-secondary-cta">Browse Free Legal Remedies</Link>
               </div>
               <p className="courses-hero-note">Start by exploring the subjects and available learning resources. No pressure to enroll before you understand the course.</p>
             </div>
