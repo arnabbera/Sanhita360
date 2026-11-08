@@ -52,10 +52,10 @@ const Hero = () => {
             </Link>
 
             <Link
-              to="/law-notes"
+              to="/#legal-article"
               className="ns-hero-secondary"
             >
-              Browse Free Law Notes
+              Browse Free Legal Articles
               <FaArrowRight />
             </Link>
           </div>
