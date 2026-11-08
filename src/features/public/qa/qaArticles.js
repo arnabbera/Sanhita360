@@ -461,4 +461,55 @@ export const QA_ARTICLES = [
     "category": "Criminal Law · BNS",
     "image": "/images/qa/private-defence-section-37-bns.png"
   },
+  {
+    "slug": "is-legal-notice-mandatory-before-civil-suit",
+    "title": "Is It Mandatory to Send a Legal Notice Before Filing a Civil Suit?",
+    "answer": "No. Indian law does not require a legal notice before every civil suit. The requirement depends on the defendant, the nature of the claim and any applicable statute. A key example is Section 80 of the Code of Civil Procedure, 1908, which generally requires two months’ written notice before a suit against the Government or a public officer for an act done or purportedly done in official capacity. Other laws may impose their own notice or pre-litigation requirements.",
+    "sections": [
+      {
+        "heading": "1. When is a legal notice mandatory under Section 80 CPC?",
+        "text": "Section 80(1) CPC generally bars institution of a suit against the Central or State Government, or against a public officer in respect of an act purporting to be done in official capacity, until two months have expired after written notice is delivered to or left at the office of the prescribed authority or officer. The notice must state the cause of action, the plaintiff’s name, description and place of residence, and the relief claimed. The plaint must also state that the notice was served. The correct recipient and delivery requirements depend on whom the proposed suit is against."
+      },
+      {
+        "heading": "Can a suit against the Government be filed without waiting two months?",
+        "text": "Section 80(2) CPC permits a suit seeking urgent or immediate relief to be instituted without serving the usual notice, but only with the Court’s leave. The Court cannot grant interim or final relief until the Government or public officer has had a reasonable opportunity to show cause. If the Court concludes, after hearing the parties, that no urgent or immediate relief is required, it must return the plaint for presentation after compliance with Section 80(1). This is a limited statutory exception, not an automatic waiver."
+      },
+      {
+        "heading": "2. Is notice required in an ordinary dispute between private parties?",
+        "text": "For many ordinary civil disputes between private individuals or businesses—such as a money-recovery claim, breach of contract, specific performance or a property dispute—there is no general rule in the CPC requiring a legal notice before filing suit. The claimant may be able to institute the suit directly, provided the cause of action, limitation, jurisdiction and other procedural requirements are satisfied. However, check the contract and any special statute governing the particular dispute."
+      },
+      {
+        "heading": "3. Are there other statutory pre-filing requirements?",
+        "text": "Yes. A special enactment may require a notice, demand, complaint or other step before a particular proceeding can be brought. Also, under Section 12A of the Commercial Courts Act, 2015, a plaintiff in a commercial dispute that does not contemplate urgent interim relief must ordinarily exhaust pre-institution mediation before instituting the suit. This is a mediation requirement, not simply a requirement to send an ordinary legal notice. Always identify the statute and type of proceeding before filing."
+      },
+      {
+        "heading": "4. If notice is not compulsory, why send one?",
+        "text": "A carefully drafted notice can explain the claim, identify the breach, specify the remedy sought and provide an opportunity to resolve the dispute without litigation. It may help create a clear written record of the demand and response. Depending on the facts and applicable law, the correspondence may also be relevant to issues such as refusal, acknowledgment or interest. However, a notice does not automatically create a cause of action, prove the allegations, or extend or restart the limitation period."
+      },
+      {
+        "heading": "5. What should I check before filing?",
+        "text": "Identify the correct parties and the legal basis of the claim; check whether Section 80 CPC or a special statute applies; examine any contractual notice or dispute-resolution clause; consider mandatory pre-institution mediation where applicable; calculate limitation from the legally relevant dates; and preserve the notice, proof of delivery and reply if a notice is sent. Do not delay urgent protective steps merely to send a routine notice."
+      },
+      {
+        "heading": "Summary",
+        "text": "A legal notice is not universally mandatory before every civil suit in India. It is mandatory where a statute—most notably Section 80 CPC in qualifying suits against the Government or public officers—requires it, subject to the statutory urgent-relief exception. Other laws may impose separate pre-filing steps. In a private civil dispute, a notice is often useful but is not automatically a legal prerequisite. The correct position must be checked against the facts and governing law."
+      }
+    ],
+    "sources": [
+      {
+        "label": "India Code: Code of Civil Procedure, 1908 — Section 80",
+        "url": "https://www.indiacode.nic.in/bitstream/123456789/2191/1/A1908-05.pdf"
+      },
+      {
+        "label": "India Code: Commercial Courts Act, 2015 — Section 12A",
+        "url": "https://www.indiacode.nic.in/handle/123456789/2157?view_type=browse"
+      }
+    ],
+    "related": {
+      "label": "Explore Code of Civil Procedure and Limitation",
+      "to": "/courses/code-of-civil-procedure-and-limitation"
+    },
+    "category": "Civil Procedure",
+    "image": "/images/qa/legal-notice-before-civil-suit.jpg"
+  },
 ];
