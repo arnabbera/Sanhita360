@@ -12,6 +12,7 @@ import {
   FaCertificate,
   FaGraduationCap,
   FaScaleBalanced,
+  FaMagnifyingGlass,
 } from "react-icons/fa6";
 
 import {
@@ -151,6 +152,7 @@ export default function PublicCoursesPage() {
     error,
     setError,
   ] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [likes, setLikes] = useState(null);
   const [liked, setLiked] = useState(false);
@@ -294,6 +296,12 @@ export default function PublicCoursesPage() {
       pricing,
     );
 
+  const visibleCourses = courses.filter((course) =>
+    `${course.title || ""} ${course.description || ""} ${(course.previewChapters || []).join(" ")}`
+      .toLowerCase()
+      .includes(searchQuery.trim().toLowerCase()),
+  );
+
   return (
     <>
       <SEO
@@ -329,13 +337,11 @@ export default function PublicCoursesPage() {
               </span>
 
               <h1>
-                Online Law Courses
+                Your LL.B Learning Journey Starts Here
               </h1>
 
               <p>
-                Explore chapter-wise law courses with free introductory lessons,
-                study materials and mock tests. Earn a private Certificate
-                of Completion after meeting the course requirements.
+                Study Indian law with structured LL.B courses, free introductory learning, chapter-wise notes and practice assessments. Explore subjects at your own pace and decide when you are ready to enroll.
               </p>
 
               <div className="hero-benefits">
@@ -359,8 +365,11 @@ export default function PublicCoursesPage() {
                   Certification options
                 </span>
               </div>
-
-
+              <div className="courses-hero-actions">
+                <a href="#available-courses" className="courses-primary-cta">Explore Courses <FaArrowRight /></a>
+                <Link to="/law-notes" className="courses-secondary-cta">Browse Free Law Notes</Link>
+              </div>
+              <p className="courses-hero-note">Start by exploring the subjects and available learning resources. No pressure to enroll before you understand the course.</p>
             </div>
 
             <div className="courses-hero-visual">
@@ -396,7 +405,7 @@ export default function PublicCoursesPage() {
 
         {/* COURSES */}
 
-        <section className="courses-section">
+        <section className="courses-section" id="available-courses">
           <div className="courses-container">
             <div className="section-heading">
               <div>
@@ -418,6 +427,11 @@ export default function PublicCoursesPage() {
                 </span>
               )}
             </div>
+
+            <label className="course-search">
+              <FaMagnifyingGlass aria-hidden="true" />
+              <input type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search courses, subjects or topics..." aria-label="Search law courses" />
+            </label>
 
             {loading && (
               <div className="courses-state">
@@ -456,9 +470,9 @@ export default function PublicCoursesPage() {
 
             {!loading &&
               !error &&
-              courses.length > 0 && (
+              courses.length > 0 && visibleCourses.length > 0 && (
                 <div className="course-grid">
-                  {courses.map(
+                  {visibleCourses.map(
                     (course) => {
                       const image =
                         getCourseImage(
@@ -586,6 +600,9 @@ export default function PublicCoursesPage() {
                   )}
                 </div>
               )}
+            {!loading && !error && courses.length > 0 && visibleCourses.length === 0 && (
+              <div className="courses-state"><FaBookOpen /><h3>No matching courses found</h3><p>Try another subject or topic.</p></div>
+            )}
           </div>
         </section>
 
@@ -806,6 +823,17 @@ export default function PublicCoursesPage() {
             .hero-benefits svg {
               color: #4ade80;
             }
+
+            .courses-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+            .courses-primary-cta, .courses-secondary-cta { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 9px; padding: 12px 19px; border-radius: 10px; font-size: 13px; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+            .courses-primary-cta { background: #ffffff; color: #1e3a8a; }
+            .courses-secondary-cta { border: 1px solid rgba(255,255,255,.75); color: #ffffff; }
+            .courses-primary-cta:hover, .courses-secondary-cta:hover { transform: translateY(-2px); }
+            .courses-hero-note { margin-top: 14px !important; font-size: 12px !important; color: #bfdbfe !important; }
+
+            .course-search { display: flex; width: min(100%, 540px); min-height: 50px; align-items: center; gap: 11px; margin: 0 0 24px; padding: 0 15px; border: 1px solid #cbd5e1; border-radius: 12px; background: #fff; color: #64748b; box-shadow: 0 5px 18px rgba(15,23,42,.04); }
+            .course-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: #0f172a; font: inherit; font-size: 14px; }
+            .course-search:focus-within { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
 
             .courses-share-section {
               padding: 32px 0 48px;
@@ -1166,6 +1194,9 @@ export default function PublicCoursesPage() {
               .courses-hero p {
                 font-size: 14px;
               }
+
+              .courses-hero-actions { display: grid; grid-template-columns: 1fr; }
+              .courses-primary-cta, .courses-secondary-cta { width: 100%; }
 
               .hero-benefits {
                 display: grid;
