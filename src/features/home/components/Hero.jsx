@@ -29,16 +29,13 @@ const Hero = () => {
           >
             <div className="ns-hero-badge-track" aria-hidden="true">
               <span>⚖️ Free LL.B Notes • Chapter-wise Lessons • Mock Tests • Legal Learning</span>
-              <span>⚖️ Free Initial Legal Consultation • Property Registration • Guidance to file Consumer Cases Guide</span>
+              <span>⚖️ Free LL.B Notes • Chapter-wise Lessons • Mock Tests • Legal Learning</span>
             </div>
           </div>
 
           <h1>
             Learn Law with Clarity
-            and Confidence{" "}
-            <span>
-              Law & Education
-            </span>
+            and <span>Confidence</span>
           </h1>
 
           <p className="ns-hero-description">
