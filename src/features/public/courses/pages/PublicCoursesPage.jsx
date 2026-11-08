@@ -27,6 +27,7 @@ import {
   Link,
 } from "react-router-dom";
 
+import Header from "../../../home/components/Header";
 import Footer from "../../../home/components/Footer";
 import SEO from "../../../../shared/seo/SEO";
 
@@ -325,6 +326,7 @@ export default function PublicCoursesPage() {
         }
       />
 
+      <Header />
       <main className="public-courses-page">
         {/* HERO */}
 
@@ -760,6 +762,8 @@ export default function PublicCoursesPage() {
             }
 
             .courses-hero-visual {
+              padding-top: clamp(18px, 3vw, 42px);
+            
               display: flex;
               flex-direction: column;
               align-items: flex-end;
