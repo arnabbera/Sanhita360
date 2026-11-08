@@ -25,48 +25,44 @@ const Hero = () => {
         >
           <div
             className="ns-hero-badge"
-            aria-label="Free Initial Legal Consultation • Property Registration • Guidance to file Consumer Cases Guide"
+            aria-label="Free law notes • LL.B courses • Chapter-wise lessons • Mock tests"
           >
             <div className="ns-hero-badge-track" aria-hidden="true">
-              <span>⚖️ Free Initial Legal Consultation • Property Registration • Guidance to file Consumer Cases Guide</span>
+              <span>⚖️ Free LL.B Notes • Chapter-wise Lessons • Mock Tests • Legal Learning</span>
               <span>⚖️ Free Initial Legal Consultation • Property Registration • Guidance to file Consumer Cases Guide</span>
             </div>
           </div>
 
           <h1>
-            Empowering Every Citizen
-            Through{" "}
+            Learn Law with Clarity
+            and Confidence{" "}
             <span>
               Law & Education
             </span>
           </h1>
 
           <p className="ns-hero-description">
-            Learn Law. Protect Your Rights.
-            <br />
-            Get Professional Legal
-            Consultation.
-            <br />
-            Earn Verified Certifications.
+            Explore structured LL.B courses, free legal notes, chapter-wise lessons and practice tests. Build your understanding of Indian law at your own pace.
           </p>
 
           <div className="ns-hero-actions">
             <Link
-              to="/#legal-consultation"
+              to="/law-courses"
               className="ns-hero-primary"
             >
-              Free Legal Consultation
+              Explore LL.B Courses
               <FaArrowRight />
             </Link>
 
             <Link
-              to="/law-courses"
+              to="/law-notes"
               className="ns-hero-secondary"
             >
-              Explore Law Courses
+              Browse Free Law Notes
               <FaArrowRight />
             </Link>
           </div>
+          <p className="ns-hero-trust-note">For LL.B students and lifelong learners · Learn first, explore courses when ready.</p>
 
         </motion.div>
 
@@ -306,6 +302,8 @@ const Hero = () => {
             transform:
               translateY(-2px);
           }
+
+          .ns-hero-trust-note { margin: 18px 0 0; color: #bfdbfe; font-size: 13px; line-height: 1.5; }
 
           /* RIGHT PANEL */
 
