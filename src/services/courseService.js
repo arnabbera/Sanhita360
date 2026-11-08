@@ -31,6 +31,7 @@ const publishedChapterTotals = {
   "code-of-civil-procedure-and-limitation": 8,
   "family-law-i": 8,
   "indian-constitutional-law-i": 8,
+  "law-of-torts-mv-and-cp-laws": lawOfTortsCurriculum.length,
   "criminal-law-i": criminalLawIChapters.length,
   "criminal-law-i-transitioning-from-ipc-to-bns": criminalLawIChapters.length,
   "public-international-law": 8,
