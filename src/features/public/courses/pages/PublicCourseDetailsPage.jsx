@@ -669,21 +669,7 @@ export default function PublicCourseDetailsPage() {
                   : ""
               }`}
             >
-        <section className="course-share-section" aria-labelledby="course-share-heading">
-          <div className="course-page-container course-share-card">
-            <div>
-              <h2 id="course-share-heading">Share this page</h2>
-              <p>Share {course.title} with students, friends and colleagues.</p>
-              {shareStatus && <p role="status">{shareStatus}</p>}
-            </div>
-            <div className="course-share-actions">
-              <a className="course-share-button facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on Facebook"><FaFacebookF /> Facebook</a>
-              <a className="course-share-button twitter" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(course.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on X"><FaXTwitter /> X / Twitter</a>
-              <a className="course-share-button whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${course.title} ${shareUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on WhatsApp"><FaWhatsapp /> WhatsApp</a>
-              <button type="button" className="course-share-button copy-link" onClick={copyShareLink}><FaLink /> Copy Link</button>
-            </div>
-          </div>
-        </section>
+
               {isCriminalLawCourse ? <CriminalLawBrandCard /> : landscapeImage ? (
                 <img
                   src={
@@ -1059,7 +1045,7 @@ export default function PublicCourseDetailsPage() {
         {/* TERMS AND DISCLAIMER */}
 
         <section className="course-terms-section">
-          <div className="course-page-container">
+          <div className="course-page-container course-bottom-tools-grid">
             <details className="course-terms-disclosure">
               <summary className="course-terms-heading">
                 <div>
@@ -1118,6 +1104,23 @@ export default function PublicCourseDetailsPage() {
 
               </div>
             </details>
+
+        <section className="course-share-section" aria-labelledby="course-share-heading">
+          <div className="course-page-container course-share-card">
+            <div>
+              <h2 id="course-share-heading">Share this page</h2>
+              <p>Share {course.title} with students, friends and colleagues.</p>
+              {shareStatus && <p role="status">{shareStatus}</p>}
+            </div>
+            <div className="course-share-actions">
+              <a className="course-share-button facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on Facebook"><FaFacebookF /> Facebook</a>
+              <a className="course-share-button twitter" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(course.title)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on X"><FaXTwitter /> X / Twitter</a>
+              <a className="course-share-button whatsapp" href={`https://wa.me/?text=${encodeURIComponent(`${course.title} ${shareUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share this course on WhatsApp"><FaWhatsapp /> WhatsApp</a>
+              <button type="button" className="course-share-button copy-link" onClick={copyShareLink}><FaLink /> Copy Link</button>
+            </div>
+          </div>
+        </section>
+
           </div>
         </section>
 
@@ -1614,6 +1617,32 @@ export default function PublicCourseDetailsPage() {
               background: transparent;
             }
 
+            .course-share-section {
+              width: 100%;
+              padding: 0;
+              background: transparent;
+            }
+
+            .course-share-section .course-share-card {
+              display: flex;
+              flex-direction: column;
+              align-items: stretch;
+              gap: 14px;
+              padding: 22px;
+              border: 1px solid #bfdbfe;
+              border-radius: 16px;
+              background: #ffffff;
+              box-shadow: 0 8px 24px rgba(15, 23, 42, .07);
+            }
+
+            .course-share-section .course-share-card h2 { font-size: 23px; }
+            .course-share-section .course-share-actions {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 9px;
+            }
+            .course-share-section .course-share-button { min-width: 0; padding: 9px 8px; font-size: 11px; }
+
             .course-hero-media .course-share-card {
               display: flex;
               flex-direction: column;
@@ -1722,10 +1751,17 @@ export default function PublicCourseDetailsPage() {
               padding: 65px 0;
             }
 
+            .course-bottom-tools-grid {
+              display: grid;
+              grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+              align-items: start;
+              gap: 28px;
+            }
+
             .course-terms-heading {
               display: flex;
               align-items: center;
-              justify-content: space-between;
+              justify-content: flex-start;
               gap: 16px;
               cursor: pointer;
               list-style: none;
@@ -1749,6 +1785,8 @@ export default function PublicCourseDetailsPage() {
             }
 
             .course-terms-toggle {
+              flex: 0 0 auto;
+              margin-left: 14px;
               color: #2563eb;
               font-size: 30px;
               line-height: 1;
@@ -1818,6 +1856,7 @@ export default function PublicCourseDetailsPage() {
             }
 
             @media (max-width: 900px) {
+              .course-bottom-tools-grid { grid-template-columns: 1fr; }
               .course-hero-grid {
                 grid-template-columns: 1fr;
               }
@@ -1879,7 +1918,7 @@ export default function PublicCourseDetailsPage() {
               }
 
               .course-share-section {
-                padding: 18px 0 8px;
+                padding: 0;
               }
 
               .course-share-card {
