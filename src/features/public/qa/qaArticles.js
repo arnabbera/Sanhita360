@@ -251,7 +251,7 @@ export const QA_ARTICLES = [
       "to": "/qa/evidence-before-consumer-complaint"
     },
     "category": "Consumer Rights",
-    "image": "/images/qa/online-seller-refuses-refund.jpg"
+    "image": "/images/qa/seller-refuses-refund.png"
   },
   {
     "slug": "consumer-complaint-without-lawyer",
