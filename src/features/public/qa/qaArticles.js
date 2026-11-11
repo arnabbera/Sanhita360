@@ -511,7 +511,7 @@ export const QA_ARTICLES = [
     },
     "category": "Civil Procedure",
     "image": "/images/qa/legal-notice-before-civil-suit.jpg"
-  },,
+  },
   {
     "slug": "who-is-liable-for-medical-negligence-doctor-or-hospital",
     "title": "Who Is Liable for Medical Negligence: The Doctor, the Hospital, or Both?",
