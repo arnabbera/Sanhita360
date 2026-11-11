@@ -511,5 +511,72 @@ export const QA_ARTICLES = [
     },
     "category": "Civil Procedure",
     "image": "/images/qa/legal-notice-before-civil-suit.jpg"
-  },
+  },,
+  {
+    "slug": "who-is-liable-for-medical-negligence-doctor-or-hospital",
+    "title": "Who Is Liable for Medical Negligence: The Doctor, the Hospital, or Both?",
+    "answer": "Both the treating doctor and the hospital may be held responsible when evidence shows that their own acts or omissions caused injury through a breach of the required standard of care. Liability is not automatic merely because treatment failed or complications followed surgery. The facts, medical records, expert evidence and relationship between the doctor and hospital determine who may be answerable.",
+    "sections": [
+      {
+        "heading": "1. When can an operating surgeon be held liable?",
+        "text": "A surgeon may be personally liable if the evidence establishes that the surgeon failed to exercise the reasonable skill and care expected of an ordinarily competent practitioner in that specialty. Indian courts have referred to the Bolam test, as approved in Jacob Mathew v. State of Punjab (2005) 6 SCC 1: the court examines whether the professional acted in accordance with a practice accepted as proper by a responsible body of medical opinion. A doctor is not required to guarantee a cure or achieve a perfect outcome. An error of judgment, an unavoidable complication or an unsuccessful operation does not, by itself, prove negligence. The claimant must connect an identifiable departure from the proper standard of care to the injury."
+      },
+      {
+        "heading": "2. When can the hospital be held responsible?",
+        "text": "A hospital may face liability on more than one basis. It may be vicariously liable for negligent acts of employees or personnel for whose conduct it is legally responsible while providing hospital services. It may also face direct or institutional liability for its own failures—for example, inadequate nursing or supervision, unsafe or unsterile operating conditions, defective or poorly maintained equipment, lack of essential facilities, inadequate staffing, deficient emergency arrangements, or failures in systems for monitoring and responding to a patient. The precise duty depends on the services undertaken and the facts. A hospital is not automatically liable for every act of every visiting or independent consultant; the contractual and practical relationship, the hospital’s representations and its own role in arranging care must be examined."
+      },
+      {
+        "heading": "3. Can the doctor and hospital both be proceeded against?",
+        "text": "Yes. Where the evidence supports separate or overlapping responsibility, a patient may name the treating doctor and the hospital in the same consumer or civil proceeding. The Supreme Court’s decision in Savita Garg v. Director, National Heart Institute (2004) 8 SCC 56 recognises the importance of the hospital’s role and the practical difficulty a patient faces in identifying which member of the hospital team was responsible. However, impleading both does not establish liability against either: each allegation must be supported by evidence, and the forum determines responsibility on the facts."
+      },
+      {
+        "heading": "4. What legal remedies are available in India?",
+        "text": "A patient or authorised representative may consider a consumer complaint under the Consumer Protection Act, 2019 where the treatment qualifies as a service for consideration and the statutory requirements are met. Medical services are generally within consumer jurisdiction, subject to the recognised limits for services rendered entirely free of charge to all patients or under a contract of personal service. A complaint may be brought before the competent District, State or National Consumer Commission according to the applicable pecuniary and territorial jurisdiction rules. Online filing is available through the Government’s e-Jagriti consumer case-filing system; check its current instructions and the applicable limitation period before filing."
+      },
+      {
+        "heading": "Can I file a civil claim or criminal complaint?",
+        "text": "A civil action may be available to seek compensation for proven loss, subject to limitation, jurisdiction and procedural requirements. Criminal proceedings are different: criminal negligence requires a much higher degree of negligence than a claim for civil compensation. In Jacob Mathew, the Supreme Court cautioned that a medical professional should not be prosecuted merely because treatment failed; the alleged conduct must meet the criminal threshold of gross or very high degree negligence. The judgment also laid down safeguards concerning a credible medical opinion and independent medical assessment during investigation. An independent government medical-board opinion may be important evidence, but the exact procedural requirements depend on the stage and nature of the case. Do not treat every adverse outcome as a criminal offence."
+      },
+      {
+        "heading": "5. What must be proved in a medical negligence case?",
+        "text": "The central issues are: (a) a duty of care owed by the doctor or hospital; (b) breach of the applicable standard of care; (c) a sufficiently direct causal connection between that breach and the injury; and (d) actual damage or loss. Evidence may need to address whether the injury would have occurred even with proper care, whether it was a recognised complication, and whether another cause explains the outcome. Expert medical opinion is often essential because courts and consumer commissions do not decide complex clinical questions by simply substituting their own medical view."
+      },
+      {
+        "heading": "6. Which records and evidence should I preserve?",
+        "text": "Request and preserve the complete medical record, including admission and discharge summaries, case sheets, doctors’ and nurses’ notes, operation notes, anaesthesia charts, consent forms, medication and monitoring charts, investigation reports, imaging and laboratory results, referral notes, ICU records, bills and receipts. Where relevant, preserve implant or device details, equipment-maintenance records, infection-control records and communications with the hospital. Keep copies of emails, messages and written complaints, and record the dates on which records were requested and supplied. Ask for records in writing and retain the acknowledgement. Do not alter originals or publish private medical information unnecessarily."
+      },
+      {
+        "heading": "7. What should a family do before taking legal action?",
+        "text": "Obtain the records and prepare a dated chronology of events. Where the patient is medically able, consider an independent review by a suitably qualified specialist who has no connection with the treating institution. Identify the specific act or omission alleged, the person or institution responsible for it, the resulting harm and the compensation or other relief sought. Check limitation promptly: a complaint or request for records does not automatically stop time from running. Consult an advocate experienced in medical negligence and consumer law before choosing the forum or making public allegations."
+      },
+      {
+        "heading": "Conclusion: who should be held accountable?",
+        "text": "The surgeon may be liable for negligent clinical decisions or treatment; the hospital may be liable for negligent staff and for its own institutional failures; and both may be answerable where the evidence establishes shared responsibility. The decisive question is not simply who performed the operation, but whose duty was breached and whether that breach caused the harm. A fair assessment requires complete records, sound medical evidence and the correct legal forum."
+      }
+    ],
+    "sources": [
+      {
+        "label": "India Code: Consumer Protection Act, 2019",
+        "url": "https://www.indiacode.nic.in/indiacode/bitstream/123456789/15256/1/eng201935.pdf"
+      },
+      {
+        "label": "Supreme Court of India: Jacob Mathew v. State of Punjab (5 August 2005)",
+        "url": "https://api.sci.gov.in/jonew/judis/27088.pdf"
+      },
+      {
+        "label": "Supreme Court of India: Savita Garg v. Director, National Heart Institute",
+        "url": "https://api.sci.gov.in/jonew/judis/35229.pdf"
+      },
+      {
+        "label": "Government of India: e-Jagriti consumer case filing portal",
+        "url": "https://e-jagriti.gov.in/"
+      }
+    ],
+    "related": {
+      "label": "Can I file a consumer complaint without a lawyer?",
+      "to": "/qa/consumer-complaint-without-lawyer"
+    },
+    "category": "Medical Negligence · Consumer Rights",
+    "image": "/images/qa/medical-negligence-doctor-hospital.jpg"
+  }
 ];
