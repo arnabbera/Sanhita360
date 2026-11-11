@@ -52,7 +52,7 @@ export const QA_ARTICLES = [
       "to": "/services/cyber-law"
     },
     "category": "Data Privacy",
-    "image": "/images/qa/your-data-your-rules-dpdp-act.jpg"
+    "image": "/images/qa/DPDP-Act.png"
   },
   {
     "slug": "check-property-documents-before-buying-flat-kolkata",
