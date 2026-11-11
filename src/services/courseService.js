@@ -19,7 +19,7 @@ const bundledCourses = [
   humanRightsLawAndPracticeCourse,
   mediaLawCourse,
   bnssCourse,
-  ...seededCourses.filter((course) => ["law-of-torts", "constitutional-law"].includes(course.slug)),
+  ...seededCourses.filter((course) => course.slug === "constitutional-law"),
 ];
 
 // Published LL.B. course counts may outgrow older Firestore course records.
@@ -31,7 +31,7 @@ const publishedChapterTotals = {
   "code-of-civil-procedure-and-limitation": 8,
   "family-law-i": 8,
   "indian-constitutional-law-i": 8,
-  "law-of-torts-mv-and-cp-laws": 8,
+  "law-of-torts-mv-and-cp-laws": lawOfTortsCurriculum.length,
   "criminal-law-i": criminalLawIChapters.length,
   "criminal-law-i-transitioning-from-ipc-to-bns": criminalLawIChapters.length,
   "public-international-law": 8,
@@ -47,12 +47,6 @@ const withPublishedChapterTotal = (course) => {
   const courseKey = course.slug || course.id;
   const publishedTotal = publishedChapterTotals[courseKey];
   const courseSeoOverrides = {
-    "law-of-torts": {
-      title: "Law of Torts Notes & Cases | LL.B Course",
-      description: "Study Law of Torts for LL.B with notes on negligence, nuisance, defamation, strict and absolute liability, damages, consumer law and motor accident claims.",
-      focusKeyword: "law of torts notes for LLB",
-      secondaryKeywords: ["law of torts cases", "Indian law of torts study material", "negligence and nuisance notes", "strict and absolute liability", "vicarious liability in tort", "law of torts questions and answers", "consumer protection and motor accident claims", "LLB law of torts course"],
-    },
     "constitutional-law": {
       title: "Indian Constitutional Law Notes & Cases | LL.B Course",
       description: "Prepare for LL.B Constitutional Law with clear notes on fundamental rights, Article 14, Article 19, Article 21, DPSP, writs, federalism and landmark constitutional cases.",
@@ -122,13 +116,54 @@ const normalizeSlug = (value = "") =>
 
 const courseSlugAliases = {
   "criminal-law-i": "criminal-law-i-transitioning-from-ipc-to-bns",
+  "law-of-torts": "law-of-torts-mv-and-cp-laws",
 };
 
 export const getPublishedCourses = async (options = {}) => {
   const storedCourses = await courseRepository.getPublishedCourses(options);
   const pageSize = Math.max(1, Number(options.pageSize || 20));
+  let courses = mergeCourses(storedCourses);
 
-  return mergeCourses(storedCourses)
+  // Apply the same thumbnail pairing to catalogue cards as to course detail pages.
+  const thumbnailPairs = [
+    ["constitutional-law", "indian-constitutional-law-i"],
+  ];
+
+  const thumbnailSources = await Promise.all(
+    thumbnailPairs.map(async ([targetSlug, sourceSlug]) => {
+      const sourceCourse = await courseRepository.getBySlug(sourceSlug);
+      const image =
+        sourceCourse?.thumbnailUrl ||
+        sourceCourse?.desktopImageUrl ||
+        sourceCourse?.imageUrl ||
+        sourceCourse?.media?.thumbnailUrl ||
+        sourceCourse?.media?.desktopImageUrl ||
+        sourceCourse?.media?.imageUrl ||
+        "";
+      return [targetSlug, sourceCourse, image];
+    }),
+  );
+
+  for (const [targetSlug, sourceCourse, image] of thumbnailSources) {
+    if (!sourceCourse || !image) continue;
+    courses = courses.map((course) => {
+      if (course.slug !== targetSlug) return course;
+      return {
+        ...course,
+        thumbnailUrl: sourceCourse.thumbnailUrl || image,
+        desktopImageUrl: sourceCourse.desktopImageUrl || image,
+        imageUrl: sourceCourse.imageUrl || image,
+        media: { ...(course.media || {}), ...(sourceCourse.media || {}) },
+        seo: {
+          ...(course.seo || {}),
+          ogImageUrl: sourceCourse.seo?.ogImageUrl || image,
+        },
+      };
+    });
+  }
+
+  return courses
+    .filter((course) => course.slug !== "law-of-torts")
     .filter((course) => course.status === "published" && course.deleted !== true)
     .filter((course) =>
       options.featured === null || options.featured === undefined
@@ -167,10 +202,43 @@ export const getCourseBySlug = async (slug) => {
   const normalizedSlug = normalizeSlug(slug);
   const resolvedSlug = courseSlugAliases[normalizedSlug] || normalizedSlug;
   const storedCourse = await courseRepository.getBySlug(resolvedSlug);
+  let course =
+    storedCourse || bundledCourses.find((item) => item.slug === resolvedSlug) || null;
 
-  return withPublishedChapterTotal(
-    storedCourse || bundledCourses.find((course) => course.slug === resolvedSlug) || null,
-  );
+  // Reuse the established thumbnails on related standalone course pages.
+  const thumbnailSourceByCourse = {
+    "constitutional-law": "indian-constitutional-law-i",
+  };
+  const thumbnailSourceSlug = thumbnailSourceByCourse[resolvedSlug];
+
+  if (course && thumbnailSourceSlug) {
+    const referenceCourse = await courseRepository.getBySlug(thumbnailSourceSlug);
+    if (referenceCourse) {
+      const referenceImage =
+        referenceCourse.thumbnailUrl ||
+        referenceCourse.desktopImageUrl ||
+        referenceCourse.imageUrl ||
+        referenceCourse.media?.thumbnailUrl ||
+        referenceCourse.media?.desktopImageUrl ||
+        referenceCourse.media?.imageUrl ||
+        "";
+      if (referenceImage) {
+        course = {
+          ...course,
+          thumbnailUrl: referenceCourse.thumbnailUrl || referenceImage,
+          desktopImageUrl: referenceCourse.desktopImageUrl || referenceImage,
+          imageUrl: referenceCourse.imageUrl || referenceImage,
+          media: { ...(course.media || {}), ...(referenceCourse.media || {}) },
+          seo: {
+            ...(course.seo || {}),
+            ogImageUrl: referenceCourse.seo?.ogImageUrl || referenceImage,
+          },
+        };
+      }
+    }
+  }
+
+  return withPublishedChapterTotal(course);
 };
 
 export const getAllCourses = async () =>

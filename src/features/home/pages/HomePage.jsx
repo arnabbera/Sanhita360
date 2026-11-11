@@ -148,11 +148,11 @@ const HomePage = () => {
       <main>
         <Hero />
 
-        <ServicesSection />
+        <LearningSection />
 
         <WhyChooseUs />
 
-        <LearningSection />
+        <ServicesSection />
 
         <LatestUpdates />
 

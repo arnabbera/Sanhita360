@@ -108,42 +108,6 @@ const courses = [
     },
   },
   {
-    id: "law-of-torts",
-    title: "Law of Torts",
-    slug: "law-of-torts",
-    description:
-      "Build a clear understanding of Indian tort law through structured LL.B study material on negligence, nuisance, defamation, trespass, vicarious liability, strict and absolute liability, remedies and damages. The course also introduces consumer protection and motor accident compensation, with topic-wise explanations and legal examples.",
-    duration: "Self-paced",
-    courseType: "subject-course",
-    accessType: "free-learning",
-    certificationAvailable: true,
-    certificationFee: 0,
-    featured: true,
-    status: "published",
-    order: 4,
-    seo: {
-      title: "Law of Torts Notes & Cases | LL.B Course",
-      description:
-        "Study Law of Torts for LL.B with notes on negligence, nuisance, defamation, strict and absolute liability, damages, consumer law and motor accident claims.",
-      focusKeyword: "law of torts notes for LLB",
-      secondaryKeywords: [
-        "law of torts cases",
-        "Indian law of torts study material",
-        "negligence and nuisance notes",
-        "strict and absolute liability",
-        "vicarious liability in tort",
-        "law of torts questions and answers",
-        "consumer protection and motor accident claims",
-        "LLB law of torts course",
-      ],
-      schemaType: "Course",
-      robots: {
-        index: true,
-        follow: true,
-      },
-    },
-  },
-  {
     id: "family-law",
     title: "Family Law",
     slug: "family-law",

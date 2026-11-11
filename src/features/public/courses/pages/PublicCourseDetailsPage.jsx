@@ -25,6 +25,7 @@ import {
 
 import {
   Link,
+  Navigate,
   useParams,
 } from "react-router-dom";
 
@@ -385,6 +386,10 @@ export default function PublicCourseDetailsPage() {
     );
   }
 
+  if (courseSlug === "law-of-torts") {
+    return <Navigate to="/courses/law-of-torts-mv-and-cp-laws" replace />;
+  }
+
   // =======================================================
   // NOT FOUND
   // =======================================================
@@ -581,6 +586,8 @@ export default function PublicCourseDetailsPage() {
           </nav>
         </div>
 
+
+
         {/* HERO */}
 
         <section className="public-course-hero">
@@ -662,6 +669,7 @@ export default function PublicCourseDetailsPage() {
                   : ""
               }`}
             >
+
               {isCriminalLawCourse ? <CriminalLawBrandCard /> : landscapeImage ? (
                 <img
                   src={
@@ -1037,7 +1045,7 @@ export default function PublicCourseDetailsPage() {
         {/* TERMS AND DISCLAIMER */}
 
         <section className="course-terms-section">
-          <div className="course-page-container">
+          <div className="course-page-container course-bottom-tools-grid">
             <details className="course-terms-disclosure">
               <summary className="course-terms-heading">
                 <div>
@@ -1096,8 +1104,6 @@ export default function PublicCourseDetailsPage() {
 
               </div>
             </details>
-          </div>
-        </section>
 
         <section className="course-share-section" aria-labelledby="course-share-heading">
           <div className="course-page-container course-share-card">
@@ -1114,6 +1120,11 @@ export default function PublicCourseDetailsPage() {
             </div>
           </div>
         </section>
+
+          </div>
+        </section>
+
+
 
         <style>
           {`
@@ -1282,8 +1293,16 @@ export default function PublicCourseDetailsPage() {
             }
 
             .course-hero-media.course-hero-media-full-image {
+              aspect-ratio: auto;
+              background: transparent;
+            }
+
+            .course-hero-media.course-hero-media-full-image img {
               aspect-ratio: 16 / 9;
+              width: 100%;
+              height: auto;
               background: #06182f;
+              border-radius: 12px;
             }
 
             .course-hero-media-full-image img {
@@ -1593,16 +1612,79 @@ export default function PublicCourseDetailsPage() {
             }
 
             .course-share-section {
-              padding: 55px 0;
-              background: #eff6ff;
+              width: 100%;
+              padding: 0 0 14px;
+              background: transparent;
+            }
+
+            .course-share-section {
+              width: 100%;
+              padding: 0;
+              background: transparent;
+            }
+
+            .course-share-section .course-share-card {
+              display: flex;
+              flex-direction: column;
+              align-items: stretch;
+              gap: 14px;
+              padding: 22px;
+              border: 1px solid #bfdbfe;
+              border-radius: 16px;
+              background: #ffffff;
+              box-shadow: 0 8px 24px rgba(15, 23, 42, .07);
+            }
+
+            .course-share-section .course-share-card h2 { font-size: 23px; }
+            .course-share-section .course-share-actions {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 9px;
+            }
+            .course-share-section .course-share-button { min-width: 0; padding: 9px 8px; font-size: 11px; }
+
+            .course-hero-media .course-share-card {
+              display: flex;
+              flex-direction: column;
+              align-items: stretch;
+              gap: 12px;
+              padding: 15px;
+              border: 1px solid #bfdbfe;
+              border-radius: 14px;
+              background: #ffffff;
+              box-shadow: 0 8px 22px rgba(15, 23, 42, .10);
+            }
+
+            .course-hero-media .course-share-card h2 {
+              font-size: 21px;
+              line-height: 1.2;
+            }
+
+            .course-hero-media .course-share-card p {
+              margin-top: 5px;
+              font-size: 11px;
+            }
+
+            .course-hero-media .course-share-actions {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              justify-content: stretch;
+              gap: 8px;
+            }
+
+            .course-hero-media .course-share-button {
+              min-width: 0;
+              min-height: 38px;
+              padding: 7px 8px;
+              font-size: 10px;
             }
 
             .course-share-card {
               display: flex;
               align-items: center;
               justify-content: space-between;
-              gap: 30px;
-              padding: 28px;
+              gap: 24px;
+              padding: 20px 24px;
               border: 1px solid #bfdbfe;
               border-radius: 18px;
               background: #ffffff;
@@ -1625,7 +1707,8 @@ export default function PublicCourseDetailsPage() {
             .course-share-actions {
               display: flex;
               flex-wrap: wrap;
-              justify-content: flex-end;
+              justify-content: center;
+              align-items: center;
               gap: 10px;
             }
 
@@ -1668,10 +1751,17 @@ export default function PublicCourseDetailsPage() {
               padding: 65px 0;
             }
 
+            .course-bottom-tools-grid {
+              display: grid;
+              grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+              align-items: start;
+              gap: 28px;
+            }
+
             .course-terms-heading {
               display: flex;
               align-items: center;
-              justify-content: space-between;
+              justify-content: flex-start;
               gap: 16px;
               cursor: pointer;
               list-style: none;
@@ -1695,6 +1785,8 @@ export default function PublicCourseDetailsPage() {
             }
 
             .course-terms-toggle {
+              flex: 0 0 auto;
+              margin-left: 14px;
               color: #2563eb;
               font-size: 30px;
               line-height: 1;
@@ -1764,6 +1856,7 @@ export default function PublicCourseDetailsPage() {
             }
 
             @media (max-width: 900px) {
+              .course-bottom-tools-grid { grid-template-columns: 1fr; }
               .course-hero-grid {
                 grid-template-columns: 1fr;
               }
@@ -1825,7 +1918,7 @@ export default function PublicCourseDetailsPage() {
               }
 
               .course-share-section {
-                padding: 40px 0;
+                padding: 0;
               }
 
               .course-share-card {
