@@ -510,7 +510,7 @@ export const QA_ARTICLES = [
       "to": "/courses/code-of-civil-procedure-and-limitation"
     },
     "category": "Civil Procedure",
-    "image": "/images/qa/legal-notice-before-civil-suit.jpg"
+    "image": "/images/qa/legal-notice-CPC.png"
   },
   {
     "slug": "who-is-liable-for-medical-negligence-doctor-or-hospital",
