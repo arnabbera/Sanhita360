@@ -91,7 +91,7 @@ export const QA_ARTICLES = [
       "to": "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home"
     },
     "category": "Property Documents",
-    "image": "/images/qa/check-property-documents-before-buying-flat-kolkata.jpg"
+    "image": "/images/qa/propertydoc-check.png"
   },
   {
     "slug": "does-mutation-prove-ownership",
