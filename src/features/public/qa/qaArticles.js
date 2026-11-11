@@ -577,6 +577,6 @@ export const QA_ARTICLES = [
       "to": "/qa/consumer-complaint-without-lawyer"
     },
     "category": "Medical Negligence · Consumer Rights",
-    "image": "/images/qa/medical-negligence-doctor-hospital.jpg"
+    "image": "/images/qa/doctor-hospital-liabilities.png"
   }
 ];
