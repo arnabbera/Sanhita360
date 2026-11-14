@@ -139,6 +139,34 @@ const PostCard = ({ post }) => {
   );
 };
 
+const CaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-image-link" aria-label="Read Royal Enfield Interceptor 650 consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />14 Nov 2026</span></div>
+      <h3><Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown">Royal Enfield Interceptor 650 Lost Power at High Altitude: A Consumer Dispute</Link></h3>
+      <p>A reported Leh breakdown, an allegedly unperformed ECU update and the consumer commission's reported ₹1 lakh compensation order.</p>
+      <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
+const MakeMyTripOyoCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-image-link" aria-label="Read MakeMyTrip and OYO Goa hotel cancellation case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />03 Nov 2023</span></div>
+      <h3><Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation">MakeMyTrip and OYO Ordered to Pay ₹42,000 for Last-Minute Goa Hotel Cancellation</Link></h3>
+      <p>A prepaid family hotel booking was reportedly cancelled three days before check-in, followed by the same room being offered at a much higher price.</p>
+      <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const LatestPosts = () => {
   const [
     posts,
@@ -217,9 +245,9 @@ const LatestPosts = () => {
 
   const { hash } = useLocation();
   useEffect(() => {
-    if (loading || hash !== "#legal-article") return undefined;
+    if (loading || !["#legal-article", "#case-studies"].includes(hash)) return undefined;
     const frame = window.requestAnimationFrame(() => {
-      document.getElementById("legal-article")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     return () => window.cancelAnimationFrame(frame);
   }, [loading, hash, posts.length]);
@@ -296,11 +324,9 @@ const LatestPosts = () => {
           )}
 
         {!loading &&
-          !error &&
-          posts.length >
-            0 && (
+          !error && (
             <div className="ns-post-groups">
-              {contentGroups.map((group) => (
+              {contentGroups.filter((group) => group.posts.length > 0).map((group) => (
                 <section
                   className="ns-post-group"
                   key={group.title}
@@ -330,6 +356,18 @@ const LatestPosts = () => {
               ))}
             </div>
           )}
+        {!loading && !error && (
+          <section className="ns-post-group" id="case-studies">
+            <div className="ns-post-group-heading">
+              <h3>Case Studies</h3>
+              <p>Real-world disputes and reported decisions, with practical legal lessons and consumer-awareness insights.</p>
+            </div>
+            <div className="ns-post-grid">
+              <CaseStudyCard />
+              <MakeMyTripOyoCaseStudyCard />
+            </div>
+          </section>
+        )}
       </div>
 
       <style>
