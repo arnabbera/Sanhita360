@@ -27,7 +27,7 @@ export default function ConsumerProtectionPage() {
   };
   const contact = "https://wa.me/919830015487?text=" + encodeURIComponent("Hello Sanhita360, I need legal assistance with a consumer dispute. The issue concerns: ");
   return <>
-    <SEO title="Consumer Protection Legal Services & Consumer Disputes | Sanhita360" description={description} canonical="/services/consumer-protection" image="/images/qa/consumer-complaint-without-lawyer.jpg" keywords={["consumer protection legal services","consumer complaint assistance","Consumer Protection Act 2019","online shopping refund dispute","consumer commission complaint"]} />
+    <SEO title="Consumer Protection Legal Services & Consumer Disputes | Sanhita360" description={description} canonical="/services/consumer-protection" image="/images/Legal-services/consumer-protection.png" keywords={["consumer protection legal services","consumer complaint assistance","Consumer Protection Act 2019","online shopping refund dispute","consumer commission complaint"]} />
     <Header />
     <main className="ns-service-page">
       <section className="ns-service-hero"><div className="ns-service-wrap">
@@ -35,7 +35,7 @@ export default function ConsumerProtectionPage() {
         <p className="eyebrow">Sanhita360 · Consumer Protection</p>
         <h1>{title}</h1><p>{description}</p>
         <div className="ns-consumer-hero-points"><span><FaShoppingCart /> Online shopping disputes</span><span><FaRupeeSign /> Refund & compensation claims</span><span><FaBalanceScale /> Consumer Commission support</span></div>
-        <img src="/images/qa/consumer-complaint-without-lawyer.jpg" alt="Consumer protection and legal guidance for consumer complaints" width="1200" height="675" fetchPriority="high" style={{display:"block",width:"100%",height:"auto",marginTop:28,borderRadius:16}} />
+        <img src="/images/Legal-services/consumer-protection.png" alt="Consumer protection and legal guidance for consumer complaints" width="1200" height="675" fetchPriority="high" style={{display:"block",width:"100%",height:"auto",marginTop:28,borderRadius:16}} />
       </div></section>
       <section className="ns-service-body"><div className="ns-service-wrap ns-service-grid"><article>
         <div className="ns-service-card"><h2><FaShieldAlt /> Protecting Your Consumer Rights</h2><p>When a seller, manufacturer or service provider does not resolve a genuine grievance, you may have remedies under the Consumer Protection Act, 2019 and other applicable laws. Sanhita360 helps you understand the issue, organise the evidence and identify a practical legal route based on the facts.</p><p>We focus on clear documentation, appropriate forum selection and realistic next steps. A refund or compensation is not automatic; available relief depends on the evidence, applicable law and decision of the competent authority or Commission.</p></div>
