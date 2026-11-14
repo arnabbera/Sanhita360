@@ -231,9 +231,9 @@ const LatestPosts = () => {
 
   const { hash } = useLocation();
   useEffect(() => {
-    if (loading || hash !== "#legal-article") return undefined;
+    if (loading || !["#legal-article", "#case-studies"].includes(hash)) return undefined;
     const frame = window.requestAnimationFrame(() => {
-      document.getElementById("legal-article")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
     return () => window.cancelAnimationFrame(frame);
   }, [loading, hash, posts.length]);
