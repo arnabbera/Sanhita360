@@ -12,7 +12,7 @@ const menuItems = [
     { to: "/#legal-remedies", label: "Legal Remedies" },
     { to: "/#latest-videos", label: "Learning Videos" },
     { to: "/indian-independence", label: "Indian Independence" },
-    { to: "/case-studies/royal-enfield-interceptor-650-leh-breakdown", label: "Case Study" },
+    { to: "/#case-studies", label: "Case Study" },
   ] },
   { id: "services", label: "Legal Services", links: [
     { to: "/services/property-registration", label: "Property Registration" },
