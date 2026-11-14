@@ -24,14 +24,14 @@ export default function PropertyRegistrationPage() {
   };
   const contact = `https://wa.me/919830015487?text=${encodeURIComponent("Hello Sanhita360, I need support with property searching, an Agreement for Sale, registration or mutation. The property is located in: ")}`;
   return <>
-    <SEO title="Property Search, Sale Agreement & Registration Support in Kolkata" description={description} canonical="/services/property-registration" image="/property-document-support-sanhita360.jpg" />
+    <SEO title="Property Search, Sale Agreement & Registration Support in Kolkata" description={description} canonical="/services/property-registration" image="/images/Legal-services/property-registration.png" />
     <Header />
     <main className="ns-service-page">
       <section className="ns-service-hero"><div className="ns-service-wrap">
         <nav aria-label="Breadcrumb"><Link to="/">Home</Link><span>/</span><span>Legal Services</span><span>/</span><span>Property Registration</span></nav>
         <p className="eyebrow">Sanhita360 · Property Registration</p>
         <h1>{title}</h1><p>{description}</p>
-        <img src="/property-document-support-sanhita360.jpg" alt="Arnab Bera helping a customer review property documents at Sanhita360 — searching, sale agreement, registration and mutation support" width="1672" height="941" fetchPriority="high" style={{ display: "block", width: "100%", height: "auto", marginTop: 28, borderRadius: 16 }} />
+        <img src="/images/Legal-services/property-registration.png" alt="A young advocate in a white shirt and black blazer advising a couple on property registration documents at Sanhita360" width="1672" height="941" fetchPriority="high" style={{ display: "block", width: "100%", height: "auto", marginTop: 28, borderRadius: 16 }} />
       </div></section>
       <section className="ns-service-body"><div className="ns-service-wrap ns-service-grid"><article>
         <div className="ns-service-card ns-service-assistance"><h2><FaCheckCircle /> How We Can Help</h2>
