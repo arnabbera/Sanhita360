@@ -1,4 +1,4 @@
-import { FaArrowLeft, FaBalanceScale, FaBookOpen, FaCheckCircle, FaExternalLinkAlt, FaFileAlt, FaGavel, FaMotorcycle, FaShieldAlt } from "react-icons/fa";
+import { FaArrowLeft, FaBalanceScale, FaBookOpen, FaCheckCircle, FaExternalLinkAlt, FaFileAlt, FaGavel, FaMotorcycle, FaShieldAlt, FaFacebookF, FaLink, FaShareAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Header from "../../home/components/Header";
 import Footer from "../../home/components/Footer";
@@ -72,6 +72,7 @@ export default function RoyalEnfieldCaseStudyPage() {
         </section>
         <section className="ns-re-bottom"><FaBookOpen /><div><h2>Takeaway for vehicle owners</h2><p>Before a long or demanding journey, make sure that every requested repair, inspection or software update is recorded and confirmed in writing. If a problem recurs, document it promptly and communicate with the dealer and manufacturer through traceable channels.</p></div></section>
         <p className="ns-re-disclaimer">Educational case study based on secondary news reporting. Sanhita360 has not independently reviewed the certified consumer commission order or the complete case record. This article is not legal advice, a technical diagnosis, or a finding that all Royal Enfield Interceptor 650 motorcycles have the reported issue. Outcomes depend on individual facts and evidence.</p>
+        <section className="ns-re-forward"><h2><FaShareAlt /> Share / Forward This Case Study</h2><p>Help others learn about consumer rights by sharing this article.</p><div className="ns-re-forward-actions"><a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href)} target="_blank" rel="noreferrer"><FaFacebookF /> Facebook</a><a href={"https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.href) + "&text=" + encodeURIComponent("Royal Enfield Interceptor 650 Leh breakdown: Sanhita360 consumer case study")} target="_blank" rel="noreferrer">𝕏 Share on X</a><button type="button" onClick={() => navigator.share ? navigator.share({title: document.title, url: window.location.href}) : navigator.clipboard.writeText(window.location.href)}><FaShareAlt /> Share / Forward</button><button type="button" onClick={() => navigator.clipboard.writeText(window.location.href)}><FaLink /> Copy Link</button></div></section>
       </article>
     </main>
     <Footer />
@@ -89,6 +90,9 @@ export default function RoyalEnfieldCaseStudyPage() {
       .ns-re-sources{display:grid;gap:12px}.ns-re-sources>a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border:1px solid #dce5ef;border-radius:12px;background:#fff;color:#155aa0;text-decoration:none}.ns-re-sources>a:hover{border-color:#b7781f;box-shadow:0 8px 22px #102b4510}.ns-re-sources span{display:grid;gap:4px}.ns-re-sources strong{color:#143652;font-size:1.05rem}.ns-re-sources small{color:#9b6a22}.ns-re-sources em{color:#5d6e80;font-size:.92rem;font-style:normal;line-height:1.5}
       .ns-re-bottom{margin-top:48px;background:#0c2d49;border-color:#0c2d49}.ns-re-bottom h2{margin-top:0;color:#fff}.ns-re-bottom p{color:#dce8f2}
       .ns-re-disclaimer{margin-top:28px!important;padding:18px 20px;border-left:4px solid #d6a64d;background:#eaf0f6;color:#637286!important;font-size:.9rem}
+
+      .ns-re-forward{margin-top:28px;padding:24px;border:1px solid #d8e2ed;border-radius:16px;background:#fff;box-shadow:0 8px 24px #102b450b}.ns-re-forward h2{display:flex;align-items:center;gap:10px;margin:0;color:#102b45;font-size:1.35rem}.ns-re-forward h2 svg{color:#155e9a}.ns-re-forward p{margin:8px 0 0}.ns-re-forward-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.ns-re-forward-actions a,.ns-re-forward-actions button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 16px;border:0;border-radius:9px;background:#155e9a;color:#fff;text-decoration:none;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}.ns-re-forward-actions a:first-child{background:#1877f2}.ns-re-forward-actions a:nth-child(2){background:#111}.ns-re-forward-actions button:last-child{background:#e9eef4;color:#18324b}
+      @media(max-width:700px){.ns-re-forward{padding:18px}.ns-re-forward-actions{display:grid;grid-template-columns:1fr 1fr}.ns-re-forward-actions a,.ns-re-forward-actions button{padding:0 8px;font-size:.8rem}}
       @media(max-width:700px){.ns-re-wrap{width:calc(100% - 28px)}.ns-re-hero{padding:52px 0}.ns-re-lessons{grid-template-columns:1fr}.ns-re-notice,.ns-re-award,.ns-re-legal,.ns-re-bottom{padding:18px;gap:12px}}
     `}</style>
   </>;
