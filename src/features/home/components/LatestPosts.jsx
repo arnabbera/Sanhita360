@@ -153,6 +153,20 @@ const CaseStudyCard = () => (
   </article>
 );
 
+const MakeMyTripOyoCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-image-link" aria-label="Read MakeMyTrip and OYO Goa hotel cancellation case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />03 Nov 2023</span></div>
+      <h3><Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation">MakeMyTrip and OYO Ordered to Pay ₹42,000 for Last-Minute Goa Hotel Cancellation</Link></h3>
+      <p>A prepaid family hotel booking was reportedly cancelled three days before check-in, followed by the same room being offered at a much higher price.</p>
+      <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const LatestPosts = () => {
   const [
     posts,
@@ -350,6 +364,7 @@ const LatestPosts = () => {
             </div>
             <div className="ns-post-grid">
               <CaseStudyCard />
+              <MakeMyTripOyoCaseStudyCard />
             </div>
           </section>
         )}
