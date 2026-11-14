@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaCheckCircle, FaFileAlt, FaBalanceScale, FaShoppingCart, FaRupeeSign, FaShieldAlt } from "react-icons/fa";
+import { FaArrowRight, FaCheckCircle, FaFileAlt, FaBalanceScale, FaShoppingCart, FaRupeeSign, FaShieldAlt, FaTwitter } from "react-icons/fa";
 import Header from "../../../home/components/Header";
 import Footer from "../../../home/components/Footer";
 import SEO from "../../../../shared/seo/SEO";
@@ -49,7 +49,7 @@ export default function ConsumerProtectionPage() {
         <div className="ns-service-note"><strong>Important Information</strong><p>This page provides general information and does not create an advocate-client relationship. Legal advice depends on the facts and documents. Limitation periods may apply, so seek advice promptly. No refund, compensation, settlement or case outcome is guaranteed. Fees and scope will be discussed before work begins.</p></div>
         <div className="ns-service-note"><strong>Useful Official Resource</strong><p>Consumers may also approach the National Consumer Helpline for grievance redressal support.</p><a href="https://consumerhelpline.gov.in/" target="_blank" rel="noopener noreferrer">National Consumer Helpline <FaArrowRight /></a></div>
       </aside></div></section>
-      <section className="ns-service-wrap ns-property-share"><h2>Share this page</h2><p>Help someone understand the legal options available in a consumer dispute.</p><div className="ns-property-share-actions"><a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl)} target="_blank" rel="noopener noreferrer">Facebook</a><a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(title + " — Sanhita360") + "&url=" + encodeURIComponent(shareUrl)} target="_blank" rel="noopener noreferrer">X</a><button type="button" onClick={copyLink}>Copy Link</button></div><p role="status" aria-live="polite">{copyStatus}</p>{copyStatus === "Please copy the link below" && <input aria-label="Page link to copy" readOnly value={shareUrl} onFocus={(event) => event.target.select()} style={{width:"100%"}} />}</section>
+      <section className="ns-service-wrap ns-property-share"><h2>Share this page</h2><p>Help someone understand the legal options available in a consumer dispute.</p><div className="ns-property-share-actions"><a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl)} target="_blank" rel="noopener noreferrer">Facebook</a><a className="ns-share-x-button" aria-label="Share this Consumer Protection service page on X" title="Share on X" href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(title + " — Sanhita360") + "&url=" + encodeURIComponent(shareUrl)} target="_blank" rel="noopener noreferrer"><FaTwitter aria-hidden="true" /> Share on X</a><button type="button" onClick={copyLink}>Copy Link</button></div><p role="status" aria-live="polite">{copyStatus}</p>{copyStatus === "Please copy the link below" && <input aria-label="Page link to copy" readOnly value={shareUrl} onFocus={(event) => event.target.select()} style={{width:"100%"}} />}</section>
     </main><Footer /><Styles />
   </>;
 }
