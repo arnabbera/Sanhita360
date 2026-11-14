@@ -142,7 +142,7 @@ const PostCard = ({ post }) => {
 const CaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-image-link" aria-label="Read Royal Enfield Interceptor 650 consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/royal-enfield.png" alt="Royal Enfield Interceptor 650 Leh breakdown consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />14 Nov 2026</span></div>
@@ -156,7 +156,7 @@ const CaseStudyCard = () => (
 const MakeMyTripOyoCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-image-link" aria-label="Read MakeMyTrip and OYO Goa hotel cancellation case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/makemytrip-oyo.png" alt="MakeMyTrip and OYO Goa hotel cancellation consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />03 Nov 2023</span></div>
