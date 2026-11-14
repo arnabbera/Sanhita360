@@ -99,7 +99,6 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/royal-enfield-interceptor-650-leh-breakdown": {
     title: "Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360",
     description: "A reported consumer dispute involving an alleged unperformed ECU update before a Leh trip and a ₹1 lakh compensation order dated 4 November 2026.",
-    image: "/images/Legal-services/property-registration.png",
   },
 };
 
