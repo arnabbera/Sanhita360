@@ -139,6 +139,20 @@ const PostCard = ({ post }) => {
   );
 };
 
+const CaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-image-link" aria-label="Read Royal Enfield Interceptor 650 consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />14 Nov 2026</span></div>
+      <h3><Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown">Royal Enfield Interceptor 650 Lost Power at High Altitude: A Consumer Dispute</Link></h3>
+      <p>A reported Leh breakdown, an allegedly unperformed ECU update and the consumer commission's reported ₹1 lakh compensation order.</p>
+      <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const LatestPosts = () => {
   const [
     posts,
@@ -317,6 +331,7 @@ const LatestPosts = () => {
 
                   {group.posts.length > 0 ? (
                     <div className="ns-post-grid">
+                      {group.title === POST_CATEGORIES.LEGAL_ARTICLE && <CaseStudyCard />}
                       {group.posts.map((post) => (
                         <PostCard key={post.id} post={post} />
                       ))}
