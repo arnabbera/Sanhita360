@@ -170,7 +170,7 @@ const MakeMyTripOyoCaseStudyCard = () => (
 const RailwaysCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/railways-denied-confirmed-berths-compensation" className="ns-post-image-link" aria-label="Read Indian Railways confirmed berth denial consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/reservation-confirmation.png" alt="Indian Railways confirmed ticket but passengers denied reserved berths consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />12 May 2026</span></div>
