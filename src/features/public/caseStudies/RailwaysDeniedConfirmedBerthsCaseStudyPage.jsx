@@ -1,4 +1,4 @@
-import { FaArrowLeft, FaBalanceScale, FaExternalLinkAlt, FaFileAlt, FaGavel, FaTrain, FaShieldAlt } from "react-icons/fa";
+import { FaArrowLeft, FaBalanceScale, FaExternalLinkAlt, FaFileAlt, FaGavel, FaTrain, FaShieldAlt, FaFacebookF, FaShareAlt, FaLink } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Header from "../../home/components/Header";
 import Footer from "../../home/components/Footer";
@@ -106,6 +106,16 @@ export default function RailwaysDeniedConfirmedBerthsCaseStudyPage() {
           {sources.map((source) => <div className="ns-rail-source" key={source.name}><div><strong>{source.name}</strong><small>{source.date}</small><p>{source.note}</p></div><a href={source.url} target="_blank" rel="noreferrer">Read report <FaExternalLinkAlt /></a></div>)}
         </div>
         <div className="ns-rail-disclaimer"><FaBalanceScale /><p><strong>Disclaimer:</strong> This case study is for public legal education and is based on secondary reporting. It does not reproduce the complete Commission order and is not legal advice. Verify the certified or downloaded order, applicable rules and current law before relying on this decision in a legal proceeding.</p></div>
+        <section className="ns-rail-forward">
+          <h2><FaShareAlt /> Share / Forward This Case Study</h2>
+          <p>Help other passengers understand their consumer rights by sharing this case study.</p>
+          <div className="ns-rail-forward-actions">
+            <a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href)} target="_blank" rel="noreferrer"><FaFacebookF /> Facebook</a>
+            <a href={"https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.href) + "&text=" + encodeURIComponent("Confirmed train tickets, but no seats: Railways ordered to pay compensation — Sanhita360 case study")} target="_blank" rel="noreferrer">𝕏 Share on X</a>
+            <button type="button" onClick={() => navigator.share ? navigator.share({ title: document.title, url: window.location.href }) : navigator.clipboard.writeText(window.location.href)}><FaShareAlt /> Share / Forward</button>
+            <button type="button" onClick={() => navigator.clipboard.writeText(window.location.href)}><FaLink /> Copy Link</button>
+          </div>
+        </section>
         <Link to="/#case-studies" className="ns-rail-back-bottom"><FaArrowLeft /> Back to all Case Studies</Link>
       </article>
     </main>
@@ -133,6 +143,14 @@ export default function RailwaysDeniedConfirmedBerthsCaseStudyPage() {
       .ns-rail-source a{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:#0369a1;font-weight:750;text-decoration:none}
       .ns-rail-disclaimer{background:#fffbeb;border-color:#fde68a;color:#92400e;margin:25px 0}.ns-rail-disclaimer p{color:#78350f;margin:0}
       .ns-rail-back-bottom{color:#0369a1;margin-top:20px}
+      .ns-rail-forward{margin:32px 0;padding:24px;border:1px solid #dbe5ef;border-radius:15px;background:#fff;box-shadow:0 8px 24px #0f172a0a}
+      .ns-rail-forward h2{display:flex;align-items:center;gap:10px;margin:0;color:#0f172a;font-size:23px}
+      .ns-rail-forward h2 svg{color:#0369a1}.ns-rail-forward>p{margin:8px 0 0}
+      .ns-rail-forward-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+      .ns-rail-forward-actions a,.ns-rail-forward-actions button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 16px;border:0;border-radius:9px;background:#0369a1;color:#fff;text-decoration:none;font:inherit;font-size:14px;font-weight:750;cursor:pointer}
+      .ns-rail-forward-actions a:first-child{background:#1877f2}.ns-rail-forward-actions a:nth-child(2){background:#111827}
+      .ns-rail-forward-actions button:last-child{background:#e9eef4;color:#18324b}
+      @media(max-width:640px){.ns-rail-forward{padding:18px}.ns-rail-forward-actions{display:grid;grid-template-columns:1fr 1fr}.ns-rail-forward-actions a,.ns-rail-forward-actions button{padding:0 8px;font-size:12px}}
       @media(max-width:640px){.ns-rail-wrap{width:min(100% - 30px,960px)}.ns-rail-hero{padding:42px 0}.ns-rail-facts{display:grid;gap:9px}.ns-rail-article{padding-top:28px}.ns-rail-article p,.ns-rail-article li{font-size:15px}.ns-rail-award{grid-template-columns:1fr}.ns-rail-source{align-items:flex-start;flex-direction:column;gap:8px}}
     `}</style>
   </>;
