@@ -310,11 +310,9 @@ const LatestPosts = () => {
           )}
 
         {!loading &&
-          !error &&
-          posts.length >
-            0 && (
+          !error && (
             <div className="ns-post-groups">
-              {contentGroups.map((group) => (
+              {contentGroups.filter((group) => group.posts.length > 0).map((group) => (
                 <section
                   className="ns-post-group"
                   key={group.title}
@@ -331,7 +329,6 @@ const LatestPosts = () => {
 
                   {group.posts.length > 0 ? (
                     <div className="ns-post-grid">
-                      {group.title === POST_CATEGORIES.LEGAL_ARTICLE && <CaseStudyCard />}
                       {group.posts.map((post) => (
                         <PostCard key={post.id} post={post} />
                       ))}
@@ -345,6 +342,17 @@ const LatestPosts = () => {
               ))}
             </div>
           )}
+        {!loading && !error && (
+          <section className="ns-post-group" id="case-studies">
+            <div className="ns-post-group-heading">
+              <h3>Case Studies</h3>
+              <p>Real-world disputes and reported decisions, with practical legal lessons and consumer-awareness insights.</p>
+            </div>
+            <div className="ns-post-grid">
+              <CaseStudyCard />
+            </div>
+          </section>
+        )}
       </div>
 
       <style>
