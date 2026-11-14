@@ -1674,6 +1674,21 @@ export default {
       );
     }
 
+    if (url.pathname.replace(/\/$/, "") === "/services/consumer-protection" && assetResponse.headers.get("content-type")?.includes("text/html")) {
+      const canonicalUrl = `${url.origin}/services/consumer-protection`;
+      const shareVersion = url.searchParams.get("share");
+      const socialUrl = shareVersion
+        ? `${canonicalUrl}?share=${encodeURIComponent(shareVersion)}`
+        : canonicalUrl;
+      return rewriteCourseSocialMetadata(assetResponse, {
+        title: "Consumer Protection & Consumer Dispute Legal Services | Sanhita360",
+        description: "Legal guidance for defective goods, online shopping disputes, denied refunds, deficiency in services, unfair trade practices and consumer complaints under the Consumer Protection Act, 2019.",
+        image: `${url.origin}/images/Legal-services/consumer-protection.png`,
+        imageWidth: 1200,
+        imageHeight: 675,
+      }, canonicalUrl, socialUrl);
+    }
+
     if (url.pathname.replace(/\/$/, "") === "/services/property-registration" && assetResponse.headers.get("content-type")?.includes("text/html")) {
       return rewriteCourseSocialMetadata(assetResponse, {
         title: "Property Search, Sale Agreement & Registration Support in Kolkata | Sanhita360",
