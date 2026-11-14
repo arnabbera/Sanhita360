@@ -2,6 +2,7 @@ import LitigationPage from "../features/public/services/pages/LitigationPage";
 import QAPage from "../features/public/qa/QAPage";
 import RoyalEnfieldCaseStudyPage from "../features/public/caseStudies/RoyalEnfieldCaseStudyPage";
 import MakeMyTripOyoGoaCaseStudyPage from "../features/public/caseStudies/MakeMyTripOyoGoaCaseStudyPage";
+import RailwaysDeniedConfirmedBerthsCaseStudyPage from "../features/public/caseStudies/RailwaysDeniedConfirmedBerthsCaseStudyPage";
 import PropertyTitleVerificationPage from "../features/public/legal/pages/PropertyTitleVerificationPage";
 import WestBengalTenantEvictionPage from "../features/public/legal/pages/WestBengalTenantEvictionPage";
 import Section175BnssPage from "../features/public/legal/pages/Section175BnssPage";
@@ -173,6 +174,7 @@ export default function AppRouter() {
       <Route path="/qa/:slug" element={<QAPage />} />
       <Route path="/case-studies/royal-enfield-interceptor-650-leh-breakdown" element={<RoyalEnfieldCaseStudyPage />} />
       <Route path="/case-studies/makemytrip-oyo-goa-hotel-cancellation" element={<MakeMyTripOyoGoaCaseStudyPage />} />
+      <Route path="/case-studies/railways-denied-confirmed-berths-compensation" element={<RailwaysDeniedConfirmedBerthsCaseStudyPage />} />
       <Route path="/about/founder" element={<FounderPage />} />
 
       <Route path="/recognition" element={<RecognitionPage />} />

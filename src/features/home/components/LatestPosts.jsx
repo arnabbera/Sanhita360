@@ -142,7 +142,7 @@ const PostCard = ({ post }) => {
 const CaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-image-link" aria-label="Read Royal Enfield Interceptor 650 consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/royal-enfield.png" alt="Royal Enfield Interceptor 650 Leh breakdown consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />14 Nov 2026</span></div>
@@ -156,13 +156,27 @@ const CaseStudyCard = () => (
 const MakeMyTripOyoCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-image-link" aria-label="Read MakeMyTrip and OYO Goa hotel cancellation case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/makemytrip-oyo.png" alt="MakeMyTrip and OYO Goa hotel cancellation consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />03 Nov 2023</span></div>
       <h3><Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation">MakeMyTrip and OYO Ordered to Pay ₹42,000 for Last-Minute Goa Hotel Cancellation</Link></h3>
       <p>A prepaid family hotel booking was reportedly cancelled three days before check-in, followed by the same room being offered at a much higher price.</p>
       <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
+const RailwaysCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/railways-denied-confirmed-berths-compensation" className="ns-post-image-link" aria-label="Read Indian Railways confirmed berth denial consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />12 May 2026</span></div>
+      <h3><Link to="/case-studies/railways-denied-confirmed-berths-compensation">Confirmed Train Tickets, But No Seats: Railways Ordered to Pay ₹20,000</Link></h3>
+      <p>Four passengers were reportedly forced to travel standing despite confirmed berths on the LTT–Patna Express. The Bhojpur Consumer Commission awarded compensation and costs.</p>
+      <Link to="/case-studies/railways-denied-confirmed-berths-compensation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
     </div>
   </article>
 );
@@ -365,6 +379,7 @@ const LatestPosts = () => {
             <div className="ns-post-grid">
               <CaseStudyCard />
               <MakeMyTripOyoCaseStudyCard />
+              <RailwaysCaseStudyCard />
             </div>
           </section>
         )}
