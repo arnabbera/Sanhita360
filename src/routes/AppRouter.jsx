@@ -60,6 +60,7 @@ import ClaimPurchasePage from "../features/public/courses/pages/ClaimPurchasePag
 import LiveOnlineClassesPage from "../features/public/courses/pages/LiveOnlineClassesPage";
 
 import PropertyRegistrationPage from "../features/public/services/pages/PropertyRegistrationPage";
+import ConsumerProtectionPage from "../features/public/services/pages/ConsumerProtectionPage";
 import LegalServiceDetailsPage from "../features/public/services/pages/LegalServiceDetailsPage";
 
 import DisclaimerPage from "../features/public/legal/pages/DisclaimerPage";
@@ -269,6 +270,7 @@ export default function AppRouter() {
 
       <Route path="/services/litigation" element={<LitigationPage />} />
       <Route path="/services/property-registration" element={<PropertyRegistrationPage />} />
+      <Route path="/services/consumer-protection" element={<ConsumerProtectionPage />} />
       <Route
         path="/services/:serviceSlug"
         element={

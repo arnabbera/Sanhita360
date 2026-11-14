@@ -15,6 +15,7 @@ const menuItems = [
   ] },
   { id: "services", label: "Legal Services", links: [
     { to: "/services/property-registration", label: "Property Registration" },
+    { to: "/services/consumer-protection", label: "Consumer Protection" },
     { to: "/services/litigation", label: "Litigation" },
   ] },
   { id: "about", label: "About", links: [
