@@ -1,8 +1,8 @@
 import { FaArrowLeft, FaBalanceScale, FaBookOpen, FaCheckCircle, FaExternalLinkAlt, FaFileAlt, FaGavel, FaMotorcycle, FaShieldAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Header from "../../../home/components/Header";
-import Footer from "../../../home/components/Footer";
-import SEO from "../../../../shared/seo/SEO";
+import Header from "../../home/components/Header";
+import Footer from "../../home/components/Footer";
+import SEO from "../../../shared/seo/SEO";
 
 const sources = [
   { name: "Mint", date: "13 November 2026", url: "https://www.livemint.com/money/personal-finance/leh-road-trip-turns-into-nightmare-for-royal-enfield-owner-after-bike-loses-power-how-he-won-1-lakh-in-consumer-court/amp-11794546041733.html", note: "Detailed account of the complaint, evidence, commission findings and compensation." },
