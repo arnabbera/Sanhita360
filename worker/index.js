@@ -96,6 +96,11 @@ const LEGAL_UPDATE_SOCIAL_META = {
     description: "Options available when money remains unrecovered after an online financial-fraud complaint, including MRM, police escalation, banking and consumer remedies.",
     image: "/images/legal-updates/unrecovered-online-fraud-funds.jpg",
   },
+  "/case-studies/royal-enfield-interceptor-650-leh-breakdown": {
+    title: "Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360",
+    description: "A reported consumer dispute involving an alleged unperformed ECU update before a Leh trip and a ₹1 lakh compensation order dated 4 November 2026.",
+    image: "/images/Legal-services/property-registration.png",
+  },
 };
 
 const BUNDLED_POST_SOCIAL_META = Object.fromEntries(
