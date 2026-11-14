@@ -15,7 +15,7 @@ const sources = [
 
 export default function RoyalEnfieldCaseStudyPage() {
   return <>
-    <SEO title="Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360" description="A reported consumer dispute involving a Royal Enfield Interceptor 650, an allegedly unperformed ECU update before a Leh trip, and a ₹1 lakh compensation order by the South Delhi District Consumer Commission dated 4 November 2026." canonical="/case-studies/royal-enfield-interceptor-650-leh-breakdown" image="/images/Legal-services/property-registration.png" keywords={["Royal Enfield consumer case", "Interceptor 650 Leh breakdown", "consumer commission India", "deficiency in service", "ECU update dispute"]} />
+    <SEO title="Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360" description="A reported consumer dispute involving a Royal Enfield Interceptor 650, an allegedly unperformed ECU update before a Leh trip, and a ₹1 lakh compensation order by the South Delhi District Consumer Commission dated 4 November 2026." canonical="/case-studies/royal-enfield-interceptor-650-leh-breakdown" keywords={["Royal Enfield consumer case", "Interceptor 650 Leh breakdown", "consumer commission India", "deficiency in service", "ECU update dispute"]} />
     <Header />
     <main className="ns-re-case">
       <section className="ns-re-hero"><div className="ns-re-wrap">
