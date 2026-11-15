@@ -76,7 +76,7 @@ export default function MakeMyTripOyoGoaCaseStudyPage() {
           <p>Help other consumers understand their booking and cancellation rights by sharing this case study.</p>
           <div className="ns-myo-forward-actions">
             <a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href)} target="_blank" rel="noreferrer"><FaFacebookF /> Facebook</a>
-            <a href={"https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.href) + "&text=" + encodeURIComponent("MakeMyTrip, OYO and Goa hotel ordered to pay ₹42,000 after a last-minute booking cancellation — Sanhita360 case study")} target="_blank" rel="noreferrer">𝕏 Share on X</a>
+            <a href={"https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.origin + window.location.pathname + "?share=makemytrip-oyo-case-v2") + "&text=" + encodeURIComponent("MakeMyTrip, OYO and Goa hotel ordered to pay ₹42,000 after a last-minute booking cancellation — Sanhita360 case study")} target="_blank" rel="noreferrer">𝕏 Share on X</a>
             <button type="button" onClick={() => navigator.share ? navigator.share({ title: document.title, url: window.location.href }) : navigator.clipboard.writeText(window.location.href)}><FaShareAlt /> Share / Forward</button>
             <button type="button" onClick={() => navigator.clipboard.writeText(window.location.href)}><FaLink /> Copy Link</button>
           </div>
