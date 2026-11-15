@@ -124,6 +124,7 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/bsnl-landline-non-functional-18-days-thrissur": {
     title: "BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 | Sanhita360",
     description: "Thrissur Consumer Commission held BSNL liable after a landline remained non-functional for 18 days, awarding ₹5,000 compensation and ₹5,000 litigation costs.",
+    image: "/images/case-study/bsnl-liable-deficiancy-in-service.png?v=20261115",
   },
   "/case-studies/railway-washroom-water-shortage-shivamogga": {
     title: "No Water in Train Washrooms: Shivamogga Consumer Commission Holds Railways Liable | Sanhita360",
