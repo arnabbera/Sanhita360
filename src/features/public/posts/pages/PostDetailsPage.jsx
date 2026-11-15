@@ -626,9 +626,10 @@ export default function PostDetailsPage() {
       post.slug,
     )}`;
 
-  // A new share URL makes X fetch the updated card after it cached the
-  // original URL before this post's thumbnail was available.
-  const socialShareUrl = `${shareUrl}?share=${post.slug === "think-before-you-type-defamation-digital-age" ? "defamation-card-v2" : "post-card-20261001"}`;
+  // Generate a fresh share URL for every share action. X caches card previews
+  // by URL, so a unique version token gives each new tweet a fresh URL to crawl.
+  const createSocialShareUrl = () =>
+    `${shareUrl}?share=${encodeURIComponent(`${post.slug}-${Date.now()}`)}`;
 
   const shareTitle =
     post.title ||
@@ -669,6 +670,7 @@ export default function PostDetailsPage() {
 
   const shareOnFacebook =
     () => {
+      const socialShareUrl = createSocialShareUrl();
       openShareWindow(
         `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
           socialShareUrl,
@@ -680,6 +682,7 @@ export default function PostDetailsPage() {
     () => {
       const text =
         `${shareTitle} - Sanhita360`;
+      const socialShareUrl = createSocialShareUrl();
 
       openShareWindow(
         `https://twitter.com/intent/tweet?text=${encodeURIComponent(
@@ -705,7 +708,7 @@ export default function PostDetailsPage() {
             text:
               shareText,
             url:
-              socialShareUrl,
+              createSocialShareUrl(),
           });
 
           return;
@@ -728,7 +731,7 @@ export default function PostDetailsPage() {
 
       const copied =
         await copyToClipboard(
-          socialShareUrl,
+          createSocialShareUrl(),
         );
 
       showShareMessage(

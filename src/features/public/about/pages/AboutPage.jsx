@@ -1,4 +1,8 @@
 import {
+  FaFacebookF,
+  FaInstagram,
+  FaLink,
+  FaShareAlt,
   FaBalanceScale,
   FaBookOpen,
   FaGraduationCap,
@@ -67,12 +71,70 @@ const values = [
 ];
 
 export default function AboutPage() {
+  const createShareUrl = () =>
+    `https://www.sanhita360.com/about?share=about-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+  const shareOnFacebook = () => {
+    const url = createShareUrl();
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener,noreferrer,width=650,height=550",
+    );
+  };
+
+  const shareOnX = () => {
+    const url = createShareUrl();
+    const text = "Learn more about Sanhita360 — legal awareness, structured learning and practical guidance.";
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener,noreferrer,width=650,height=550",
+    );
+  };
+
+  const shareNative = async () => {
+    const url = createShareUrl();
+    const shareData = {
+      title: "About Sanhita360",
+      text: "Learn about Sanhita360 — legal awareness, structured legal learning and practical guidance.",
+      url,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      window.alert("Page link copied. You can paste it into Instagram or any messaging app.");
+    } catch {
+      window.prompt("Copy this page link:", url);
+    }
+  };
+
+  const copyPageLink = async () => {
+    const url = createShareUrl();
+    try {
+      await navigator.clipboard.writeText(url);
+      window.alert("Page link copied.");
+    } catch {
+      window.prompt("Copy this page link:", url);
+    }
+  };
+
   return (
     <>
       <SEO
         title="About Us"
         description="Learn about Sanhita360, a platform for legal awareness, structured legal learning and practical guidance."
         canonical="/about"
+        image="/images/sanhita360-about-thumbnail.webp"
         keywords={[
           "about Sanhita360",
           "legal learning platform",
@@ -175,6 +237,30 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <section className="ns-about-share-section" aria-label="Share Sanhita360">
+          <div className="ns-about-wrap">
+            <div className="ns-about-share-copy">
+              <p className="ns-about-kicker">Spread the word</p>
+              <h2>Share Sanhita360</h2>
+              <p>Help others discover accessible legal awareness, learning resources and practical guidance.</p>
+            </div>
+            <div className="ns-about-share-actions">
+              <button type="button" className="facebook" onClick={shareOnFacebook}>
+                <FaFacebookF /> Facebook
+              </button>
+              <button type="button" className="x" onClick={shareOnX}>
+                <span className="ns-about-x-icon">X</span> Share on X
+              </button>
+              <button type="button" className="instagram" onClick={shareNative}>
+                <FaInstagram /> Instagram / Share
+              </button>
+              <button type="button" className="copy" onClick={copyPageLink}>
+                <FaLink /> Copy Link
+              </button>
+            </div>
+          </div>
+        </section>
+
         <section className="ns-about-cta">
           <div className="ns-about-wrap">
             <div>
@@ -231,14 +317,26 @@ function Styles() {
       .ns-about-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
       .ns-about-values article{display:flex;gap:16px;padding:24px;border-radius:16px;background:#f8fafc}
       .ns-about-values article>span{display:flex;width:44px;height:44px;flex:none;align-items:center;justify-content:center;border-radius:12px;background:#dbeafe;color:#2563eb;font-size:19px}
+      .ns-about-share-section{padding:48px 0;background:#eff6ff}
+      .ns-about-share-section .ns-about-wrap{display:flex;align-items:center;justify-content:space-between;gap:28px}
+      .ns-about-share-copy{max-width:520px}
+      .ns-about-share-copy h2{margin:0;color:#0f172a;font-size:clamp(26px,3vw,36px)}
+      .ns-about-share-copy>p:last-child{margin:10px 0 0;color:#475569;line-height:1.7}
+      .ns-about-share-actions{display:flex;flex-wrap:wrap;gap:9px}
+      .ns-about-share-actions button{display:inline-flex;min-height:42px;align-items:center;justify-content:center;gap:8px;padding:0 15px;border:1px solid transparent;border-radius:9px;color:#fff;font:800 13px inherit;cursor:pointer}
+      .ns-about-share-actions .facebook{background:#1877f2}
+      .ns-about-share-actions .x{background:#000}
+      .ns-about-share-actions .instagram{background:linear-gradient(135deg,#833ab4,#e1306c,#f77737)}
+      .ns-about-share-actions .copy{border-color:#cbd5e1;background:#fff;color:#334155}
+      .ns-about-x-icon{font-size:14px;font-weight:900}
       .ns-about-cta{padding:62px 0;background:#1d4ed8;color:#fff}
       .ns-about-cta .ns-about-wrap{display:flex;align-items:center;justify-content:space-between;gap:32px}
       .ns-about-cta h2{margin:0;font-size:clamp(28px,4vw,42px)}
       .ns-about-actions{display:flex;flex-wrap:wrap;gap:12px}
       .ns-about-actions a{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border:2px solid #fff;border-radius:10px;background:#fff;color:#1d4ed8;text-decoration:none;font-weight:800;white-space:nowrap}
       .ns-about-actions a.secondary{background:transparent;color:#fff}
-      @media(max-width:850px){.ns-about-hero-grid{grid-template-columns:1fr;gap:32px}.ns-about-story-grid{grid-template-columns:1fr;gap:24px}.ns-about-cards,.ns-about-values{grid-template-columns:1fr}.ns-about-cta .ns-about-wrap{align-items:flex-start;flex-direction:column}}
-      @media(max-width:640px){.ns-about-wrap{width:min(100% - 28px,1180px)}.ns-about-hero{padding:58px 0 64px}.ns-about-section{padding:56px 0}.ns-about-card{padding:24px}.ns-about-values article{padding:20px}.ns-about-cta{padding:48px 0}}
+      @media(max-width:850px){.ns-about-share-section .ns-about-wrap{align-items:flex-start;flex-direction:column}.ns-about-hero-grid{grid-template-columns:1fr;gap:32px}.ns-about-story-grid{grid-template-columns:1fr;gap:24px}.ns-about-cards,.ns-about-values{grid-template-columns:1fr}.ns-about-cta .ns-about-wrap{align-items:flex-start;flex-direction:column}}
+      @media(max-width:640px){.ns-about-share-section{padding:38px 0}.ns-about-share-actions{display:grid;width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.ns-about-share-actions button{width:100%}.ns-about-wrap{width:min(100% - 28px,1180px)}.ns-about-hero{padding:58px 0 64px}.ns-about-section{padding:56px 0}.ns-about-card{padding:24px}.ns-about-values article{padding:20px}.ns-about-cta{padding:48px 0}}
     `}</style>
   );
 }

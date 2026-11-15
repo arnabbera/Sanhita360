@@ -30,6 +30,16 @@ const FIREBASE_ISSUER = `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`;
 const FIREBASE_JWKS_URL = "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com";
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 
+const STATIC_PAGE_SOCIAL_META = {
+  "/about": {
+    title: "About Sanhita360 | Legal Awareness, Learning & Guidance",
+    description: "Discover Sanhita360, a citizen-focused platform for legal awareness, structured legal learning and practical guidance.",
+    image: "/images/sanhita360-about-thumbnail.webp",
+    imageWidth: 1672,
+    imageHeight: 941,
+  },
+};
+
 const LEGAL_UPDATE_SOCIAL_META = {
   "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home": {
     title: "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home | Sanhita360",
@@ -99,6 +109,21 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/royal-enfield-interceptor-650-leh-breakdown": {
     title: "Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360",
     description: "A reported consumer dispute involving an alleged unperformed ECU update before a Leh trip and a ₹1 lakh compensation order dated 4 November 2026.",
+    image: "/images/case-study/royal-enfield.png?v=20261115",
+  },
+  "/case-studies/makemytrip-oyo-goa-hotel-cancellation": {
+    title: "MakeMyTrip, OYO and Goa Hotel Cancellation: ₹42,000 Consumer Case Study | Sanhita360",
+    description: "A Chandigarh Consumer Commission reportedly ordered MakeMyTrip, OYO and a Goa hotel to pay ₹42,000 after a prepaid hotel booking was cancelled shortly before check-in.",
+    image: "/images/case-study/makemytrip-oyo.png?v=20261115",
+  },
+  "/case-studies/railways-denied-confirmed-berths-compensation": {
+    title: "Confirmed Train Tickets, No Berths: Railways Ordered to Pay ₹35,000 | Sanhita360",
+    description: "Bhojpur District Consumer Commission case study: four passengers were reportedly denied confirmed berths. The reported award included ₹20,000 compensation and ₹15,000 costs.",
+    image: "/images/case-study/reservation-confirmation.png?v=20261115",
+  },
+  "/case-studies/railway-washroom-water-shortage-shivamogga": {
+    title: "No Water in Train Washrooms: Shivamogga Consumer Commission Holds Railways Liable | Sanhita360",
+    description: "A family of 24 reportedly abandoned its journey after finding no water in coach washrooms. The Shivamogga Consumer Commission held railway station masters liable and awarded ₹15,000 plus ticket refund with interest.",
   },
 };
 
@@ -717,12 +742,23 @@ const rewriteCourseSocialMetadata = (response, metadata, canonicalUrl, socialUrl
   }
 
   if (metadata.image) {
+    // Remove any template/default image tags first. Social crawlers commonly
+    // select the first image tag, so appending a correct image is not enough.
+    rewriter
+      .on('meta[property="og:image"]', { element(element) { element.remove(); } })
+      .on('meta[property="og:image:url"]', { element(element) { element.remove(); } })
+      .on('meta[property="og:image:secure_url"]', { element(element) { element.remove(); } })
+      .on('meta[name="twitter:image"]', { element(element) { element.remove(); } });
     rewriter.on("head", {
       element(element) {
         const image = metadata.image.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-        const imageType = /\.jpe?g(?:[?#]|$)/i.test(metadata.image)
-          ? "image/jpeg"
-          : "image/png";
+        const imageType = /\.webp(?:[?#]|$)/i.test(metadata.image)
+          ? "image/webp"
+          : /\.jpe?g(?:[?#]|$)/i.test(metadata.image)
+            ? "image/jpeg"
+            : /\.avif(?:[?#]|$)/i.test(metadata.image)
+              ? "image/avif"
+              : "image/png";
         const imageWidth = metadata.imageWidth || 1200;
         const imageHeight = metadata.imageHeight || 675;
         element.append(
@@ -1753,6 +1789,24 @@ export default {
           imageWidth: 1200,
           imageHeight: 675,
         },
+        canonicalUrl,
+        socialUrl,
+      );
+    }
+
+    if (
+      url.pathname.replace(/\/$/, "") === "/about" &&
+      assetResponse.headers.get("content-type")?.includes("text/html")
+    ) {
+      const canonicalUrl = `${url.origin}/about`;
+      const shareVersion = url.searchParams.get("share");
+      const socialUrl = shareVersion
+        ? `${canonicalUrl}?share=${encodeURIComponent(shareVersion)}`
+        : canonicalUrl;
+      const metadata = STATIC_PAGE_SOCIAL_META["/about"];
+      return rewriteCourseSocialMetadata(
+        assetResponse,
+        { ...metadata, image: new URL(metadata.image, url.origin).href },
         canonicalUrl,
         socialUrl,
       );
