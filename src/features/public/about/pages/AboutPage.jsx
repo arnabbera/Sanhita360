@@ -134,6 +134,7 @@ export default function AboutPage() {
         title="About Us"
         description="Learn about Sanhita360, a platform for legal awareness, structured legal learning and practical guidance."
         canonical="/about"
+        image="/images/sanhita360-about-thumbnail.webp"
         keywords={[
           "about Sanhita360",
           "legal learning platform",
