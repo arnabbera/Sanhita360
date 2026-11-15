@@ -184,7 +184,7 @@ const BsnlLandlineCaseStudyCard = () => (
 const TrainWashroomWaterCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/railway-washroom-water-shortage-shivamogga" className="ns-post-image-link" aria-label="Read Shivamogga train washroom water shortage consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/no-water-in-train.png" alt="No water in train washrooms case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />10 Nov 2026</span></div>
