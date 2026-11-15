@@ -129,6 +129,7 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/railway-washroom-water-shortage-shivamogga": {
     title: "No Water in Train Washrooms: Shivamogga Consumer Commission Holds Railways Liable | Sanhita360",
     description: "A family of 24 reportedly abandoned its journey after finding no water in coach washrooms. The Shivamogga Consumer Commission held railway station masters liable and awarded ₹15,000 plus ticket refund with interest.",
+    image: "/images/case-study/no-water-in-train.png?v=20261115",
   },
 };
 
