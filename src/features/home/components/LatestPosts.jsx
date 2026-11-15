@@ -170,7 +170,7 @@ const MakeMyTripOyoCaseStudyCard = () => (
 const BsnlLandlineCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-image-link" aria-label="Read BSNL landline deficiency consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/bsnl-liable-deficiancy-in-service.png" alt="BSNL held liable for landline service failure for 18 days" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />9 Nov 2026</span></div>
