@@ -101,6 +101,11 @@ const LEGAL_UPDATE_SOCIAL_META = {
     description: "A reported consumer dispute involving an alleged unperformed ECU update before a Leh trip and a ₹1 lakh compensation order dated 4 November 2026.",
     image: "/images/case-study/royal-enfield.png",
   },
+  "/case-studies/railways-denied-confirmed-berths-compensation": {
+    title: "Confirmed Train Tickets, No Berths: Railways Ordered to Pay ₹35,000 | Sanhita360",
+    description: "Bhojpur District Consumer Commission case study: four passengers were reportedly denied confirmed berths. The reported award included ₹20,000 compensation and ₹15,000 costs.",
+    image: "/images/case-study/reservation-confirmation.png?v=20261115",
+  },
 };
 
 const BUNDLED_POST_SOCIAL_META = Object.fromEntries(
