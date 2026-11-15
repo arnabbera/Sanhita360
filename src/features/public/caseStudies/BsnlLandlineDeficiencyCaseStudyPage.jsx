@@ -20,7 +20,7 @@ export default function BsnlLandlineDeficiencyCaseStudyPage() {
   const copyLink = async () => { const url = shareUrl(); try { await navigator.clipboard.writeText(url); window.alert("Case study link copied."); } catch { window.prompt("Copy this case study link:", url); } };
 
   return <>
-    <SEO title="BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 | Sanhita360" description="Thrissur Consumer Commission held BSNL liable after a landline remained non-functional for 18 days. Read the facts, legal reasoning, ₹5,000 compensation, ₹5,000 costs and relevant judgments." canonical="/case-studies/bsnl-landline-non-functional-18-days-thrissur" keywords={["BSNL deficiency in service", "landline not working consumer complaint", "Thrissur Consumer Commission BSNL", "T R Pushpangadhan BSNL", "Vodafone Idea Ajay Kumar Agarwal"]} />
+    <SEO title="BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 | Sanhita360" description="Thrissur Consumer Commission held BSNL liable after a landline remained non-functional for 18 days. Read the facts, legal reasoning, ₹5,000 compensation, ₹5,000 costs and relevant judgments." canonical="/case-studies/bsnl-landline-non-functional-18-days-thrissur" image="/images/case-study/bsnl-liable-deficiancy-in-service.png" keywords={["BSNL deficiency in service", "landline not working consumer complaint", "Thrissur Consumer Commission BSNL", "T R Pushpangadhan BSNL", "Vodafone Idea Ajay Kumar Agarwal"]} />
     <Header />
     <main className="ns-bsnl-case">
       <section className="ns-bsnl-hero"><div className="ns-bsnl-wrap">
