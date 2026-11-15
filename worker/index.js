@@ -30,6 +30,16 @@ const FIREBASE_ISSUER = `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`;
 const FIREBASE_JWKS_URL = "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com";
 const FIRESTORE_SCOPE = "https://www.googleapis.com/auth/datastore";
 
+const STATIC_PAGE_SOCIAL_META = {
+  "/about": {
+    title: "About Sanhita360 | Legal Awareness, Learning & Guidance",
+    description: "Discover Sanhita360, a citizen-focused platform for legal awareness, structured legal learning and practical guidance.",
+    image: "/images/sanhita360-about-thumbnail.webp",
+    imageWidth: 1672,
+    imageHeight: 941,
+  },
+};
+
 const LEGAL_UPDATE_SOCIAL_META = {
   "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home": {
     title: "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home | Sanhita360",
@@ -728,12 +738,23 @@ const rewriteCourseSocialMetadata = (response, metadata, canonicalUrl, socialUrl
   }
 
   if (metadata.image) {
+    // Remove any template/default image tags first. Social crawlers commonly
+    // select the first image tag, so appending a correct image is not enough.
+    rewriter
+      .on('meta[property="og:image"]', { element(element) { element.remove(); } })
+      .on('meta[property="og:image:url"]', { element(element) { element.remove(); } })
+      .on('meta[property="og:image:secure_url"]', { element(element) { element.remove(); } })
+      .on('meta[name="twitter:image"]', { element(element) { element.remove(); } });
     rewriter.on("head", {
       element(element) {
         const image = metadata.image.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-        const imageType = /\.jpe?g(?:[?#]|$)/i.test(metadata.image)
-          ? "image/jpeg"
-          : "image/png";
+        const imageType = /\.webp(?:[?#]|$)/i.test(metadata.image)
+          ? "image/webp"
+          : /\.jpe?g(?:[?#]|$)/i.test(metadata.image)
+            ? "image/jpeg"
+            : /\.avif(?:[?#]|$)/i.test(metadata.image)
+              ? "image/avif"
+              : "image/png";
         const imageWidth = metadata.imageWidth || 1200;
         const imageHeight = metadata.imageHeight || 675;
         element.append(
@@ -1764,6 +1785,24 @@ export default {
           imageWidth: 1200,
           imageHeight: 675,
         },
+        canonicalUrl,
+        socialUrl,
+      );
+    }
+
+    if (
+      url.pathname.replace(/\/$/, "") === "/about" &&
+      assetResponse.headers.get("content-type")?.includes("text/html")
+    ) {
+      const canonicalUrl = `${url.origin}/about`;
+      const shareVersion = url.searchParams.get("share");
+      const socialUrl = shareVersion
+        ? `${canonicalUrl}?share=${encodeURIComponent(shareVersion)}`
+        : canonicalUrl;
+      const metadata = STATIC_PAGE_SOCIAL_META["/about"];
+      return rewriteCourseSocialMetadata(
+        assetResponse,
+        { ...metadata, image: new URL(metadata.image, url.origin).href },
         canonicalUrl,
         socialUrl,
       );
