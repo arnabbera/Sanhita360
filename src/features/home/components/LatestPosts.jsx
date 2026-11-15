@@ -167,6 +167,20 @@ const MakeMyTripOyoCaseStudyCard = () => (
   </article>
 );
 
+const BsnlLandlineCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-image-link" aria-label="Read BSNL landline deficiency consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />9 Nov 2026</span></div>
+      <h3><Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur">BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000</Link></h3>
+      <p>BSNL was held liable after a subscriber's landline remained non-functional for approximately 18 days. The Commission awarded compensation and litigation costs.</p>
+      <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const TrainWashroomWaterCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/railway-washroom-water-shortage-shivamogga" className="ns-post-image-link" aria-label="Read Shivamogga train washroom water shortage consumer case study">
@@ -395,6 +409,7 @@ const LatestPosts = () => {
               <MakeMyTripOyoCaseStudyCard />
               <RailwaysCaseStudyCard />
               <TrainWashroomWaterCaseStudyCard />
+              <BsnlLandlineCaseStudyCard />
             </div>
           </section>
         )}
