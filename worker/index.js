@@ -121,6 +121,10 @@ const LEGAL_UPDATE_SOCIAL_META = {
     description: "Bhojpur District Consumer Commission case study: four passengers were reportedly denied confirmed berths. The reported award included ₹20,000 compensation and ₹15,000 costs.",
     image: "/images/case-study/reservation-confirmation.png?v=20261115",
   },
+  "/case-studies/bsnl-landline-non-functional-18-days-thrissur": {
+    title: "BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 | Sanhita360",
+    description: "Thrissur Consumer Commission held BSNL liable after a landline remained non-functional for 18 days, awarding ₹5,000 compensation and ₹5,000 litigation costs.",
+  },
   "/case-studies/railway-washroom-water-shortage-shivamogga": {
     title: "No Water in Train Washrooms: Shivamogga Consumer Commission Holds Railways Liable | Sanhita360",
     description: "A family of 24 reportedly abandoned its journey after finding no water in coach washrooms. The Shivamogga Consumer Commission held railway station masters liable and awarded ₹15,000 plus ticket refund with interest.",
