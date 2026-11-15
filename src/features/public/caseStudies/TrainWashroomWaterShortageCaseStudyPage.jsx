@@ -12,7 +12,6 @@ const sources = [
   { name: "The New Indian Express", date: "27 October 2026", url: "https://www.newindianexpress.com/amp/story/states/karnataka/2026/Oct/27/consumer-redressal-commission-in-shivamogga-fines-railways-for-lack-of-water-on-train", note: "Early regional coverage of the complaint and compensation order." },
   { name: "The Economic Times", date: "28 October 2026", url: "https://economictimes.indiatimes.com/industry/transportation/railways/no-water-in-train-toilets-no-help-from-station-master-railways-told-to-pay-rs-15000-to-passenger-travelling-from-bengaluru-to-shivamogga-with-23-relatives/articleshow/135254512.cms", note: "Summarises the journey, failure to resolve the water issue and the ₹15,000 award plus fare refund." },
   { name: "Mirror Now", date: "28 October 2026", url: "https://www.mirrornow.in/bengaluru-news/consumer-court-orders-south-western-railway-compensation-for-toilet-water-failure-article-156419750", note: "Additional coverage of the consumer commission's directions." },
-  { name: "LawChakra", date: "November 2026", url: "https://lawchakra.in/other-courts/ganga-pollution-bihar-ngt-chief-secretary/", note: "Further report discussing the complaint acknowledgement and consumer-law reasoning; the URL title appears unrelated, so verify the article content before relying on it." },
 ];
 
 const shareUrl = () => `${window.location.origin}${window.location.pathname}?share=railway-washroom-water-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
@@ -90,7 +89,7 @@ export default function TrainWashroomWaterShortageCaseStudyPage() {
         </section>
 
         <div className="ns-water-sources"><h2>All located news reports and references</h2><p>These are the published reports located for this case. They are secondary sources, not substitutes for the Commission's order.</p>
-          {sources.filter(s => !s.name.includes("LawChakra")).map(source => <div className="ns-water-source" key={source.name}><div><strong>{source.name}</strong><small>{source.date}</small><p>{source.note}</p></div><a href={source.url} target="_blank" rel="noopener noreferrer">Read report <FaExternalLinkAlt /></a></div>)}
+          {sources.map(source => <div className="ns-water-source" key={source.name}><div><strong>{source.name}</strong><small>{source.date}</small><p>{source.note}</p></div><a href={source.url} target="_blank" rel="noopener noreferrer">Read report <FaExternalLinkAlt /></a></div>)}
         </div>
         <div className="ns-water-disclaimer"><FaBalanceScale /><p><strong>Disclaimer:</strong> This case study is for public legal education and is based on secondary news reporting. Sanhita360 has not independently verified the certified order. The article is not legal advice. Please read the original Commission order and applicable law before relying on the decision in a legal proceeding.</p></div>
 
