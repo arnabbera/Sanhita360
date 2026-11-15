@@ -111,7 +111,7 @@ export default function RailwaysDeniedConfirmedBerthsCaseStudyPage() {
           <p>Help other passengers understand their consumer rights by sharing this case study.</p>
           <div className="ns-rail-forward-actions">
             <a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href)} target="_blank" rel="noreferrer"><FaFacebookF /> Facebook</a>
-            <a href={"https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.href) + "&text=" + encodeURIComponent("Confirmed train tickets, but no seats: Railways ordered to pay compensation — Sanhita360 case study")} target="_blank" rel="noreferrer">𝕏 Share on X</a>
+            <a href={"https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.origin + window.location.pathname + "?share=railways-confirmed-berths-x-v2") + "&text=" + encodeURIComponent("Confirmed train tickets, but no seats: Railways ordered to pay compensation — Sanhita360 case study")} target="_blank" rel="noreferrer">𝕏 Share on X</a>
             <button type="button" onClick={() => navigator.share ? navigator.share({ title: document.title, url: window.location.href }) : navigator.clipboard.writeText(window.location.href)}><FaShareAlt /> Share / Forward</button>
             <button type="button" onClick={() => navigator.clipboard.writeText(window.location.href)}><FaLink /> Copy Link</button>
           </div>
