@@ -99,7 +99,12 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/royal-enfield-interceptor-650-leh-breakdown": {
     title: "Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360",
     description: "A reported consumer dispute involving an alleged unperformed ECU update before a Leh trip and a ₹1 lakh compensation order dated 4 November 2026.",
-    image: "/images/case-study/royal-enfield.png",
+    image: "/images/case-study/royal-enfield.png?v=20261115",
+  },
+  "/case-studies/makemytrip-oyo-goa-hotel-cancellation": {
+    title: "MakeMyTrip, OYO and Goa Hotel Cancellation: ₹42,000 Consumer Case Study | Sanhita360",
+    description: "A Chandigarh Consumer Commission reportedly ordered MakeMyTrip, OYO and a Goa hotel to pay ₹42,000 after a prepaid hotel booking was cancelled shortly before check-in.",
+    image: "/images/case-study/makemytrip-oyo.png?v=20261115",
   },
   "/case-studies/railways-denied-confirmed-berths-compensation": {
     title: "Confirmed Train Tickets, No Berths: Railways Ordered to Pay ₹35,000 | Sanhita360",
