@@ -6,8 +6,8 @@ import Footer from "../../../home/components/Footer";
 import SEO from "../../../../shared/seo/SEO";
 import { Styles } from "./LegalServiceDetailsPage";
 
-const title = "Consumer Protection & Consumer Dispute Legal Services";
-const description = "Sanhita360 provides legal guidance for disputes involving defective goods, deficient services, online shopping, denied refunds, unfair trade practices and consumer complaints under the Consumer Protection Act, 2019.";
+const title = "Consumer Protection & Consumer Dispute Legal Guidance";
+const description = "Understand consumer rights and complaint procedures under the Consumer Protection Act, 2019. Sanhita360 shares legal information and guidance on defective goods, deficient services, online shopping, refunds, banking, insurance and consumer disputes in Kolkata and West Bengal.";
 const assistance = [
   { title: "Defective Goods & Product Issues", description: "Review disputes involving defective, damaged, unsafe, counterfeit or misdescribed products and assess remedies such as repair, replacement, refund or compensation." },
   { title: "Online Shopping & E-commerce", description: "Assistance with undelivered orders, wrong products, rejected returns, withheld refunds, misleading listings and unresolved marketplace complaints." },
@@ -27,7 +27,7 @@ export default function ConsumerProtectionPage() {
   };
   const contact = "https://wa.me/919830015487?text=" + encodeURIComponent("Hello Sanhita360, I need legal assistance with a consumer dispute. The issue concerns: ");
   return <>
-    <SEO title="Consumer Protection Legal Services & Consumer Disputes | Sanhita360" description={description} canonical="/services/consumer-protection" image="/images/Legal-services/consumer-protection.png" keywords={["consumer protection legal services","consumer complaint assistance","Consumer Protection Act 2019","online shopping refund dispute","consumer commission complaint"]} />
+    <SEO title="Consumer Protection Act 2019: Consumer Rights & Complaint Guidance in Kolkata" description={description} canonical="/services/consumer-protection" image="/images/Legal-services/consumer-protection.png" keywords={["Consumer Protection Act 2019 Kolkata","consumer rights Kolkata","consumer complaint procedure West Bengal","consumer commission Kolkata","consumer dispute guidance","online shopping refund complaint India","deficiency in service consumer complaint","banking insurance consumer grievance"]} />
     <Header />
     <main className="ns-service-page">
       <section className="ns-service-hero"><div className="ns-service-wrap">
