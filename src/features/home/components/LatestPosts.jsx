@@ -171,7 +171,7 @@ const MakeMyTripOyoCaseStudyCard = () => (
 const KashmirFloodInsuranceCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-image-link" aria-label="Read Kashmir flood vehicle insurance consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/vehicle-washed-away-in-kashmir-floods.png" alt="Vehicle washed away in Kashmir floods consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />11 Nov 2026</span></div>
