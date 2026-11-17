@@ -121,6 +121,11 @@ const LEGAL_UPDATE_SOCIAL_META = {
     description: "Bhojpur District Consumer Commission case study: four passengers were reportedly denied confirmed berths. The reported award included ₹20,000 compensation and ₹15,000 costs.",
     image: "/images/case-study/reservation-confirmation.png?v=20261115",
   },
+  "/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance": {
+    title: "Car Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh | Sanhita360",
+    description: "J&K State Consumer Commission reportedly holds National Insurance liable after a flood-destroyed Wagon R claim was rejected for non-registration despite prior RTO processing.",
+    image: "/images/case-study/no-water-in-train.png?v=20261117",
+  },
   "/case-studies/bsnl-landline-non-functional-18-days-thrissur": {
     title: "BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 | Sanhita360",
     description: "Thrissur Consumer Commission held BSNL liable after a landline remained non-functional for 18 days, awarding ₹5,000 compensation and ₹5,000 litigation costs.",
