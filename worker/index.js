@@ -124,6 +124,7 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance": {
     title: "Car Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh | Sanhita360",
     description: "J&K State Consumer Commission reportedly holds National Insurance liable after a flood-destroyed Wagon R claim was rejected for non-registration despite prior RTO processing.",
+    image: "/images/case-study/vehicle-washed-away-in-kashmir-floods.png?v=20261117",
   },
   "/case-studies/bsnl-landline-non-functional-18-days-thrissur": {
     title: "BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 | Sanhita360",
