@@ -35,7 +35,7 @@ export default function TrainWashroomWaterShortageCaseStudyPage() {
   };
 
   return <>
-    <SEO title="No Water in Train Washrooms: Shivamogga Consumer Commission Holds Railways Liable | Sanhita360 Case Study" description="A family of 24 discontinued its journey after finding no water in train washrooms. The Shivamogga District Consumer Commission held railway station masters liable and awarded ₹15,000 plus ticket refund with interest." canonical="/case-studies/railway-washroom-water-shortage-shivamogga" keywords={["train toilet water shortage consumer case", "Shivamogga Consumer Commission railway", "T Nagendra v Station Master", "railway deficiency in service", "Consumer Case No. 3 of 2026"]} />
+    <SEO title="No Water in Train Washrooms: Shivamogga Consumer Commission Holds Railways Liable | Sanhita360 Case Study" description="A family of 24 discontinued its journey after finding no water in train washrooms. The Shivamogga District Consumer Commission held railway station masters liable and awarded ₹15,000 plus ticket refund with interest." canonical="/case-studies/railway-washroom-water-shortage-shivamogga" image="/images/case-study/no-water-in-train.png" keywords={["train toilet water shortage consumer case", "Shivamogga Consumer Commission railway", "T Nagendra v Station Master", "railway deficiency in service", "Consumer Case No. 3 of 2026"]} />
     <Header />
     <main className="ns-water-case">
       <section className="ns-water-hero"><div className="ns-water-wrap">

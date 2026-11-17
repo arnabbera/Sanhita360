@@ -167,10 +167,25 @@ const MakeMyTripOyoCaseStudyCard = () => (
   </article>
 );
 
+
+const KashmirFloodInsuranceCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-image-link" aria-label="Read Kashmir flood vehicle insurance consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />11 Nov 2026</span></div>
+      <h3><Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance">Vehicle Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh</Link></h3>
+      <p>J&amp;K State Consumer Commission reportedly rejected the insurer's non-registration defence after the owner had initiated registration before the flood loss.</p>
+      <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const BsnlLandlineCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-image-link" aria-label="Read BSNL landline deficiency consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/bsnl-liable-deficiancy-in-service.png" alt="BSNL held liable for landline service failure for 18 days" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />9 Nov 2026</span></div>
@@ -184,7 +199,7 @@ const BsnlLandlineCaseStudyCard = () => (
 const TrainWashroomWaterCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/railway-washroom-water-shortage-shivamogga" className="ns-post-image-link" aria-label="Read Shivamogga train washroom water shortage consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/no-water-in-train.png" alt="No water in train washrooms case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />10 Nov 2026</span></div>
@@ -410,6 +425,7 @@ const LatestPosts = () => {
               <RailwaysCaseStudyCard />
               <TrainWashroomWaterCaseStudyCard />
               <BsnlLandlineCaseStudyCard />
+              <KashmirFloodInsuranceCaseStudyCard />
             </div>
           </section>
         )}
