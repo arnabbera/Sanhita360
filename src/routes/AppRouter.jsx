@@ -5,6 +5,7 @@ import MakeMyTripOyoGoaCaseStudyPage from "../features/public/caseStudies/MakeMy
 import RailwaysDeniedConfirmedBerthsCaseStudyPage from "../features/public/caseStudies/RailwaysDeniedConfirmedBerthsCaseStudyPage";
 import TrainWashroomWaterShortageCaseStudyPage from "../features/public/caseStudies/TrainWashroomWaterShortageCaseStudyPage";
 import BsnlLandlineDeficiencyCaseStudyPage from "../features/public/caseStudies/BsnlLandlineDeficiencyCaseStudyPage";
+import KashmirFloodVehicleInsuranceCaseStudyPage from "../features/public/caseStudies/KashmirFloodVehicleInsuranceCaseStudyPage";
 import PropertyTitleVerificationPage from "../features/public/legal/pages/PropertyTitleVerificationPage";
 import WestBengalTenantEvictionPage from "../features/public/legal/pages/WestBengalTenantEvictionPage";
 import Section175BnssPage from "../features/public/legal/pages/Section175BnssPage";
@@ -179,6 +180,7 @@ export default function AppRouter() {
       <Route path="/case-studies/railways-denied-confirmed-berths-compensation" element={<RailwaysDeniedConfirmedBerthsCaseStudyPage />} />
       <Route path="/case-studies/railway-washroom-water-shortage-shivamogga" element={<TrainWashroomWaterShortageCaseStudyPage />} />
       <Route path="/case-studies/bsnl-landline-non-functional-18-days-thrissur" element={<BsnlLandlineDeficiencyCaseStudyPage />} />
+      <Route path="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" element={<KashmirFloodVehicleInsuranceCaseStudyPage />} />
       <Route path="/about/founder" element={<FounderPage />} />
 
       <Route path="/recognition" element={<RecognitionPage />} />
