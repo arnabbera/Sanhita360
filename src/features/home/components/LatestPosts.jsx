@@ -167,6 +167,21 @@ const MakeMyTripOyoCaseStudyCard = () => (
   </article>
 );
 
+
+const KashmirFloodInsuranceCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-image-link" aria-label="Read Kashmir flood vehicle insurance consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />11 Nov 2026</span></div>
+      <h3><Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance">Vehicle Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh</Link></h3>
+      <p>J&amp;K State Consumer Commission reportedly rejected the insurer's non-registration defence after the owner had initiated registration before the flood loss.</p>
+      <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const BsnlLandlineCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-image-link" aria-label="Read BSNL landline deficiency consumer case study">
@@ -410,6 +425,7 @@ const LatestPosts = () => {
               <RailwaysCaseStudyCard />
               <TrainWashroomWaterCaseStudyCard />
               <BsnlLandlineCaseStudyCard />
+              <KashmirFloodInsuranceCaseStudyCard />
             </div>
           </section>
         )}
