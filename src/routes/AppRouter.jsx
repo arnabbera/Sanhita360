@@ -6,6 +6,7 @@ import RailwaysDeniedConfirmedBerthsCaseStudyPage from "../features/public/caseS
 import TrainWashroomWaterShortageCaseStudyPage from "../features/public/caseStudies/TrainWashroomWaterShortageCaseStudyPage";
 import BsnlLandlineDeficiencyCaseStudyPage from "../features/public/caseStudies/BsnlLandlineDeficiencyCaseStudyPage";
 import KashmirFloodVehicleInsuranceCaseStudyPage from "../features/public/caseStudies/KashmirFloodVehicleInsuranceCaseStudyPage";
+import CountryClubNoRefundCaseStudyPage from "../features/public/caseStudies/CountryClubNoRefundCaseStudyPage";
 import PropertyTitleVerificationPage from "../features/public/legal/pages/PropertyTitleVerificationPage";
 import WestBengalTenantEvictionPage from "../features/public/legal/pages/WestBengalTenantEvictionPage";
 import Section175BnssPage from "../features/public/legal/pages/Section175BnssPage";
@@ -181,6 +182,7 @@ export default function AppRouter() {
       <Route path="/case-studies/railway-washroom-water-shortage-shivamogga" element={<TrainWashroomWaterShortageCaseStudyPage />} />
       <Route path="/case-studies/bsnl-landline-non-functional-18-days-thrissur" element={<BsnlLandlineDeficiencyCaseStudyPage />} />
       <Route path="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" element={<KashmirFloodVehicleInsuranceCaseStudyPage />} />
+      <Route path="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund" element={<CountryClubNoRefundCaseStudyPage />} />
       <Route path="/about/founder" element={<FounderPage />} />
 
       <Route path="/recognition" element={<RecognitionPage />} />
