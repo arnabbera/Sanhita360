@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import { FaCalendarAlt, FaArrowRight, FaTwitter } from "react-icons/fa";
 
 const updates = [
   { id: 9, category: "Property & Buyer Protection", title: "How to Verify Property Title and Avoid Fraud Before You Buy Your Dream Home", date: "27 Oct 2026", description: "Check title deeds, hidden mortgages, possession and approvals before committing your savings.", link: "/legal-remedies/verify-property-title-avoid-fraud-before-buying-home", image: "/images/legal-updates/property-title-verification-v2.jpg" },
@@ -217,20 +217,53 @@ const LatestUpdates = () => {
                   {item.description}
                 </p>
 
-                <Link
-                  to={item.link || "/posts"}
+                <div
                   style={{
-                    color: "#2563eb",
-                    textDecoration: "none",
-                    fontWeight: 600,
-                    display: "inline-flex",
+                    display: "flex",
                     alignItems: "center",
-                    gap: "8px",
+                    justifyContent: "space-between",
+                    gap: "12px",
+                    marginTop: "auto",
+                    flexWrap: "wrap",
                   }}
                 >
-                  Read More
-                  <FaArrowRight />
-                </Link>
+                  <Link
+                    to={item.link || "/posts"}
+                    style={{
+                      color: "#2563eb",
+                      textDecoration: "none",
+                      fontWeight: 600,
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                    }}
+                  >
+                    Read More
+                    <FaArrowRight />
+                  </Link>
+                  <a
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(item.title + " — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com" + (item.link || "/posts"))}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Tweet about: ${item.title}`}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "7px",
+                      padding: "8px 12px",
+                      borderRadius: "8px",
+                      background: "#17202b",
+                      color: "#ffffff",
+                      textDecoration: "none",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <FaTwitter aria-hidden="true" /> Tweet
+                  </a>
+                </div>
               </div>
             </div>
           ))}
