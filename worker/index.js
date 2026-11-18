@@ -109,7 +109,7 @@ const LEGAL_UPDATE_SOCIAL_META = {
   "/case-studies/royal-enfield-interceptor-650-leh-breakdown": {
     title: "Royal Enfield Interceptor 650 Leh Breakdown: Consumer Case Study | Sanhita360",
     description: "A reported consumer dispute involving an alleged unperformed ECU update before a Leh trip and a ₹1 lakh compensation order dated 4 November 2026.",
-    image: "/images/case-study/royal-enfield.png?v=20261115",
+    image: "/images/case-study/royal-enfield.png?v=20261118-ogfix",
   },
   "/case-studies/makemytrip-oyo-goa-hotel-cancellation": {
     title: "MakeMyTrip, OYO and Goa Hotel Cancellation: ₹42,000 Consumer Case Study | Sanhita360",
