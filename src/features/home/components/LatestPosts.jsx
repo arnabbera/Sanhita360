@@ -168,10 +168,24 @@ const MakeMyTripOyoCaseStudyCard = () => (
 );
 
 
+const CountryClubNoRefundCaseStudyCard = () => (
+  <article className="ns-post-card">
+    <Link to="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund" className="ns-post-image-link" aria-label="Read Country Club no-refund clause consumer case study">
+      <div className="ns-post-placeholder"><FaNewspaper /></div>
+    </Link>
+    <div className="ns-post-card-body">
+      <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />10 Nov 2026</span></div>
+      <h3><Link to="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund">Country Club’s No-Refund Clause Held Unfair: NCDRC Upholds ₹90,000 Refund</Link></h3>
+      <p>NCDRC upholds refund for a consumer who sought early cancellation of an unused long-term holiday membership.</p>
+      <Link to="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+    </div>
+  </article>
+);
+
 const KashmirFloodInsuranceCaseStudyCard = () => (
   <article className="ns-post-card">
     <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-image-link" aria-label="Read Kashmir flood vehicle insurance consumer case study">
-      <div className="ns-post-placeholder"><FaNewspaper /></div>
+      <img src="/images/case-study/vehicle-washed-away-in-kashmir-floods.png" alt="Vehicle washed away in Kashmir floods consumer case study" loading="lazy" />
     </Link>
     <div className="ns-post-card-body">
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />11 Nov 2026</span></div>
@@ -425,6 +439,7 @@ const LatestPosts = () => {
               <RailwaysCaseStudyCard />
               <TrainWashroomWaterCaseStudyCard />
               <BsnlLandlineCaseStudyCard />
+              <CountryClubNoRefundCaseStudyCard />
               <KashmirFloodInsuranceCaseStudyCard />
             </div>
           </section>
