@@ -128,13 +128,24 @@ const PostCard = ({ post }) => {
 
         {post.excerpt && <p>{post.excerpt}</p>}
 
-        <Link
-          to={`/posts/${post.slug}`}
-          className="ns-post-read-more"
-        >
-          Read Full Article
-          <FaArrowRight />
-        </Link>
+        <div className="ns-case-card-actions">
+          <Link
+            to={`/posts/${post.slug}`}
+            className="ns-post-read-more"
+          >
+            Read Full Article
+            <FaArrowRight />
+          </Link>
+          <a
+            className="ns-case-tweet"
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent((post.title || "Sanhita360 article") + " — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/posts/" + post.slug)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Tweet about: ${post.title || "Sanhita360 article"}`}
+          >
+            <FaTwitter aria-hidden="true" /> Tweet
+          </a>
+        </div>
       </div>
     </article>
   );
