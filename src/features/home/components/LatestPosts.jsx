@@ -8,6 +8,7 @@ import {
   FaCalendarAlt,
   FaNewspaper,
   FaTag,
+  FaTwitter,
 } from "react-icons/fa";
 
 import {
@@ -148,7 +149,10 @@ const CaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />14 Nov 2026</span></div>
       <h3><Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown">Royal Enfield Interceptor 650 Lost Power at High Altitude: A Consumer Dispute</Link></h3>
       <p>A reported Leh breakdown, an allegedly unperformed ECU update and the consumer commission's reported ₹1 lakh compensation order.</p>
-      <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/royal-enfield-interceptor-650-leh-breakdown" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Royal Enfield Interceptor 650 Lost Power at High Altitude: A Consumer Dispute — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/royal-enfield-interceptor-650-leh-breakdown")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about Royal Enfield Interceptor 650 Lost Power at High Altitude: A Consumer Dispute`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -162,7 +166,10 @@ const MakeMyTripOyoCaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />03 Nov 2023</span></div>
       <h3><Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation">MakeMyTrip and OYO Ordered to Pay ₹42,000 for Last-Minute Goa Hotel Cancellation</Link></h3>
       <p>A prepaid family hotel booking was reportedly cancelled three days before check-in, followed by the same room being offered at a much higher price.</p>
-      <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/makemytrip-oyo-goa-hotel-cancellation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("MakeMyTrip and OYO Ordered to Pay ₹42,000 for Last-Minute Goa Hotel Cancellation — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/makemytrip-oyo-goa-hotel-cancellation")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about MakeMyTrip and OYO Ordered to Pay ₹42,000 for Last-Minute Goa Hotel Cancellation`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -177,7 +184,10 @@ const CountryClubNoRefundCaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />10 Nov 2026</span></div>
       <h3><Link to="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund">Country Club’s No-Refund Clause Held Unfair: NCDRC Upholds ₹90,000 Refund</Link></h3>
       <p>NCDRC upholds refund for a consumer who sought early cancellation of an unused long-term holiday membership.</p>
-      <Link to="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/country-club-no-refund-clause-ncdrc-90000-refund" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Country Club’s No-Refund Clause Held Unfair: NCDRC Upholds ₹90,000 Refund — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/country-club-no-refund-clause-ncdrc-90000-refund")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about Country Club’s No-Refund Clause Held Unfair: NCDRC Upholds ₹90,000 Refund`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -191,7 +201,10 @@ const KashmirFloodInsuranceCaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />11 Nov 2026</span></div>
       <h3><Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance">Vehicle Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh</Link></h3>
       <p>J&amp;K State Consumer Commission reportedly rejected the insurer's non-registration defence after the owner had initiated registration before the flood loss.</p>
-      <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Vehicle Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/kashmir-flood-vehicle-insurance-claim-national-insurance")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about Vehicle Washed Away in Kashmir Floods: National Insurance Ordered to Pay ₹7.85 Lakh`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -205,7 +218,10 @@ const BsnlLandlineCaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />9 Nov 2026</span></div>
       <h3><Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur">BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000</Link></h3>
       <p>BSNL was held liable after a subscriber's landline remained non-functional for approximately 18 days. The Commission awarded compensation and litigation costs.</p>
-      <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/bsnl-landline-non-functional-18-days-thrissur" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000 — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/bsnl-landline-non-functional-18-days-thrissur")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about BSNL Landline Down for 18 Days: Thrissur Consumer Commission Awards ₹10,000`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -219,7 +235,10 @@ const TrainWashroomWaterCaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />10 Nov 2026</span></div>
       <h3><Link to="/case-studies/railway-washroom-water-shortage-shivamogga">No Water in Train Washrooms: Railways Held Liable by Shivamogga Consumer Commission</Link></h3>
       <p>A family of 24 reportedly abandoned its journey after finding no water in coach washrooms. The Commission awarded compensation and costs.</p>
-      <Link to="/case-studies/railway-washroom-water-shortage-shivamogga" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/railway-washroom-water-shortage-shivamogga" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("No Water in Train Washrooms: Railways Held Liable by Shivamogga Consumer Commission — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/railway-washroom-water-shortage-shivamogga")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about No Water in Train Washrooms: Railways Held Liable by Shivamogga Consumer Commission`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -233,7 +252,10 @@ const RailwaysCaseStudyCard = () => (
       <div className="ns-post-meta"><span><FaTag />Case Study</span><span><FaCalendarAlt />12 May 2026</span></div>
       <h3><Link to="/case-studies/railways-denied-confirmed-berths-compensation">Confirmed Train Tickets, But No Seats: Railways Ordered to Pay ₹20,000</Link></h3>
       <p>Four passengers were reportedly forced to travel standing despite confirmed berths on the LTT–Patna Express. The Bhojpur Consumer Commission awarded compensation and costs.</p>
-      <Link to="/case-studies/railways-denied-confirmed-berths-compensation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+      <div className="ns-case-card-actions">
+        <Link to="/case-studies/railways-denied-confirmed-berths-compensation" className="ns-post-read-more">Read Case Study <FaArrowRight /></Link>
+        <a className="ns-case-tweet" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent("Confirmed Train Tickets, But No Seats: Railways Ordered to Pay ₹20,000 — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/case-studies/railways-denied-confirmed-berths-compensation")}`} target="_blank" rel="noopener noreferrer" aria-label={`Tweet about Confirmed Train Tickets, But No Seats: Railways Ordered to Pay ₹20,000`}><FaTwitter aria-hidden="true" /> Tweet</a>
+      </div>
     </div>
   </article>
 );
@@ -694,6 +716,45 @@ const LatestPosts = () => {
 
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
+          }
+
+          .ns-case-card-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 4px;
+          }
+
+          .ns-case-card-actions .ns-post-read-more {
+            margin-top: 0;
+          }
+
+          .ns-case-tweet {
+            display: inline-flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 11px;
+            border-radius: 7px;
+            background: #17202b;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+            transition: background .2s ease;
+          }
+
+          .ns-case-tweet:hover {
+            background: #000000;
+          }
+
+          .ns-case-tweet:focus-visible {
+            outline: 3px solid #2563eb;
+            outline-offset: 3px;
           }
 
           .ns-post-read-more {
