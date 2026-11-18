@@ -9,6 +9,7 @@ import {
   FaCalendarAlt,
   FaNewspaper,
   FaTag,
+  FaTwitter,
 } from "react-icons/fa";
 
 import {
@@ -328,13 +329,26 @@ export default function PostsPage({ independenceOnly = false }) {
                               </p>
                             )}
 
-                            <Link
-                              to={`/posts/${post.slug}`}
-                              className="ns-post-read-more"
-                            >
-                              Read Full Post
-                              <FaArrowRight />
-                            </Link>
+                            <div className="ns-independence-card-actions">
+                              <Link
+                                to={`/posts/${post.slug}`}
+                                className="ns-post-read-more"
+                              >
+                                Read Full Post
+                                <FaArrowRight />
+                              </Link>
+                              {independenceOnly && (
+                                <a
+                                  className="ns-independence-tweet"
+                                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent((post.title || "Indian Independence article") + " — Sanhita360")}&url=${encodeURIComponent("https://www.sanhita360.com/posts/" + post.slug)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`Tweet about: ${post.title || "Indian Independence article"}`}
+                                >
+                                  <FaTwitter aria-hidden="true" /> Tweet
+                                </a>
+                              )}
+                            </div>
                           </div>
                         </article>
                       );
@@ -518,6 +532,41 @@ function PostsPageStyles() {
           color: #64748b;
           font-size: 13px;
           line-height: 1.7;
+        }
+
+        .ns-independence-card-actions {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          margin-top: auto;
+          padding-top: 8px;
+        }
+
+        .ns-independence-tweet {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          min-width: 82px;
+          padding: 8px 12px;
+          border-radius: 8px;
+          background: #17202b;
+          color: #ffffff !important;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 700;
+          white-space: nowrap;
+          transition: background .2s ease;
+        }
+
+        .ns-independence-tweet:hover {
+          background: #000000;
+        }
+
+        .ns-independence-tweet:focus-visible {
+          outline: 3px solid #2563eb;
+          outline-offset: 3px;
         }
 
         .ns-post-read-more {
