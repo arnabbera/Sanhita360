@@ -65,7 +65,6 @@ export default function SearchMyCasesPage() {
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [showComplex, setShowComplex] = useState(false);
 
   const districts = useMemo(() => districtsByState[form.state] || [], [form.state]);
   const update = (key, value) => {
@@ -77,8 +76,8 @@ export default function SearchMyCasesPage() {
   const submit = (event) => {
     event.preventDefault();
     if (!form.firstName.trim() || !form.lastName.trim() || !form.fatherName.trim() ||
-        !form.dob || !form.gender || !form.country || !form.state || !form.district) {
-      setError("Please complete all mandatory fields marked with *.");
+        !form.dob || !form.gender || !form.country || !form.state || !form.district || !districts.includes(form.district)) {
+      setError("Please complete all mandatory fields marked with * and select a valid district from the list.");
       return;
     }
     if (form.fromYear && form.toYear && Number(form.fromYear) > Number(form.toYear)) {
