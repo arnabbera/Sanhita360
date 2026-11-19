@@ -51,12 +51,60 @@ const courtComplexesByDistrict = {
 
 const years = Array.from({ length: 76 }, (_, i) => String(new Date().getFullYear() - i));
 
+const searchSources = [
+  { id: "calcuttaHighCourt", label: "Calcutta High Court", detail: "Original, appellate, civil, criminal and writ matters" },
+  { id: "drtKolkata", label: "DRT Kolkata", detail: "Securitisation applications, original applications and interlocutory applications" },
+  { id: "dratKolkata", label: "DRAT Kolkata", detail: "Appeals and connected applications" },
+  { id: "districtCourts", label: "District Courts", detail: "Kolkata, North 24 Parganas and South 24 Parganas" },
+  { id: "connectedCases", label: "Connected proceedings", detail: "Appeals, revisions, writ petitions, execution and subsequent applications" },
+];
+
+const preliminaryRecords = [
+  {
+    court: "DRT Kolkata",
+    number: "SA/594/2021",
+    title: "Arnab Bera & Others vs. Indian Bank",
+    category: "Securitisation Application",
+    confidence: "Strong candidate — identity verification required",
+    note: "Previously identified tribunal matter. Verify party details and current status against the official case record.",
+    url: "https://cis.drt.gov.in/drtlive/order/pdf/pdf1.php?file=L3VwbG9hZHMvZHJ0L2RydGNvdXJ0L2RhaWx5X29yZGVyLzIwMjQvRGVjZW1iZXIvMTkwMTMwMDEwMjAyMDIxXzA1ODdmOTViNDg4NWVlZTRlY2IzNzY3ZTJjOGNmMWI5LnBkZioqKjY0MzI4IzEja29sa2F0YTM%3D"
+  },
+  {
+    court: "DRAT Kolkata",
+    number: "Misc. Appeal 75/2025",
+    title: "Arnab Bera vs. Indian Bank",
+    category: "Appeal",
+    confidence: "Strong candidate — identity verification required",
+    note: "Previously identified cause-list entry associated with SA/594/2021. Cause-list appearance is not proof of final disposal or current status.",
+    url: "https://cis.drt.gov.in/drtlive/order/generate_causelist.php?filing_no=MTEtMjYvMDgvMjAyNS0xLWtvbGthdGFkcmF0&id=1681966180"
+  },
+  {
+    court: "Calcutta High Court",
+    number: "CO/3499/2024",
+    title: "Samadrita Pratihar vs. Arnab Bera",
+    category: "Civil revisional matter",
+    confidence: "Possible name match — not verified",
+    note: "Same-name respondent reference. Do not attribute this matter to the search subject without independent identity evidence.",
+    url: "https://www.calcuttahighcourt.gov.in/downloads/old_cause_lists/AS/cla05122024.pdf"
+  },
+  {
+    court: "Calcutta High Court",
+    number: "Judgment dated 8 October 2021",
+    title: "Arnab Bera & Another vs. State of West Bengal & Others",
+    category: "SARFAESI-related proceeding",
+    confidence: "Possible match — verify full judgment and party identity",
+    note: "Previously surfaced judgment reference concerning SARFAESI proceedings and South 24 Parganas.",
+    url: "https://indiankanoon.org/docfragment/111717883/?formInput=section+14+of+sarfeasi+act++benchid:+r-mantha"
+  },
+];
+
+
 const initialForm = {
   firstName: "", middleName: "", lastName: "",
   fatherFirstName: "", fatherMiddleName: "", fatherLastName: "",
   spouseFirstName: "", spouseMiddleName: "", spouseLastName: "",
   dob: "", gender: "", country: "India", state: "West Bengal", districts: [],
-  courtComplexes: [], alternativeNames: "", fromYear: "", toYear: "",
+  courtComplexes: [], alternativeNames: "", fromYear: "", toYear: "",\n  searchSources: searchSources.map(source => source.id),
 };
 
 
@@ -118,6 +166,22 @@ const css = `
 .smc-alert{border-radius:9px;padding:11px 13px;font-size:12px;margin:0 0 16px}.smc-error{background:#fff1f0;color:#a3322c;border:1px solid #ffd7d3}
 .smc-results{margin-top:22px;border:1px solid #dce6f3;background:#fff;border-radius:14px;padding:20px}.smc-results h3{margin:0 0 8px;font-size:17px}.smc-results p{font-size:13px;line-height:1.65;color:#64738a;margin:5px 0}
 .smc-badge{display:inline-block;background:#fff5dc;color:#8a6210;padding:5px 9px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.5px}
+.smc-source-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.smc-source-option{display:flex;gap:10px;align-items:flex-start;border:1px solid #e1e8f1;border-radius:10px;padding:12px;background:#fff;cursor:pointer}
+.smc-source-option input{width:16px;height:16px;margin:2px 0 0;accent-color:#245ba8;flex:0 0 auto}
+.smc-source-option strong{display:block;font-size:12px;color:#29384f}
+.smc-source-option small{display:block;color:#78869a;font-size:11px;line-height:1.45;margin-top:3px}
+.smc-records{display:grid;gap:12px;margin-top:16px}
+.smc-record{border:1px solid #e1e8f1;border-radius:11px;padding:15px}
+.smc-record-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.smc-record-top span{font-size:11px;color:#5b6e88;font-weight:700}
+.smc-record h4{margin:5px 0;font-size:14px;color:#24344c}
+.smc-record p{margin:5px 0;font-size:12px;line-height:1.55;color:#65748a}
+.smc-record a{display:inline-block;margin-top:8px;color:#245ba8;font-size:12px;font-weight:800;text-decoration:none}
+.smc-record a:hover{text-decoration:underline}
+.smc-warning{border:1px solid #f0dfb3;background:#fff9e9;color:#775a1b;border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.6;margin:12px 0}
+@media(max-width:600px){.smc-source-list{grid-template-columns:1fr}}
+
 .smc-footer{text-align:center;color:#8b96a7;font-size:11px;padding:20px}
 @media(max-width:760px){.smc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.smc-top{padding:18px 20px}.smc-hero{padding:36px 20px 52px}}
 @media(max-width:520px){.smc-grid{grid-template-columns:1fr}.smc-actions{align-items:stretch;flex-direction:column}.smc-submit{width:100%}.smc-consent{max-width:none}}
@@ -142,7 +206,7 @@ export default function SearchMyCasesPage() {
   const submit = (event) => {
     event.preventDefault();
     if (!form.firstName.trim() || !form.lastName.trim() || !form.fatherFirstName.trim() || !form.fatherLastName.trim() ||
-        !form.dob || !form.gender || !form.country || !form.state || !form.districts.length || form.districts.some(d => !districts.includes(d))) {
+        !form.dob || !form.gender || !form.country || !form.state || !form.districts.length || !form.searchSources.length || form.districts.some(d => !districts.includes(d))) {
       setError("Please complete all mandatory fields marked with * and select at least one valid district from the list.");
       return;
     }
@@ -205,7 +269,19 @@ export default function SearchMyCasesPage() {
 
           <div className="smc-divider" />
           <section className="smc-section">
-            <div className="smc-section-head"><span className="smc-step">03</span><div><h2>Search period</h2><small>Both years are optional. Leave blank for all available years.</small></div></div>
+            <div className="smc-section-head"><span className="smc-step">03</span><div><h2>Expanded search coverage</h2><small>Choose the court systems and connected-proceeding categories to include in the search plan.</small></div></div>
+            <div className="smc-source-list">
+              {searchSources.map(source => <label className="smc-source-option" key={source.id}>
+                <input type="checkbox" checked={form.searchSources.includes(source.id)} onChange={e => update("searchSources", e.target.checked ? [...form.searchSources, source.id] : form.searchSources.filter(id => id !== source.id))} />
+                <span><strong>{source.label}</strong><small>{source.detail}</small></span>
+              </label>)}
+            </div>
+            {!form.searchSources.length && <div className="smc-alert smc-error">Select at least one search source.</div>}
+          </section>
+
+          <div className="smc-divider" />
+          <section className="smc-section">
+            <div className="smc-section-head"><span className="smc-step">04</span><div><h2>Search period</h2><small>Both years are optional. Leave blank for all available years.</small></div></div>
             <div className="smc-grid">
               <div className="smc-field"><label>Search From Year</label><select value={form.fromYear} onChange={e=>update("fromYear",e.target.value)}><option value="">Any year</option>{years.map(y=><option key={y}>{y}</option>)}</select></div>
               <div className="smc-field"><label>Search To Year</label><select value={form.toYear} onChange={e=>update("toYear",e.target.value)}><option value="">Present</option>{years.map(y=><option key={y}>{y}</option>)}</select></div>
@@ -220,11 +296,28 @@ export default function SearchMyCasesPage() {
         </form>
 
         {submitted && <section className="smc-results" aria-live="polite">
-          <span className="smc-badge">VERSION 1 · FORM TEST</span>
-          <h3>Details validated successfully</h3>
-          <p>The form is working. Live court-record discovery has not been connected yet, so no case search has been performed and no results are being represented as real.</p>
-          <p><strong>Search profile:</strong> {[form.firstName,form.middleName,form.lastName].filter(Boolean).join(" ")} · {form.districts.join(", ")}, {form.state} · {form.fromYear || "Any year"}–{form.toYear || "Present"}</p>
-          <p>Next development stage: connect approved court-record sources, build identity matching, and return verifiable case records with official source links.</p>
+          <span className="smc-badge">VERSION 1.1 · EXPANDED SEARCH TEST</span>
+          <h3>Search profile validated</h3>
+          <p><strong>Person:</strong> {[form.firstName,form.middleName,form.lastName].filter(Boolean).join(" ")}</p>
+          <p><strong>Preferred districts:</strong> {form.districts.join(", ")}, {form.state}</p>
+          <p><strong>Period:</strong> {form.fromYear || "Any year"}–{form.toYear || "Present"}</p>
+          <p><strong>Selected search coverage:</strong> {searchSources.filter(source => form.searchSources.includes(source.id)).map(source => source.label).join(" · ")}</p>
+          <div className="smc-warning"><strong>Important:</strong> Live automated court-record searching is not connected yet. The records below are previously identified public-record leads included to test the expanded results layout. They have not been freshly queried or independently identity-verified in this form submission. A name match is not proof that a case belongs to the search subject.</div>
+          <h3>Previously identified records for verification</h3>
+          <div className="smc-records">
+            {preliminaryRecords.filter(record => {
+              if (record.court.includes("DRT")) return form.searchSources.includes("drtKolkata");
+              if (record.court.includes("DRAT")) return form.searchSources.includes("dratKolkata");
+              return form.searchSources.includes("calcuttaHighCourt");
+            }).map(record => <article className="smc-record" key={record.number + record.title}>
+              <div className="smc-record-top"><span>{record.court}</span><span>{record.category}</span></div>
+              <h4>{record.number} · {record.title}</h4>
+              <p><strong>Assessment:</strong> {record.confidence}</p>
+              <p>{record.note}</p>
+              <a href={record.url} target="_blank" rel="noreferrer">Open source record ↗</a>
+            </article>)}
+          </div>
+          <p>District-court searches and additional connected proceedings remain pending until approved court-record connectors are integrated. Search coverage and results must be reported separately for each source.</p>
         </section>}
       </main>
       <footer className="smc-footer">SearchMyCases · A Sanhita360 legal discovery prototype · Not legal advice</footer>
