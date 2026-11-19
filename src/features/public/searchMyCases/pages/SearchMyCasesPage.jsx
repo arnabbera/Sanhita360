@@ -20,6 +20,35 @@ const districtsByState = {
   ],
 };
 
+// Initial West Bengal court-complex directory. Names are grouped by the selected
+// administrative district; judicial-establishment boundaries can differ, so this
+// is a discovery aid rather than a claim that the list is exhaustive.
+const courtComplexesByDistrict = {
+  "Alipurduar": ["Alipurduar District Court Complex"],
+  "Bankura": ["Bankura District Court Complex", "Bishnupur Court Complex", "Khatra Court Complex"],
+  "Birbhum": ["Suri Court Complex", "Bolpur Court Complex", "Rampurhat Court Complex", "Dubrajpur Court Complex"],
+  "Cooch Behar": ["Cooch Behar District Court Complex", "Dinhata Court Complex", "Mathabhanga Court Complex", "Mekhliganj Court Complex"],
+  "Dakshin Dinajpur": ["Balurghat District Court Complex", "Buniadpur Court Complex"],
+  "Darjeeling": ["Darjeeling District Court Complex", "Siliguri Court Complex", "Kurseong Court Complex", "Gorubathan Court Complex"],
+  "Hooghly": ["Chinsurah District Court Complex", "Serampore Court Complex", "Chandannagar Court Complex", "Arambagh Court Complex"],
+  "Howrah": ["Howrah Court Complex", "Uluberia Court Complex", "Amta Court Complex"],
+  "Jalpaiguri": ["Jalpaiguri District Court Complex"],
+  "Jhargram": ["Jhargram Court Complex"],
+  "Kalimpong": ["Kalimpong District Court Complex"],
+  "Kolkata": ["City Civil Court Complex, Calcutta", "City Sessions Court Complex, Calcutta", "Metropolitan Magistrate Court Complex, Calcutta", "Municipal Magistrates Court Complex, Calcutta", "Presidency Small Causes Court Complex, Calcutta", "Commercial Courts at Calcutta"],
+  "Malda": ["Malda District Court Complex"],
+  "Murshidabad": ["Berhampore Civil Court Complex", "Berhampore Criminal Court Complex", "Lalbagh Civil Court Complex", "Lalbagh Criminal Court Complex", "Jangipur Court Complex", "Kandi Court Complex"],
+  "Nadia": ["Krishnanagar Court Complex", "Kalyani Court Complex", "Ranaghat Court Complex", "Nabadwip Court Complex", "Tehatta Court Complex"],
+  "North 24 Parganas": ["Barasat District Court Complex", "Bongaon Court Complex", "Basirhat Court Complex", "Barrackpore Court Complex", "Bidhannagar Court Complex"],
+  "Paschim Bardhaman": ["Asansol Court Complex", "Durgapur Court Complex"],
+  "Paschim Medinipur": ["Medinipur District Court Complex", "Kharagpur Court Complex", "Dantan Court Complex"],
+  "Purba Bardhaman": ["Purba Bardhaman District Court Complex", "Kalna Court Complex", "Katwa Court Complex"],
+  "Purba Medinipur": ["Tamluk District Court Complex", "Haldia Court Complex", "Contai Court Complex"],
+  "Purulia": ["Purulia District Court Complex"],
+  "South 24 Parganas": ["Alipore Civil Court Complex", "Alipore Criminal Court Complex", "Baruipur Court Complex", "Diamond Harbour Court Complex", "Kakdwip Court Complex"],
+  "Uttar Dinajpur": ["Raiganj District Court Complex", "Islampur Court Complex"],
+};
+
 const years = Array.from({ length: 76 }, (_, i) => String(new Date().getFullYear() - i));
 
 const initialForm = {
@@ -100,6 +129,10 @@ export default function SearchMyCasesPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const districts = useMemo(() => districtsByState[form.state] || [], [form.state]);
+  const availableCourtComplexes = useMemo(
+    () => [...new Set(form.districts.flatMap(district => courtComplexesByDistrict[district] || []))].sort((a, b) => a.localeCompare(b)),
+    [form.districts]
+  );
   const update = (key, value) => {
     setForm(current => ({ ...current, [key]: value }));
     setError("");
@@ -165,7 +198,7 @@ export default function SearchMyCasesPage() {
               <div className="smc-field"><label>Country <span className="smc-required">*</span></label><select value={form.country} onChange={e=>update("country",e.target.value)}><option>India</option></select></div>
               <div className="smc-field"><label>State / Union Territory <span className="smc-required">*</span></label><select value={form.state} onChange={e=>{setForm(f=>({...f,state:e.target.value,districts:[],courtComplexes:[]}));setSubmitted(false);setError("");}}>{states.map(s=><option key={s}>{s}</option>)}</select></div>
               <MultiSelectDropdown label="District" options={districts} value={form.districts} onChange={v=>setForm(f=>({...f,districts:v,courtComplexes:[]}))} placeholder={districts.length ? "Search and select districts" : "District list not configured yet"} required disabled={!districts.length} hint="You can select more than one district." />
-              <MultiSelectDropdown label="Court Complex / Establishment" options={[]} value={form.courtComplexes} onChange={v=>update("courtComplexes",v)} placeholder={form.districts.length ? "Type a court complex and press Enter" : "Select district(s) first"} disabled={!form.districts.length} allowCustom hint="Multiple entries supported. Official district-wise court directory integration will follow." />
+              <MultiSelectDropdown label="Court Complex / Establishment" options={availableCourtComplexes} value={form.courtComplexes} onChange={v=>update("courtComplexes",v)} placeholder={form.districts.length ? "Click to view or search court complexes" : "Select district(s) first"} disabled={!form.districts.length} allowCustom hint={form.districts.length ? `${availableCourtComplexes.length} listed option(s) for selected district(s). Select multiple; type to add another establishment if needed.` : "Select one or more districts to load court complexes."} />
             </div>
             <div className="smc-note">Your selected districts are the preferred starting locations. Where records and supported sources allow, related appeals or connected proceedings in other districts, the High Court or appellate courts may also be relevant.</div>
           </section>
