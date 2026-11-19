@@ -90,13 +90,17 @@ const searchSources = [
   ...highCourtSources.map(source => ({ ...source, group: "highCourt" })),
   { id: "drtKolkata", label: "DRT Kolkata", group: "tribunals", detail: "Securitisation applications, original applications and interlocutory applications" },
   { id: "dratKolkata", label: "DRAT Kolkata", group: "tribunals", detail: "Appeals and connected applications" },
+  { id: "ncdrc", label: "National Consumer Disputes Redressal Commission (NCDRC)", group: "consumer", detail: "National-level consumer disputes, appeals and revisions" },
+  { id: "wbStateConsumerCommission", label: "West Bengal State Consumer Disputes Redressal Commission", group: "consumer", detail: "State Commission matters, appeals and revisions" },
+  { id: "wbDistrictConsumerCommissions", label: "West Bengal District Consumer Commissions", group: "consumer", detail: "District-level consumer complaints and connected appeals where records are available" },
   { id: "connectedCases", label: "Connected proceedings", group: "connected", detail: "Appeals, revisions, writ petitions, execution and subsequent applications" },
 ];
 
 const searchSourceGroups = [
   { id: "district", label: "All 25 West Bengal district court portals", description: "Every district-court portal listed in the official eCourts West Bengal directory.", sources: searchSources.filter(source => source.group === "district") },
   { id: "highCourt", label: "Calcutta High Court and Circuit Bench", description: "Original Side, Appellate Side and Jalpaiguri Circuit Bench are selected separately.", sources: searchSources.filter(source => source.group === "highCourt") },
-  { id: "tribunals", label: "Debt recovery tribunals", description: "DRT Kolkata and DRAT Kolkata.", sources: searchSources.filter(source => source.group === "tribunals") },
+  { id: "tribunals", label: "Debt recovery tribunals — Phase 1", description: "DRT Kolkata and DRAT Kolkata.", sources: searchSources.filter(source => source.group === "tribunals") },
+  { id: "consumer", label: "Consumer dispute commissions — Phase 1", description: "NCDRC, West Bengal State Commission and all West Bengal District Consumer Commissions. Coverage depends on official portal availability and permitted access.", sources: searchSources.filter(source => source.group === "consumer") },
   { id: "connected", label: "Connected proceedings", description: "Trace related proceedings across supported court systems.", sources: searchSources.filter(source => source.group === "connected") },
 ];
 
