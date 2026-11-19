@@ -35,7 +35,7 @@ const courtComplexesByDistrict = {
   "Jalpaiguri": ["Jalpaiguri District Court Complex"],
   "Jhargram": ["Jhargram Court Complex"],
   "Kalimpong": ["Kalimpong District Court Complex"],
-  "Kolkata": ["City Civil Court Complex, Calcutta", "City Sessions Court Complex, Calcutta", "Metropolitan Magistrate Court Complex, Calcutta", "Municipal Magistrates Court Complex, Calcutta", "Presidency Small Causes Court Complex, Calcutta", "Commercial Courts at Calcutta"],
+  "Kolkata": ["City Civil Court Complex, Calcutta", "City Sessions Court Complex, Calcutta", "Metropolitan Magistrate Court Complex, Calcutta", "Municipal Magistrates Court Complex, Calcutta", "Presidency Small Causes Court Complex, Calcutta", "Commercial Courts at Calcutta", "Sealdah Criminal Court Complex"],
   "Malda": ["Malda District Court Complex"],
   "Murshidabad": ["Berhampore Civil Court Complex", "Berhampore Criminal Court Complex", "Lalbagh Civil Court Complex", "Lalbagh Criminal Court Complex", "Jangipur Court Complex", "Kandi Court Complex"],
   "Nadia": ["Krishnanagar Court Complex", "Kalyani Court Complex", "Ranaghat Court Complex", "Nabadwip Court Complex", "Tehatta Court Complex"],
@@ -51,12 +51,53 @@ const courtComplexesByDistrict = {
 
 const years = Array.from({ length: 76 }, (_, i) => String(new Date().getFullYear() - i));
 
+const districtCourtUnits = [
+  { id: "bankura", label: "Bankura District Court" },
+  { id: "purbaBardhaman", label: "Purba Bardhaman District Court" },
+  { id: "birbhum", label: "Birbhum District Court" },
+  { id: "coochBehar", label: "Cooch Behar District Court" },
+  { id: "darjeeling", label: "Darjeeling District Court" },
+  { id: "eastMedinipur", label: "East Medinipur (Purba Medinipur) District Court" },
+  { id: "hooghly", label: "Hooghly District Court" },
+  { id: "howrah", label: "Howrah District Court" },
+  { id: "jalpaiguri", label: "Jalpaiguri District Court" },
+  { id: "malda", label: "Malda District Court" },
+  { id: "murshidabad", label: "Murshidabad District Court" },
+  { id: "nadia", label: "Nadia District Court" },
+  { id: "north24Parganas", label: "North 24 Parganas District Court" },
+  { id: "northDinajpur", label: "North Dinajpur (Uttar Dinajpur) District Court" },
+  { id: "purulia", label: "Purulia District Court" },
+  { id: "south24Parganas", label: "South 24 Parganas District Court" },
+  { id: "southDinajpur", label: "South Dinajpur (Dakshin Dinajpur) District Court" },
+  { id: "westMedinipur", label: "West Medinipur (Paschim Medinipur) District Court" },
+  { id: "kolkataCityCivil", label: "Kolkata – City Civil Court" },
+  { id: "kolkataCitySessions", label: "Kolkata – City Sessions Court" },
+  { id: "kolkataPresidencySmallCauses", label: "Kolkata – Presidency Small Causes Court" },
+  { id: "kalimpong", label: "Kalimpong District Court" },
+  { id: "paschimBardhaman", label: "Paschim Bardhaman District Court" },
+  { id: "jhargram", label: "Jhargram District Court" },
+  { id: "alipurduar", label: "Alipurduar District Court" },
+];
+
+const highCourtSources = [
+  { id: "calcuttaHighCourtOriginal", label: "Calcutta High Court – Original Side", detail: "Original-side civil, commercial, company and other jurisdiction matters" },
+  { id: "calcuttaHighCourtAppellate", label: "Calcutta High Court – Appellate Side", detail: "Appellate, civil, criminal, writ, revisional and other appellate-side matters" },
+  { id: "jalpaiguriCircuitBench", label: "Calcutta High Court – Jalpaiguri Circuit Bench", detail: "Circuit Bench case status, orders and cause lists" },
+];
+
 const searchSources = [
-  { id: "calcuttaHighCourt", label: "Calcutta High Court", detail: "Original, appellate, civil, criminal and writ matters" },
-  { id: "drtKolkata", label: "DRT Kolkata", detail: "Securitisation applications, original applications and interlocutory applications" },
-  { id: "dratKolkata", label: "DRAT Kolkata", detail: "Appeals and connected applications" },
-  { id: "districtCourts", label: "District Courts", detail: "Kolkata, North 24 Parganas and South 24 Parganas" },
-  { id: "connectedCases", label: "Connected proceedings", detail: "Appeals, revisions, writ petitions, execution and subsequent applications" },
+  ...districtCourtUnits.map(source => ({ ...source, group: "district", detail: "Official eCourts district-court portal" })),
+  ...highCourtSources.map(source => ({ ...source, group: "highCourt" })),
+  { id: "drtKolkata", label: "DRT Kolkata", group: "tribunals", detail: "Securitisation applications, original applications and interlocutory applications" },
+  { id: "dratKolkata", label: "DRAT Kolkata", group: "tribunals", detail: "Appeals and connected applications" },
+  { id: "connectedCases", label: "Connected proceedings", group: "connected", detail: "Appeals, revisions, writ petitions, execution and subsequent applications" },
+];
+
+const searchSourceGroups = [
+  { id: "district", label: "All 25 West Bengal district court portals", description: "Every district-court portal listed in the official eCourts West Bengal directory.", sources: searchSources.filter(source => source.group === "district") },
+  { id: "highCourt", label: "Calcutta High Court and Circuit Bench", description: "Original Side, Appellate Side and Jalpaiguri Circuit Bench are selected separately.", sources: searchSources.filter(source => source.group === "highCourt") },
+  { id: "tribunals", label: "Debt recovery tribunals", description: "DRT Kolkata and DRAT Kolkata.", sources: searchSources.filter(source => source.group === "tribunals") },
+  { id: "connected", label: "Connected proceedings", description: "Trace related proceedings across supported court systems.", sources: searchSources.filter(source => source.group === "connected") },
 ];
 
 const preliminaryRecords = [
@@ -168,6 +209,7 @@ const css = `
 .smc-results{margin-top:22px;border:1px solid #dce6f3;background:#fff;border-radius:14px;padding:20px}.smc-results h3{margin:0 0 8px;font-size:17px}.smc-results p{font-size:13px;line-height:1.65;color:#64738a;margin:5px 0}
 .smc-badge{display:inline-block;background:#fff5dc;color:#8a6210;padding:5px 9px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.5px}
 .smc-source-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.smc-source-group{margin:16px 0 20px}.smc-source-group-heading{margin:0 0 9px}.smc-source-group-heading strong{display:block;font-size:13px;color:#29384f}.smc-source-group-heading small{display:block;font-size:11px;color:#78869a;margin-top:3px}.smc-source-actions{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 8px}.smc-source-actions button{text-decoration:underline}
 .smc-source-option{display:flex;gap:10px;align-items:flex-start;border:1px solid #e1e8f1;border-radius:10px;padding:12px;background:#fff;cursor:pointer}
 .smc-source-option input{width:16px;height:16px;margin:2px 0 0;accent-color:#245ba8;flex:0 0 auto}
 .smc-source-option strong{display:block;font-size:12px;color:#29384f}
@@ -271,12 +313,21 @@ export default function SearchMyCasesPage() {
           <div className="smc-divider" />
           <section className="smc-section">
             <div className="smc-section-head"><span className="smc-step">03</span><div><h2>Expanded search coverage</h2><small>Choose the court systems and connected-proceeding categories to include in the search plan.</small></div></div>
-            <div className="smc-source-list">
-              {searchSources.map(source => <label className="smc-source-option" key={source.id}>
-                <input type="checkbox" checked={form.searchSources.includes(source.id)} onChange={e => update("searchSources", e.target.checked ? [...form.searchSources, source.id] : form.searchSources.filter(id => id !== source.id))} />
-                <span><strong>{source.label}</strong><small>{source.detail}</small></span>
-              </label>)}
+            <div className="smc-source-actions">
+              <button type="button" className="smc-reset" onClick={() => update("searchSources", searchSources.map(source => source.id))}>Select all listed sources</button>
+              <button type="button" className="smc-reset" onClick={() => update("searchSources", [])}>Clear selection</button>
             </div>
+            {searchSourceGroups.map(group => <div className="smc-source-group" key={group.id}>
+              <div className="smc-source-group-heading"><strong>{group.label}</strong><small>{group.description}</small></div>
+              <div className="smc-source-list">
+                {group.sources.map(source => <label className="smc-source-option" key={source.id}>
+                  <input type="checkbox" checked={form.searchSources.includes(source.id)} onChange={e => update("searchSources", e.target.checked ? [...form.searchSources, source.id] : form.searchSources.filter(id => id !== source.id))} />
+                  <span><strong>{source.label}</strong><small>{source.detail}</small></span>
+                </label>)}
+              </div>
+            </div>)}
+            <div className="smc-note">Kolkata coverage includes the three separate district-court portals and the six listed Kolkata court complexes: City Civil, City Sessions, Metropolitan Magistrate, Municipal Magistrates, Presidency Small Causes and Commercial Courts. The Sealdah Criminal Court Complex is also included in the court-complex selector. Special courts operating within these establishments are covered only where their records are exposed by the relevant official portal.</div>
+            <div className="smc-note">Official directory: <a href="https://ecourts.gov.in/ecourts2.0/?p=dist_court%2Fwb" target="_blank" rel="noreferrer">West Bengal District Courts on eCourts</a> · <a href="https://www.calcuttahighcourt.gov.in/Cause-Lists" target="_blank" rel="noreferrer">Calcutta High Court cause lists and sides</a></div>
             {!form.searchSources.length && <div className="smc-alert smc-error">Select at least one search source.</div>}
           </section>
 
@@ -302,14 +353,14 @@ export default function SearchMyCasesPage() {
           <p><strong>Person:</strong> {[form.firstName,form.middleName,form.lastName].filter(Boolean).join(" ")}</p>
           <p><strong>Preferred districts:</strong> {form.districts.join(", ")}, {form.state}</p>
           <p><strong>Period:</strong> {form.fromYear || "Any year"}–{form.toYear || "Present"}</p>
-          <p><strong>Selected search coverage:</strong> {searchSources.filter(source => form.searchSources.includes(source.id)).map(source => source.label).join(" · ")}</p>
+          <p><strong>Selected search coverage:</strong> {searchSources.filter(source => form.searchSources.includes(source.id)).length} of {searchSources.length} listed court/tribunal sources</p>
           <div className="smc-warning"><strong>Important:</strong> Live automated court-record searching is not connected yet. The records below are previously identified public-record leads included to test the expanded results layout. They have not been freshly queried or independently identity-verified in this form submission. A name match is not proof that a case belongs to the search subject.</div>
           <h3>Previously identified records for verification</h3>
           <div className="smc-records">
             {preliminaryRecords.filter(record => {
-              if (record.court.includes("DRT")) return form.searchSources.includes("drtKolkata");
               if (record.court.includes("DRAT")) return form.searchSources.includes("dratKolkata");
-              return form.searchSources.includes("calcuttaHighCourt");
+              if (record.court.includes("DRT")) return form.searchSources.includes("drtKolkata");
+              return form.searchSources.includes("calcuttaHighCourtOriginal") || form.searchSources.includes("calcuttaHighCourtAppellate") || form.searchSources.includes("jalpaiguriCircuitBench");
             }).map(record => <article className="smc-record" key={record.number + record.title}>
               <div className="smc-record-top"><span>{record.court}</span><span>{record.category}</span></div>
               <h4>{record.number} · {record.title}</h4>
@@ -318,7 +369,7 @@ export default function SearchMyCasesPage() {
               <a href={record.url} target="_blank" rel="noreferrer">Open source record ↗</a>
             </article>)}
           </div>
-          <p>District-court searches and additional connected proceedings remain pending until approved court-record connectors are integrated. Search coverage and results must be reported separately for each source.</p>
+          <p>The selector now lists all 25 district-court portals, both Calcutta High Court sides, the Jalpaiguri Circuit Bench, DRT Kolkata and DRAT Kolkata. This is a coverage configuration only: live searching for these sources remains pending until authorised court-record connectors are integrated. Search coverage and results must be reported separately for each source.</p>
         </section>}
       </main>
       <footer className="smc-footer">SearchMyCases · A Sanhita360 legal discovery prototype · Not legal advice</footer>
