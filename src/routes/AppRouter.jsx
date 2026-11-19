@@ -1,4 +1,5 @@
 import LitigationPage from "../features/public/services/pages/LitigationPage";
+import SearchMyCasesPage from "../features/public/searchMyCases/pages/SearchMyCasesPage";
 import QAPage from "../features/public/qa/QAPage";
 import RoyalEnfieldCaseStudyPage from "../features/public/caseStudies/RoyalEnfieldCaseStudyPage";
 import MakeMyTripOyoGoaCaseStudyPage from "../features/public/caseStudies/MakeMyTripOyoGoaCaseStudyPage";
@@ -174,6 +175,7 @@ export default function AppRouter() {
         element={<AboutPage />}
       />
 
+      <Route path="/search-my-cases" element={<SearchMyCasesPage />} />
       <Route path="/qa" element={<QAPage />} />
       <Route path="/qa/:slug" element={<QAPage />} />
       <Route path="/case-studies/royal-enfield-interceptor-650-leh-breakdown" element={<RoyalEnfieldCaseStudyPage />} />
