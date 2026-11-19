@@ -277,7 +277,7 @@ export default function SearchMyCasesPage() {
       </section>
 
       <main className="smc-wrap">
-        <form className="smc-card" onSubmit={submit}>
+        <form className="smc-card" noValidate onSubmit={submit}>
           {error && <div className="smc-alert smc-error" role="alert">{error}</div>}
 
           <section className="smc-section">
