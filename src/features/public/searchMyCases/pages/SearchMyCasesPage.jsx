@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 const states = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -238,6 +238,8 @@ export default function SearchMyCasesPage() {
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const resultsRef = useRef(null);
+  const errorRef = useRef(null);
 
   const districts = useMemo(() => districtsByState[form.state] || [], [form.state]);
   const availableCourtComplexes = useMemo(
@@ -255,14 +257,19 @@ export default function SearchMyCasesPage() {
     if (!form.firstName.trim() || !form.lastName.trim() || !form.fatherFirstName.trim() || !form.fatherLastName.trim() ||
         !form.dob || !form.gender || !form.country || !form.state || !form.districts.length || !form.searchSources.length || form.districts.some(d => !districts.includes(d))) {
       setError("Please complete all mandatory fields marked with * and select at least one valid district from the list.");
+      setSubmitted(false);
+      window.requestAnimationFrame(() => errorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }));
       return;
     }
     if (form.fromYear && form.toYear && Number(form.fromYear) > Number(form.toYear)) {
       setError("Search From Year cannot be later than Search To Year.");
+      setSubmitted(false);
+      window.requestAnimationFrame(() => errorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }));
       return;
     }
     setSubmitted(true);
     setError("");
+    window.setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
   };
 
   return (
@@ -282,7 +289,7 @@ export default function SearchMyCasesPage() {
 
       <main className="smc-wrap">
         <form className="smc-card" noValidate onSubmit={submit}>
-          {error && <div className="smc-alert smc-error" role="alert">{error}</div>}
+          {error && <div ref={errorRef} className="smc-alert smc-error" role="alert">{error}</div>}
 
           <section className="smc-section">
             <div className="smc-section-head"><span className="smc-step">01</span><div><h2>Personal identity</h2><small>Enter the person's details as accurately as possible.</small></div></div>
@@ -351,7 +358,7 @@ export default function SearchMyCasesPage() {
           </div>
         </form>
 
-        {submitted && <section className="smc-results" aria-live="polite">
+        {submitted && <section ref={resultsRef} className="smc-results" aria-live="polite" tabIndex={-1}>
           <span className="smc-badge">VERSION 1.1 · EXPANDED SEARCH TEST</span>
           <h3>Search profile validated</h3>
           <p><strong>Person:</strong> {[form.firstName,form.middleName,form.lastName].filter(Boolean).join(" ")}</p>
