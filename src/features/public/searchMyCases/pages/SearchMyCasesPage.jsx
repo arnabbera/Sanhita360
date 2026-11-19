@@ -104,7 +104,8 @@ const initialForm = {
   fatherFirstName: "", fatherMiddleName: "", fatherLastName: "",
   spouseFirstName: "", spouseMiddleName: "", spouseLastName: "",
   dob: "", gender: "", country: "India", state: "West Bengal", districts: [],
-  courtComplexes: [], alternativeNames: "", fromYear: "", toYear: "",\n  searchSources: searchSources.map(source => source.id),
+  courtComplexes: [], alternativeNames: "", fromYear: "", toYear: "",
+  searchSources: searchSources.map(source => source.id),
 };
 
 
