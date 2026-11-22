@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
-import { useAuth } from "../../../hooks/useAuth";
 
 const menuItems = [
   { to: "/", label: "Home" },
@@ -26,14 +25,10 @@ const menuItems = [
 ];
 
 export default function Header() {
-  const { firebaseUser, profile, loading } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState(null);
   const headerRef = useRef(null);
   const mobileToggleRef = useRef(null);
-  const dashboardPath = profile?.role === "admin" ? "/admin" : "/student";
-  const accountPath = firebaseUser ? dashboardPath : "/login?source=law-courses";
-  const accountLabel = loading ? "Checking account…" : firebaseUser ? "My Dashboard" : "Student Login";
   const closeMenu = () => { setMenuOpen(false); setOpenGroup(null); };
 
   useEffect(() => {
@@ -92,10 +87,7 @@ export default function Header() {
         </Link>
         <nav className="ns-desktop-menu" aria-label="Main navigation">{menuItems.map((item) => renderItem(item, false))}</nav>
         <div className="ns-header-account-actions">
-          <Link className="ns-header-login" to={accountPath} aria-disabled={loading || undefined} onClick={(event) => {
-            if (loading) event.preventDefault();
-            else closeMenu();
-          }}>{accountLabel}</Link>
+          <Link className="ns-header-login" to="/search-my-cases" onClick={closeMenu}>MyCase</Link>
           <button ref={mobileToggleRef} type="button" className="ns-mobile-toggle" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen} aria-controls="ns-mobile-navigation" onClick={() => { setMenuOpen((open) => !open); setOpenGroup(null); }}>
             {menuOpen ? <FaTimes /> : <FaBars />}
