@@ -104,46 +104,6 @@ const searchSourceGroups = [
   { id: "connected", label: "Connected proceedings", description: "Trace related proceedings across supported court systems.", sources: searchSources.filter(source => source.group === "connected") },
 ];
 
-const preliminaryRecords = [
-  {
-    court: "DRT Kolkata",
-    number: "SA/594/2021",
-    title: "Arnab Bera & Others vs. Indian Bank",
-    category: "Securitisation Application",
-    confidence: "Strong candidate — identity verification required",
-    note: "Previously identified tribunal matter. Verify party details and current status against the official case record.",
-    url: "https://cis.drt.gov.in/drtlive/order/pdf/pdf1.php?file=L3VwbG9hZHMvZHJ0L2RydGNvdXJ0L2RhaWx5X29yZGVyLzIwMjQvRGVjZW1iZXIvMTkwMTMwMDEwMjAyMDIxXzA1ODdmOTViNDg4NWVlZTRlY2IzNzY3ZTJjOGNmMWI5LnBkZioqKjY0MzI4IzEja29sa2F0YTM%3D"
-  },
-  {
-    court: "DRAT Kolkata",
-    number: "Misc. Appeal 75/2025",
-    title: "Arnab Bera vs. Indian Bank",
-    category: "Appeal",
-    confidence: "Strong candidate — identity verification required",
-    note: "Previously identified cause-list entry associated with SA/594/2021. Cause-list appearance is not proof of final disposal or current status.",
-    url: "https://cis.drt.gov.in/drtlive/order/generate_causelist.php?filing_no=MTEtMjYvMDgvMjAyNS0xLWtvbGthdGFkcmF0&id=1681966180"
-  },
-  {
-    court: "Calcutta High Court",
-    number: "CO/3499/2024",
-    title: "Samadrita Pratihar vs. Arnab Bera",
-    category: "Civil revisional matter",
-    confidence: "Possible name match — not verified",
-    note: "Same-name respondent reference. Do not attribute this matter to the search subject without independent identity evidence.",
-    url: "https://www.calcuttahighcourt.gov.in/downloads/old_cause_lists/AS/cla05122024.pdf"
-  },
-  {
-    court: "Calcutta High Court",
-    number: "Judgment dated 8 October 2021",
-    title: "Arnab Bera & Another vs. State of West Bengal & Others",
-    category: "SARFAESI-related proceeding",
-    confidence: "Possible match — verify full judgment and party identity",
-    note: "Previously surfaced judgment reference concerning SARFAESI proceedings and South 24 Parganas.",
-    url: "https://indiankanoon.org/docfragment/111717883/?formInput=section+14+of+sarfeasi+act++benchid:+r-mantha"
-  },
-];
-
-
 const initialForm = {
   firstName: "", middleName: "", lastName: "",
   fatherFirstName: "", fatherMiddleName: "", fatherLastName: "",
@@ -255,7 +215,7 @@ export default function SearchMyCasesPage() {
   const submit = (event) => {
     event.preventDefault();
     if (!form.firstName.trim() || !form.lastName.trim() || !form.fatherFirstName.trim() || !form.fatherLastName.trim() ||
-        !form.dob || !form.gender || !form.country || !form.state || !form.districts.length || !form.searchSources.length || form.districts.some(d => !districts.includes(d))) {
+        !form.dob || !form.gender || !form.country || !form.state || !form.districts.length || form.searchSources.length !== searchSources.length || form.districts.some(d => !districts.includes(d))) {
       setError("Please complete all mandatory fields marked with * and select at least one valid district from the list.");
       setSubmitted(false);
       window.requestAnimationFrame(() => errorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }));
@@ -283,7 +243,7 @@ export default function SearchMyCasesPage() {
         <div className="smc-hero-inner">
           <div className="smc-eyebrow">Sanhita360 Legal Intelligence</div>
           <h1>SearchMyCases</h1>
-          <p>AI-powered legal case discovery. Search for court matters associated with a person using identity details and preferred court location.</p>
+          <p>Identity-led case discovery. A name match alone is never enough: identity checks and full Phase 1 court coverage are mandatory. Live court-data integrations must return source-backed records before any case can be attributed to a person.</p>
         </div>
       </section>
 
@@ -318,28 +278,25 @@ export default function SearchMyCasesPage() {
               <MultiSelectDropdown label="District" options={districts} value={form.districts} onChange={v=>setForm(f=>({...f,districts:v,courtComplexes:[]}))} placeholder={districts.length ? "Search and select districts" : "District list not configured yet"} required disabled={!districts.length} hint="You can select more than one district." />
               <MultiSelectDropdown label="Court Complex / Establishment" options={availableCourtComplexes} value={form.courtComplexes} onChange={v=>update("courtComplexes",v)} placeholder={form.districts.length ? "Click to view or search court complexes" : "Select district(s) first"} disabled={!form.districts.length} allowCustom hint={form.districts.length ? `${availableCourtComplexes.length} listed option(s) for selected district(s). Select multiple; type to add another establishment if needed.` : "Select one or more districts to load court complexes."} />
             </div>
-            <div className="smc-note">Your selected districts are the preferred starting locations. Where records and supported sources allow, related appeals or connected proceedings in other districts, the High Court or appellate courts may also be relevant.</div>
+            <div className="smc-note">District selection is a location hint only. It does not narrow the mandatory search: all 25 West Bengal district-court units, both Calcutta High Court sides, DRT, DRAT and consumer commissions remain in scope.</div>
           </section>
 
           <div className="smc-divider" />
           <section className="smc-section">
-            <div className="smc-section-head"><span className="smc-step">03</span><div><h2>Expanded search coverage</h2><small>Choose the court systems and connected-proceeding categories to include in the search plan.</small></div></div>
-            <div className="smc-source-actions">
-              <button type="button" className="smc-reset" onClick={() => update("searchSources", searchSources.map(source => source.id))}>Select all listed sources</button>
-              <button type="button" className="smc-reset" onClick={() => update("searchSources", [])}>Clear selection</button>
-            </div>
+            <div className="smc-section-head"><span className="smc-step">03</span><div><h2>Expanded search coverage</h2><small>All Phase 1 court systems and connected-proceeding categories are mandatory; no source can be skipped.</small></div></div>
+            <div className="smc-note"><strong>Mandatory full-coverage search:</strong> all listed West Bengal district court units, both Calcutta High Court sides and Jalpaiguri Circuit Bench, DRT Kolkata, DRAT Kolkata, NCDRC, West Bengal State and District Consumer Commissions, and connected-proceeding sources are included. These sources cannot be deselected for a full-coverage search.</div>
             {searchSourceGroups.map(group => <div className="smc-source-group" key={group.id}>
               <div className="smc-source-group-heading"><strong>{group.label}</strong><small>{group.description}</small></div>
               <div className="smc-source-list">
                 {group.sources.map(source => <label className="smc-source-option" key={source.id}>
-                  <input type="checkbox" checked={form.searchSources.includes(source.id)} onChange={e => update("searchSources", e.target.checked ? [...form.searchSources, source.id] : form.searchSources.filter(id => id !== source.id))} />
+                  <input type="checkbox" checked readOnly disabled aria-label="Mandatory search source" />
                   <span><strong>{source.label}</strong><small>{source.detail}</small></span>
                 </label>)}
               </div>
             </div>)}
             <div className="smc-note">Kolkata coverage includes the three separate district-court portals and the six listed Kolkata court complexes: City Civil, City Sessions, Metropolitan Magistrate, Municipal Magistrates, Presidency Small Causes and Commercial Courts. The Sealdah Criminal Court Complex is also included in the court-complex selector. Special courts operating within these establishments are covered only where their records are exposed by the relevant official portal.</div>
             <div className="smc-note">Official directory: <a href="https://ecourts.gov.in/ecourts2.0/?p=dist_court%2Fwb" target="_blank" rel="noreferrer">West Bengal District Courts on eCourts</a> · <a href="https://www.calcuttahighcourt.gov.in/Cause-Lists" target="_blank" rel="noreferrer">Calcutta High Court cause lists and sides</a></div>
-            {!form.searchSources.length && <div className="smc-alert smc-error">Select at least one search source.</div>}
+            {!form.searchSources.length && <div className="smc-alert smc-error">All mandatory court and tribunal sources must remain selected for complete case discovery.</div>}
           </section>
 
           <div className="smc-divider" />
@@ -351,36 +308,27 @@ export default function SearchMyCasesPage() {
             </div>
           </section>
 
-          <div className="smc-note">Privacy reminder: enter personal information only when you are authorised to do so. This prototype does not send the details to a court database or store them for a search.</div>
+          <div className="smc-note">Privacy reminder: enter personal information only when you are authorised to do so. This profile form currently validates identity inputs only. It does not yet query court databases; no case may be marked verified until official records and independent identity fields are compared.</div>
           <div className="smc-actions">
             <div className="smc-consent">By continuing, you confirm that the information is provided for a legitimate case-discovery purpose. A full privacy notice and consent workflow will be required before public launch.</div>
-            <div style={{display:"flex",gap:12,alignItems:"center"}}><button className="smc-reset" type="button" onClick={()=>{setForm(initialForm);setError("");setSubmitted(false);}}>Reset</button><button className="smc-submit" type="submit">Continue to Search →</button></div>
+            <div style={{display:"flex",gap:12,alignItems:"center"}}><button className="smc-reset" type="button" onClick={()=>{setForm(initialForm);setError("");setSubmitted(false);}}>Reset</button><button className="smc-submit" type="submit">Validate Identity Profile →</button></div>
           </div>
         </form>
 
         {submitted && <section ref={resultsRef} className="smc-results" aria-live="polite" tabIndex={-1}>
-          <span className="smc-badge">VERSION 1.1 · EXPANDED SEARCH TEST</span>
-          <h3>Search profile validated</h3>
+          <span className="smc-badge">IDENTITY PROFILE VALIDATED · LIVE SEARCH NOT CONNECTED</span>
+          <h3>Search profile validated — no case attribution made</h3>
           <p><strong>Person:</strong> {[form.firstName,form.middleName,form.lastName].filter(Boolean).join(" ")}</p>
-          <p><strong>Preferred districts:</strong> {form.districts.join(", ")}, {form.state}</p>
+          <p><strong>Father's name:</strong> {[form.fatherFirstName,form.fatherMiddleName,form.fatherLastName].filter(Boolean).join(" ")}</p>
+          <p><strong>Date of birth:</strong> {form.dob}</p>
+          <p><strong>Gender:</strong> {form.gender}</p>
+          <p><strong>Preferred districts:</strong> {form.districts.join(", ")}, {form.state} (location hint only)</p>
           <p><strong>Period:</strong> {form.fromYear || "Any year"}–{form.toYear || "Present"}</p>
-          <p><strong>Selected search coverage:</strong> {searchSources.filter(source => form.searchSources.includes(source.id)).length} of {searchSources.length} listed court/tribunal sources</p>
-          <div className="smc-warning"><strong>Important:</strong> Live automated court-record searching is not connected yet. The records below are previously identified public-record leads included to test the expanded results layout. They have not been freshly queried or independently identity-verified in this form submission. A name match is not proof that a case belongs to the search subject.</div>
-          <h3>Previously identified records for verification</h3>
-          <div className="smc-records">
-            {preliminaryRecords.filter(record => {
-              if (record.court.includes("DRAT")) return form.searchSources.includes("dratKolkata");
-              if (record.court.includes("DRT")) return form.searchSources.includes("drtKolkata");
-              return form.searchSources.includes("calcuttaHighCourtOriginal") || form.searchSources.includes("calcuttaHighCourtAppellate") || form.searchSources.includes("jalpaiguriCircuitBench");
-            }).map(record => <article className="smc-record" key={record.number + record.title}>
-              <div className="smc-record-top"><span>{record.court}</span><span>{record.category}</span></div>
-              <h4>{record.number} · {record.title}</h4>
-              <p><strong>Assessment:</strong> {record.confidence}</p>
-              <p>{record.note}</p>
-              <a href={record.url} target="_blank" rel="noreferrer">Open source record ↗</a>
-            </article>)}
-          </div>
-          <p>The selector now lists all 25 district-court portals, both Calcutta High Court sides, the Jalpaiguri Circuit Bench, DRT Kolkata and DRAT Kolkata. This is a coverage configuration only: live searching for these sources remains pending until authorised court-record connectors are integrated. Search coverage and results must be reported separately for each source.</p>
+          <p><strong>Mandatory source coverage:</strong> {searchSources.length} of {searchSources.length} sources selected, including all 25 West Bengal district-court units, both Calcutta High Court sides, Jalpaiguri Circuit Bench, DRT Kolkata, DRAT Kolkata and consumer commissions.</p>
+          <div className="smc-warning"><strong>No live case search has been performed.</strong> The current repository has no connected court-record search service. To prevent false positives, previously hard-coded sample records have been removed from the results panel. In particular, CO/3499/2024 (Samadrita Pratihar vs. Arnab Bera) will not be attributed to this profile merely because the respondent's name matches. No case is labelled verified until the official record supplies corroborating identity evidence.</div>
+          <h3>Mandatory identity-verification policy</h3>
+          <p>A candidate must match the person's full name and at least one independent identifier from the official record (father's or spouse's name, date of birth/age, or address). Party role must also be checked: petitioner/plaintiff/complainant/applicant/appellant is distinguished from respondent/defendant/attorney/witness. Conflicting identity details result in a rejected match; missing identifiers remain unverified and are never shown as confirmed cases.</p>
+          <p><strong>Next integration required:</strong> authorised, source-specific live connectors for each listed court/tribunal portal, exhaustive pagination across every source, and a reconciliation pass for connected appeals, revisions, execution cases and interlocutory applications. Until that integration is deployed and tested, this page is an identity-profile validator and search-coverage configuration—not a live case-search engine.</p>
         </section>}
       </main>
       <footer className="smc-footer">SearchMyCases · A Sanhita360 legal discovery prototype · Not legal advice</footer>
