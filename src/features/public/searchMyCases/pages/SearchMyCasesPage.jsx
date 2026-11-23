@@ -199,6 +199,22 @@ const css = `
 @media(max-width:600px){.smc-source-list{grid-template-columns:1fr}}
 
 
+.smc-copilot{margin:24px 0 0;border:1px solid #dce6f3;background:#fff;border-radius:16px;padding:clamp(18px,3vw,26px);box-shadow:0 10px 30px #172b490a}
+.smc-copilot h3{margin:0 0 7px;font-size:19px;color:#24344c}
+.smc-copilot-intro{font-size:12px;line-height:1.65;color:#64738a;margin:7px 0 14px}
+.smc-query-box{background:#f4f8ff;border:1px solid #dce9fb;border-radius:10px;padding:12px 14px;margin:12px 0;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.smc-query-box code{font-size:12px;line-height:1.6;color:#304866;overflow-wrap:anywhere;white-space:normal}
+.smc-copy{border:0;border-radius:8px;background:#215ca8;color:white;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.smc-task-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px}
+.smc-task{border:1px solid #e1e8f1;border-radius:11px;padding:14px}
+.smc-task strong{display:block;font-size:13px;color:#29384f}
+.smc-task p{font-size:12px;line-height:1.5;color:#65748a;margin:6px 0}
+.smc-task-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.smc-task-actions a,.smc-task-actions button{border:1px solid #d8e2ef;border-radius:7px;padding:7px 9px;background:#fff;color:#245ba8;font-size:11px;font-weight:800;text-decoration:none;cursor:pointer}
+.smc-task-actions a{background:#245ba8;color:#fff;border-color:#245ba8}
+.smc-task-status{display:inline-block;font-size:10px;font-weight:800;border-radius:20px;padding:5px 8px;background:#fff5dc;color:#805c13;margin-bottom:7px}
+.smc-task-status.done{background:#e8f7ee;color:#217447}
+@media(max-width:600px){.smc-task-grid{grid-template-columns:1fr}}
 .smc-known{margin:24px 0 0;border:1px solid #dce6f3;background:#fff;border-radius:16px;padding:clamp(18px,3vw,26px);box-shadow:0 10px 30px #172b490a}
 .smc-known-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:8px}
 .smc-known h3{margin:0;font-size:19px;color:#24344c}
@@ -221,6 +237,8 @@ export default function SearchMyCasesPage() {
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [portalProgress, setPortalProgress] = useState({});
+  const [copiedQuery, setCopiedQuery] = useState(false);
   const resultsRef = useRef(null);
   const errorRef = useRef(null);
 
@@ -234,6 +252,30 @@ export default function SearchMyCasesPage() {
     setError("");
     setSubmitted(false);
   };
+
+  const personName = [form.firstName, form.middleName, form.lastName].filter(Boolean).join(" ").trim();
+  const fatherName = [form.fatherFirstName, form.fatherMiddleName, form.fatherLastName].filter(Boolean).join(" ").trim();
+  const searchQuery = [personName, fatherName ? "Father: " + fatherName : "", form.alternativeNames ? "Also known as: " + form.alternativeNames : ""].filter(Boolean).join(" | ");
+
+  const portalTasks = [
+    { id: "ecourts", title: "District Courts — all 25 WB units", detail: "Search party name across each district unit, then inspect case history and orders.", url: "https://services.ecourts.gov.in/ecourtindia_v6/casestatus/" },
+    { id: "highcourt", title: "Calcutta High Court — Original & Appellate Sides", detail: "Search both sides and the Jalpaiguri Circuit Bench; inspect cause lists and case status.", url: "https://www.calcuttahighcourt.gov.in/Cause-Lists" },
+    { id: "drt", title: "DRT Kolkata", detail: "Search S.A./O.A. numbers, party names, IAs, daily orders and connected matters.", url: "https://cis.drt.gov.in/drtlive/order/drt_case_status.php" },
+    { id: "drat", title: "DRAT Kolkata", detail: "Search appeals, interlocutory applications, cause lists and linked DRT proceedings.", url: "https://cis.drt.gov.in/" },
+    { id: "consumer", title: "Consumer Commissions — NCDRC, WB State & District", detail: "Search consumer complaints, appeals, revisions and execution matters.", url: "https://e-jagriti.gov.in/" },
+  ];
+
+  const copySearchQuery = async () => {
+    try {
+      await navigator.clipboard.writeText(searchQuery);
+      setCopiedQuery(true);
+      window.setTimeout(() => setCopiedQuery(false), 2200);
+    } catch {
+      setError("Clipboard access was blocked. Select and copy the prepared search text manually.");
+    }
+  };
+
+  const markPortalStep = (id, value) => setPortalProgress(current => ({ ...current, [id]: value }));
 
   const submit = (event) => {
     event.preventDefault();
@@ -265,8 +307,8 @@ export default function SearchMyCasesPage() {
       <section className="smc-hero">
         <div className="smc-hero-inner">
           <div className="smc-eyebrow">Sanhita360 Legal Intelligence</div>
-          <h1>SearchMyCases</h1>
-          <p>Identity-led case discovery. A name match alone is never enough: identity checks and full Phase 1 court coverage are mandatory. Live court-data integrations must return source-backed records before any case can be attributed to a person.</p>
+          <h1>MyCase</h1>
+          <p>Your AI-assisted legal case-discovery copilot. Build one identity profile, prepare searches across every Phase 1 court source, complete any official CAPTCHA yourself, and bring the source records back for identity verification.</p>
         </div>
       </section>
 
@@ -331,13 +373,24 @@ export default function SearchMyCasesPage() {
             </div>
           </section>
 
-          <div className="smc-note">Privacy reminder: enter personal information only when you are authorised to do so. This profile form currently validates identity inputs only. It does not yet query court databases; no case may be marked verified until official records and independent identity fields are compared.</div>
+          <div className="smc-note">Privacy reminder: enter personal information only when you are authorised to do so. This profile prepares a guided search workflow. The current release does not automatically query court databases or import their results; no case may be marked verified until official records and independent identity fields are compared.</div>
           <div className="smc-actions">
             <div className="smc-consent">By continuing, you confirm that the information is provided for a legitimate case-discovery purpose. A full privacy notice and consent workflow will be required before public launch.</div>
             <div style={{display:"flex",gap:12,alignItems:"center"}}><button className="smc-reset" type="button" onClick={()=>{setForm(initialForm);setError("");setSubmitted(false);}}>Reset</button><button className="smc-submit" type="submit">Validate Identity Profile →</button></div>
           </div>
         </form>
 
+        {submitted && <section className="smc-copilot" aria-labelledby="smc-copilot-title">
+          <div className="smc-known-head"><div><h3 id="smc-copilot-title">MyCase AI Search Copilot</h3><p className="smc-copilot-intro">NextRaise-inspired workflow: one saved identity profile, reusable search terms, a guided source queue and a case tracker. Official portals retain control of their own sessions and CAPTCHA checks.</p></div><span className="smc-badge">GUIDED SEARCH WORKFLOW</span></div>
+          <div className="smc-query-box"><code>{searchQuery}</code><button className="smc-copy" type="button" onClick={copySearchQuery}>{copiedQuery ? "Copied ✓" : "Copy search profile"}</button></div>
+          <div className="smc-warning"><strong>CAPTCHA handling:</strong> If an official court portal displays a CAPTCHA, complete it directly on that portal and submit there. MyCase will not solve, bypass, proxy or ask you to disclose CAPTCHA answers. Return here and mark that source step complete. This keeps the official portal session and its access controls intact.</div>
+          <div className="smc-task-grid">{portalTasks.map(task => <article className="smc-task" key={task.id}>
+            <span className={"smc-task-status " + (portalProgress[task.id] === "done" ? "done" : "")}>{portalProgress[task.id] === "done" ? "STEP COMPLETED BY USER" : "READY TO SEARCH"}</span>
+            <strong>{task.title}</strong><p>{task.detail}</p>
+            <div className="smc-task-actions"><a href={task.url} target="_blank" rel="noreferrer" onClick={() => markPortalStep(task.id, "opened")}>Open official portal ↗</a><button type="button" onClick={() => markPortalStep(task.id, portalProgress[task.id] === "done" ? "opened" : "done")}>{portalProgress[task.id] === "done" ? "Reopen step" : "I completed this search"}</button></div>
+          </article>)}</div>
+          <p className="smc-copilot-intro"><strong>Next:</strong> save or paste the official case number, cause title, order PDF or case-history text into the case record review workflow. A portal step marked complete is only a user progress marker—it is not proof that every record was found or verified.</p>
+        </section>}
         <section className="smc-known" aria-labelledby="smc-known-title">
           <div className="smc-known-head">
             <div>
@@ -356,12 +409,12 @@ export default function SearchMyCasesPage() {
               <a href={item.sourceUrl} target="_blank" rel="noreferrer">{item.sourceLabel} ↗</a>
             </article>)}
           </div>
-          <div className="smc-warning"><strong>Important:</strong> A portal link is a route to the official search facility, not a direct case-specific record link. No current status, cause title, party identity or case outcome is asserted here. The second DRAT entry is only a placeholder until its number is supplied or independently found.</div>
+          <div className="smc-warning"><strong>Important:</strong> A portal link is a route to the official search facility, not a direct case-specific record link. No current status, cause title, party identity or case outcome is asserted here. The DRAT Kolkata Misc. Appeal No. 64/2025 entry is based on an official cause-list reference; it is a bank-filed connected appeal and must not be represented as Arnab Bera’s own appeal without checking the full case record.</div>
         </section>
 
         {submitted && <section ref={resultsRef} className="smc-results" aria-live="polite" tabIndex={-1}>
-          <span className="smc-badge">IDENTITY PROFILE VALIDATED · LIVE SEARCH NOT CONNECTED</span>
-          <h3>Search profile validated — no case attribution made</h3>
+          <span className="smc-badge">IDENTITY PROFILE READY · GUIDED SEARCH</span>
+          <h3>Search profile prepared — proceed through the official source queue</h3>
           <p><strong>Person:</strong> {[form.firstName,form.middleName,form.lastName].filter(Boolean).join(" ")}</p>
           <p><strong>Father's name:</strong> {[form.fatherFirstName,form.fatherMiddleName,form.fatherLastName].filter(Boolean).join(" ")}</p>
           <p><strong>Date of birth:</strong> {form.dob}</p>
@@ -369,10 +422,10 @@ export default function SearchMyCasesPage() {
           <p><strong>Preferred districts:</strong> {form.districts.join(", ")}, {form.state} (location hint only)</p>
           <p><strong>Period:</strong> {form.fromYear || "Any year"}–{form.toYear || "Present"}</p>
           <p><strong>Mandatory source coverage:</strong> {searchSources.length} of {searchSources.length} sources selected, including all 25 West Bengal district-court units, both Calcutta High Court sides, Jalpaiguri Circuit Bench, DRT Kolkata, DRAT Kolkata and consumer commissions.</p>
-          <div className="smc-warning"><strong>No live case search has been performed.</strong> The current repository has no connected court-record search service. To prevent false positives, previously hard-coded sample records have been removed from the results panel. In particular, CO/3499/2024 (Samadrita Pratihar vs. Arnab Bera) will not be attributed to this profile merely because the respondent's name matches. No case is labelled verified until the official record supplies corroborating identity evidence.</div>
+          <div className="smc-warning"><strong>No live court-record search has been performed by this page.</strong> The current release provides a guided search workflow but has no server-side court connector or browser extension to execute and import searches automatically. To prevent false positives, previously hard-coded sample records have been removed from the results panel. In particular, CO/3499/2024 (Samadrita Pratihar vs. Arnab Bera) will not be attributed to this profile merely because the respondent's name matches. No case is labelled verified until the official record supplies corroborating identity evidence.</div>
           <h3>Mandatory identity-verification policy</h3>
           <p>A candidate must match the person's full name and at least one independent identifier from the official record (father's or spouse's name, date of birth/age, or address). Party role must also be checked: petitioner/plaintiff/complainant/applicant/appellant is distinguished from respondent/defendant/attorney/witness. Conflicting identity details result in a rejected match; missing identifiers remain unverified and are never shown as confirmed cases.</p>
-          <p><strong>Next integration required:</strong> authorised, source-specific live connectors for each listed court/tribunal portal, exhaustive pagination across every source, and a reconciliation pass for connected appeals, revisions, execution cases and interlocutory applications. Until that integration is deployed and tested, this page is an identity-profile validator and search-coverage configuration—not a live case-search engine.</p>
+          <p><strong>Automation roadmap:</strong> add a user-controlled browser companion (similar to a form-autofill extension) to fill supported search fields on official portals, pause for human CAPTCHA completion, collect visible case results and source URLs, and sync them into this case tracker. Server-side connectors should be added only where the court provides a permitted, stable interface. Every source must expose coverage, pagination and last-checked time.</p>
         </section>}
       </main>
       <footer className="smc-footer">SearchMyCases · A Sanhita360 legal discovery prototype · Not legal advice</footer>
