@@ -104,6 +104,15 @@ const searchSourceGroups = [
   { id: "connected", label: "Connected proceedings", description: "Trace related proceedings across supported court systems.", sources: searchSources.filter(source => source.group === "connected") },
 ];
 
+
+const knownProceedings = [
+  { id: "vle-bazaar", title: "VLE Bazaar consumer case", court: "Consumer Commission · filing year 2026", number: "DC/AB3/315/CC/33/2026", detail: "Case reference supplied by the user. Commission, parties, current status and order history have not yet been independently checked against the official record.", sourceLabel: "Open official e-Jagriti portal", sourceUrl: "https://e-jagriti.gov.in/", status: "User-provided · verification pending" },
+  { id: "kotak-consumer", title: "Kotak Mahindra Bank consumer case", court: "Consumer Commission · filing year 2023", number: "Case number not yet available", detail: "The 2023 filing year and opposing institution were previously supplied by the user. Exact case number, commission, parties and current status remain to be confirmed.", sourceLabel: "Open official e-Jagriti portal", sourceUrl: "https://e-jagriti.gov.in/", status: "User-provided · details incomplete" },
+  { id: "drt-sa-594-2021", title: "Securitisation Application", court: "DRT-III Kolkata · filing year 2021", number: "S.A. No. 594/2021", detail: "Case reference previously supplied by the user. The live case record, party array, connected applications and current status have not been independently verified.", sourceLabel: "Open official DRT / DRAT case-status portal", sourceUrl: "https://cis.drt.gov.in/", status: "User-provided · verification pending" },
+  { id: "drat-ma-75-2025", title: "DRAT miscellaneous appeal", court: "DRAT · filing year 2025", number: "Miscellaneous Appeal No. 75/2025", detail: "This reference appeared in an earlier case-search discussion. Tribunal location, exact cause title, connected DRT matter and current status still require official-record confirmation.", sourceLabel: "Open official DRT / DRAT case-status portal", sourceUrl: "https://cis.drt.gov.in/", status: "Previously identified · verification pending" },
+  { id: "drat-second-pending", title: "Second DRAT proceeding", court: "DRAT · filing year / tribunal to confirm", number: "Case number required", detail: "The user has confirmed that there are two DRAT proceedings. The second case number and filing details have not yet been established, so this is a follow-up placeholder—not a discovered or verified case.", sourceLabel: "Open official DRT / DRAT case-status portal", sourceUrl: "https://cis.drt.gov.in/", status: "User-confirmed existence · details pending" },
+];
+
 const initialForm = {
   firstName: "", middleName: "", lastName: "",
   fatherFirstName: "", fatherMiddleName: "", fatherLastName: "",
@@ -189,6 +198,20 @@ const css = `
 .smc-warning{border:1px solid #f0dfb3;background:#fff9e9;color:#775a1b;border-radius:10px;padding:12px 14px;font-size:12px;line-height:1.6;margin:12px 0}
 @media(max-width:600px){.smc-source-list{grid-template-columns:1fr}}
 
+
+.smc-known{margin:24px 0 0;border:1px solid #dce6f3;background:#fff;border-radius:16px;padding:clamp(18px,3vw,26px);box-shadow:0 10px 30px #172b490a}
+.smc-known-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.smc-known h3{margin:0;font-size:19px;color:#24344c}
+.smc-known-intro{font-size:12px;line-height:1.65;color:#64738a;margin:7px 0 14px}
+.smc-known-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.smc-known-card{border:1px solid #e1e8f1;border-radius:11px;padding:15px;min-width:0}
+.smc-known-card h4{margin:7px 0 5px;font-size:14px;color:#24344c}
+.smc-known-card p{font-size:12px;line-height:1.55;color:#65748a;margin:5px 0;overflow-wrap:anywhere}
+.smc-known-card a{display:inline-block;margin-top:8px;color:#245ba8;font-size:12px;font-weight:800;text-decoration:none}
+.smc-known-card a:hover{text-decoration:underline}
+.smc-known-status{display:inline-block;background:#fff5dc;color:#805c13;border-radius:20px;padding:5px 8px;font-size:10px;font-weight:800;letter-spacing:.2px}
+.smc-known-number{font-weight:800;color:#344760}
+@media(max-width:600px){.smc-known-grid{grid-template-columns:1fr}}
 .smc-footer{text-align:center;color:#8b96a7;font-size:11px;padding:20px}
 @media(max-width:760px){.smc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.smc-top{padding:18px 20px}.smc-hero{padding:36px 20px 52px}}
 @media(max-width:520px){.smc-grid{grid-template-columns:1fr}.smc-actions{align-items:stretch;flex-direction:column}.smc-submit{width:100%}.smc-consent{max-width:none}}
@@ -314,6 +337,27 @@ export default function SearchMyCasesPage() {
             <div style={{display:"flex",gap:12,alignItems:"center"}}><button className="smc-reset" type="button" onClick={()=>{setForm(initialForm);setError("");setSubmitted(false);}}>Reset</button><button className="smc-submit" type="submit">Validate Identity Profile →</button></div>
           </div>
         </form>
+
+        <section className="smc-known" aria-labelledby="smc-known-title">
+          <div className="smc-known-head">
+            <div>
+              <h3 id="smc-known-title">My known proceedings</h3>
+              <p className="smc-known-intro">Stage 1 reference list · These entries are shown from information previously supplied or discussed. They are not results of a live search and are not independently verified court records. Open the official portal to check the current case record.</p>
+            </div>
+            <span className="smc-badge">OFFICIAL VERIFICATION PENDING</span>
+          </div>
+          <div className="smc-known-grid">
+            {knownProceedings.map(item => <article className="smc-known-card" key={item.id}>
+              <span className="smc-known-status">{item.status}</span>
+              <h4>{item.title}</h4>
+              <p><strong>{item.court}</strong></p>
+              <p className="smc-known-number">{item.number}</p>
+              <p>{item.detail}</p>
+              <a href={item.sourceUrl} target="_blank" rel="noreferrer">{item.sourceLabel} ↗</a>
+            </article>)}
+          </div>
+          <div className="smc-warning"><strong>Important:</strong> A portal link is a route to the official search facility, not a direct case-specific record link. No current status, cause title, party identity or case outcome is asserted here. The second DRAT entry is only a placeholder until its number is supplied or independently found.</div>
+        </section>
 
         {submitted && <section ref={resultsRef} className="smc-results" aria-live="polite" tabIndex={-1}>
           <span className="smc-badge">IDENTITY PROFILE VALIDATED · LIVE SEARCH NOT CONNECTED</span>
