@@ -424,8 +424,8 @@ export default function PublicCoursesPage() {
                 <span className="course-count">
                   {courses.length}{" "}
                   {courses.length === 1
-                    ? "course"
-                    : "courses"}
+                    ? "subject"
+                    : "subjects"}
                 </span>
               )}
             </div>
@@ -584,7 +584,7 @@ export default function PublicCoursesPage() {
                               </p>
                             )}
 
-                            <p>{pricing ? `${formatINR(pricing.amount)} per subject${pricing.remaining > 0 ? " introductory offer for the first 100 checkout reservations" : ""}` : "₹99 for the first 100 checkout reservations, then ₹299"} · Chapters, study materials and mock tests included.{certificationIncluded ? " Completion certificate available after meeting course requirements." : " No completion certificate for this subject."}</p>
+                            <p>{pricing ? `${formatINR(pricing.amount)} per subject${pricing.remaining > 0 ? " introductory offer for the first 100 checkout reservations" : ""}` : "₹99 for the first 100 checkout reservations, then ₹299"} · Chapters, study materials and mock tests included.{certificationIncluded ? " Completion certificate available after meeting subject requirements." : " No completion certificate for this subject."}</p>
 
                             <Link
                               className="course-link"
