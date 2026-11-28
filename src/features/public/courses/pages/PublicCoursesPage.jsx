@@ -48,7 +48,7 @@ const CERTIFICATE_COURSES_URL =
   "https://www.sanhita360.com/share/certificate-courses-card-v3";
 
 const SHARE_MESSAGE =
-  "Explore online law courses, free introductory lessons, study materials and mock tests from Sanhita360.";
+  "Explore law subjects, free introductory lessons, study materials and mock tests from Sanhita360.";
 
 // =========================================================
 // HELPERS
@@ -89,10 +89,10 @@ const createStructuredData = (
     "ItemList",
 
   name:
-    "Law Courses and Study Materials",
+    "Law Subjects and Study Materials",
 
   description:
-    "Explore LL.B courses, law notes, legal study materials and certification preparation from Sanhita360.",
+    "Explore LL.B subjects, law notes, legal study materials and subject-wise learning resources from Sanhita360.",
 
   url:
     `${SEO_CONFIG.siteUrl}/law-courses`,
@@ -306,20 +306,20 @@ export default function PublicCoursesPage() {
   return (
     <>
       <SEO
-        title="Online Law Courses & LL.B Study Materials"
-        description="Explore online law courses for LL.B students in India, with chapter-wise lessons, law notes, case references and mock tests. Start with free introductory lessons."
+        title="Law Subjects for LL.B Students & Study Materials"
+        description="Explore core law subjects for LL.B students in India, with chapter-wise lessons, law notes, case references and mock tests. Start with free introductory lessons."
         canonical="/law-courses"
         image="/certificate-courses-hero.jpg"
         keywords={[
-          "LLB courses",
-          "LLB course online",
-          "law courses",
+          "LLB subjects",
+          "LLB subject study material",
+          "law subjects",
           "law study material",
           "LLB study material",
           "law notes",
           "online law learning",
           "law exam preparation",
-          "law certification course",
+          "law subject learning",
         ]}
         structuredData={
           structuredData
@@ -339,11 +339,11 @@ export default function PublicCoursesPage() {
               </span>
 
               <h1>
-                Your LL.B Learning Journey Starts Here
+                Explore Law Subjects for Your LL.B Journey
               </h1>
 
               <p>
-                Study Indian law with structured LL.B courses, free introductory learning, chapter-wise notes and practice assessments. Explore subjects at your own pace and decide when you are ready to enroll.
+                Study Indian law through structured subject-wise lessons, free introductory learning, chapter-wise notes and practice assessments. Explore each subject at your own pace.
               </p>
 
               <div className="hero-benefits">
@@ -368,14 +368,14 @@ export default function PublicCoursesPage() {
                 </span>
               </div>
               <div className="courses-hero-actions">
-                <a href="#available-courses" className="courses-primary-cta">Explore Courses <FaArrowRight /></a>
+                <a href="#available-courses" className="courses-primary-cta">Explore Subjects <FaArrowRight /></a>
                 <Link to="/#legal-remedies" className="courses-secondary-cta">Browse Free Legal Remedies</Link>
               </div>
-              <p className="courses-hero-note">Start by exploring the subjects and available learning resources. No pressure to enroll before you understand the course.</p>
+              <p className="courses-hero-note">Start by exploring the subjects and available learning resources. Explore the subjects and learning resources before choosing a study path.</p>
             </div>
 
             <div className="courses-hero-visual">
-              <img className="courses-hero-image" src="/certificate-courses-hero.jpg" alt="Online law courses and study materials at Sanhita360" />
+              <img className="courses-hero-image" src="/certificate-courses-hero.jpg" alt="Law subjects and study materials for LL.B students at Sanhita360" />
             </div>
           </div>
         </section>
@@ -412,11 +412,11 @@ export default function PublicCoursesPage() {
             <div className="section-heading">
               <div>
                 <span className="section-label">
-                  Available Courses
+                  Available Law Subjects
                 </span>
 
                 <h2>
-                  Explore Law Courses
+                  Explore Law Subjects
                 </h2>
               </div>
 
@@ -432,7 +432,7 @@ export default function PublicCoursesPage() {
 
             <label className="course-search">
               <FaMagnifyingGlass aria-hidden="true" />
-              <input type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search courses, subjects or topics..." aria-label="Search law courses" />
+              <input type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search law subjects or topics..." aria-label="Search law subjects" />
             </label>
 
             {loading && (
@@ -440,7 +440,7 @@ export default function PublicCoursesPage() {
                 <div className="course-spinner" />
 
                 <p>
-                  Loading courses...
+                  Loading law subjects...
                 </p>
               </div>
             )}
@@ -522,7 +522,7 @@ export default function PublicCoursesPage() {
                                 src={
                                   image
                                 }
-                                alt={`${course.title} LL.B course and law study materials`}
+                                alt={`${course.title} law subject and study materials`}
                                 loading="lazy"
                               />
                             </Link>
@@ -574,7 +574,7 @@ export default function PublicCoursesPage() {
                                 .shortDescription ||
                                 course
                                   .description ||
-                                "Explore this structured law course from Sanhita360."}
+                                "Explore this law subject from Sanhita360."}
                             </p>
 
                             {course.previewChapters?.length > 0 && (
@@ -584,7 +584,7 @@ export default function PublicCoursesPage() {
                               </p>
                             )}
 
-                            <p>{pricing ? `${formatINR(pricing.amount)} per course${pricing.remaining > 0 ? " introductory offer for the first 100 checkout reservations" : ""}` : "₹99 for the first 100 checkout reservations, then ₹299"} · Chapters, study materials and mock tests included.{certificationIncluded ? " Completion certificate available after meeting course requirements." : " No completion certificate for this course."}</p>
+                            <p>{pricing ? `${formatINR(pricing.amount)} per subject${pricing.remaining > 0 ? " introductory offer for the first 100 checkout reservations" : ""}` : "₹99 for the first 100 checkout reservations, then ₹299"} · Chapters, study materials and mock tests included.{certificationIncluded ? " Completion certificate available after meeting course requirements." : " No completion certificate for this subject."}</p>
 
                             <Link
                               className="course-link"
@@ -592,7 +592,7 @@ export default function PublicCoursesPage() {
                                 course,
                               )}
                             >
-                              View Course
+                              View Subject
                               <FaArrowRight />
                             </Link>
                           </div>
@@ -603,7 +603,7 @@ export default function PublicCoursesPage() {
                 </div>
               )}
             {!loading && !error && courses.length > 0 && visibleCourses.length === 0 && (
-              <div className="courses-state"><FaBookOpen /><h3>No matching courses found</h3><p>Try another subject or topic.</p></div>
+              <div className="courses-state"><FaBookOpen /><h3>No matching law subjects found</h3><p>Try another law subject or topic.</p></div>
             )}
           </div>
         </section>
@@ -627,7 +627,7 @@ export default function PublicCoursesPage() {
                 are organized around subjects
                 and chapters so students can
                 study individual legal topics
-                as well as complete courses.
+                as well as complete subject modules.
               </p>
 
               <p>
@@ -689,7 +689,7 @@ export default function PublicCoursesPage() {
                     Certification
                   </strong>
 
-                  Eligible courses may offer a
+                  Selected subjects may offer a
                   certification pathway.
                 </span>
               </div>
