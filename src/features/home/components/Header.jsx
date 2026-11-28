@@ -4,7 +4,7 @@ import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 
 const menuItems = [
   { to: "/", label: "Home" },
-  { to: "/law-courses", label: "Legal Studies" },
+  { to: "/law-courses", label: "Law Subjects" },
   { id: "resources", label: "Free Resources", links: [
     { to: "/qa", label: "Q&A" },
     { to: "/#legal-article", label: "Legal Article" },
